@@ -1,25 +1,25 @@
 # mise en place : 
 un des développeurs va commencer par faire la commande
 
-```$ npm init```
+```npm init```
 
 Cela va initialiser le projet et créer le fichier package.json qui contient des métadonnées descriptives et fonctionnelles sur un projet, telles que le nom, la version et les dépendances.
 
 ensuite le développeur va installer les dépendances nécessaires voici les commandes :
 
-```$ npm install jquery``` 
+```npm install jquery``` 
 
-```$ npm install  sass```
+```npm install  sass```
 
-```$ npm install gsap```
+```npm install gsap```
 
-```$ npm install font-awesome```
+```npm install font-awesome```
 
 
 
 Les autres développeurs devront cloner le projet puis faire la commande :
 
-```$ npm install```
+```npm install```
 
 cela installera toute les dépendances nécessaires au projet ou les mettra à jour si ce n’est pas le cas
 
@@ -27,19 +27,15 @@ cela installera toute les dépendances nécessaires au projet ou les mettra à j
 
 Le scss etant un langage qui n’est pas reconnu par les navigateurs, il faut le compiler en css. Pour cela nous avons utilisé le module node-sass qui permet de compiler le scss en css. Pour l’utiliser il faut faire la commande :
 
-```$ sass --watch src/style/sass:src/style/css```
+```sass --watch src/style/scss:src/style/css```
 
 Cela permet de compiler le scss en css et de mettre à jour le fichier css à chaque modification du fichier scss. 
 Il faut donc laisser cette commande tourner en arrière plan pendant toute la durée du développement et lier le fichier css compilé au fichier html.
 Essayez de ne pas modifier le fichier css directement car il sera écrasé à chaque compilation du scss.
 
-Ensuite afin de pouvoir utiliser les modules installés avec npm, il faut les importer dans le fichier js. Pour cela il faut faire la commande :
+#### si vous utilisez un IDE de jetbrains, vous pouvez configurer un watcher pour le scss, cela permet de ne pas avoir à lancer la commande en arrière plan.
 
-```$ import gsap from "gsap";```
-
-```$ import $ from "jquery";```
-
-Cela permet d’importer les modules dans le fichier js et de pouvoir les utiliser.
+*demandez a quentin pour la configuration du watcher*
 
 # Utilisation de jQuery :
 
