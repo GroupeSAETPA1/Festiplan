@@ -1,0 +1,24 @@
+{
+  "name": "festiplan",
+  "version": "1.0.0",
+  "description": "site de plannification de festivals",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GroupeSAETPA1/Festiplan.git"
+  },
+  "author": "quentinformatique",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GroupeSAETPA1/Festiplan/issues"
+  },
+  "homepage": "https://github.com/GroupeSAETPA1/Festiplan#readme",
+  "dependencies": {
+    "gsap": "^3.12.3",
+    "jquery": "^3.7.1",
+    "sass": "^1.69.5"
+  }
+}
