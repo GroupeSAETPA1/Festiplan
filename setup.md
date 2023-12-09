@@ -1,5 +1,8 @@
-# mise en place : 
-un des développeurs va commencer par faire la commande
+# Mise en place : 
+
+## Pour le premier developpeur qui initialise le projet
+
+Un des développeurs va commencer par faire la commande
 
 ```npm init```
 
@@ -15,7 +18,7 @@ ensuite le développeur va installer les dépendances nécessaires voici les com
 
 ```npm install font-awesome```
 
-
+## Pour les développeurs une fois le projet initialisé
 
 Les autres développeurs devront cloner le projet puis faire la commande :
 
