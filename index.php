@@ -7,55 +7,97 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Festiplan - Page d'Acceuil</title>
     <link rel="stylesheet" href="src/style/css/index.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+
     <link rel="icon" href="src/assets/img/Favicon.png" /> <!--  A remplacer quand on aura la favicon  -->
 </head>
 <body>
-    <div class="display">
-        <div class="presentation">
-            <img src="src/assets/img/Logo.png" alt="Logo de Festiplan">
+    <div class="app">
+        <div class="partiePrincipale">
+            <div class="presentation">
+                <i class="fa-solid fa-calendar-days"></i>
                 <div class="titre">Festiplan</div>
                 <p>
                     Créer et gérer tous vos évenements,<br>
                     avec facilité et ergonomie.
                 </p>
+            </div>
+            <div class="connexion">
+                <form>
+                    <div class="colonneCreationCompte">
+                        <label id="identifiant">
+                            Identifiant
+                        </label>
+                        <input type="text" id="identifiant" placeholder="Veuillez renseigner votre identifiant :" required>
+                    </div>
+                    <div class="colonneCreationCompte">
+                        <label id="mdp">
+                            Mot de passe
+                        </label>
+                        <input type="password" id="mdp" placeholder="Veuillez renseigner votre mot de passe :" required> <!-- TODO mettre des longeur max d'id et de mdp -->
+                    </div>
+                    <div class="colonneCreationCompte">
+                        <a href="">Créer un compte <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                    <input type="submit" class="boutonConnexion" value="Me Connecter">
+                </form>
+            </div>
+            <div class="creationCompte">
+                <form>
+                    <div class="form-duo">
+                        <div class="colonneCreationCompte">
+                            <label id="nom">
+                                Nom :
+                            </label>
+                            <input type="text" id="nom" placeholder="Votre nom :" required>
+                        </div>
+                        <div class="colonneCreationCompte">
+                            <label id="prenom">
+                                Prénom :
+                            </label>
+                            <input type="text" id="prenom" placeholder="Votre prénom :" required>
+                        </div>
+                    </div>
+                    <div class="colonneCreationCompte">
+                        <label id="mail">
+                            Email :
+                        </label>
+                        <input type="email" id="mail" placeholder="Votre email :" required>
+                    </div>
+                    <div class="form-duo">
+                        <div class="colonneCreationCompte">
+                            <label id="identifiantCrea">
+                                Identifiant :
+                            </label>
+                            <input type="text" id="identifiantCrea" placeholder="Votre identifiant :">
+                        </div>
+                        <div class="colonneCreationCompte">
+                            <label id="mdpCrea">
+                                Mot de passe :
+                            </label>
+                            <input type="text" id="mdpCrea" placeholder="Votre mot de passe :">
+                        </div>
+                    </div>
+                    <div class="form-duo">
+                        <button class="retour">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            Retour
+                        </button>
+                        <button type="submit" class="boutonConnexion">
+                            Créer le compte
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
-            <form class="formulaire" hidden>
-                Identifiant
-                <br>
-                <input type="text" placeholder="Veuillez renseigner votre identifiant :"><br>
-                Mot de passe<br>
-                <input type="password" placeholder="Veuillez renseigner votre mot de passe :"><br> <!-- TODO mettre des longeur max d'id et de mdp -->
-                <a href="">Créer un compte (mettre fleche font awesome ici)</a><br>
-                <input type="submit" class="connexion" value="Me Connecter">
-            </form>
-            <form class="creationCompte">
-                <div>
-                    <div class="colonneCreationCompte">
-                        Nom :<br>
-                        <input type="text" placeholder="Votre nom :">
-                    </div>
-                    <div class="colonneCreationCompte">
-                        Prénom :<br>
-                        <input type="text" placeholder="Votre prénom :">
-                    </div>
-                </div><br>
-                Email :<br>
-                <input type="email" placeholder="Votre email :"><br>
-                <div>
-                    <div class="colonneCreationCompte">
-                        Identifiant :<br>
-                        <input type="text" placeholder="Votre identifiant :">
-                    </div>
-                    <div class="colonneCreationCompte">
-                        Mot de passe :<br>
-                        <input type="text" placeholder="Votre mot de passe :">
-                    </div>
-                </div>
-                <button class="retour">(fleche fa) Retour</button>
-                <button type="submit" class="connexion">Créer le compte</button>
-            </form>
-        </div>
-    <footer>
-    </footer>
+    </div>
+        <footer class="footer">
+        </footer>
 </body>
 </html>

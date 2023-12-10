@@ -1,114 +1,108 @@
 @import "main";
-body {
+
+* {
   font-family: $font-family;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.display {
+body {
+  background: white;
+  color: $dark-grey;
+  font-size: 20px;
+}
+.app {
+  display: flex;
+  flex-direction: column;
   height: 80vh;
 }
-div {
+.partiePrincipale {
+  padding: 10vh;
   display: flex;
-  // Pour le débug
-  //border-color: #F7A072;
-  //border-style: dashed;
+  justify-content: space-around;
+  align-items: center;
+  column-gap: 50px;
+  flex: 1;
 }
-.presentation {
-  margin-top: 10vh;
-  margin-left: 10vh;
-  flex-direction: column;
-  max-height: 45vh;
+.presentation * {
+  margin: 0;
+  line-height: 1;
 }
-.presentation img {
-  max-height: 15vh;
-  max-width: 15vh;
+.presentation i {
+  color: $orange;
+  font-size: 15vh;
 }
 .presentation .titre {
-  font-weight: bold;
-  font-size: 150px;
+  font-size: 75px;
+  font-weight: 400;
 }
 .presentation p {
-  position: relative;
-  bottom: 3vh;
   font-size: 3vh;
 }
-.formulaire {
-  margin-top: 10vh;
-  margin-left: 40vh;
-  padding: 5vh;
+.colonneCreationCompte {
+  display: flex;
   flex-direction: column;
-  max-height: 45vh;
-  max-width: 50vh;
-  background: $dark-grey;
-  border-radius: 15px;
-  color: white;
-  font-size: 32px;
-  margin-bottom: 5vh;
-  box-shadow: 20px 20px 0 5px rgba(0,0,0,0.35);
-  // Pour le débug
-  border-color: #99E1D9;
-  border-style: dashed;
-
-}
-.formulaire input {
-  margin-top: 2vh;
-  margin-bottom: 2vh;
-  height: 6vh;
-  width: 100%;
-  font-size: 32px;
-  border-radius: 15px;
-  border-style: none;
 }
 .connexion {
-  text-align: center;
-  color: $dark-grey;
-  background: $light-blue;
-}
-.formulaire a {
-  color: $orange;
-  text-decoration: none;
+  form {
+    width: 400px;
+  }
 }
 .creationCompte {
-  margin-top: 9vh;
-  margin-left: 30vh;
-  padding: 5vh;
-  flex-direction: column;
-  max-height: 60vh;
-  max-width: 70vh;
+  form {
+    width: 500px;
+  }
+  .form-duo {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 50px;
+  }
+}
+
+.connexion, .creationCompte {
+  border-radius: 10px;
   background: $dark-grey;
-  border-radius: 15px;
+  padding: 45px;
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
   color: white;
-  font-size: 28px;
-  margin-bottom: 5vh;
-  box-shadow: 20px 20px 0 5px rgba(0,0,0,0.35);
+
+  label {
+    margin-bottom: 5px;
+  }
+  input {
+    font-size: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+  }
+  a {
+    text-align: center;
+    color: #F7A072;
+    text-decoration: none;
+  }
+  .boutonConnexion {
+    text-align: center;
+    background: $light-blue;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
 }
-.creationCompte input {
-  margin-top: 2vh;
-  margin-bottom: 2vh;
-  height: 6vh;
-  width: 100%;
-  font-size: 28px;
-  border-radius: 15px;
-  border-style: none;
-}
+
 .creationCompte button {
-  width: 49%;
-  height: 6vh;
-  font-size: 28px;
-  border-radius: 15px;
-  border-style: none;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
 }
-.creationCompte .retour {
+.retour {
   background: $orange;
 }
-.creationCompte .colonneCreationCompte {
-  gap: 10px;
-  flex-direction: column;
-  width: 50%;
-}
+
 footer {
-  height: 20vh;
-  width: 100vw;
+  flex: none;
+  min-height: 20vh;
   background: $dark-grey;
-  position: relative;
-  left: -1vh;
-  bottom: -1vh;
 }
