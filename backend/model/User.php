@@ -9,6 +9,8 @@ class User {
        // inscription d'un utilisateur
        // Renvoie vrai ou faux en fonction si l'utilisateur a été inscrit.
 
+        // TODO chiffrer le mot de passe
+
        try {
            if (!utilisateurExiste($email, $pdo)) {
                $req = $pdo->prepare('INSERT INTO utilisateur (email, nom, prenom, pwd, login) VALUES (:email, :nom, :prenom, :pwd, :login)');
