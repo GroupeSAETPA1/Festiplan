@@ -12,9 +12,6 @@ ensuite le développeur va installer les dépendances nécessaires voici les com
 
 ```npm install  sass```
 
-```npm install gsap```
-
-```npm install font-awesome```
 
 ## Pour les développeurs une fois le projet initialisé
 
@@ -56,6 +53,8 @@ exemple :
 Cela permet de sélectionner un élément du DOM et de pouvoir le manipuler.
 
 # Utilisation de GSAP :
+
+```<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>```
 
 GSAP est une bibliothèque JavaScript qui permet de créer des animations. Elle permet de créer des animations de manière plus simple et plus rapide que le JavaScript.
 GSAP permet de créer des animations sur les propriétés CSS, les objets JavaScript, les propriétés DOM et les attributs SVG.
