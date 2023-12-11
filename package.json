@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/GroupeSAETPA1/Festiplan#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "gsap": "^3.12.3",
     "jquery": "^3.7.1",
     "sass": "^1.69.5"

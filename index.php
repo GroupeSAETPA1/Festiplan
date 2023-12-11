@@ -6,7 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Festiplan - Page d'Acceuil</title>
-    <link rel="stylesheet" href="src/style/css/index.css">
+    <link rel="stylesheet" href="src/style/css/index/index.css">
+    <link rel="stylesheet" href="src/style/css/index/forms.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet"
@@ -16,39 +17,14 @@
           referrerpolicy="no-referrer" />
 
     <link rel="icon" href="src/assets/img/Favicon.png" /> <!--  A remplacer quand on aura la favicon  -->
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="src/scripts/index.js" type="module" defer></script>
 </head>
 <body>
     <div class="app">
         <div class="partiePrincipale">
-            <div class="presentation">
-                <i class="fa-solid fa-calendar-days"></i>
-                <div class="titre">Festiplan</div>
-                <p>
-                    Créer et gérer tous vos évenements,<br>
-                    avec facilité et ergonomie.
-                </p>
-            </div>
-            <div class="connexion">
-                <form>
-                    <div class="colonneCreationCompte">
-                        <label id="identifiant">
-                            Identifiant
-                        </label>
-                        <input type="text" id="identifiant" placeholder="Veuillez renseigner votre identifiant :" required>
-                    </div>
-                    <div class="colonneCreationCompte">
-                        <label id="mdp">
-                            Mot de passe
-                        </label>
-                        <input type="password" id="mdp" placeholder="Veuillez renseigner votre mot de passe :" required> <!-- TODO mettre des longeur max d'id et de mdp -->
-                    </div>
-                    <div class="colonneCreationCompte">
-                        <a href="">Créer un compte <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                    <input type="submit" class="boutonConnexion" value="Me Connecter">
-                </form>
-            </div>
-            <div class="creationCompte">
+            <div class="formulaire creationCompte">
                 <form>
                     <div class="form-duo">
                         <div class="colonneCreationCompte">
@@ -89,15 +65,40 @@
                             <i class="fa-solid fa-arrow-left"></i>
                             Retour
                         </button>
-                        <button type="submit" class="boutonConnexion">
-                            Créer le compte
-                        </button>
+                        <input type="submit" class="boutonCreation" value="Créer le compte">
                     </div>
                 </form>
             </div>
+            <div class="presentation">
+                <i class="fa-solid fa-calendar-days"></i>
+                <div class="titre">Festiplan</div>
+                <p>
+                    Créer et gérer tous vos évenements,<br>
+                    avec facilité et ergonomie.
+                </p>
+            </div>
+            <div class="formulaire connexion">
+                <form>
+                    <div class="colonneCreationCompte">
+                        <label id="identifiant">
+                            Identifiant
+                        </label>
+                        <input type="text" id="identifiant" placeholder="Entrez votre identifiant :" required>
+                    </div>
+                    <div class="colonneCreationCompte">
+                        <label id="mdp">
+                            Mot de passe
+                        </label>
+                        <input type="password" id="mdp" placeholder="Entrez votre mot de passe :" required> <!-- TODO mettre des longeur max d'id et de mdp -->
+                    </div>
+                    <button class="creerCompte">Créer un compte <i class="fa-solid fa-arrow-right"></i></button>
+                    <input type="submit" class="boutonConnexion" value="Me Connecter">
+                </form>
+            </div>
+
         </div>
     </div>
-        <footer class="footer">
-        </footer>
+    <footer class="footer">
+    </footer>
 </body>
 </html>

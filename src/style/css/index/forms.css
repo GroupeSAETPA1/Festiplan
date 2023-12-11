@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"); /* declaration des variables */
+/* ne codez pas ici, c'est le fichier pour les variables, etc. */
+.formulaire {
+  border-radius: 20px;
+  background: #363732;
+  padding: 45px;
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+.formulaire label {
+  margin-bottom: 5px;
+}
+
+.formulaire input {
+  font-size: 20px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+}
+
+.formulaire input:hover {
+  cursor: pointer;
+}
+
+.formulaire button {
+  text-align: center;
+  color: #F7A072;
+  text-decoration: none;
+  background: none;
+  border: none;
+  font-size: 20px;
+}
+
+.formulaire button:hover {
+  cursor: pointer;
+}
+
+.formulaire .boutonConnexion {
+  background: #99E1D9;
+}
+
+.formulaire form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.creerCompte:hover {
+  text-decoration: underline #F7A072;
+}
+
+.colonneCreationCompte {
+  display: flex;
+  flex-direction: column;
+}
+
+.connexion form {
+  width: 400px;
+}
+
+.creationCompte form {
+  width: 500px;
+}
+
+.creationCompte .form-duo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 50px;
+}
+
+.creationCompte button {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.creationCompte .boutonCreation {
+  background: #99E1D9;
+  color: black;
+}
+
+.creationCompte .retour {
+  background: #F7A072;
+  color: black;
+}
+
+
+
+/*# sourceMappingURL=forms.css.map */
