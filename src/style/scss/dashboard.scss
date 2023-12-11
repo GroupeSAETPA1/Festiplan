@@ -4,6 +4,12 @@ body {
     background-color: $white;
     color: $dark-grey;
     font-family: $font-family;
+    margin: 0;
+
+}
+
+a {
+    text-decoration: none;
 }
 
 header {
@@ -23,6 +29,10 @@ header {
             font-size: 2rem;
             padding-right: 10%;
         }
+
+        span {
+            color: $white;
+        }
     }
 
     .mon-compte div {
@@ -35,7 +45,11 @@ header {
 
 img {
     border-radius: 10%;
-    width: 80%  ;
+    max-width: 100%;
+}
+
+div {
+    border-radius: 2vh;
 }
 
 .wrapper {
@@ -64,11 +78,10 @@ img {
     }
 
     a {
-        text-decoration: none;
+
 
         div {
             background-color: $orange;
-            //border-radius: 10%;
             padding: 1rem;
             margin: 1rem;
             display: flex;
@@ -98,7 +111,7 @@ img {
 .container-card-spectacles {
     display: flex;
     flex-direction: column;
-    padding: 0 2vh;
+    padding:0 2vh;
 }
 
 .card-festival {
@@ -176,7 +189,7 @@ img {
     div {
         border-radius: 1vh;
 
-        :hover {
+        &:hover {
             background-color: $gris;
         }
 
@@ -193,10 +206,11 @@ img {
     display: flex;
     flex-direction: row;
     margin: 1vh;
+    padding: 1vh;
     background-color: $white;
-    padding: $white;
     width: 100%;
     //height: 19vh;
+
 
     img {
         margin: 1vh;
@@ -211,7 +225,7 @@ img {
         font-size: 120%;
 
         p, div {
-            margin: 1vh;
+            margin: 0 1vh;
         }
 
         .group-categories {
@@ -222,6 +236,7 @@ img {
             display: flex;
             flex-direction: column;
             justify-content: center;
+
         }
 
         .group-boutons {
@@ -231,3 +246,18 @@ img {
     }
 }
 
+@media screen and (max-width: 1200px) {
+    .label-duree {
+        display: none;
+    }
+}
+
+@media  screen and (max-width: 1000px) {
+    .img-spectacle, .img-festival {
+        display: none;
+    }
+
+    .wrapper {
+        padding: 0;
+    }
+}

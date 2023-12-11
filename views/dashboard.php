@@ -63,7 +63,7 @@ function afficher_spectacle(int $id_spectacle, string $nom_spectacle, string $li
     echo'            </div>';
     echo'        </div>';
     echo'        <div class="duree">';
-    echo'            <span>Dur&eacute;e :</span>';
+    echo'            <span class="label-duree">Dur&eacute;e :</span>';
     echo'            <span>'.minutesToHHMM($duree).'</span>';
     echo'        </div>';
     echo'        <div class="group-boutons">';
@@ -120,10 +120,12 @@ $id_gestionnaire_festival = 1;
 
     <body>
     <header>
-        <div class="logo">
-            <i class="fa-solid fa-calendar-days"></i>
-            <span>Festiplan</span>
-        </div>
+        <a href="../index.php">
+            <div class="logo">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Festiplan</span>
+            </div>
+        </a>
         <div class="mon-compte">
             <div>
                 <i class="fa-solid fa-user"></i>
