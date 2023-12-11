@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"); /* declaration des variables */
+/* ne codez pas ici, c'est le fichier pour les variables, etc. */
+* {
+  font-family: "Rubik", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: white;
+  color: #363732;
+  font-size: 20px;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+}
+
+.partiePrincipale {
+  padding: 10vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  column-gap: 50px;
+  flex: 1;
+}
+
+.presentation * {
+  margin: 0;
+  line-height: 1;
+}
+.presentation i {
+  color: #F7A072;
+  font-size: 15vh;
+}
+.presentation .titre {
+  font-size: 75px;
+  font-weight: 400;
+}
+.presentation p {
+  font-size: 3vh;
+  font-weight: 300;
+}
+
+footer {
+  flex: none;
+  min-height: 20vh;
+  background: #363732;
+}
+
+/*# sourceMappingURL=index.css.map */
