@@ -36,6 +36,10 @@ img {
   width: 80%;
 }
 
+div {
+  border-radius: 2vh;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
