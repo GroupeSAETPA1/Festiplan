@@ -109,18 +109,18 @@ $id_gestionnaire_festival = 1;
         <meta name="viewport">
         <title>Festiplan - Dashboard</title>
 
-        <link rel="stylesheet" href="../src/style/css/dashboard.css">
+        <link rel="stylesheet" href="../../src/style/css/dashboard.css">
 
         <!-- Fontawesome -->
         <!-- TODO CDN -->
         <link rel="stylesheet" href="../framework/fontawesome-free-6.2.1-web/css/all.css">
 
-        <script src="../src/scripts/index.js" defer></script>
+        <script src="../static/scripts/index.js" defer></script>
     </head>
 
     <body>
     <header>
-        <a href="../index.php">
+        <a href="../../index.php">
             <div class="logo">
                 <i class="fa-solid fa-calendar-days"></i>
                 <span>Festiplan</span>

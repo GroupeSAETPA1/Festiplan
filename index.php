@@ -16,7 +16,7 @@
           crossorigin="anonymous"
           referrerpolicy="no-referrer" />
 
-    <link rel="icon" href="src/assets/img/Favicon.png" /> <!--  A remplacer quand on aura la favicon  -->
+    <link rel="icon" href="FestiplanWeb/static/assets/img/Favicon.png" /> <!--  A remplacer quand on aura la favicon  -->
 
     <!-- Scripts -->
     <!-- jQuery -->
@@ -24,7 +24,7 @@
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
     <!-- JS -->
-    <script src="src/scripts/index.js" type="module" defer></script>
+    <script src="FestiplanWeb/static/scripts/index.js" type="module" defer></script>
 </head>
 <body>
     <div class="app">

@@ -57,3 +57,4 @@ Thumbs.db
 *.der
 *.key
 *.pem
+FestiplanWeb/lib/*
