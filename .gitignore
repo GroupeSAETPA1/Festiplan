@@ -1,6 +1,8 @@
 framework
 node_modules
 
+assets/maquette
+
 # IDEs and editors
 .idea
 .vscode
