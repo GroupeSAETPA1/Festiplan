@@ -4,6 +4,7 @@ body {
   background-color: $white;
   color: $dark-grey;
   font-family: $font-family;
+  margin: 0;
 }
 
 header {
@@ -25,26 +26,33 @@ header {
     }
   }
 
-  .mon-compte div {
-    background-color: $orange;
-    color: $dark-grey;
-    padding: 1vh;
-    margin: 1vh;
-    border-radius: 20px;
+  .mon-compte{
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 30px;
     border-style: none;
+    background-color: #F7A072;
+
+    &:hover {
+      background-color: darken(#F7A072,30);
+    }
   }
 }
 
 .retour{
-  background-color: $orange;
-  color: $dark-grey;
-  padding: 1vh;
-  margin: 1vh;
-  height:20px;
-  width:100px;
-  border-radius: 20px;
-  border-style: none;
+  line-height: 2;
+  padding: 0 20px;
+  font-size: 1rem;
   text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #F7A072;
+
+  &:hover {
+    background-color: darken(#F7A072,30);
+  }
 }
 
 .text{
@@ -76,4 +84,79 @@ select{
   border-radius: 30px;
   border-style: none;
   background-color: #99E1D9;
+
+  &:hover {
+    background-color: darken(#99E1D9,30);
+  }
+}
+.supp{
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #F7A072;
+
+  &:hover {
+    background-color: darken(#F7A072,30);
+  }
+}
+
+.ajoutGrij {
+  line-height: 2.5;
+  padding: 0 500px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #99E1D9;
+
+  &:hover {
+    background-color: darken(#99E1D9, 30);
+  }
+}
+
+.annul{
+  line-height: 2.5;
+  padding: 0 150px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #F7A072;
+
+  &:hover {
+    background-color: darken(#F7A072,30);
+  }
+}
+
+.valid{
+  line-height: 2.5;
+  padding: 0 150px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #99E1D9;
+
+  &:hover {
+    background-color: darken(#99E1D9,30);
+  }
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.NDD{
+
+}
+
+.Descr{
+  
 }
