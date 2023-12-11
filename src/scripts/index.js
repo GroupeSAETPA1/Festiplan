@@ -1,4 +1,11 @@
-const creation = $('.creationCompte');
-const connexion = $('.connexion');
-const presentation = $('.presentation');
+$('.creationCompte').hide();
 
+$('.creerCompte').click(function() {
+    $('.creationCompte').show();
+    $('.connexion').hide();
+});
+
+$('.retour').click(function() {
+    $('.creationCompte').hide();
+    $('.connexion').show();
+});
