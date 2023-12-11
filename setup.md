@@ -1,5 +1,8 @@
-# mise en place : 
-un des développeurs va commencer par faire la commande
+# Mise en place : 
+
+## Pour le premier developpeur qui initialise le projet
+
+Un des développeurs va commencer par faire la commande
 
 ```npm init```
 
@@ -7,15 +10,10 @@ Cela va initialiser le projet et créer le fichier package.json qui contient des
 
 ensuite le développeur va installer les dépendances nécessaires voici les commandes :
 
-```npm install jquery``` 
-
 ```npm install  sass```
 
-```npm install gsap```
 
-```npm install font-awesome```
-
-
+## Pour les développeurs une fois le projet initialisé
 
 Les autres développeurs devront cloner le projet puis faire la commande :
 
@@ -41,6 +39,8 @@ Essayez de ne pas modifier le fichier css directement car il sera écrasé à ch
 
 # Utilisation de jQuery :
 
+```<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>```
+
 Jquery est une bibliothèque JavaScript qui permet de manipuler le DOM. Elle permet de manipuler le DOM de manière plus simple et plus rapide que le JavaScript. 
 L'une des principales caractéristiques de jQuery est sa capacité à sélectionner des éléments du DOM à l'aide de sélecteurs CSS.
 
@@ -55,6 +55,8 @@ exemple :
 Cela permet de sélectionner un élément du DOM et de pouvoir le manipuler.
 
 # Utilisation de GSAP :
+
+```<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>```
 
 GSAP est une bibliothèque JavaScript qui permet de créer des animations. Elle permet de créer des animations de manière plus simple et plus rapide que le JavaScript.
 GSAP permet de créer des animations sur les propriétés CSS, les objets JavaScript, les propriétés DOM et les attributs SVG.
