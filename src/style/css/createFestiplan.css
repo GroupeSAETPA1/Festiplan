@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Rubik:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+/* declaration des variables */
+/* ne codez pas ici, c'est le fichier pour les variables, etc. */
+body {
+  background-color: #F0F7F4;
+  color: #363732;
+  font-family: "Rubik", sans-serif;
+}
+
+header {
+  background-color: #363732;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #F0F7F4;
+}
+header .logo {
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+}
+header .logo i {
+  color: #F7A072;
+  font-size: 2rem;
+  padding-right: 10%;
+}
+header .mon-compte div {
+  background-color: #F7A072;
+  color: #363732;
+  padding: 1vh;
+  margin: 1vh;
+  border-radius: 20px;
+  border-style: none;
+}
+
+.retour {
+  background-color: #F7A072;
+  color: #363732;
+  padding: 1vh;
+  margin: 1vh;
+  height: 20px;
+  width: 100px;
+  border-radius: 20px;
+  border-style: none;
+  text-align: center;
+}
+
+.text {
+  height: 40px;
+  width: 250px;
+  border-radius: 30px;
+  border-style: none;
+}
+
+.description {
+  height: 100px;
+  width: 300px;
+  border-radius: 30px;
+  border-style: none;
+}
+
+select {
+  height: 40px;
+  width: 250px;
+  border-radius: 30px;
+  border-style: none;
+}
+
+.ajoutS {
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #99E1D9;
+}
+
+/*# sourceMappingURL=createFestiplan.css.map */

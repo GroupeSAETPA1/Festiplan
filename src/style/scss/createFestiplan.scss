@@ -1,0 +1,79 @@
+@import 'main';
+
+body {
+  background-color: $white;
+  color: $dark-grey;
+  font-family: $font-family;
+}
+
+header {
+  background-color: $dark-grey;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: $white;
+
+  .logo {
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+
+    i {
+      color: $orange;
+      font-size: 2rem;
+      padding-right: 10%;
+    }
+  }
+
+  .mon-compte div {
+    background-color: $orange;
+    color: $dark-grey;
+    padding: 1vh;
+    margin: 1vh;
+    border-radius: 20px;
+    border-style: none;
+  }
+}
+
+.retour{
+  background-color: $orange;
+  color: $dark-grey;
+  padding: 1vh;
+  margin: 1vh;
+  height:20px;
+  width:100px;
+  border-radius: 20px;
+  border-style: none;
+  text-align: center;
+}
+
+.text{
+  height:40px;
+  width:250px;
+  border-radius: 30px;
+  border-style: none;
+}
+
+.description{
+  height:100px;
+  width:300px;
+  border-radius: 30px;
+  border-style: none;
+}
+
+select{
+  height:40px;
+  width:250px;
+  border-radius: 30px;
+  border-style: none;
+}
+
+.ajoutS{
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #99E1D9;
+}
