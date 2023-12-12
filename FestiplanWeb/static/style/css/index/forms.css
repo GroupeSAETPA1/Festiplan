@@ -59,6 +59,12 @@
   width: 400px;
 }
 
+.creationCompte {
+  opacity: 0;
+  display: none;
+  transform: translate(-500px, 0);
+}
+
 .creationCompte form {
   width: 500px;
 }

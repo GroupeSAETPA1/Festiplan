@@ -1,31 +1,91 @@
-$('.creationCompte').hide();
-
 $('.creerCompte').click(function() {
+    const TL = gsap.timeline({paused: false});
+
     // animation : la presentation se décale vers la gauche
-    gsap.from('.presentation', {
-        x: -500,
-        duration: 1.5
-    });
-    // animation : la connexion se décale vers la gauche
-    gsap.to('.connexion', {
-        x: 500,
-        duration: 1.5
-    });
-    // animation : le formulaire apparait
-    gsap.from('.creationCompte', {
-        x: -500,
-        duration: 1.5
-    });
-    $('.creationCompte').show();
-    // on attend 1.5s avant de cacher la connexion
-    setTimeout(function() {
-        $('.connexion').hide();
-    }, 1500);
+    TL
+        .to(".presentation, .connexion", {
+            duration: 1,
+            delay: 0,
 
+            opacity: 0,
+            x: "100%",
 
+            ease: "power2.in",
+            stagger: .1,
+        })
+        .to(".connexion", {
+            duration: 0,
+            delay: 0,
+
+            display: "none",
+        })
+        .to(".presentation", {
+            duration: 0,
+            delay: 0,
+
+            x: "-100%",
+        })
+        .to(".creationCompte", {
+            duration: 0,
+            delay: 0,
+
+            display: "block",
+        })
+        .to(".creationCompte, .presentation", {
+            duration: 1,
+            delay: 0,
+
+            opacity: 1,
+            x: 0,
+
+            ease: "power2.out",
+            stagger: -.1,
+        })
+        .play();
 });
 
 $('.retour').click(function() {
-    $('.creationCompte').hide();
-    $('.connexion').show();
+    // inverse de la fonction précédente
+    const TL = gsap.timeline({paused: false});
+
+    TL
+        .to(".creationCompte, .presentation", {
+            duration: 1,
+            delay: 0,
+
+            opacity: 0,
+            x: "-100%",
+
+            ease: "power2.in",
+            stagger: .1,
+        })
+        .to(".creationCompte", {
+            duration: 0,
+            delay: 0,
+
+            display: "none",
+        })
+        .to(".presentation", {
+            duration: 0,
+            delay: 0,
+
+            x: "100%",
+        })
+        .to(".connexion", {
+            duration: 0,
+            delay: 0,
+
+            display: "block",
+        })
+        .to(".connexion, .presentation", {
+            duration: 1,
+            delay: 0,
+
+            opacity: 1,
+            x: 0,
+
+            ease: "power2.out",
+            stagger: -.1,
+        })
+        .play();
 });
