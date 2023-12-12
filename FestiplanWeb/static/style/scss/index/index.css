@@ -8,15 +8,16 @@
 }
 
 body {
-  background: white;
+  background: #F0F7F4;
   color: #363732;
   font-size: 20px;
+  overflow: hidden;
 }
 
 .app {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 70vh;
   width: 100%;
   overflow: hidden;
 }
@@ -49,7 +50,7 @@ body {
 
 footer {
   flex: none;
-  min-height: 20vh;
+  min-height: 9vh;
   background: #363732;
 }
 

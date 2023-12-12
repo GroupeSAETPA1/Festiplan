@@ -32,6 +32,7 @@
   }
   .boutonConnexion {
     background: $light-blue;
+    color: $dark-grey;
   }
   form {
     display: flex;
@@ -76,10 +77,10 @@
   }
   .boutonCreation {
     background: $light-blue;
-    color: black;
+    color: $dark-grey;
   }
   .retour {
     background: $orange;
-    color: black;
+    color: $dark-grey;
   }
 }

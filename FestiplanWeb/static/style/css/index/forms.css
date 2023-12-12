@@ -38,6 +38,7 @@
 
 .formulaire .boutonConnexion {
   background: #99E1D9;
+  color: #363732;
 }
 
 .formulaire form {
@@ -84,12 +85,12 @@
 
 .creationCompte .boutonCreation {
   background: #99E1D9;
-  color: black;
+  color: #363732;
 }
 
 .creationCompte .retour {
   background: #F7A072;
-  color: black;
+  color: #363732;
 }
 
 
