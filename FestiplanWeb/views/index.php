@@ -105,7 +105,6 @@
 
         </div>
     </div>
-    <div class="spacer ratio-100 wave-white-to-grey"></div>
     <?php include_once "../static/components/footer.php" ?>
 </body>
 </html>
