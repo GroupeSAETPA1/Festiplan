@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../static/style/css/index/index.css">
     <link rel="stylesheet" href="../static/style/css/index/forms.css">
     <link rel="stylesheet" href="../static/style/css/svg.css">
+    <link rel="stylesheet" href="../static/style/css/footer.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet"
@@ -105,7 +106,10 @@
         </div>
     </div>
     <div class="spacer ratio-100 wave-white-to-grey"></div>
-    <footer class="footer">
+    <footer>
+        <div class="text-footer">
+            Copyrigth © 2023 - Festiplan - Tous droits réservés
+        </div>
     </footer>
 </body>
 </html>
