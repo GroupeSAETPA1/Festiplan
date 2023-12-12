@@ -3,6 +3,7 @@ namespace controllers;
 
 use PDO;
 use services\UserService;
+use services\SessionService;
 use yasmf\HttpHelper;
 use yasmf\View;
 
@@ -17,12 +18,13 @@ class UserController {
     }
 
     public function index($pdo): View {
-        $login =  htmlspecialchars(HttpHelper::getParam('identifiant') ?: "");
         $mdp =  htmlspecialchars(HttpHelper::getParam('mdp') ?: "");
-        $view = new View("views/.."); // TODO mettre la bonne view
+        $login =  htmlspecialchars(HttpHelper::getParam('identifiant') ?: "");
+        $view = new View("views/index");
         $view->setVar('mdp', $mdp);
         $view->setVar('login', $login);
         $view->setVar('displayInscription', false);
+        $view->setVar('displayLoginError', false);
         return $view;
     }
 
@@ -34,22 +36,27 @@ class UserController {
         $mdp =  htmlspecialchars(HttpHelper::getParam('mdp') ?: "");
         $login =  htmlspecialchars(HttpHelper::getParam('login') ?: "");
 
-        // Si l'utilisateur n'existe pas, on le crée
-        if (!$this->userService->utilisateurExiste($pdo, $email, $mdp)) {
-            $this->userService->createUser($pdo, $email, $nom, $prenom, $mdp, $login);
-            // TODO mettre les infos du dashboard de l'utilisateur
-            return new View("/views/dashboard");
-        // Si l'utilisateur existe déja, on affiche un message d'erreur
-        } else {
-            $view = new View("/views/..."); // TODO mettre la bonne view
-            $view->setVar('nom', $nom);
-            $view->setVar('prenom', $prenom);
-            $view->setVar('email', $email);
-            $view->setVar('mdp', $mdp);
-            $view->setVar('login', $login);
-            $view->setVar('displayInscription', true);
-            return  $view;
+        $view = null;
+        try {
+            // Si l'utilisateur n'existe pas, on le crée
+            if (!$this->userService->utilisateurExiste($pdo, $email, $mdp)) {
+                // TODO mettre les infos du dashboard de l'utilisateur
+                $view = new View("/views/dashboard");
+            // Si l'utilisateur existe déja, on affiche un message d'erreur
+            } else {
+                $view = new View("/views/index");
+                $view->setVar('nom', $nom);
+                $view->setVar('prenom', $prenom);
+                $view->setVar('email', $email);
+                $view->setVar('mdp', $mdp);
+                $view->setVar('login', $login);
+                $view->setVar('displayInscription', true);
+                $view->setVar('displayLoginError', true);
+            }
+        } catch (\PDOException $e) {
+            $view->setVar('error', "Il y a une erreure :" . $e->getMessage());
         }
+        return  $view;
     }
 
    public function connexion($pdo): View {
@@ -58,14 +65,17 @@ class UserController {
       $mdp =  htmlspecialchars(HttpHelper::getParam('mdp') ?: "");
       $login =  htmlspecialchars(HttpHelper::getParam('login') ?: "");
 
+      $view = null;
       try {
-          if ($this->userService->utilisateurExiste($pdo, $login, $mdp)) {
-              $_SESSION['connecte']= true ; 			// Stockage dans les variables de session que l'on est connecté (sera utilisé sur les autres pages)
-              $_SESSION['nomClient']= $ligne->nom ;   // Stockage dans les variables de session du nom du client
-              $_SESSION['prenomClient']= $ligne->prenom ;// Stockage dans les variables de session du prénom du client
-              return true;
+          if ($this->userService->utilisateurExiste($pdo, $mdp, $login)) {
+              // TODO mettre les infos du dashboard de l'utilisateur
+              $view = new View("/views/dashboard");
           } else {
-              return false;
+              $view = new View("/views/index");
+              $view->setVar('mdp', $mdp);
+              $view->setVar('login', $login);
+              $view->setVar('displayInscription', false);
+              $view->setVar('displayLoginError', true);
           }
       } catch (\PDOException $e ) {
           $view->setVar('error', "Il y a une erreure :" . $e->getMessage());
