@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Rubik:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-/* declaration des variables */
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"); /* declaration des variables */
 /* ne codez pas ici, c'est le fichier pour les variables, etc. */
 body {
   background-color: #F0F7F4;
@@ -53,14 +53,14 @@ header .mon-compte:hover {
 
 .text {
   height: 40px;
-  width: 250px;
+  width: 600px;
   border-radius: 30px;
   border-style: none;
 }
 
 .description {
-  height: 100px;
-  width: 300px;
+  height: 250px;
+  width: 1000px;
   border-radius: 30px;
   border-style: none;
 }
@@ -106,6 +106,8 @@ select {
   border-radius: 30px;
   border-style: none;
   background-color: #99E1D9;
+  display: flex;
+  justify-content: center;
 }
 .ajoutGrij:hover {
   background-color: #33aea0;
@@ -137,11 +139,92 @@ select {
   background-color: #33aea0;
 }
 
+.wrapper {
+  padding: 0 10vh;
+}
+
 .container {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center;
+}
+
+.NDD {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.Descr {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 10vh;
+}
+
+.proot {
+  display: flex;
+  flex-direction: row;
+}
+
+.format {
+  display: flex;
+  align-items: flex-end;
+  padding: 0 5vh;
+}
+
+/* Masquer le bouton de fichier par défaut */
+input[type=file] {
+  display: none;
+}
+
+/* Style personnalisé pour le faux bouton */
+.custom-file-input {
+  display: inline-block;
+  padding: 20px 45px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #363732;
+  background-color: #99E1D9;
+  border: 1px solid #99E1D9;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+/* Styler le label parent si nécessaire */
+.custom-file-input-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Styler le texte à côté du bouton si nécessaire */
+.custom-file-input-text {
+  display: inline-block;
+  margin-right: 10px; /* Ajuste la marge en fonction de tes besoins */
+}
+
+/* Styliser le bouton lorsqu'il est survolé */
+.custom-file-input:hover {
+  background-color: #99E1D9;
+  border-color: #99E1D9;
+}
+
+.butSpec {
+  display: flex;
+  align-items: flex-end;
+  padding: 0 5vh;
+}
+
+.babou {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 5vh;
+}
+
+.ret {
+  padding: 2vh;
 }
 
 /*# sourceMappingURL=createFestiplan.css.map */
