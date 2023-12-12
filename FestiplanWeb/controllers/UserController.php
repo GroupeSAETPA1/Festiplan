@@ -1,27 +1,65 @@
 <?php
-include ('../model/User.php');
-class UserController {
-    private $userModel;
-    private $pdo;
+namespace controllers;
 
-    public function __construct(User $userModel) {
-        $this->userModel = $userModel;
+use PDO;
+use services\UserService;
+use yasmf\HttpHelper;
+use yasmf\View;
+
+/**
+ * Controleur de la gestion utilisateur
+ */
+class UserController {
+    private UserService $userService;
+
+    public function __construct(UserService $userService) {
+        $this->userService = $userService;
     }
 
-    public function inscription($email, $nom, $prenom, $pwd, $login): bool {
-        if (!$this->userModel->utilisateurExiste($email, $pwd, $this->pdo)) {
-            return $this->userModel->createUser($email, $nom, $prenom, $pwd, $login, $this->pdo);
+    public function index($pdo): View {
+        $login =  htmlspecialchars(HttpHelper::getParam('identifiant') ?: "");
+        $mdp =  htmlspecialchars(HttpHelper::getParam('mdp') ?: "");
+        $view = new View("views/.."); // TODO mettre la bonne view
+        $view->setVar('mdp', $mdp);
+        $view->setVar('login', $login);
+        $view->setVar('displayInscription', false);
+        return $view;
+    }
+
+    public function inscription($pdo): View {
+
+        $nom =  htmlspecialchars(HttpHelper::getParam('nom') ?: "");
+        $prenom =  htmlspecialchars(HttpHelper::getParam('prenom') ?: "");
+        $email =  htmlspecialchars(HttpHelper::getParam('email') ?: "");
+        $mdp =  htmlspecialchars(HttpHelper::getParam('mdp') ?: "");
+        $login =  htmlspecialchars(HttpHelper::getParam('login') ?: "");
+
+        // Si l'utilisateur n'existe pas, on le crée
+        if (!$this->userService->utilisateurExiste($pdo, $email, $mdp)) {
+            $this->userService->createUser($pdo, $email, $nom, $prenom, $mdp, $login);
+            // TODO mettre les infos du dashboard de l'utilisateur
+            return new View("/views/dashboard");
+        // Si l'utilisateur existe déja, on affiche un message d'erreur
         } else {
-            echo "Il y a déja un utilisateur avec l'adresse mail " . $email
-                . ".\n Veuillez réessayer avec une autre adresse.";
-            return false;
+            $view = new View("/views/..."); // TODO mettre la bonne view
+            $view->setVar('nom', $nom);
+            $view->setVar('prenom', $prenom);
+            $view->setVar('email', $email);
+            $view->setVar('mdp', $mdp);
+            $view->setVar('login', $login);
+            $view->setVar('displayInscription', true);
+            return  $view;
         }
     }
 
-   public function connexion($login,$pwd):bool {
-      // connecte l'utilisateur
-      try{
-          if ($this->userModel->utilisateurExiste($login,$pwd, $this->pdo)) {
+   public function connexion($pdo): View {
+      // Connecte l'utilisateur
+
+      $mdp =  htmlspecialchars(HttpHelper::getParam('mdp') ?: "");
+      $login =  htmlspecialchars(HttpHelper::getParam('login') ?: "");
+
+      try {
+          if ($this->userService->utilisateurExiste($pdo, $login, $mdp)) {
               $_SESSION['connecte']= true ; 			// Stockage dans les variables de session que l'on est connecté (sera utilisé sur les autres pages)
               $_SESSION['nomClient']= $ligne->nom ;   // Stockage dans les variables de session du nom du client
               $_SESSION['prenomClient']= $ligne->prenom ;// Stockage dans les variables de session du prénom du client
@@ -29,14 +67,9 @@ class UserController {
           } else {
               return false;
           }
+      } catch (\PDOException $e ) {
+          $view->setVar('error', "Il y a une erreure :" . $e->getMessage());
       }
-      catch (Exception $e ) {
-          echo "<h1>Erreur de connexion à la base de données ! </h1>";
-          return false;
-      }
-   }
-
-   function SetPDO($User, $Mdp): pdo {
-       $this->pdo = createPdo($User,$Mdp);
+       return $view;
    }
 }
