@@ -7,7 +7,10 @@
     <title>Festiplan</title>
 
     <!-- Lien vers mon CSS -->
-    <link rel="stylesheet" href="../../static/style/css/createFestiplan.css">
+    <link rel="stylesheet" href="../../static/style/css/createFestiplan/createFestiplan.css">
+    <link rel="stylesheet" href="../../static/style/css/createFestiplan/button.css">
+    <link rel="stylesheet" href="../../static/style/css/createFestiplan/image.css">
+    <link rel="stylesheet" href="../../static/style/css/createFestiplan/input.css">
 
     <link rel="stylesheet" href="../../../framework/fontawesome-free-6.2.1-web/css/all.css">
 

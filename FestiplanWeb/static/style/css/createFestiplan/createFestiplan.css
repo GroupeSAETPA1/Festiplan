@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"); /* declaration des variables */
+/* ne codez pas ici, c'est le fichier pour les variables, etc. */
+body {
+  background-color: #F0F7F4;
+  color: #363732;
+  font-family: "Rubik", sans-serif;
+  margin: 0;
+}
+
+header {
+  background-color: #363732;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #F0F7F4;
+}
+header .logo {
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+}
+header .logo i {
+  color: #F7A072;
+  font-size: 2rem;
+  padding-right: 10%;
+}
+
+.wrapper {
+  padding: 0 10vh;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.NDD {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.Descr {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 10vh;
+}
+
+.proot {
+  display: flex;
+  flex-direction: row;
+}
+
+.babou {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 5vh;
+}
+
+/*# sourceMappingURL=createFestiplan.css.map */
