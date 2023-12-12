@@ -7,7 +7,7 @@
         <title>Festiplan</title>
 
         <!-- Lien vers mon CSS -->
-        <link rel="stylesheet" href="../../src/style/css/createFestiplan.css">
+        <link rel="stylesheet" href="../../static/style/css/createFestiplan.css">
 
         <link rel="stylesheet" href="../../framework/fontawesome-free-6.2.1-web/css/all.css">
 
@@ -35,7 +35,7 @@
 
 
             <!-- Premier paquet pour le premier cube d'information-->
-            <div>
+            <div class="proot">
                 <!-- Contient un premier bloc avec le nom, les dates de début et de fin -->
                 <div class="NDD">
                     <div>
