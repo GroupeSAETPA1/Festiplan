@@ -1,5 +1,5 @@
 <?php
-const PREFIX_TO_RELATIVE_PATH = "/all_users";
+const PREFIX_TO_RELATIVE_PATH = "/FestiplanWeb";
 require $_SERVER[ 'DOCUMENT_ROOT' ] . PREFIX_TO_RELATIVE_PATH . '/lib/vendor/autoload.php';
 
 use application\DefaultComponentFactory;
