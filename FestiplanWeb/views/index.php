@@ -6,8 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Festiplan - Page d'Acceuil</title>
-    <link rel="stylesheet" href="src/style/css/index/index.css">
-    <link rel="stylesheet" href="src/style/css/index/forms.css">
+    <link rel="stylesheet" href="../static/style/css/index/index.css">
+    <link rel="stylesheet" href="../static/style/css/index/forms.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet"
@@ -16,7 +16,7 @@
           crossorigin="anonymous"
           referrerpolicy="no-referrer" />
 
-    <link rel="icon" href="FestiplanWeb/static/assets/img/Favicon.png" /> <!--  A remplacer quand on aura la favicon  -->
+    <link rel="icon" href="../static/assets/img/Favicon.png" /> <!--  A remplacer quand on aura la favicon  -->
 
     <!-- Scripts -->
     <!-- jQuery -->
@@ -24,7 +24,7 @@
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
     <!-- JS -->
-    <script src="FestiplanWeb/static/scripts/index.js" type="module" defer></script>
+    <script src="../static/scripts/index.js" type="module" defer></script>
 </head>
 <body>
     <div class="app">
