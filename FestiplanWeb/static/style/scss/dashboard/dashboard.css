@@ -1,10 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Rubik:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-/* declaration des variables */
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"); /* declaration des variables */
 /* ne codez pas ici, c'est le fichier pour les variables, etc. */
 body {
   background-color: #F0F7F4;
   color: #363732;
   font-family: "Rubik", sans-serif;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
 }
 
 header {
@@ -24,6 +28,9 @@ header .logo i {
   font-size: 2rem;
   padding-right: 10%;
 }
+header .logo span {
+  color: #F0F7F4;
+}
 header .mon-compte div {
   background-color: #F7A072;
   color: #363732;
@@ -31,12 +38,20 @@ header .mon-compte div {
   margin: 1vh;
 }
 
+img {
+  border-radius: 10%;
+  max-width: 100%;
+}
+
+div {
+  border-radius: 2vh;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 10vh;
-  padding-right: 10vh;
+  padding: 0 15vh;
 }
 
 .container {
@@ -55,12 +70,22 @@ header .mon-compte div {
   margin: 0;
   padding: 1rem;
 }
-.entete-section div {
+.entete-section a div {
   background-color: #F7A072;
   padding: 1rem;
   margin: 1rem;
   display: flex;
   align-items: center;
+  justify-content: center;
+  font-size: 2.5vh;
+  color: #363732;
+}
+.entete-section a div i {
+  font-size: 3vh;
+  margin: 1vh;
+}
+.entete-section a div p {
+  margin: 0;
 }
 
 .container-card-festivals {
@@ -89,9 +114,6 @@ header .mon-compte div {
   margin: 3vh;
   font-size: 2vh;
 }
-.card-festival .haut-card img {
-  border-radius: 10%;
-}
 .card-festival .bas-card {
   display: flex;
   flex-direction: row;
@@ -103,6 +125,17 @@ header .mon-compte div {
   flex-direction: row;
 }
 
+.img-spectacle, .img-festival {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nom-spectacle, .nom-festival {
+  font-weight: bold;
+  font-size: 2.5vh;
+}
+
 .categories {
   display: flex;
   flex-direction: row;
@@ -110,14 +143,13 @@ header .mon-compte div {
   margin-top: 1vh;
 }
 .categories span {
-  width: fit-content;
+  max-width: fit-content;
   flex: 1 1 auto;
   text-align: center;
   background-color: grey;
   border-radius: 1vh;
   padding: 0.25vh 0.5vh;
-  margin-bottom: 0.25vh;
-  margin-right: 0.25vh;
+  margin: 0 0.25vh 0.25vh 0;
 }
 
 .group-boutons {
@@ -133,7 +165,7 @@ header .mon-compte div {
 .group-boutons div {
   border-radius: 1vh;
 }
-.group-boutons div :hover {
+.group-boutons div:hover {
   background-color: #cccccc;
 }
 .group-boutons div button {
@@ -146,20 +178,49 @@ header .mon-compte div {
   display: flex;
   flex-direction: row;
   margin: 1vh;
+  padding: 1vh;
   background-color: #F0F7F4;
-  padding: #F0F7F4;
   width: 100%;
+}
+.card-spectacles img {
+  margin: 1vh;
 }
 .card-spectacles .description-spectacle {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   width: inherit;
+  font-size: 120%;
+}
+.card-spectacles .description-spectacle p, .card-spectacles .description-spectacle div {
+  margin: 0 1vh;
+}
+.card-spectacles .description-spectacle .group-categories {
+  max-width: 40vh;
+}
+.card-spectacles .description-spectacle .duree {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .card-spectacles .description-spectacle .group-boutons {
   flex-direction: column;
   justify-content: center;
-  background-color: red;
+}
+
+@media screen and (max-width: 1200px) {
+  .label-duree {
+    display: none;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .img-spectacle, .img-festival {
+    display: none;
+  }
+  .wrapper {
+    padding: 0;
+  }
 }
 
 /*# sourceMappingURL=dashboard.css.map */

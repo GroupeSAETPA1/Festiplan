@@ -1,6 +1,4 @@
 <?php
-include('../backend/functions/connexion.php');
-include('../backend/functions/database.php');
 include('../backend/functions/function_dashboard.php');
 
 function afficher_festival(int $id_festival, string $nom_festival, string $date_debut, string $date_fin, string $lien_image, array $categories)
