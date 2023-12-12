@@ -1,14 +1,25 @@
 <?php
 
-include('database.php');
+namespace services;
 
-/**
- * @param int $id_gestionnaire_festival
- * @return array
- */
-function get_festivals(int $id_gestionnaire_festival): array
+use PDO;
+
+class DashboardService
 {
-    $reponse = array();
+    /**
+     * @var PDO La connexion à la base de données avec
+     * le droit de lecture sur les tables Festival et Spectacle
+     */
+    private PDO $pdoLectureFestivalSpectacle;
+
+    public function __construct(PDO $pdo)
+    {
+        $this->pdoLectureFestivalSpectacle = $pdo;
+    }
+
+    public function getFestivals(int $id_gestionnaire) : array
+    {
+        $reponse = array();
 
     //STUB
     $id_festival = 1;
@@ -28,11 +39,11 @@ function get_festivals(int $id_gestionnaire_festival): array
     );
 
     return $reponse;
-}
+    }
 
-function get_spectacles(int $id_gestionnaire_spectacle)
-{
-    $reponse = array();
+    public function getSpectacles(int $id_gestionnaire) : array
+    {
+            $reponse = array();
 
     //STUB
     $id_spectacle = 1;
@@ -50,4 +61,5 @@ function get_spectacles(int $id_gestionnaire_spectacle)
     );
 
     return $reponse;
+    }
 }

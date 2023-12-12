@@ -19,7 +19,9 @@
 
 namespace application;
 
+use controllers\DashboardController;
 use controllers\HomeController;
+use services\DashboardService;
 use services\UsersService;
 use yasmf\ComponentFactory;
 use yasmf\NoControllerAvailableForNameException;
@@ -31,6 +33,7 @@ use yasmf\NoServiceAvailableForNameException;
 class DefaultComponentFactory implements ComponentFactory
 {
     private ?UsersService $usersService = null;
+    private ?DashboardService $dashboardService = null;
 
     /**
      * @param string $controller_name the name of the controller to instanciate
@@ -40,6 +43,7 @@ class DefaultComponentFactory implements ComponentFactory
     public function buildControllerByName(string $controller_name): mixed {
         return match ($controller_name) {
             "Home" => $this->buildHomeController(),
+            "Dashboard" => $this->buildDashboardController(),
             default => throw new NoControllerAvailableForNameException($controller_name)
         };
     }
@@ -53,6 +57,7 @@ class DefaultComponentFactory implements ComponentFactory
     {
         return match($service_name) {
             "Users" => $this->buildUsersService(),
+            "Dashboard" => $this->buildDashboardService(),
             default => throw new NoServiceAvailableForNameException($service_name)
         };
     }
@@ -75,4 +80,20 @@ class DefaultComponentFactory implements ComponentFactory
     {
         return new HomeController($this->buildUsersService());
     }
+
+    private function buildDashboardService(): ?DashboardService
+    {
+        if ($this->dashboardService == null) {
+            $pdo = null; // TODO : récupérer le PDO
+            $this->dashboardService = new DashboardService($pdo);
+        }
+        return $this->dashboardService;
+    }
+
+    private function buildDashboardController(): DashboardController
+    {
+        return new DashboardController($this->buildDashboardService());
+    }
+
+
 }
