@@ -1,0 +1,28 @@
+@import '../main';
+
+.text{
+  height:40px;
+  width:600px;
+  border-radius: 30px;
+  border-style: none;
+}
+
+.description{
+  height:250px;
+  width:1000px;
+  border-radius: 30px;
+  border-style: none;
+}
+
+.format{
+  display: flex;
+  align-items: flex-end;
+  padding: 0 05vh;
+}
+
+select{
+  height:40px;
+  width:250px;
+  border-radius: 30px;
+  border-style: none;
+}

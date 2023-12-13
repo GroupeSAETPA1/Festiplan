@@ -7,22 +7,18 @@
   box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
   color: white;
 }
-
 .formulaire label {
   margin-bottom: 5px;
 }
-
 .formulaire input {
   font-size: 20px;
   padding: 10px;
   border: none;
   border-radius: 10px;
 }
-
 .formulaire input:hover {
   cursor: pointer;
 }
-
 .formulaire button {
   text-align: center;
   color: #F7A072;
@@ -31,16 +27,13 @@
   border: none;
   font-size: 20px;
 }
-
 .formulaire button:hover {
   cursor: pointer;
 }
-
 .formulaire .boutonConnexion {
   background: #99E1D9;
   color: #363732;
 }
-
 .formulaire form {
   display: flex;
   flex-direction: column;
@@ -73,34 +66,27 @@
   display: none;
   transform: translate(-500px, 0);
 }
-
 .creationCompte form {
   width: 500px;
 }
-
 .creationCompte .form-duo {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   column-gap: 50px;
 }
-
 .creationCompte button {
   padding: 10px;
   border: none;
   border-radius: 10px;
   font-size: 20px;
 }
-
 .creationCompte .boutonCreation {
   background: #99E1D9;
   color: #363732;
 }
-
 .creationCompte .retour {
   background: #F7A072;
   color: #363732;
 }
-
-
 
 /*# sourceMappingURL=forms.css.map */
