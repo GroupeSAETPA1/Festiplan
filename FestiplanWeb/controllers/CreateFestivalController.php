@@ -22,7 +22,7 @@ class CreateFestivalController {
     }
 
     public function index(PDO $pdo): View{
-        $view = new View("views/createFestival.php");
+        $view = new View("views/creation/createFestival");
         return $view;
     }
 
@@ -35,6 +35,8 @@ class CreateFestivalController {
                   && $this->dateOk(HttpHelper::getParam("ddd"), HttpHelper::getParam("ddf"));
         //$this->photo();
        // return $tousOk;
+       $view = new View("views/creation/createFestival");
+       return $view;
     }
 
     public function nomOk($aVerifier)
