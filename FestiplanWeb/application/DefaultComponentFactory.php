@@ -22,6 +22,7 @@ namespace application;
 use controllers\DashboardController;
 use controllers\HomeController;
 use controllers\UserController;
+use services\DashboardService;
 use services\UserService;
 use services\SessionService;
 use yasmf\ComponentFactory;
@@ -35,6 +36,7 @@ class DefaultComponentFactory implements ComponentFactory
 {
     private ?UserService $userService = null;
     private ?SessionService $sessionService = null;
+    private ?DashboardService $dashboardService = null;
 
     /**
      * @param string $controller_name the name of the controller to instanciate
@@ -44,6 +46,7 @@ class DefaultComponentFactory implements ComponentFactory
     public function buildControllerByName(string $controller_name): mixed {
         return match ($controller_name) {
             "Home" => $this->buildUserController(),
+            "Dashboard" => $this->buildDashboardController(),
             default => throw new NoControllerAvailableForNameException($controller_name)
         };
     }
@@ -58,6 +61,7 @@ class DefaultComponentFactory implements ComponentFactory
         return match($service_name) {
             "User" => $this->buildUserService(),
             "Session" => $this->buildSessionService(),
+            "Dashboard" => $this->buildDashboardService(),
             default => throw new NoServiceAvailableForNameException($service_name)
         };
     }
@@ -105,6 +109,5 @@ class DefaultComponentFactory implements ComponentFactory
     {
         return new DashboardController($this->buildDashboardService());
     }
-
 
 }

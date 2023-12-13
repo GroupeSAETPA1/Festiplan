@@ -23,8 +23,8 @@
     <!-- Scripts -->
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
-    <!-- Jquery -->
-    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- Jquery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- JS -->
     <script src="../static/scripts/index.js" type="module" defer></script>
 
@@ -119,6 +119,6 @@
 
     </div>
 </div>
-<?php include_once "/Festiplan/FestiplanWeb/static/components/footer.php" ?>
+<!--<?php include_once "/Festiplan/FestiplanWeb/static/components/footer.php" ?>-->
 </body>
 </html>

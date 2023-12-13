@@ -119,7 +119,7 @@ $id_gestionnaire_festival = 1;
 
     <body>
     <header>
-        <a href="index.php">
+        <a href="/Festiplan/FestiplanWeb">
             <div class="logo">
                 <i class="fa-solid fa-calendar-days"></i>
                 <span>Festiplan</span>
