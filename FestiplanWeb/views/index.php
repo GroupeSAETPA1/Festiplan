@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Festiplan - Page d'Acceuil</title>
-    <link rel="stylesheet" href="../static/style/css/index/index.css">
+    <link rel="stylesheet" href="Festiplan/FestiplanWeb/static/style/css/index/index.css">
     <link rel="stylesheet" href="../static/style/css/index/forms.css">
     <link rel="stylesheet" href="../static/style/css/svg.css">
     <link rel="stylesheet" href="../static/style/css/footer.css">
@@ -32,39 +32,44 @@
     <div class="app">
         <div class="partiePrincipale">
             <div class="formulaire creationCompte">
-                <form>
+                <form method="get" action="/Festiplan?controller=UserController&action=inscription">
                     <div class="form-duo">
                         <div class="colonneCreationCompte">
                             <label id="nom">
                                 Nom :
                             </label>
-                            <input type="text" id="nom" placeholder="Votre nom :" required>
+                            <input type="text" id="nom" placeholder="Votre nom :" value="<?php echo $nom ?>"
+                                   required>
                         </div>
                         <div class="colonneCreationCompte">
                             <label id="prenom">
                                 Prénom :
                             </label>
-                            <input type="text" id="prenom" placeholder="Votre prénom :" required>
+                            <input type="text" id="prenom" name="prenom" placeholder="Votre prénom :" value="<?php echo $prenom ?>"
+                                   required>
                         </div>
                     </div>
                     <div class="colonneCreationCompte">
                         <label id="mail">
                             Email :
                         </label>
-                        <input type="email" id="mail" placeholder="Votre email :" required>
+                        <input type="email" id="mail" name="email" placeholder="Votre email :" value="<?php echo $email ?>"
+                               required>
                     </div>
                     <div class="form-duo">
                         <div class="colonneCreationCompte">
                             <label id="identifiantCrea">
                                 Identifiant :
                             </label>
-                            <input type="text" id="identifiantCrea" placeholder="Votre identifiant :">
+                            <input type="text" id="identifiantCrea" name="login" placeholder="Votre identifiant :" value="<?php echo $login ?>"
+                                   required>
                         </div>
                         <div class="colonneCreationCompte">
                             <label id="mdpCrea">
                                 Mot de passe :
                             </label>
-                            <input type="text" id="mdpCrea" placeholder="Votre mot de passe :">
+                            <input type="password" id="mdpCrea" name="mdp" placeholder="Votre mot de passe :" value="<?php echo $mdp ?>"
+                                   required>
                         </div>
                     </div>
                     <div class="form-duo">
@@ -85,21 +90,28 @@
                 </p>
             </div>
             <div class="formulaire connexion">
-                <form>
+                <form method="get" action="/Festiplan/FestiplanWeb">
                     <div class="colonneCreationCompte">
                         <label id="identifiant">
                             Identifiant
                         </label>
-                        <input type="text" id="identifiant" placeholder="Entrez votre identifiant :" required>
+                        <input type="text" id="identifiant" name="login"
+                               placeholder="Entrez votre identifiant :"
+                               value="<?php echo $login ?>"
+                               required>
                     </div>
                     <div class="colonneCreationCompte">
                         <label id="mdp">
                             Mot de passe
                         </label>
-                        <input type="password" id="mdp" placeholder="Entrez votre mot de passe :" required> <!-- TODO mettre des longeur max d'id et de mdp -->
+                        <input type="password" id="mdp" name="mdp"
+                               placeholder="Entrez votre mot de passe :"
+                               value="<?php echo $mdp ?>"
+                               required>
                     </div>
                     <button class="creerCompte">Créer un compte <i class="fa-solid fa-arrow-right"></i></button>
                     <input type="submit" class="boutonConnexion" value="Me Connecter">
+                    <input hidden name="action" value="connexion">
                 </form>
             </div>
 

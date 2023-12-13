@@ -1,9 +1,9 @@
 <?php
 return [
-    'db_host' => 'all_users_db',
-    'db_port' => 3306,
-    'db_name' => 'all_users',
-    'db_user' => 'all_users',
-    'db_pass' => 'all_users',
+    'db_host' => 'localhost',
+    'db_port' => 0,
+    'db_name' => 'festiplan',
+    'db_user' => 'root',
+    'db_pass' => 'root',
     'db_charset' => 'utf8mb4'
 ];
