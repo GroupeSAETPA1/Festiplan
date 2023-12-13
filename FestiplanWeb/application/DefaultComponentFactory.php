@@ -43,7 +43,7 @@ class DefaultComponentFactory implements ComponentFactory
      */
     public function buildControllerByName(string $controller_name): mixed {
         return match ($controller_name) {
-            "User" => $this->buildUserController(),
+            "Home" => $this->buildUserController(),
             default => throw new NoControllerAvailableForNameException($controller_name)
         };
     }
@@ -87,7 +87,7 @@ class DefaultComponentFactory implements ComponentFactory
     /**
      * @return HomeController
      */
-    private function buildUserController(): HomeController
+    private function buildUserController(): UserController
     {
         return new UserController($this->buildUserService());
     }

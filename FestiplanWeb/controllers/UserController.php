@@ -21,6 +21,9 @@ class UserController {
         $mdp =  htmlspecialchars(HttpHelper::getParam('mdp') ?: "");
         $login =  htmlspecialchars(HttpHelper::getParam('identifiant') ?: "");
         $view = new View("views/index");
+        $view->setVar('nom', "");
+        $view->setVar('prenom', "");
+        $view->setVar('email', "");
         $view->setVar('mdp', $mdp);
         $view->setVar('login', $login);
         $view->setVar('displayInscription', false);
