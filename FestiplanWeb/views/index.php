@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/index/forms.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svg.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/footer.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/index/responsive.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet"
@@ -24,7 +25,7 @@
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
     <!-- Jquery CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
     <!-- JS -->
     <script src="../static/scripts/index.js" type="module" defer></script>
 
@@ -111,6 +112,7 @@
                            value="<?php echo $mdp ?>"
                            required>
                 </div>
+                <!-- TODO Faire un faux Bouton -->
                 <button class="creerCompte">Créer un compte <i class="fa-solid fa-arrow-right"></i></button>
                 <input type="submit" class="boutonConnexion" value="Me Connecter">
                 <input hidden name="action" value="connexion">
@@ -119,6 +121,16 @@
 
     </div>
 </div>
+
 <!--<?php include_once "/Festiplan/FestiplanWeb/static/components/footer.php" ?>-->
+<div class="footer">
+    <div class="spacer ratio wave-white-to-grey"></div>
+    <footer>
+        <div class="text-footer">
+            Copyrigths © 2023 - Festiplan - Tous droits réservés
+        </div>
+    </footer>
+</div>
+
 </body>
 </html>

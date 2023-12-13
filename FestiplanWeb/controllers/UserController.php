@@ -70,9 +70,9 @@ class UserController {
 
       $view = null;
       try {
+          $view = new View("/views/dashboard");
           if ($this->userService->utilisateurExiste($pdo, $mdp, $login)) {
               // TODO mettre les infos du dashboard de l'utilisateur
-              $view = new View("/views/dashboard");
           } else {
               $view = new View("/views/index");
               $view->setVar('mdp', $mdp);
