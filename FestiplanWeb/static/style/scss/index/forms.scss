@@ -41,8 +41,15 @@
   }
 }
 
-.creerCompte:hover {
-  text-decoration: underline $orange;
+#switchToSignup {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 20px;
+  color: $orange;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline $orange;
+  }
 }
 
 .colonneCreationCompte {

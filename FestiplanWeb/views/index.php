@@ -22,13 +22,11 @@
     <link rel="icon" href="../static/assets/img/Favicon.png" /> <!--  A remplacer quand on aura la favicon  -->
 
     <!-- Scripts -->
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
-    <!-- Jquery CDN -->
+    <!-- GSAP -->  <!-- Jquery -->
+    <script src="../../node_modules/gsap/dist/gsap.min.js"></script>
     <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
-    <!-- JS -->
-    <script src="../static/scripts/index.js" type="module" defer></script>
-
+    <!-- custom JS -->
+    <script src="../static/scripts/index.js" defer></script
 </head>
 <body>
 <div class="app">
@@ -73,64 +71,12 @@
                         <input type="password" id="mdpCrea" name="mdp" placeholder="Votre mot de passe :" value="<?php echo $mdp ?>"
                                required>
                     </div>
-                </div>
-                <div class="form-duo">
-                    <button class="retour">
-                        <i class="fa-solid fa-arrow-left"></i>
-                        Retour
-                    </button>
-                    <input type="submit" class="boutonCreation" value="Créer le compte">
-                    <input hidden name="action" value="inscription">
-                </div>
-            </form>
-        </div>
-        <div class="presentation">
-            <i class="fa-solid fa-calendar-days"></i>
-            <div class="titre">Festiplan</div>
-            <p><?php var_dump($_SESSION); ?>
-                Créer et gérer tous vos évenements,<br>
-                avec facilité et ergonomie.
-            </p>
-        </div>
-        <div class="formulaire connexion">
-            <form method="get" action="/Festiplan/FestiplanWeb">
-                <div class="colonneCreationCompte">
-                    <label for="identifiant" id="identifiant">
-                        Identifiant
-                    </label>
-                    <input type="text" id="identifiant" name="login"
-                           placeholder="Entrez votre identifiant :"
-                           value="<?php echo  $login ?>"
-                           required>
-                </div>
-                <div class="colonneCreationCompte">
-                    <label for="mdp" id="mdp">
-                        Mot de passe
-                    </label>
-                    <input type="password" id="mdp" name="mdp"
-                           placeholder="Entrez votre mot de passe :"
-                           value="<?php echo $mdp ?>"
-                           required>
-                </div>
-                <div <?php echo $displayLoginError == true ? "" : "hidden" ?> <!-- TODO faire un style d'erreur -->
-                    L'identifiant et/ou le mot de passe est invalide.
-                </div>
-                <!-- TODO Faire un faux Bouton -->
-                <button class="creerCompte">Créer un compte <i class="fa-solid fa-arrow-right"></i></button>
-                <input type="submit" class="boutonConnexion" value="Me Connecter">
-                <input hidden name="action" value="connexion">
-            </form>
-        </div>
-
-    </div>
-    <!--<?php include_once "/Festiplan/FestiplanWeb/static/components/footer.php" ?>-->
-    <div class="footer">
-        <div class="spacer ratio wave-white-to-grey"></div>
-        <footer>
-            <div class="text-footer">
-                Copyrigths © 2023 - Festiplan - Tous droits réservés
+                    <div id="switchToSignup" class="creerCompte">Créer un compte <i class="fa-solid fa-arrow-right"></i></div>
+                    <input type="submit" class="boutonConnexion" value="Me Connecter">
+                </form>
             </div>
-        </footer>
+            </div>
+        <?php include_once "../static/components/footer/footer-absolute.php" ?>
     </div>
 </body>
 </html>
