@@ -1,34 +1,5 @@
 <?php
 
-//STUB
-$nom_festival = 'De Scene Palais';
-$date_debut = '16/12/2023';
-$date_fin = '24/15/2023';
-$lien_image = '../static/assets/img/deScenePalais.jpg';
-$categorie = 'Musique';
-
-$festivals[] = array(
-    'id_festival' => 1,
-    'nom_festival' => $nom_festival,
-    'date_debut' => $date_debut,
-    'date_fin' => $date_fin,
-    'lien_image' => $lien_image,
-    'categorie' => $categorie
-);
-
-//STUB
-$id_spectacle = 1;
-$nom_spectacle = 'De Scene Palais';
-$duree = 120;
-
-$spectacles[] = array(
-    'id_spectacle' => $id_spectacle,
-    'nom_spectacle' => $nom_spectacle,
-    'lien_image' => $lien_image,
-    'categorie' => $categorie,
-    'duree' => $duree
-);
-
 /**
  * Affiche un festival
  * @param int $id_festival L'identifiant du festival
@@ -137,11 +108,11 @@ $id_gestionnaire_festival = 1;
         <meta name="viewport">
         <title>Festiplan - Dashboard</title>
 
-        <link rel="stylesheet" href="../static/style/css/dashboard.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/dashboard.css">
 
         <!-- Fontawesome -->
         <!-- TODO CDN -->
-        <link rel="stylesheet" href="../../framework/fontawesome-free-6.2.1-web/css/all.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/framework/fontawesome-free-6.2.1-web/css/all.css">
 
         <script src="../static/scripts/index.js" defer></script>
     </head>
@@ -181,9 +152,7 @@ $id_gestionnaire_festival = 1;
                 $date_debut = $festival['date_debut'];
                 $date_fin = $festival['date_fin'];
                 $lien_image = $festival['lien_image'];
-                $categorie = $festival['categorie'];
-                afficher_festival($id_festival, $nom_festival, $date_debut, $date_fin, $lien_image, $categorie);
-                afficher_festival($id_festival, $nom_festival, $date_debut, $date_fin, $lien_image, $categorie);
+                $categorie = 'Musique';
                 afficher_festival($id_festival, $nom_festival, $date_debut, $date_fin, $lien_image, $categorie);
             }
             ?>
@@ -207,7 +176,7 @@ $id_gestionnaire_festival = 1;
                 $id_spectacle = $spectacle['id_spectacle'];
                 $nom_spectacle = $spectacle['nom_spectacle'];
                 $lien_image = $spectacle['lien_image'];
-                $categorie = $spectacle['categorie'];
+                $categorie = 'Musique';
                 $duree = $spectacle['duree'];
                 afficher_spectacle($id_spectacle, $nom_spectacle, $lien_image, $categorie, $duree);
                 afficher_spectacle($id_spectacle, $nom_spectacle, $lien_image, $categorie, $duree);
