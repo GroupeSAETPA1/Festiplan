@@ -1,6 +1,6 @@
 @import '../main';
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
   .partiePrincipale {
     flex-direction: column;
   }
@@ -24,6 +24,7 @@
     position: fixed;
     bottom: 0;
     width: 100%;
+
   }
   .partiePrincipale {
     padding: 25px;

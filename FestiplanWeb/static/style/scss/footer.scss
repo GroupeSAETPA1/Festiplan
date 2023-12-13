@@ -4,7 +4,10 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 9vh;
+  background: $dark-grey;
 }
+
 
 .text-footer {
     color: $white;
@@ -17,5 +20,5 @@ footer {
 .footer {
   position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 100% ;
 }

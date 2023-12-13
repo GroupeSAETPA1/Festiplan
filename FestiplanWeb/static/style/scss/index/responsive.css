@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"); /* declaration des variables */
 /* ne codez pas ici, c'est le fichier pour les variables, etc. */
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
   .partiePrincipale {
     flex-direction: column;
   }
