@@ -11,8 +11,8 @@
   overflow-x: hidden;
 }
 
-.ratio-100 {
-  aspect-ratio: 960/100;
+.ratio {
+  aspect-ratio: 1920/200;
 }
 
 .wave-white-to-grey {
@@ -36,9 +36,8 @@ footer {
 }
 
 .footer {
-  position: fixed;
-  bottom: 0;
   width: 100%;
+  position: relative;
 }
 
 

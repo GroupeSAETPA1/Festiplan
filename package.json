@@ -20,6 +20,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "gsap": "^3.12.3",
     "jquery": "^3.7.1",
+    "jsdom": "^23.0.1",
     "sass": "^1.69.5"
   }
 }
