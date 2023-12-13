@@ -26,7 +26,7 @@
     <!-- Jquery -->
     <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
     <!-- JS -->
-    <script src="../static/scripts/index.js" type="module" defer></script>
+    <script src="../static/scripts/index.js"></script>
 
 </head>
 <body>
@@ -104,7 +104,7 @@
                 </form>
             </div>
             </div>
-        <?php include_once "../static/components/footer.php" ?>
+        <?php include_once "../static/components/footer/footer.php" ?>
     </div>
 </body>
 </html>

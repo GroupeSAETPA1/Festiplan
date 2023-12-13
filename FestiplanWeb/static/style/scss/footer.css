@@ -36,9 +36,12 @@ footer {
 }
 
 .footer {
+  width: 100%;
+}
+
+.absolute {
   position: absolute;
   bottom: 0;
-  width: 100%;
 }
 
 /*# sourceMappingURL=footer.css.map */
