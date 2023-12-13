@@ -36,7 +36,7 @@
 
             <div class="proot">
                 <div>
-                    <h3>Spectacle :</h3>
+                    <h3><i class="fa-solid fa-circle-exclamation"></i>Spectacle :</h3>
                     <select>
                         <option value=" "></option>
                         <option value="descriauds">Descriaud's pectacle</option>
@@ -49,7 +49,7 @@
 
             <div class="proot">
                 <div>
-                    <h3>Scène :</h3>
+                    <h3><i class="fa-solid fa-circle-exclamation"></i>Scène :</h3>
                     <select>
                         <option value=" "></option>
                         <option value="concert">concert</option>

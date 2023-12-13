@@ -34,7 +34,7 @@
             <div class="container">
                 <div class="proot">
                     <div>
-                        <h3> Organisateur : </h3>
+                        <h3> <i class="fa-solid fa-circle-exclamation"></i>Organisateur : </h3>
                         <input class="text" type="text " id="rechercheOrga" name="rechercheOrga"
                                placeholder="Entrez le nom d'un organisateur"/>
                     </div>
@@ -47,7 +47,7 @@
                 </div>
 
                 <div>
-                    <h3>Responsable :</h3>
+                    <h3> <i class="fa-solid fa-circle-exclamation"></i>Responsable :</h3>
                     <input class="text" type="text " id="rechercheRespon" name="rechercheRespon"
                            placeholder="Entrez le nom du Responsable"/>
                 </div>

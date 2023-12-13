@@ -40,15 +40,18 @@
                     <!-- Contient un premier bloc avec le nom, les dates de début et de fin -->
                     <div class="NDD">
                         <div>
-                            <h3>Nom :</h3>
+
+                            <h3><i class="fa-solid fa-circle-exclamation"></i>Nom :</h3>
                             <input class="text" type="text" name="nom" placeholder="Tapez le nom de votre festival"/>
                         </div>
                         <div>
-                            <h3>Date de début :</h3>
+
+                            <h3><i class="fa-solid fa-circle-exclamation"></i>Date de début :</h3>
                             <input class="text" type="date" name="ddd"/>
                         </div>
                         <div>
-                            <h3>Date de fin :</h3>
+
+                            <h3><i class="fa-solid fa-circle-exclamation"></i>Date de fin :</h3>
                             <input class="text" type="date" name="ddf"/>
                         </div>
                     </div>
@@ -56,7 +59,8 @@
                     <div class="Descr">
                         <!-- Contient un second bloc avec la description et qui se situe au cote a cote avec le premier bloc -->
                         <div>
-                            <h3>Description :</h3>
+
+                            <h3><i class="fa-solid fa-circle-exclamation"></i>Description :</h3>
                             <input class="description" type="text" name="description"/>
                         </div>
                     </div>
@@ -78,7 +82,7 @@
 
 
                 <div>
-                    <h3>Catégorie :</h3>
+                    <h3> <i class="fa-solid fa-circle-exclamation"></i>Catégorie :</h3>
                     <select>
                         <option value=" "></option>
                         <option value="concert">concert</option>
@@ -93,7 +97,7 @@
 
         <div class="babou">
             <div class="butSpec">
-                <button class="annul">Annuler</button>
+                <button class="annul">Annuler vos choix </button>
             </div>
             <div class="butSpec">
                 <a href="createFestival2.php"><button class="valid">Page Suivante</button></a>
