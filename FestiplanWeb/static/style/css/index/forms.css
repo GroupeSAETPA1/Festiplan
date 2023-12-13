@@ -38,6 +38,7 @@
 
 .formulaire .boutonConnexion {
   background: #99E1D9;
+  color: #363732;
 }
 
 .formulaire form {
@@ -59,6 +60,12 @@
   width: 400px;
 }
 
+.creationCompte {
+  opacity: 0;
+  display: none;
+  transform: translate(-500px, 0);
+}
+
 .creationCompte form {
   width: 500px;
 }
@@ -78,12 +85,12 @@
 
 .creationCompte .boutonCreation {
   background: #99E1D9;
-  color: black;
+  color: #363732;
 }
 
 .creationCompte .retour {
   background: #F7A072;
-  color: black;
+  color: #363732;
 }
 
 

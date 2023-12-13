@@ -8,15 +8,18 @@
 }
 
 body {
-  background: white;
+  background: $white;
   color: $dark-grey;
   font-size: 20px;
+  overflow: hidden;
 }
 
 .app {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 70vh;
+  width: 100%;
+  overflow: hidden;
 }
 
 .partiePrincipale {
@@ -49,7 +52,7 @@ body {
 
 footer {
   flex: none;
-  min-height: 20vh;
+  min-height: 9vh;
   background: $dark-grey;
 }
 
