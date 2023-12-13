@@ -59,4 +59,15 @@ header .logo i {
   margin-top: 5vh;
 }
 
+hr {
+  overflow: visible;
+  text-align: center;
+  border: none;
+  height: 0.2vh;
+  background-color: #363732;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  width: 100vh;
+}
+
 /*# sourceMappingURL=createFestiplan.css.map */
