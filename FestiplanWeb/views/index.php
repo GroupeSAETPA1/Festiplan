@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream:FestiplanWeb/views/index.php
 <!doctype html>
 <html lang="fr">
 <head>
@@ -10,14 +11,14 @@
     <link rel="stylesheet" href="../static/style/css/index/forms.css">
     <link rel="stylesheet" href="../static/style/css/svg.css">
     <link rel="stylesheet" href="../static/style/css/footer.css">
+=======
+<?php
+const PREFIX_TO_RELATIVE_PATH = "/Festiplan/FestiplanWeb";
+>>>>>>> Stashed changes:index.php
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-          crossorigin="anonymous"
-          referrerpolicy="no-referrer" />
+require $_SERVER[ 'DOCUMENT_ROOT' ] . PREFIX_TO_RELATIVE_PATH . '/lib/vendor/autoload.php';
 
+<<<<<<< Updated upstream:FestiplanWeb/views/index.php
     <link rel="icon" href="../static/assets/img/Favicon.png" /> <!--  A remplacer quand on aura la favicon  -->
 
     <!-- Scripts -->
@@ -120,3 +121,22 @@
     <?php include_once "../static/components/footer.php" ?>
 </body>
 </html>
+=======
+use FestiplanWeb\application\DefaultComponentFactory;
+use FestiplanWeb\yasmf\DataSource;
+use FestiplanWeb\yasmf\Router;
+
+$dbConfig = require 'dbconfig.php';
+
+$data_source = new DataSource(
+    $dbConfig['db_host'],
+    $dbConfig['db_port'],
+    $dbConfig['db_name'],
+    $dbConfig['db_user'],
+    $dbConfig['db_pass'],
+    $dbConfig['db_charset']
+);
+
+$router = new Router(new DefaultComponentFactory()) ;
+$router->route(PREFIX_TO_RELATIVE_PATH,$data_source);
+>>>>>>> Stashed changes:index.php
