@@ -1,6 +1,11 @@
 <?php
-include ('../database.php');
-class User {
+
+namespace services;
+
+use Exception;
+use PDOException;
+
+class UserService {
 
     public function __construct() {
     }
