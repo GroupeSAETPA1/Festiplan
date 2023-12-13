@@ -87,7 +87,7 @@
         <div class="presentation">
             <i class="fa-solid fa-calendar-days"></i>
             <div class="titre">Festiplan</div>
-            <p>
+            <p><?php var_dump($_SESSION); ?>
                 Créer et gérer tous vos évenements,<br>
                 avec facilité et ergonomie.
             </p>
@@ -100,7 +100,7 @@
                     </label>
                     <input type="text" id="identifiant" name="login"
                            placeholder="Entrez votre identifiant :"
-                           value="<?php echo $login ?>"
+                           value="<?php echo  $login ?>"
                            required>
                 </div>
                 <div class="colonneCreationCompte">
@@ -112,6 +112,9 @@
                            value="<?php echo $mdp ?>"
                            required>
                 </div>
+                <div <?php echo $displayLoginError == true ? "" : "hidden" ?> <!-- TODO faire un style d'erreur -->
+                    L'identifiant et/ou le mot de passe est invalide.
+                </div>
                 <!-- TODO Faire un faux Bouton -->
                 <button class="creerCompte">Créer un compte <i class="fa-solid fa-arrow-right"></i></button>
                 <input type="submit" class="boutonConnexion" value="Me Connecter">
@@ -120,17 +123,14 @@
         </div>
 
     </div>
-</div>
-
-<!--<?php include_once "/Festiplan/FestiplanWeb/static/components/footer.php" ?>-->
-<div class="footer">
-    <div class="spacer ratio wave-white-to-grey"></div>
-    <footer>
-        <div class="text-footer">
-            Copyrigths © 2023 - Festiplan - Tous droits réservés
-        </div>
-    </footer>
-</div>
-
+    <!--<?php include_once "/Festiplan/FestiplanWeb/static/components/footer.php" ?>-->
+    <div class="footer">
+        <div class="spacer ratio wave-white-to-grey"></div>
+        <footer>
+            <div class="text-footer">
+                Copyrigths © 2023 - Festiplan - Tous droits réservés
+            </div>
+        </footer>
+    </div>
 </body>
 </html>

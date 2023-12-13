@@ -3,7 +3,6 @@ namespace controllers;
 
 use PDO;
 use services\UserService;
-use services\SessionService;
 use yasmf\HttpHelper;
 use yasmf\View;
 
@@ -18,6 +17,8 @@ class UserController {
     }
 
     public function index($pdo): View {
+        $this->userService->deconnexion();
+
         $mdp =  htmlspecialchars(HttpHelper::getParam('mdp') ?: "");
         $login =  htmlspecialchars(HttpHelper::getParam('identifiant') ?: "");
         $view = new View("views/index");
@@ -31,6 +32,11 @@ class UserController {
         return $view;
     }
 
+    /**
+     * Inscrit un utilisateur dans la base de données
+     * @param $pdo pdo le pdo de l'application
+     * @return View la vue du dashboard si on a réussi a créer le compte, sinon la vue index
+     */
     public function inscription($pdo): View {
 
         $nom =  htmlspecialchars(HttpHelper::getParam('nom') ?: "");
@@ -62,6 +68,11 @@ class UserController {
         return  $view;
     }
 
+    /**
+     * Tente de connecter l'utilisateur pour le renvoyer sur le dashboard de l'application
+     * @param $pdo pdo le pdo de l'application
+     * @return View la vue dashboard si on arrive a se connecter, la vue index avec une erreure sinon
+     */
    public function connexion($pdo): View {
       // Connecte l'utilisateur
 
@@ -70,19 +81,25 @@ class UserController {
 
       $view = null;
       try {
-          $view = new View("/views/dashboard");
-          if ($this->userService->utilisateurExiste($pdo, $mdp, $login)) {
-              // TODO mettre les infos du dashboard de l'utilisateur
+          $view = new View("/views/index");
+          if ($login != "" || $mdp != "") {
+              if ($this->userService->utilisateurExiste($pdo, $mdp, $login)) {
+                  $view = new View("/views/dashboard");
+                  $this->userService->connexion($pdo, $mdp, $login);
+                  $displayLoginError = false;
+              } else {
+                  $displayLoginError = true;
+              }
           } else {
-              $view = new View("/views/index");
-              $view->setVar('mdp', $mdp);
-              $view->setVar('login', $login);
-              $view->setVar('displayInscription', false);
-              $view->setVar('displayLoginError', true);
+              $displayLoginError = true;
           }
       } catch (\PDOException $e ) {
+          $displayLoginError = true;
           $view->setVar('error', "Il y a une erreure :" . $e->getMessage());
       }
+       $view->setVar('displayLoginError', $displayLoginError);
+       $view->setVar('mdp', $mdp);
+       $view->setVar('login', $login);
        return $view;
    }
 }
