@@ -34,7 +34,7 @@
         <div class="wrapper">
             <div class="container">
 
-        <form method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data" >
             <!-- Premier paquet pour le premier cube d'information-->
             <div class="proot">
                 <!-- Contient un premier bloc avec le nom, les dates de début et de fin -->
@@ -104,6 +104,7 @@
         </div>
         <input hidden name="action" value="validerCreationFestival">
         <input hidden name="controller" value="CreateFestival">
+        <input type="submit">
     </form>
         <footer>
             <!-- Attendre que Quentin l'ai fait -->
@@ -121,5 +122,3 @@
         <?php
          //include "../../static/components/footer.php"
         ?>
-    </body>
-</html>

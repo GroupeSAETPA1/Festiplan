@@ -26,12 +26,14 @@ class CreateFestivalController {
         return $view;
     }
 
-    public function tousChampsOK()
+    public function validerCreationFestival()
     {
+        var_dump($_FILES);
+        var_dump($_POST);
         $tousOk = $this->nomOk(HttpHelper::getParam("nom"))
                   && $this->descriptionOk(HttpHelper::getParam("description"))
                   && $this->dateOk(HttpHelper::getParam("ddd"), HttpHelper::getParam("ddf"));
-        $this->photo();
+        //$this->photo();
        // return $tousOk;
     }
 
