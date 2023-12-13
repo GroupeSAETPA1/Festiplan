@@ -47,7 +47,15 @@
   row-gap: 20px;
 }
 
-.creerCompte:hover {
+#switchToSignup {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 20px;
+  color: #F7A072;
+}
+
+#switchToSignup:hover {
+  cursor: pointer;
   text-decoration: underline #F7A072;
 }
 

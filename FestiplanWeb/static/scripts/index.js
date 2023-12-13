@@ -1,4 +1,5 @@
-$('.creerCompte').click(function() {
+$('#switchToSignup').click(function() {
+    console.log("click")
     const TL = gsap.timeline({paused: false});
 
     // animation : la presentation se décale vers la gauche

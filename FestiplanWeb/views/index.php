@@ -21,13 +21,11 @@
     <link rel="icon" href="../static/assets/img/Favicon.png" /> <!--  A remplacer quand on aura la favicon  -->
 
     <!-- Scripts -->
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
-    <!-- Jquery -->
+    <!-- GSAP -->  <!-- Jquery -->
+    <script src="../../node_modules/gsap/dist/gsap.min.js"></script>
     <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
-    <!-- JS -->
-    <script src="../static/scripts/index.js"></script>
-
+    <!-- custom JS -->
+    <script src="../static/scripts/index.js" defer></script
 </head>
 <body>
     <div class="app">
@@ -99,12 +97,12 @@
                         </label>
                         <input type="password" id="mdp" placeholder="Entrez votre mot de passe :" required> <!-- TODO mettre des longeur max d'id et de mdp -->
                     </div>
-                    <button class="creerCompte">Créer un compte <i class="fa-solid fa-arrow-right"></i></button>
+                    <div id="switchToSignup" class="creerCompte">Créer un compte <i class="fa-solid fa-arrow-right"></i></div>
                     <input type="submit" class="boutonConnexion" value="Me Connecter">
                 </form>
             </div>
             </div>
-        <?php include_once "../static/components/footer/footer.php" ?>
+        <?php include_once "../static/components/footer/footer-absolute.php" ?>
     </div>
 </body>
 </html>
