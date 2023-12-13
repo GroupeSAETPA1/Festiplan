@@ -8,15 +8,18 @@
 }
 
 body {
-  background: white;
+  background: $white;
   color: $dark-grey;
   font-size: 20px;
+  overflow: hidden;
 }
 
 .app {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 70vh;
+  width: 100%;
+  overflow: hidden;
 }
 
 .partiePrincipale {
@@ -40,6 +43,7 @@ body {
   .titre {
     font-size: 75px;
     font-weight: 400;
+    padding: 20px 0 20px 0;
   }
   p {
     font-size: 3vh;
@@ -47,9 +51,4 @@ body {
   }
 }
 
-footer {
-  flex: none;
-  min-height: 20vh;
-  background: $dark-grey;
-}
 

@@ -1,46 +1,3 @@
-@import 'main';
-
-body {
-  background-color: $white;
-  color: $dark-grey;
-  font-family: $font-family;
-  margin: 0;
-}
-
-header {
-  background-color: $dark-grey;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: $white;
-
-  .logo {
-    margin: 1rem;
-    display: flex;
-    align-items: center;
-
-    i {
-      color: $orange;
-      font-size: 2rem;
-      padding-right: 10%;
-    }
-  }
-
-  .mon-compte{
-    line-height: 2.5;
-    padding: 0 20px;
-    font-size: 1rem;
-    text-align: center;
-    border-radius: 30px;
-    border-style: none;
-    background-color: #F7A072;
-
-    &:hover {
-      background-color: darken(#F7A072,30);
-    }
-  }
-}
-
 .retour{
   line-height: 2;
   padding: 0 20px;
@@ -54,28 +11,6 @@ header {
     background-color: darken(#F7A072,30);
   }
 }
-
-.text{
-  height:40px;
-  width:250px;
-  border-radius: 30px;
-  border-style: none;
-}
-
-.description{
-  height:100px;
-  width:300px;
-  border-radius: 30px;
-  border-style: none;
-}
-
-select{
-  height:40px;
-  width:250px;
-  border-radius: 30px;
-  border-style: none;
-}
-
 .ajoutS{
   line-height: 2.5;
   padding: 0 20px;
@@ -89,6 +24,7 @@ select{
     background-color: darken(#99E1D9,30);
   }
 }
+
 .supp{
   line-height: 2.5;
   padding: 0 20px;
@@ -111,6 +47,8 @@ select{
   border-radius: 30px;
   border-style: none;
   background-color: #99E1D9;
+  display: flex;
+  justify-content: center;
 
   &:hover {
     background-color: darken(#99E1D9, 30);
@@ -145,27 +83,26 @@ select{
   }
 }
 
-.container{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+.mon-compte{
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #F7A072;
 
+  &:hover {
+    background-color: darken(#F7A072,30);
+  }
 }
 
-.NDD{
+.butSpec {
   display: flex;
-  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 0 05vh;
 }
 
-.Descr{
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row;
-}
-
-.proot{
-  display: flex;
-  justify-content: space-around ;
-  flex-direction: row;
+.ret {
+  padding: 2vh;
 }

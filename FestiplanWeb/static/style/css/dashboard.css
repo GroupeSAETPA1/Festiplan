@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Rubik:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-/* declaration des variables */
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"); /* declaration des variables */
 /* ne codez pas ici, c'est le fichier pour les variables, etc. */
 body {
   background-color: #F0F7F4;
@@ -19,19 +18,23 @@ header {
   justify-content: space-between;
   color: #F0F7F4;
 }
+
 header .logo {
   margin: 1rem;
   display: flex;
   align-items: center;
 }
+
 header .logo i {
   color: #F7A072;
   font-size: 2rem;
   padding-right: 10%;
 }
+
 header .logo span {
   color: #F0F7F4;
 }
+
 header .mon-compte div {
   background-color: #F7A072;
   color: #363732;
@@ -71,6 +74,7 @@ div {
   margin: 0;
   padding: 1rem;
 }
+
 .entete-section a div {
   background-color: #F7A072;
   padding: 1rem;
@@ -81,10 +85,12 @@ div {
   font-size: 2.5vh;
   color: #363732;
 }
+
 .entete-section a div i {
   font-size: 3vh;
   margin: 1vh;
 }
+
 .entete-section a div p {
   margin: 0;
 }
@@ -106,15 +112,18 @@ div {
   padding: 2vh;
   margin: 2vh;
 }
+
 .card-festival .haut-card {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
 }
+
 .card-festival .haut-card .description-festival {
   margin: 3vh;
   font-size: 2vh;
 }
+
 .card-festival .bas-card {
   display: flex;
   flex-direction: row;
@@ -122,6 +131,7 @@ div {
   align-items: flex-end;
   margin: 1vh;
 }
+
 .card-festival .bas-card .group-boutons {
   flex-direction: row;
 }
@@ -143,6 +153,7 @@ div {
   flex-wrap: wrap;
   margin-top: 1vh;
 }
+
 .categories span {
   max-width: fit-content;
   flex: 1 1 auto;
@@ -156,19 +167,24 @@ div {
 .group-boutons {
   display: flex;
 }
+
 .group-boutons i {
   font-size: 4vh;
   margin: 1vh;
 }
+
 .group-boutons .fa-trash-can {
   color: red;
 }
+
 .group-boutons div {
   border-radius: 1vh;
 }
+
 .group-boutons div:hover {
   background-color: #cccccc;
 }
+
 .group-boutons div button {
   background-color: transparent;
   border: 1px solid transparent;
@@ -183,9 +199,11 @@ div {
   background-color: #F0F7F4;
   width: 100%;
 }
+
 .card-spectacles img {
   margin: 1vh;
 }
+
 .card-spectacles .description-spectacle {
   display: flex;
   flex-direction: row;
@@ -194,17 +212,21 @@ div {
   width: inherit;
   font-size: 120%;
 }
+
 .card-spectacles .description-spectacle p, .card-spectacles .description-spectacle div {
   margin: 0 1vh;
 }
+
 .card-spectacles .description-spectacle .group-categories {
   max-width: 40vh;
 }
+
 .card-spectacles .description-spectacle .duree {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
 .card-spectacles .description-spectacle .group-boutons {
   flex-direction: column;
   justify-content: center;
@@ -223,5 +245,6 @@ div {
     padding: 0;
   }
 }
+
 
 /*# sourceMappingURL=dashboard.css.map */
