@@ -8,15 +8,18 @@
 }
 
 body {
-  background: white;
+  background: #F0F7F4;
   color: #363732;
   font-size: 20px;
+  overflow: hidden;
 }
 
 .app {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 70vh;
+  width: 100%;
+  overflow: hidden;
 }
 
 .partiePrincipale {
@@ -32,17 +35,14 @@ body {
   margin: 0;
   line-height: 1;
 }
-
 .presentation i {
   color: #F7A072;
   font-size: 15vh;
 }
-
 .presentation .titre {
   font-size: 75px;
   font-weight: 400;
 }
-
 .presentation p {
   font-size: 3vh;
   font-weight: 300;
@@ -50,10 +50,8 @@ body {
 
 footer {
   flex: none;
-  min-height: 20vh;
+  min-height: 9vh;
   background: #363732;
 }
-
-
 
 /*# sourceMappingURL=index.css.map */

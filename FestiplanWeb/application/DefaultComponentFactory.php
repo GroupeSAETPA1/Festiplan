@@ -19,6 +19,7 @@
 
 namespace application;
 
+use controllers\DashboardController;
 use controllers\HomeController;
 use controllers\UserController;
 use services\UserService;
@@ -90,4 +91,20 @@ class DefaultComponentFactory implements ComponentFactory
     {
         return new UserController($this->buildUserService());
     }
+
+    private function buildDashboardService(): ?DashboardService
+    {
+        if ($this->dashboardService == null) {
+            $pdo = null; // TODO : récupérer le PDO
+            $this->dashboardService = new DashboardService($pdo);
+        }
+        return $this->dashboardService;
+    }
+
+    private function buildDashboardController(): DashboardController
+    {
+        return new DashboardController($this->buildDashboardService());
+    }
+
+
 }

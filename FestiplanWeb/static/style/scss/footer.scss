@@ -1,0 +1,15 @@
+@import "main";
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-footer {
+    color: $white;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+}
