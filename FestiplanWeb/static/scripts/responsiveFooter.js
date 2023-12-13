@@ -2,12 +2,18 @@ function changeFooterPosition() {
     const FOOTER = $(".footer"),
         BODY = $("body");
 
-    if (window.innerHeight > BODY.getBoundingClientRect().height) {
-        FOOTER.style.position = "absolute";
-        FOOTER.style.bottom = 0;
+    if (window.innerHeight > BODY[0].getBoundingClientRect().height) {
+        console.log("absolute");
+        FOOTER.css({
+            "position": "absolute",
+            "bottom": 0
+        });
     } else {
-        FOOTER.style.position = "";
-        FOOTER.style.bottom = "";
+        console.log("normal")
+        FOOTER.css({
+            "position": "",
+            "bottom": ""
+        });
     }
 }
 
