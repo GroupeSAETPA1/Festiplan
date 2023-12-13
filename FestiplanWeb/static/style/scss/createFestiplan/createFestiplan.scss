@@ -1,0 +1,79 @@
+@import '../main';
+
+body {
+  background-color: $white;
+  color: $dark-grey;
+  font-family: $font-family;
+  margin: 0;
+}
+
+header {
+  background-color: $dark-grey;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: $white;
+
+  .logo {
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+
+    i {
+      color: $orange;
+      font-size: 2rem;
+      padding-right: 10%;
+    }
+  }
+}
+
+.wrapper {
+  padding: 0 10vh;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.NDD{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.Descr{
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 10vh;
+}
+
+.proot{
+  display: flex;
+  flex-direction: row;
+}
+
+.babou{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 5vh;
+}
+
+hr {
+  overflow: visible;
+  text-align: center;
+  border: none;
+  height: 0.2vh;
+  background-color: $dark-grey;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  width: 100vh;
+}
+
+
+
+
+
+

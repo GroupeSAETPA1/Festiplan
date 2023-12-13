@@ -1,0 +1,108 @@
+.retour{
+  line-height: 2;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #F7A072;
+
+  &:hover {
+    background-color: darken(#F7A072,30);
+  }
+}
+.ajoutS{
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #99E1D9;
+
+  &:hover {
+    background-color: darken(#99E1D9,30);
+  }
+}
+
+.supp{
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #F7A072;
+
+  &:hover {
+    background-color: darken(#F7A072,30);
+  }
+}
+
+.ajoutGrij {
+  line-height: 2.5;
+  padding: 0 500px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #99E1D9;
+  display: flex;
+  justify-content: center;
+
+  &:hover {
+    background-color: darken(#99E1D9, 30);
+  }
+}
+
+.annul{
+  line-height: 2.5;
+  padding: 0 150px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #F7A072;
+
+  &:hover {
+    background-color: darken(#F7A072,30);
+  }
+}
+
+.valid{
+  line-height: 2.5;
+  padding: 0 150px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #99E1D9;
+
+  &:hover {
+    background-color: darken(#99E1D9,30);
+  }
+}
+
+.mon-compte{
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #F7A072;
+
+  &:hover {
+    background-color: darken(#F7A072,30);
+  }
+}
+
+.butSpec {
+  display: flex;
+  align-items: flex-end;
+  padding: 0 05vh;
+}
+
+.ret {
+  padding: 2vh;
+}

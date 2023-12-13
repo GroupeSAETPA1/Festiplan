@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../static/style/css/index/forms.css">
     <link rel="stylesheet" href="../static/style/css/svg.css">
     <link rel="stylesheet" href="../static/style/css/footer.css">
+    <link rel="stylesheet" href="../static/style/css/index/responsive.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet"

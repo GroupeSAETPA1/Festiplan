@@ -1,0 +1,45 @@
+@import '../main';
+
+@media screen and (max-width: 1000px) {
+  .partiePrincipale {
+    flex-direction: column;
+  }
+  .app {
+    overflow: auto;
+    height: 100vh;
+  }
+  .presentation {
+    text-align: center;
+    i {
+    font-size: 10vh;
+    }
+    .titre {
+    font-size: 50px;
+    }
+    p {
+    font-size: 2vh;
+      }
+  }
+  .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+  }
+  .partiePrincipale {
+    padding: 25px;
+    justify-content: normal;
+  }
+  .presentation {
+    margin-bottom: 25px;
+    p {
+      display: none;
+    }
+  }
+  .connexion form {
+    width: 100%;
+  }
+  .formulaire {
+    padding: 15px ;
+  }
+}
