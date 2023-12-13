@@ -19,14 +19,12 @@
           crossorigin="anonymous"
           referrerpolicy="no-referrer" />
 
-    <link rel="icon" href="../static/assets/img/Favicon.png" /> <!--  A remplacer quand on aura la favicon  -->
-
     <!-- Scripts -->
     <!-- GSAP -->  <!-- Jquery -->
-    <script src="../../node_modules/gsap/dist/gsap.min.js"></script>
-    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/Festiplan/node_modules/gsap/dist/gsap.min.js"></script>
+    <script src="/Festiplan/node_modules/jquery/dist/jquery.min.js"></script>
     <!-- custom JS -->
-    <script src="../static/scripts/index.js" defer></script
+    <script src="/Festiplan/FestiplanWeb/static/scripts/index.js" defer></script
 </head>
 <body>
 <div class="app">
@@ -71,12 +69,51 @@
                         <input type="password" id="mdpCrea" name="mdp" placeholder="Votre mot de passe :" value="<?php echo $mdp ?>"
                                required>
                     </div>
-                    <div id="switchToSignup" class="creerCompte">Créer un compte <i class="fa-solid fa-arrow-right"></i></div>
-                    <input type="submit" class="boutonConnexion" value="Me Connecter">
-                </form>
-            </div>
-            </div>
-        <?php include_once "../static/components/footer/footer-absolute.php" ?>
+                </div>
+                <div class="form-duo">
+                    <button class="retour">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        Retour
+                    </button>
+                    <input type="submit" class="boutonCreation" value="Créer le compte">
+                    <input hidden name="action" value="inscription">
+                </div>
+            </form>
+        </div>
+        <div class="presentation">
+            <i class="fa-solid fa-calendar-days"></i>
+            <div class="titre">Festiplan</div>
+            <p>
+                Créer et gérer tous vos évenements,<br>
+                avec facilité et ergonomie.
+            </p>
+        </div>
+        <div class="formulaire connexion">
+            <form method="get" action="/Festiplan/FestiplanWeb">
+                <div class="colonneCreationCompte">
+                    <label for="identifiant" id="identifiant">
+                        Identifiant
+                    </label>
+                    <input type="text" id="identifiant" name="login"
+                           placeholder="Entrez votre identifiant :"
+                           value="<?php echo $login ?>"
+                           required>
+                </div>
+                <div class="colonneCreationCompte">
+                    <label for="mdp" id="mdp">
+                        Mot de passe
+                    </label>
+                    <input type="password" id="mdp" name="mdp"
+                           placeholder="Entrez votre mot de passe :"
+                           value="<?php echo $mdp ?>"
+                           required>
+                </div>
+                <div id="switchToSignup" class="creerCompte">Créer un compte <i class="fa-solid fa-arrow-right"></i></div>
+                <input type="submit" class="boutonConnexion" value="Me Connecter">
+                <input hidden name="action" value="connexion">
+            </form>
+        </div>
+
     </div>
 </body>
 </html>
