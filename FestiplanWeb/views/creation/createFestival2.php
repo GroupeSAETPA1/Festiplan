@@ -46,7 +46,7 @@
                     </div>
                 </div>
 
-                <div>
+                <div class="respon">
                     <h3> <i class="fa-solid fa-circle-exclamation"></i>Responsable :</h3>
                     <input class="text" type="text " id="rechercheRespon" name="rechercheRespon"
                            placeholder="Entrez le nom du Responsable"/>

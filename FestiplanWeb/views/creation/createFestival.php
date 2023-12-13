@@ -60,8 +60,8 @@
                         <!-- Contient un second bloc avec la description et qui se situe au cote a cote avec le premier bloc -->
                         <div>
 
-                            <h3><i class="fa-solid fa-circle-exclamation"></i>Description :</h3>
-                            <input class="description" type="text" name="description"/>
+                            <label for="description"><i class="fa-solid fa-circle-exclamation"></i>Description :</label>
+                            <textarea  id="description" name="description"></textarea>
                         </div>
                     </div>
                 </div>
