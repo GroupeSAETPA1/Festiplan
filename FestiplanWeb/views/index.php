@@ -19,14 +19,12 @@
           crossorigin="anonymous"
           referrerpolicy="no-referrer" />
 
-    <link rel="icon" href="../static/assets/img/Favicon.png" /> <!--  A remplacer quand on aura la favicon  -->
-
     <!-- Scripts -->
     <!-- GSAP -->  <!-- Jquery -->
-    <script src="../../node_modules/gsap/dist/gsap.min.js"></script>
-    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/Festiplan/node_modules/gsap/dist/gsap.min.js"></script>
+    <script src="/Festiplan/node_modules/jquery/dist/jquery.min.js"></script>
     <!-- custom JS -->
-    <script src="../static/scripts/index.js" defer></script
+    <script src="/Festiplan/FestiplanWeb/static/scripts/index.js" defer></script
 </head>
 <body>
 <div class="app">
@@ -110,8 +108,7 @@
                            value="<?php echo $mdp ?>"
                            required>
                 </div>
-                <!-- TODO Faire un faux Bouton -->
-                <button class="creerCompte">Créer un compte <i class="fa-solid fa-arrow-right"></i></button>
+                <div id="switchToSignup" class="creerCompte">Créer un compte <i class="fa-solid fa-arrow-right"></i></div>
                 <input type="submit" class="boutonConnexion" value="Me Connecter">
                 <input hidden name="action" value="connexion">
             </form>

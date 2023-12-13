@@ -1,4 +1,5 @@
 $('#switchToSignup').click(function() {
+    console.log("switchToSignup")
     const TL = gsap.timeline({paused: false});
 
     // animation : la presentation se décale vers la gauche
