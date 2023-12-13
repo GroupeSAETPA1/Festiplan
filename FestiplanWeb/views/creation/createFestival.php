@@ -45,11 +45,11 @@
                         </div>
                         <div>
                             <h3>Date de début :</h3>
-                            <input class="text" type="text" name="ddd" placeholder="Tapez une heure de début"/>
+                            <input class="text" type="date" name="ddd"/>
                         </div>
                         <div>
                             <h3>Date de fin :</h3>
-                            <input class="text" type="text" name="ddf" placeholder="Tapez une heure de fin"/>
+                            <input class="text" type="date" name="ddf"/>
                         </div>
                     </div>
 
@@ -88,68 +88,7 @@
                         <option value="film">film</option>
                     </select>
                 </div>
-
-                <hr>
-
-
-
-
-                <div class="proot">
-                    <div>
-                        <h3> Organisateur : </h3>
-                        <input class="text" type="text " id="rechercheOrga" name="rechercheOrga"
-                               placeholder="Entrez le nom d'un organisateur"/>
-                    </div>
-                    <div class="butSpec">
-                        <button class="ajoutS">Ajouter l'organisateur +</button>
-                    </div>
-                    <div class="butSpec">
-                        <button class="supp">Supprimer un organisateur</button>
-                    </div>
-                </div>
-
-                <div>
-                    <h3>Responsable :</h3>
-                    <input class="text" type="text " id="rechercheRespon" name="rechercheRespon"
-                           placeholder="Entrez le nom du Responsable"/>
-                </div>
-
-                <hr>
-
-                <div class="proot">
-                    <div>
-                        <h3>Spectacle :</h3>
-                        <select>
-                            <option value=" "></option>
-                            <option value="descriauds">Descriaud's pectacle</option>
-                        </select>
-                    </div>
-                    <div class="butSpec">
-                        <button class="ajoutS">Ajouter un spectacle +</button>
-                    </div>
-                </div>
-
-                <div class="proot">
-                    <div>
-                        <h3>Scène :</h3>
-                        <select>
-                            <option value=" "></option>
-                            <option value="concert">concert</option>
-                            <option value="theatre">theatre</option>
-                            <option value="danse">danse</option>
-                            <option value="cirque">cirque</option>
-                            <option value="film">film</option>
-                        </select>
-                    </div>
-                    <div class="butSpec">
-                        <button class="ajoutS">Ajouter une Scène +</button>
-                    </div>
-                </div>
             </div>
-        </div>
-
-        <div class="babou">
-            <button class="ajoutGrij">Ajouter une GRIJ</button>
         </div>
 
         <div class="babou">
@@ -157,7 +96,7 @@
                 <button class="annul">Annuler</button>
             </div>
             <div class="butSpec">
-                <button class="valid">Valider</button>
+                <a href="createFestival2.php"><button class="valid">Page Suivante</button></a>
             </div>
         </div>
 
