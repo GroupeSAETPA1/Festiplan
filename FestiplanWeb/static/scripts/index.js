@@ -1,5 +1,3 @@
-import $ from 'jquery'
-
 $('.creerCompte').click(function() {
     const TL = gsap.timeline({paused: false});
 
