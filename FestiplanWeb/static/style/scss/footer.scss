@@ -1,10 +1,14 @@
 @import "main";
+@import "svg";
 
 footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 9vh;
+  background: $dark-grey;
 }
+
 
 .text-footer {
     color: $white;
@@ -12,4 +16,11 @@ footer {
     font-weight: 600;
     text-align: center;
     margin: 0;
+}
+
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100% ;
 }

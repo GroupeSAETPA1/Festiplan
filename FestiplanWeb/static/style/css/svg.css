@@ -6,16 +6,15 @@
   background-position: center;
   background-size: cover;
   aspect-ratio: 1920/200;
+  overflow-x: hidden;
 }
 
-.ratio-100 {
-  aspect-ratio: 960/100;
+.ratio {
+  aspect-ratio: 1920/200;
 }
 
 .wave-white-to-grey {
   background-image: url("../../assets/svgs/wave-white-to-grey.svg");
 }
-
-
 
 /*# sourceMappingURL=svg.css.map */

@@ -21,12 +21,13 @@
     <link rel="icon" href="../static/assets/img/Favicon.png" /> <!--  A remplacer quand on aura la favicon  -->
 
     <!-- Scripts -->
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+    <!-- Jquery -->
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
     <!-- JS -->
     <script src="../static/scripts/index.js" type="module" defer></script>
+
 </head>
 <body>
 <div class="app">

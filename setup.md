@@ -12,6 +12,10 @@ ensuite le développeur va installer les dépendances nécessaires voici les com
 
 ```npm install  sass```
 
+```npm install  jquery```
+
+```npm install  jsdom```
+
 
 ## Pour les développeurs une fois le projet initialisé
 
@@ -39,7 +43,10 @@ Essayez de ne pas modifier le fichier css directement car il sera écrasé à ch
 
 # Utilisation de jQuery :
 
-```<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>```
+```js
+var jsdom = require("jsdom").jsdom;
+global.$ = require('jquery/dist/jquery')(jsdom().createWindow());
+```
 
 Jquery est une bibliothèque JavaScript qui permet de manipuler le DOM. Elle permet de manipuler le DOM de manière plus simple et plus rapide que le JavaScript. 
 L'une des principales caractéristiques de jQuery est sa capacité à sélectionner des éléments du DOM à l'aide de sélecteurs CSS.
