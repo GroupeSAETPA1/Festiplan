@@ -1,42 +1,88 @@
 <?php
-include ('../model/User.php');
+namespace controllers;
+
+use PDO;
+use services\UserService;
+use services\SessionService;
+use yasmf\HttpHelper;
+use yasmf\View;
+
+/**
+ * Controleur de la gestion utilisateur
+ */
 class UserController {
-    private $userModel;
-    private $pdo;
+    private UserService $userService;
 
-    public function __construct(User $userModel) {
-        $this->userModel = $userModel;
+    public function __construct(UserService $userService) {
+        $this->userService = $userService;
     }
 
-    public function inscription($email, $nom, $prenom, $pwd, $login): bool {
-        if (!$this->userModel->utilisateurExiste($email, $pwd, $this->pdo)) {
-            return $this->userModel->createUser($email, $nom, $prenom, $pwd, $login, $this->pdo);
-        } else {
-            echo "Il y a déja un utilisateur avec l'adresse mail " . $email
-                . ".\n Veuillez réessayer avec une autre adresse.";
-            return false;
+    public function index($pdo): View {
+        $mdp =  htmlspecialchars(HttpHelper::getParam('mdp') ?: "");
+        $login =  htmlspecialchars(HttpHelper::getParam('identifiant') ?: "");
+        $view = new View("views/index");
+        $view->setVar('nom', "");
+        $view->setVar('prenom', "");
+        $view->setVar('email', "");
+        $view->setVar('mdp', $mdp);
+        $view->setVar('login', $login);
+        $view->setVar('displayInscription', false);
+        $view->setVar('displayLoginError', false);
+        return $view;
+    }
+
+    public function inscription($pdo): View {
+
+        $nom =  htmlspecialchars(HttpHelper::getParam('nom') ?: "");
+        $prenom =  htmlspecialchars(HttpHelper::getParam('prenom') ?: "");
+        $email =  htmlspecialchars(HttpHelper::getParam('email') ?: "");
+        $mdp =  htmlspecialchars(HttpHelper::getParam('mdp') ?: "");
+        $login =  htmlspecialchars(HttpHelper::getParam('login') ?: "");
+
+        $view = null;
+        try {
+            // Si l'utilisateur n'existe pas, on le crée
+            if (!$this->userService->utilisateurExiste($pdo, $email, $mdp)) {
+                // TODO mettre les infos du dashboard de l'utilisateur
+                $view = new View("/views/dashboard");
+            // Si l'utilisateur existe déja, on affiche un message d'erreur
+            } else {
+                $view = new View("/views/index");
+                $view->setVar('nom', $nom);
+                $view->setVar('prenom', $prenom);
+                $view->setVar('email', $email);
+                $view->setVar('mdp', $mdp);
+                $view->setVar('login', $login);
+                $view->setVar('displayInscription', true);
+                $view->setVar('displayLoginError', true);
+            }
+        } catch (\PDOException $e) {
+            $view->setVar('error', "Il y a une erreure :" . $e->getMessage());
         }
+        return  $view;
     }
 
-   public function connexion($login,$pwd):bool {
-      // connecte l'utilisateur
-      try{
-          if ($this->userModel->utilisateurExiste($login,$pwd, $this->pdo)) {
-              $_SESSION['connecte']= true ; 			// Stockage dans les variables de session que l'on est connecté (sera utilisé sur les autres pages)
-              $_SESSION['nomClient']= $ligne->nom ;   // Stockage dans les variables de session du nom du client
-              $_SESSION['prenomClient']= $ligne->prenom ;// Stockage dans les variables de session du prénom du client
-              return true;
-          } else {
-              return false;
-          }
-      }
-      catch (Exception $e ) {
-          echo "<h1>Erreur de connexion à la base de données ! </h1>";
-          return false;
-      }
-   }
+   public function connexion($pdo): View {
+      // Connecte l'utilisateur
 
-   function SetPDO($User, $Mdp): pdo {
-       $this->pdo = createPdo($User,$Mdp);
+      $mdp =  htmlspecialchars(HttpHelper::getParam('mdp') ?: "");
+      $login =  htmlspecialchars(HttpHelper::getParam('login') ?: "");
+
+      $view = null;
+      try {
+          if ($this->userService->utilisateurExiste($pdo, $mdp, $login)) {
+              // TODO mettre les infos du dashboard de l'utilisateur
+              $view = new View("/views/dashboard");
+          } else {
+              $view = new View("/views/index");
+              $view->setVar('mdp', $mdp);
+              $view->setVar('login', $login);
+              $view->setVar('displayInscription', false);
+              $view->setVar('displayLoginError', true);
+          }
+      } catch (\PDOException $e ) {
+          $view->setVar('error', "Il y a une erreure :" . $e->getMessage());
+      }
+       return $view;
    }
 }
