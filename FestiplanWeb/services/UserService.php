@@ -11,7 +11,7 @@ class UserService {
 
         // TODO chiffrer le mot de passe
 
-       $requeteCreationClient = $pdo->prepare('INSERT INTO utilisateurs (nom, prenom, email, mdp, login) VALUES (:nom, :prenom, :email, :mdp, :login)');
+       $requeteCreationClient = $pdo->prepare('INSERT INTO utilisateur (nom, prenom, email, mdp, login) VALUES (:nom, :prenom, :email, :mdp, :login)');
        $requeteCreationClient->bindParam(':nom', $nom);
        $requeteCreationClient->bindParam(':prenom', $prenom);
        $requeteCreationClient->bindParam(':email', $email);
@@ -23,8 +23,8 @@ class UserService {
     public function utilisateurExiste($pdo, $mdp, $login): bool {
        // Vérifie si l'utilisateur existe
        // Renvoie vrai ou faux en fonction si l'utilisateur a été trouvé.
-       $utilisateurExiste = false;
-       $requeteUtilisateurExiste = $pdo->prepare("SELECT nom, prenom FROM utilisateurs WHERE login = :login AND mdp = :mdp");
+       $utilisateurExiste = true;
+       $requeteUtilisateurExiste = $pdo->prepare("SELECT nom, prenom FROM utilisateur WHERE login = :login AND mdp = :mdp");
        $requeteUtilisateurExiste->bindParam(':login', $login);
        $requeteUtilisateurExiste->bindParam(':mdp', $mdp);
        $requeteUtilisateurExiste->execute();
@@ -33,7 +33,7 @@ class UserService {
     }
 
     public function getUtilisateur($pdo, $nom, $prenom) {
-        $requeteGetUtilisateur = $pdo->prepare("SELECT nom, prenom FROM utilisateurs WHERE nom = :nom AND mdp = :prenom");
+        $requeteGetUtilisateur = $pdo->prepare("SELECT nom, prenom FROM utilisateur WHERE nom = :nom AND mdp = :prenom");
         $requeteGetUtilisateur->bindParam(':nom', $nom);
         $requeteGetUtilisateur->bindParam(':prenom', $prenom);
         $requeteGetUtilisateur->execute();

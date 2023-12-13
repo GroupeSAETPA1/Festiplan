@@ -21,9 +21,6 @@ class UserController {
         $mdp =  htmlspecialchars(HttpHelper::getParam('mdp') ?: "");
         $login =  htmlspecialchars(HttpHelper::getParam('identifiant') ?: "");
         $view = new View("views/index");
-        $view->setVar('nom', "");
-        $view->setVar('prenom', "");
-        $view->setVar('email', "");
         $view->setVar('mdp', $mdp);
         $view->setVar('login', $login);
         $view->setVar('displayInscription', false);
@@ -67,18 +64,14 @@ class UserController {
 
       $mdp =  htmlspecialchars(HttpHelper::getParam('mdp') ?: "");
       $login =  htmlspecialchars(HttpHelper::getParam('login') ?: "");
+
       $view = null;
       try {
-
           if ($this->userService->utilisateurExiste($pdo, $mdp, $login)) {
               // TODO mettre les infos du dashboard de l'utilisateur
               $view = new View("/views/dashboard");
           } else {
-
               $view = new View("/views/index");
-              $view->setVar('nom', "");
-              $view->setVar('prenom', "");
-              $view->setVar('email', "");
               $view->setVar('mdp', $mdp);
               $view->setVar('login', $login);
               $view->setVar('displayInscription', false);

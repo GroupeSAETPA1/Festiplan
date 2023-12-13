@@ -43,7 +43,7 @@ class DefaultComponentFactory implements ComponentFactory
      */
     public function buildControllerByName(string $controller_name): mixed {
         return match ($controller_name) {
-            "Home" => $this->buildUserController(),
+            "User" => $this->buildUserController(),
             default => throw new NoControllerAvailableForNameException($controller_name)
         };
     }
@@ -56,7 +56,7 @@ class DefaultComponentFactory implements ComponentFactory
     public function buildServiceByName(string $service_name): mixed
     {
         return match($service_name) {
-            "Home" => $this->buildUserService(),
+            "User" => $this->buildUserService(),
             "Session" => $this->buildSessionService(),
             default => throw new NoServiceAvailableForNameException($service_name)
         };
@@ -87,7 +87,7 @@ class DefaultComponentFactory implements ComponentFactory
     /**
      * @return HomeController
      */
-    private function buildUserController(): UserController
+    private function buildUserController(): HomeController
     {
         return new UserController($this->buildUserService());
     }

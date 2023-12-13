@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream:FestiplanWeb/views/index.php
 <!doctype html>
 <html lang="fr">
 <head>
@@ -11,14 +10,14 @@
     <link rel="stylesheet" href="../static/style/css/index/forms.css">
     <link rel="stylesheet" href="../static/style/css/svg.css">
     <link rel="stylesheet" href="../static/style/css/footer.css">
-=======
-<?php
-const PREFIX_TO_RELATIVE_PATH = "/Festiplan/FestiplanWeb";
->>>>>>> Stashed changes:index.php
 
-require $_SERVER[ 'DOCUMENT_ROOT' ] . PREFIX_TO_RELATIVE_PATH . '/lib/vendor/autoload.php';
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
 
-<<<<<<< Updated upstream:FestiplanWeb/views/index.php
     <link rel="icon" href="../static/assets/img/Favicon.png" /> <!--  A remplacer quand on aura la favicon  -->
 
     <!-- Scripts -->
@@ -30,113 +29,94 @@ require $_SERVER[ 'DOCUMENT_ROOT' ] . PREFIX_TO_RELATIVE_PATH . '/lib/vendor/aut
     <script src="../static/scripts/index.js" type="module" defer></script>
 </head>
 <body>
-    <div class="app">
-        <div class="partiePrincipale">
-            <div class="formulaire creationCompte">
-                <form method="get" action="/Festiplan?controller=UserController&action=inscription">
-                    <div class="form-duo">
-                        <div class="colonneCreationCompte">
-                            <label id="nom">
-                                Nom :
-                            </label>
-                            <input type="text" id="nom" placeholder="Votre nom :" value="<?php echo $nom ?>"
-                                   required>
-                        </div>
-                        <div class="colonneCreationCompte">
-                            <label id="prenom">
-                                Prénom :
-                            </label>
-                            <input type="text" id="prenom" name="prenom" placeholder="Votre prénom :" value="<?php echo $prenom ?>"
-                                   required>
-                        </div>
-                    </div>
+<div class="app">
+    <div class="partiePrincipale">
+        <div class="formulaire creationCompte">
+            <form method="get" action="/Festiplan?controller=UserController&action=inscription">
+                <div class="form-duo">
                     <div class="colonneCreationCompte">
-                        <label id="mail">
-                            Email :
+                        <label id="nom">
+                            Nom :
                         </label>
-                        <input type="email" id="mail" name="email" placeholder="Votre email :" value="<?php echo $email ?>"
-                               required>
-                    </div>
-                    <div class="form-duo">
-                        <div class="colonneCreationCompte">
-                            <label id="identifiantCrea">
-                                Identifiant :
-                            </label>
-                            <input type="text" id="identifiantCrea" name="login" placeholder="Votre identifiant :" value="<?php echo $login ?>"
-                                   required>
-                        </div>
-                        <div class="colonneCreationCompte">
-                            <label id="mdpCrea">
-                                Mot de passe :
-                            </label>
-                            <input type="password" id="mdpCrea" name="mdp" placeholder="Votre mot de passe :" value="<?php echo $mdp ?>"
-                                   required>
-                        </div>
-                    </div>
-                    <div class="form-duo">
-                        <button class="retour">
-                            <i class="fa-solid fa-arrow-left"></i>
-                            Retour
-                        </button>
-                        <input type="submit" class="boutonCreation" value="Créer le compte">
-                    </div>
-                </form>
-            </div>
-            <div class="presentation">
-                <i class="fa-solid fa-calendar-days"></i>
-                <div class="titre">Festiplan</div>
-                <p>
-                    Créer et gérer tous vos évenements,<br>
-                    avec facilité et ergonomie.
-                </p>
-            </div>
-            <div class="formulaire connexion">
-                <form method="get" action="/Festiplan/FestiplanWeb">
-                    <div class="colonneCreationCompte">
-                        <label id="identifiant">
-                            Identifiant
-                        </label>
-                        <input type="text" id="identifiant" name="login"
-                               placeholder="Entrez votre identifiant :"
-                               value="<?php echo $login ?>"
+                        <input type="text" id="nom" placeholder="Votre nom :" value="<?php echo $nom ?>"
                                required>
                     </div>
                     <div class="colonneCreationCompte">
-                        <label id="mdp">
-                            Mot de passe
+                        <label id="prenom">
+                            Prénom :
                         </label>
-                        <input type="password" id="mdp" name="mdp"
-                               placeholder="Entrez votre mot de passe :"
-                               value="<?php echo $mdp ?>"
+                        <input type="text" id="prenom" name="prenom" placeholder="Votre prénom :" value="<?php echo $prenom ?>"
                                required>
                     </div>
-                    <button class="creerCompte">Créer un compte <i class="fa-solid fa-arrow-right"></i></button>
-                    <input type="submit" class="boutonConnexion" value="Me Connecter">
-                    <input hidden name="action" value="connexion">
-                </form>
-            </div>
-
+                </div>
+                <div class="colonneCreationCompte">
+                    <label id="mail">
+                        Email :
+                    </label>
+                    <input type="email" id="mail" name="email" placeholder="Votre email :" value="<?php echo $email ?>"
+                           required>
+                </div>
+                <div class="form-duo">
+                    <div class="colonneCreationCompte">
+                        <label id="identifiantCrea">
+                            Identifiant :
+                        </label>
+                        <input type="text" id="identifiantCrea" name="login" placeholder="Votre identifiant :" value="<?php echo $login ?>"
+                               required>
+                    </div>
+                    <div class="colonneCreationCompte">
+                        <label id="mdpCrea">
+                            Mot de passe :
+                        </label>
+                        <input type="password" id="mdpCrea" name="mdp" placeholder="Votre mot de passe :" value="<?php echo $mdp ?>"
+                               required>
+                    </div>
+                </div>
+                <div class="form-duo">
+                    <button class="retour">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        Retour
+                    </button>
+                    <input type="submit" class="boutonCreation" value="Créer le compte">
+                </div>
+            </form>
         </div>
+        <div class="presentation">
+            <i class="fa-solid fa-calendar-days"></i>
+            <div class="titre">Festiplan</div>
+            <p>
+                Créer et gérer tous vos évenements,<br>
+                avec facilité et ergonomie.
+            </p>
+        </div>
+        <div class="formulaire connexion">
+            <form method="get" action="/Festiplan/FestiplanWeb">
+                <div class="colonneCreationCompte">
+                    <label id="identifiant">
+                        Identifiant
+                    </label>
+                    <input type="text" id="identifiant" name="login"
+                           placeholder="Entrez votre identifiant :"
+                           value="<?php echo $login ?>"
+                           required>
+                </div>
+                <div class="colonneCreationCompte">
+                    <label id="mdp">
+                        Mot de passe
+                    </label>
+                    <input type="password" id="mdp" name="mdp"
+                           placeholder="Entrez votre mot de passe :"
+                           value="<?php echo $mdp ?>"
+                           required>
+                </div>
+                <button class="creerCompte">Créer un compte <i class="fa-solid fa-arrow-right"></i></button>
+                <input type="submit" class="boutonConnexion" value="Me Connecter">
+                <input hidden name="action" value="connexion">
+            </form>
+        </div>
+
     </div>
-    <?php include_once "../static/components/footer.php" ?>
+</div>
+<?php include_once "../static/components/footer.php" ?>
 </body>
 </html>
-=======
-use FestiplanWeb\application\DefaultComponentFactory;
-use FestiplanWeb\yasmf\DataSource;
-use FestiplanWeb\yasmf\Router;
-
-$dbConfig = require 'dbconfig.php';
-
-$data_source = new DataSource(
-    $dbConfig['db_host'],
-    $dbConfig['db_port'],
-    $dbConfig['db_name'],
-    $dbConfig['db_user'],
-    $dbConfig['db_pass'],
-    $dbConfig['db_charset']
-);
-
-$router = new Router(new DefaultComponentFactory()) ;
-$router->route(PREFIX_TO_RELATIVE_PATH,$data_source);
->>>>>>> Stashed changes:index.php
