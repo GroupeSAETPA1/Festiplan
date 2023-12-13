@@ -4,6 +4,8 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 9vh;
+  background: #363732;
 }
 
 .text-footer {
@@ -12,6 +14,12 @@ footer {
   font-weight: 600;
   text-align: center;
   margin: 0;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 

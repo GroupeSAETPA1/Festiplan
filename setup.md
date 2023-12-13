@@ -26,7 +26,7 @@ cela installera toute les dépendances nécessaires au projet ou les mettra à j
 Le scss etant un langage qui n’est pas reconnu par les navigateurs, il faut le compiler en css. Pour cela nous avons utilisé le module node-sass qui permet de compiler le scss en css. Pour l’utiliser il faut faire la commande :
 
 ```bash 
-sass --watch src/style/scss:src/style/css
+sass --watch FestiplanWeb/static/style/scss:FestiplanWeb/static/style/css
 ```
 
 Cela permet de compiler le scss en css et de mettre à jour le fichier css à chaque modification du fichier scss. 
