@@ -27,7 +27,6 @@
     <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
     <!-- JS -->
     <script src="../static/scripts/index.js" type="module" defer></script>
-    <script src="../static/scripts/responsiveFooter.js" type="module" defer></script>
 
 </head>
 <body>
@@ -105,70 +104,6 @@
                 </form>
             </div>
             </div>
-
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid culpa dolor dolore dolorem est et ipsa molestiae natus nemo porro possimus quibusdam quod quos reiciendis rerum tempore veritatis, vitae voluptate!
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, deserunt doloribus impedit labore magnam maiores minus molestiae mollitia necessitatibus nesciunt nulla officia, repudiandae soluta suscipit totam ullam, veniam. Asperiores, dignissimos?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam blanditiis corporis ea eveniet mollitia quam quidem quisquam recusandae rerum unde. Dolor id neque officia porro quam rem, soluta tempora ullam!
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut dolorum eveniet excepturi iure quidem reiciendis, sint veritatis vitae! Adipisci, atque aut deserunt error illum minima natus necessitatibus quis repellat soluta!
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium aliquam distinctio facilis ipsam, libero maiores minima quasi, quo repudiandae sapiente sunt ullam veritatis. Doloribus eum excepturi nostrum porro reprehenderit!
-        function changeFooterPosition() {
-        const FOOTER = $(".footer"),
-        BODY = $("body");
-
-        if (window.innerHeight > BODY[0].getBoundingClientRect().height) {
-        FOOTER.css({
-        "position": "absolute",
-        "bottom": 0
-        });
-        } else {
-        FOOTER.css({
-        "position": "",
-        "bottom": ""
-        });
-        }
-        }
-
-        window.addEventListener("resize", changeFooterPosition);
-        changeFooterPosition();
-
-        function changeFooterPosition() {
-        const FOOTER = $(".footer"),
-        BODY = $("body");
-
-        if (window.innerHeight > BODY[0].getBoundingClientRect().height) {
-        FOOTER.css({
-        "position": "absolute",
-        "bottom": 0
-        });
-        } else {
-        FOOTER.css({
-        "position": "",
-        "bottom": ""
-        });
-        }
-        }
-
-        window.addEventListener("resize", changeFooterPosition);
-        changeFooterPosition();
-        function changeFooterPosition() {
-        const FOOTER = $(".footer"),
-        BODY = $("body");
-
-        if (window.innerHeight > BODY[0].getBoundingClientRect().height) {
-        FOOTER.css({
-        "position": "absolute",
-        "bottom": 0
-        });
-        } else {
-        FOOTER.css({
-        "position": "",
-        "bottom": ""
-        });
-        }
-        }
-
-        window.addEventListener("resize", changeFooterPosition);
-        changeFooterPosition();
         <?php include_once "../static/components/footer.php" ?>
     </div>
 </body>
