@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="../../static/style/css/createFestiplan/button.css">
         <link rel="stylesheet" href="../../static/style/css/createFestiplan/image.css">
         <link rel="stylesheet" href="../../static/style/css/createFestiplan/input.css">
-        <!--<link rel="stylesheet" href="../../static/style/css/footer.css">-->
+        <link rel="stylesheet" href="../../static/style/css/footer.css">
 
         <link rel="stylesheet" href="../../../framework/fontawesome-free-6.2.1-web/css/all.css">
 
@@ -105,7 +105,6 @@
         </div>
 
         <?php
-         //include "../../static/components/footer.php"
-        ?>
+        include_once "../../static/components/footer/footer.php" ?>
     </body>
 </html>

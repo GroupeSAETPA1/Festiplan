@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="../../static/style/css/createFestiplan/button.css">
         <link rel="stylesheet" href="../../static/style/css/createFestiplan/image.css">
         <link rel="stylesheet" href="../../static/style/css/createFestiplan/input.css">
-        <!--<link rel="stylesheet" href="../../static/style/css/footer.css">-->
+        <link rel="stylesheet" href="../../static/style/css/footer.css">
 
         <link rel="stylesheet" href="../../../framework/fontawesome-free-6.2.1-web/css/all.css">
 
@@ -78,5 +78,7 @@
                 <button class="valid">Valider</button>
             </div>
         </div>
+        <?php
+         include_once "../../static/components/footer/footer-absolute.php" ?>
     </body>
 </html>
