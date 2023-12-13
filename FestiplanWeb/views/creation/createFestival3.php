@@ -72,7 +72,7 @@
 
         <div class="babou">
             <div class="butSpec">
-                <button class="annul">Annuler</button>
+                <button class="annul">Annuler vos choix</button>
             </div>
             <div class="butSpec">
                 <button class="valid">Valider</button>

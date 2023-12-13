@@ -56,7 +56,7 @@
 
         <div class="babou">
             <div class="butSpec">
-                <button class="annul">Annuler</button>
+                <button class="annul">Annuler vos choix </button>
             </div>
             <div class="butSpec">
                 <a href="createFestival3.php"><button class="valid">Page suivante </button></a>
