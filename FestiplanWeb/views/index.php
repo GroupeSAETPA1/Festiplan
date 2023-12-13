@@ -8,7 +8,6 @@
     <title>Festiplan - Page d'Acceuil</title>
     <link rel="stylesheet" href="../static/style/css/index/index.css">
     <link rel="stylesheet" href="../static/style/css/index/forms.css">
-    <link rel="stylesheet" href="../static/style/css/svg.css">
     <link rel="stylesheet" href="../static/style/css/footer.css">
     <link rel="stylesheet" href="../static/style/css/index/responsive.css">
 
@@ -22,12 +21,13 @@
     <link rel="icon" href="../static/assets/img/Favicon.png" /> <!--  A remplacer quand on aura la favicon  -->
 
     <!-- Scripts -->
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+    <!-- Jquery -->
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
     <!-- JS -->
-    <script src="../static/scripts/index.js" type="module" defer></script>
+    <script src="../static/scripts/index.js"></script>
+
 </head>
 <body>
     <div class="app">
@@ -103,9 +103,8 @@
                     <input type="submit" class="boutonConnexion" value="Me Connecter">
                 </form>
             </div>
-
-        </div>
+            </div>
+        <?php include_once "../static/components/footer/footer.php" ?>
     </div>
-    <?php include_once "../static/components/footer.php" ?>
 </body>
 </html>
