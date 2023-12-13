@@ -23,6 +23,12 @@ use controllers\CreateFestivalController;
 use controllers\HomeController;
 use services\createFestivalService;
 use services\UsersService;
+
+use controllers\DashboardController;
+use controllers\UserController;
+use services\DashboardService;
+use services\UserService;
+
 use yasmf\ComponentFactory;
 use yasmf\NoControllerAvailableForNameException;
 use yasmf\NoServiceAvailableForNameException;
@@ -32,7 +38,9 @@ use yasmf\NoServiceAvailableForNameException;
  */
 class DefaultComponentFactory implements ComponentFactory
 {
-    private ?UsersService $usersService = null;
+    private ?UserService $userService = null;
+    private ?SessionService $sessionService = null;
+    private ?DashboardService $dashboardService = null;
 
     private ?CreateFestivalService $createFestivalService = null;	
 
@@ -43,8 +51,11 @@ class DefaultComponentFactory implements ComponentFactory
      */
     public function buildControllerByName(string $controller_name): mixed {
         return match ($controller_name) {
-            "Home" => $this->buildHomeController(),
+
             "CreateFestival" => $this->buildCreateFestival(),
+            "Home" => $this->buildUserController(),
+            "Dashboard" => $this->buildDashboardController(),
+
             default => throw new NoControllerAvailableForNameException($controller_name)
         };
     }
@@ -57,28 +68,41 @@ class DefaultComponentFactory implements ComponentFactory
     public function buildServiceByName(string $service_name): mixed
     {
         return match($service_name) {
-            "Users" => $this->buildUsersService(),
+            "User" => $this->buildUserService(),
+            "Session" => $this->buildSessionService(),
+            "Dashboard" => $this->buildDashboardService(),
             default => throw new NoServiceAvailableForNameException($service_name)
         };
     }
 
     /**
-     * @return UsersService
+     * @return UserService
      */
-    private function buildUsersService(): UsersService
+    private function buildUserService(): UserService
     {
-        if ($this->usersService == null) {
-            $this->usersService = new UsersService();
+        if ($this->userService == null) {
+            $this->userService = new UserService();
         }
-        return $this->usersService;
+        return $this->userService;
+    }
+
+    /**
+     * @return SessionService
+     */
+    private function buildSessionService(): SessionService
+    {
+        if ($this->sessionService == null) {
+            $this->sessionService = new SessionService();
+        }
+        return $this->sessionService;
     }
 
     /**
      * @return HomeController
      */
-    private function buildHomeController(): HomeController
+    private function buildUserController(): UserController
     {
-        return new HomeController($this->buildUsersService());
+        return new UserController($this->buildUserService());
     }
 
     /**
@@ -99,4 +123,20 @@ class DefaultComponentFactory implements ComponentFactory
         }
         return $this->createFestivalService;
     }
+
+    private function buildDashboardService(): ?DashboardService
+    {
+        if ($this->dashboardService == null) {
+            $pdo = null; // TODO : récupérer le PDO
+            $this->dashboardService = new DashboardService($pdo);
+        }
+        return $this->dashboardService;
+    }
+
+    private function buildDashboardController(): DashboardController
+    {
+        return new DashboardController($this->buildDashboardService());
+    }
+
+
 }

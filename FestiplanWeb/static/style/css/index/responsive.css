@@ -4,10 +4,6 @@
   .partiePrincipale {
     flex-direction: column;
   }
-  .app {
-    overflow: auto;
-    height: 100vh;
-  }
   .presentation {
     text-align: center;
   }
@@ -19,11 +15,6 @@
   }
   .presentation p {
     font-size: 2vh;
-  }
-  .footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
   }
   .partiePrincipale {
     padding: 25px;

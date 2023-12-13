@@ -1,5 +1,5 @@
 @import "main";
-@import "svg"; 
+@import "svg";
 
 footer {
   display: flex;
@@ -18,8 +18,9 @@ footer {
     margin: 0;
 }
 
+
 .footer {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   width: 100% ;
 }
