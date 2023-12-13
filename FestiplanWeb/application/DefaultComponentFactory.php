@@ -19,7 +19,9 @@
 
 namespace application;
 
+use controllers\CreateFestivalController;
 use controllers\HomeController;
+use services\createFestivalService;
 use services\UsersService;
 use yasmf\ComponentFactory;
 use yasmf\NoControllerAvailableForNameException;
@@ -32,6 +34,8 @@ class DefaultComponentFactory implements ComponentFactory
 {
     private ?UsersService $usersService = null;
 
+    private ?CreateFestivalService $createFestivalService = null;	
+
     /**
      * @param string $controller_name the name of the controller to instanciate
      * @return mixed the controller
@@ -40,6 +44,7 @@ class DefaultComponentFactory implements ComponentFactory
     public function buildControllerByName(string $controller_name): mixed {
         return match ($controller_name) {
             "Home" => $this->buildHomeController(),
+            "CreateFestival" => $this->buildCreateFestival(),
             default => throw new NoControllerAvailableForNameException($controller_name)
         };
     }
@@ -74,5 +79,24 @@ class DefaultComponentFactory implements ComponentFactory
     private function buildHomeController(): HomeController
     {
         return new HomeController($this->buildUsersService());
+    }
+
+    /**
+     * @return CreateFestivalController
+     */
+    private function buildCreateFestival(): CreateFestivalController
+    {
+        return new CreateFestivalController($this->buildCreateFestivalService());
+    }
+
+    /**
+     * @return createFestivalService
+     */
+    private function buildCreateFestivalService(): createFestivalService
+    {
+        if($this->createFestivalService == null) {
+            $this->createFestivalService = new createFestivalService();
+        }
+        return $this->createFestivalService;
     }
 }

@@ -28,9 +28,11 @@ class CreateFestivalController {
 
     public function tousChampsOK()
     {
-        $tousOk = $this->nomOk($_POST['nom'])
-                  && $this->descriptionOk($_POST['description'])
-                  && $this->dateOk($_POST['ddd'], $_POST['ddf']);
+        $tousOk = $this->nomOk(HttpHelper::getParam("nom"))
+                  && $this->descriptionOk(HttpHelper::getParam("description"))
+                  && $this->dateOk(HttpHelper::getParam("ddd"), HttpHelper::getParam("ddf"));
+        $this->photo();
+       // return $tousOk;
     }
 
     public function nomOk($aVerifier)
@@ -48,5 +50,9 @@ class CreateFestivalController {
         $debut = DateTime::createFromFormat('d/m/Y' , $ddd);
         $fin = DateTime::createFromFormat('/d/m/Y' , $ddf);
         return $debut < $fin ;
+    }
+
+    public function photo() {
+        var_dump($_FILES);
     }
 }

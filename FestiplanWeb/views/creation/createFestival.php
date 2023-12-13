@@ -33,7 +33,7 @@
 
         <div class="container">
 
-
+        <form method="post" enctype="multipart/form-data">
             <!-- Premier paquet pour le premier cube d'information-->
             <div class="proot">
                 <!-- Contient un premier bloc avec le nom, les dates de début et de fin -->
@@ -65,7 +65,7 @@
             <div>
                 <div>
                     <h3>Illusatrtaion : </h3>
-                    <input  type="file" id="illustration" name="illustration" accept="image/*">
+                    <input  type="file" id="illustration" name="photo" accept="image/*">
                 </div>
                 <div>
                     Format PNG,JPG,GIF
@@ -146,7 +146,9 @@
                 </div>
             </div>
         </div>
-
+        <input hidden name="action" value="validerCreationFestival">
+        <input hidden name="controller" value="CreateFestival">
+    </form>
         <footer>
             <!-- Attendre que Quentin l'ai fait -->
         </footer>
