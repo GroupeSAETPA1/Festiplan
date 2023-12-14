@@ -71,6 +71,7 @@
                     </div>
                 </div>
                 <div class="form-duo">
+                    <!-- TODO : changer en faux bouton -->
                     <button class="retour">
                         <i class="fa-solid fa-arrow-left"></i>
                         Retour
