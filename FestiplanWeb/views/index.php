@@ -71,6 +71,7 @@
                     </div>
                 </div>
                 <div class="form-duo">
+                    <!-- TODO : changer en faux bouton -->
                     <button class="retour">
                         <i class="fa-solid fa-arrow-left"></i>
                         Retour
@@ -119,5 +120,8 @@
         </div>
 
     </div>
+    <?php include $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/footer/footer-absolute.php" ?>
+</div>
+
 </body>
 </html>
