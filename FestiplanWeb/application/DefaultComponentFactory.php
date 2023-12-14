@@ -22,9 +22,10 @@ namespace application;
 use controllers\DashboardController;
 use controllers\HomeController;
 use controllers\UserController;
+use PDO;
 use services\DashboardService;
-use services\UserService;
 use services\SessionService;
+use services\UserService;
 use yasmf\ComponentFactory;
 use yasmf\NoControllerAvailableForNameException;
 use yasmf\NoServiceAvailableForNameException;
@@ -43,7 +44,8 @@ class DefaultComponentFactory implements ComponentFactory
      * @return mixed the controller
      * @throws NoControllerAvailableForNameException when controller is not found
      */
-    public function buildControllerByName(string $controller_name): mixed {
+    public function buildControllerByName(string $controller_name): mixed
+    {
         return match ($controller_name) {
             "Home" => $this->buildUserController(),
             "Dashboard" => $this->buildDashboardController(),
@@ -58,7 +60,7 @@ class DefaultComponentFactory implements ComponentFactory
      */
     public function buildServiceByName(string $service_name): mixed
     {
-        return match($service_name) {
+        return match ($service_name) {
             "User" => $this->buildUserService(),
             "Session" => $this->buildSessionService(),
             "Dashboard" => $this->buildDashboardService(),
@@ -99,7 +101,7 @@ class DefaultComponentFactory implements ComponentFactory
     private function buildDashboardService(): ?DashboardService
     {
         if ($this->dashboardService == null) {
-            $pdo = null; // TODO : récupérer le PDO
+            $pdo = $this->getPDO("root", "root");
             $this->dashboardService = new DashboardService($pdo);
         }
         return $this->dashboardService;
@@ -110,4 +112,23 @@ class DefaultComponentFactory implements ComponentFactory
         return new DashboardController($this->buildDashboardService());
     }
 
+    /**
+     * À partir d'un nom d'utilisateur et de son mot de passe,
+     * renvoie la PDO associé
+     * @param $user
+     * @param $mdp
+     * @return PDO
+     */
+    public function getPDO($user, $mdp): PDO
+    {
+        $ds_name = "mysql:host=localhost;port=0;dbname=festiplan;charset=utf8mb4";
+        $options = [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false,
+            PDO::ATTR_PERSISTENT => true
+        ];
+
+        return new PDO($ds_name, $user, $mdp, $options);
+    }
 }
