@@ -33,14 +33,14 @@
             <form method="get" action="/Festiplan/FestiplanWeb">
                 <div class="form-duo">
                     <div class="colonneCreationCompte">
-                        <label for="nom" id="nom">
+                        <label for="nom">
                             Nom :
                         </label>
                         <input type="text" id="nom" placeholder="Votre nom :" value="<?php echo $nom ?>"
                                required>
                     </div>
                     <div class="colonneCreationCompte">
-                        <label for="prenom" id="prenom">
+                        <label for="prenom">
                             Prénom :
                         </label>
                         <input type="text" id="prenom" name="prenom" placeholder="Votre prénom :" value="<?php echo $prenom ?>"
@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <div class="colonneCreationCompte">
-                    <label for="mail" id="mail">
+                    <label for="mail">
                         Email :
                     </label>
                     <input type="email" id="mail" name="email" placeholder="Votre email :" value="<?php echo $email ?>"
@@ -56,14 +56,14 @@
                 </div>
                 <div class="form-duo">
                     <div class="colonneCreationCompte">
-                        <label for="identifiantCrea" id="identifiantCrea">
+                        <label for="identifiantCrea">
                             Identifiant :
                         </label>
                         <input type="text" id="identifiantCrea" name="login" placeholder="Votre identifiant :" value="<?php echo $login ?>"
                                required>
                     </div>
                     <div class="colonneCreationCompte">
-                        <label for="mdpCrea" id="mdpCrea">
+                        <label for="mdpCrea">
                             Mot de passe :
                         </label>
                         <input type="password" id="mdpCrea" name="mdp" placeholder="Votre mot de passe :" value="<?php echo $mdp ?>"
@@ -92,7 +92,7 @@
         <div class="formulaire connexion">
             <form method="get" action="/Festiplan/FestiplanWeb">
                 <div class="colonneCreationCompte">
-                    <label for="identifiant" id="identifiant">
+                    <label for="identifiant">
                         Identifiant
                     </label>
                     <input type="text" id="identifiant" name="login"
@@ -101,7 +101,7 @@
                            required>
                 </div>
                 <div class="colonneCreationCompte">
-                    <label for="mdp" id="mdp">
+                    <label for="mdp">
                         Mot de passe
                     </label>
                     <input type="password" id="mdp" name="mdp"

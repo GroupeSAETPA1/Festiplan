@@ -30,6 +30,8 @@ class UserController {
         $view->setVar('login', $login);
         $view->setVar('displayInscription', false);
         $view->setVar('displayLoginError', false);
+        $view->setVar('displayInscriptionError', false);
+        $view->setVar('errorMessage', "");
         return $view;
     }
 
@@ -48,12 +50,25 @@ class UserController {
 
         $view = null;
         try {
-            // Si l'utilisateur n'existe pas, on le crée
-            if (!$this->userService->utilisateurExiste($pdo, $email, $mdp)) {
-                // TODO mettre les infos du dashboard de l'utilisateur
-                $view = new View("/views/dashboard");
-            // Si l'utilisateur existe déja, on affiche un message d'erreur
+            if ($nom != "" && $prenom != "" && $email != "" && $mdp == "" && $login = "" ) {
+                // Si l'utilisateur n'existe pas, on le crée
+                if (!$this->userService->utilisateurExiste($pdo, $email, $mdp)) {
+                    $view = new View("/views/dashboard");
+                // Si l'utilisateur existe déja, on affiche un message d'erreur
+                } else {
+                    $view = new View("/views/index");
+                    $view->setVar('errorMessage', "Erreur d'inscription : Un utilisateur existe déja avec cet email et ce login");
+                    $view->setVar('nom', $nom);
+                    $view->setVar('prenom', $prenom);
+                    $view->setVar('email', $email);
+                    $view->setVar('mdp', $mdp);
+                    $view->setVar('login', $login);
+                    $view->setVar('displayInscription', true);
+                    $view->setVar('displayInscriptionError', true);
+                    $view->setVar('displayLoginError', false);
+                }
             } else {
+                // TODO enlever la répétission
                 $view = new View("/views/index");
                 $view->setVar('nom', $nom);
                 $view->setVar('prenom', $prenom);
@@ -61,10 +76,12 @@ class UserController {
                 $view->setVar('mdp', $mdp);
                 $view->setVar('login', $login);
                 $view->setVar('displayInscription', true);
-                $view->setVar('displayLoginError', true);
+                $view->setVar('displayInscriptionError', true);
+                $view->setVar('displayLoginError', false);
+                $view->setVar('errorMessage', "Erreur d'inscription : Un des champs requis n'est pas rempli");
             }
         } catch (\PDOException $e) {
-            $view->setVar('error', "Erreur d'inscription : " . $e->getMessage());
+            $view->setVar('errorMessage', "Erreur d'inscription : " . $e->getMessage());
         }
         return  $view;
     }
