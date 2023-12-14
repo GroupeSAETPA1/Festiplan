@@ -96,8 +96,8 @@
         </div>
 
         <div class="babou">
-            <div class="butSpec">
-                <button class="annul">Annuler vos choix </button>
+            <div class="annulChoix">
+                Annuler vos choix  <!-- TODO fontawesome -->
             </div>
             <div class="butSpec">
                 <a href="createFestival2.php"><button class="valid">Page Suivante</button></a>

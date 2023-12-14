@@ -45,7 +45,7 @@
                         <input class="text" type="text" id="rechercheOrga" name="rechercheOrga"
                                placeholder="Entrez le nom d'un organisateur"/>
                     </div>
-                    <div class="ajouterOrga">
+                    <div class="ajouter">
                                 Ajouter l'organisateur + <!-- TODO fontawesome -->
                     </div>
 
@@ -57,8 +57,8 @@
         </div>
 
         <div class="babou">
-            <div class="butSpec">
-                <button class="annul">Annuler vos choix </button>
+            <div class="annulChoix">
+                Annuler vos choix  <!-- TODO fontawesome -->
             </div>
             <div class="butSpec">
                 <a href="createFestival3.php"><button class="valid">Page suivante </button></a>

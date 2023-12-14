@@ -109,7 +109,7 @@
   padding: 2vh;
 }
 
-.ajouterOrga{
+.ajouter{
   padding: 10px 25px;
   font-size: 1rem;
   text-align: center;
@@ -121,7 +121,7 @@
   border-radius: 30px ;
   margin-left: 3vh;
 }
-.ajouterOrga:hover {
+.ajouter:hover {
   background-color: darken($light-blue,5);
   scale: 1.05;
 
@@ -140,6 +140,23 @@
     margin-left: 3vh;
 }
 .suppOrga:hover {
+  background-color: darken($orange,5);
+  scale: 1.05;
+}
+
+.annulChoix{
+  padding: 10px 25px;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  background-color: $orange;
+  transition: background-color 0.3s ease;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 30px ;
+  margin-left: 3vh;
+}
+.annulChoix:hover {
   background-color: darken($orange,5);
   scale: 1.05;
 }
