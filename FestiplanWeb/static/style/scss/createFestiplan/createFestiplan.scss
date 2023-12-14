@@ -52,6 +52,7 @@ header {
 .proot{
   display: flex;
   flex-direction: row;
+  align-items: flex-end;
 }
 
 .babou{
@@ -71,6 +72,12 @@ hr {
   margin-bottom: 10vh;
   width: 100vh;
 }
+
+.fa-circle-exclamation {
+  color: red;
+  margin: 0.5vh;
+}
+
 
 
 

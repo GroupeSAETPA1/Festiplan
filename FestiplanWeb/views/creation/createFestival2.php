@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="../../static/style/css/createFestiplan/button.css">
         <link rel="stylesheet" href="../../static/style/css/createFestiplan/image.css">
         <link rel="stylesheet" href="../../static/style/css/createFestiplan/input.css">
-        <!--<link rel="stylesheet" href="../../static/style/css/footer.css">-->
+        <link rel="stylesheet" href="../../static/style/css/footer.css">
 
         <link rel="stylesheet" href="../../../framework/fontawesome-free-6.2.1-web/css/all.css">
 
@@ -32,35 +32,39 @@
         </div>
         <div class="wrapper">
             <div class="container">
-                <div class="proot">
-                    <div>
-                        <h3> Organisateur : </h3>
-                        <input class="text" type="text " id="rechercheOrga" name="rechercheOrga"
-                               placeholder="Entrez le nom d'un organisateur"/>
-                    </div>
-                    <div class="butSpec">
-                        <button class="ajoutS">Ajouter l'organisateur +</button>
-                    </div>
-                    <div class="butSpec">
-                        <button class="supp">Supprimer un organisateur</button>
-                    </div>
+
+                <div class="respon">
+                    <h3> <i class="fa-solid fa-circle-exclamation"></i>Responsable :</h3>
+                    <input class="text" type="text" id="rechercheRespon" name="rechercheRespon"
+                           placeholder="Entrez le nom du Responsable"/>
                 </div>
 
-                <div>
-                    <h3>Responsable :</h3>
-                    <input class="text" type="text " id="rechercheRespon" name="rechercheRespon"
-                           placeholder="Entrez le nom du Responsable"/>
+                <div class="proot">
+                    <div>
+                        <h3> <i class="fa-solid fa-circle-exclamation"></i>Organisateur : </h3>
+                        <input class="text" type="text" id="rechercheOrga" name="rechercheOrga"
+                               placeholder="Entrez le nom d'un organisateur"/>
+                    </div>
+                    <div class="ajouter">
+                                Ajouter l'organisateur + <!-- TODO fontawesome -->
+                    </div>
+
+                    <div class="suppOrga">
+                        Supprimer Organisateur - <!-- TODO fontawesome -->
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="babou">
-            <div class="butSpec">
-                <button class="annul">Annuler</button>
+            <div class="annulChoix">
+                Annuler vos choix  <!-- TODO fontawesome -->
             </div>
             <div class="butSpec">
                 <a href="createFestival3.php"><button class="valid">Page suivante </button></a>
             </div>
         </div>
+        <?php
+        include_once "../../static/components/footer/footer-absolute.php" ?>
     </body>
 </html>

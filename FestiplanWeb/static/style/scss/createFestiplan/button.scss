@@ -1,3 +1,5 @@
+@import '../main';
+
 .retour{
   line-height: 2;
   padding: 0 20px;
@@ -105,4 +107,56 @@
 
 .ret {
   padding: 2vh;
+}
+
+.ajouter{
+  padding: 10px 25px;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  background-color: $light-blue;
+  transition: background-color 0.3s ease;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 30px ;
+  margin-left: 3vh;
+}
+.ajouter:hover {
+  background-color: darken($light-blue,5);
+  scale: 1.05;
+
+}
+
+.suppOrga{
+    padding: 10px 25px;
+    font-size: 1rem;
+    text-align: center;
+    cursor: pointer;
+    background-color: $orange;
+    transition: background-color 0.3s ease;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 30px ;
+    margin-left: 3vh;
+}
+.suppOrga:hover {
+  background-color: darken($orange,5);
+  scale: 1.05;
+}
+
+.annulChoix{
+  padding: 10px 25px;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  background-color: $orange;
+  transition: background-color 0.3s ease;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 30px ;
+  margin-left: 3vh;
+}
+.annulChoix:hover {
+  background-color: darken($orange,5);
+  scale: 1.05;
 }

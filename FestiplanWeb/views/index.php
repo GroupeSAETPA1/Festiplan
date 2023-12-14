@@ -27,7 +27,7 @@
     <!-- Jquery CDN -->
     <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
     <!-- JS -->
-    <script src="../static/scripts/index.js" type="module" defer></script>
+    <script src="../static/scripts/index.js"></script>
 
 </head>
 <body>
