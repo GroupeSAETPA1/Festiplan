@@ -27,8 +27,8 @@
             </div>
         </header>
 
-        <div class="ret">
-            <a href="createFestival.php"><button class="retour"><i class="fa-solid fa-arrow-left"></i> Retour</button></a>
+        <div class="retour">
+            <a href="createFestival.php"><button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button></a>
         </div>
         <div class="wrapper">
             <div class="container">
@@ -39,29 +39,29 @@
                            placeholder="Entrez le nom du Responsable"/>
                 </div>
 
-                <div class="proot">
+                <div class="flex-row">
                     <div>
                         <h3> <i class="fa-solid fa-circle-exclamation"></i>Organisateur : </h3>
                         <input class="text" type="text" id="rechercheOrga" name="rechercheOrga"
                                placeholder="Entrez le nom d'un organisateur"/>
                     </div>
                     <div class="ajouter">
-                                Ajouter l'organisateur + <!-- TODO fontawesome -->
+                                Ajouter l'organisateur <i class="fa-solid fa-plus"></i> <!-- TODO fontawesome -->
                     </div>
 
                     <div class="suppOrga">
-                        Supprimer Organisateur - <!-- TODO fontawesome -->
+                        Supprimer Organisateur <i class="fa-solid fa-delete-left"></i> <!-- TODO fontawesome -->
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="babou">
+        <div class="valid-annul-placement">
             <div class="annulChoix">
-                Annuler vos choix  <!-- TODO fontawesome -->
+                <i class="fa-regular fa-circle-xmark"></i>Annuler vos choix  <!-- TODO fontawesome -->
             </div>
-            <div class="butSpec">
-                <a href="createFestival3.php"><button class="valid">Page suivante </button></a>
+            <div class="button-flex-end">
+                <a href="createFestival3.php"><button class="valid">Page suivante <i class="fa-solid fa-arrow-right"></i> </button></a>
             </div>
         </div>
         <?php

@@ -28,15 +28,15 @@
             </div>
         </header>
 
-        <div class="ret">
-            <button class="retour"><i class="fa-solid fa-arrow-left"></i> Retour</button>
+        <div class="retour">
+            <button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button>
         </div>
         <div class="wrapper">
             <div class="container">
 
 
                 <!-- Premier paquet pour le premier cube d'information-->
-                <div class="proot">
+                <div class="flex-row">
                     <!-- Contient un premier bloc avec le nom, les dates de début et de fin -->
                     <div class="NDD">
                         <div>
@@ -56,7 +56,7 @@
                         </div>
                     </div>
 
-                    <div class="Descr">
+                    <div class="Description">
                         <!-- Contient un second bloc avec la description et qui se situe au cote a cote avec le premier bloc -->
                         <div>
 
@@ -68,14 +68,14 @@
 
 
                 <!-- Second paquet qui va contenir le champ d'entrée d'image-->
-                <div class="proot">
+                <div class="flex-row">
                     <div class="custom-file-input-wrapper">
                         <h3 class="custom-file-input-text">Illustration :</h3></br>
-                        <label class="custom-file-input" for="fileInput">Parcourir</label>
+                        <label class="custom-file-input" for="fileInput"><i class="fa-solid fa-image"></i>Parcourir</label>
                         <input type="file" id="fileInput" name="fileInput" />
                     </div>
                     <div class="format">
-                        <br>Format PNG,JPG,</br>
+                        <br>Format PNG,JPG,GIF</br>
                         <br>800x600</br>
                     </div>
                 </div>
@@ -95,12 +95,12 @@
             </div>
         </div>
 
-        <div class="babou">
+        <div class="valid-annul-placement">
             <div class="annulChoix">
-                Annuler vos choix  <!-- TODO fontawesome -->
+                <i class="fa-regular fa-circle-xmark"></i>Annuler vos choix  <!-- TODO fontawesome -->
             </div>
-            <div class="butSpec">
-                <a href="createFestival2.php"><button class="valid">Page Suivante</button></a>
+            <div class="button-flex-end">
+                <a href="createFestival2.php"><button class="valid">Page Suivante<i class="fa-solid fa-arrow-right"></i></button></a>
             </div>
         </div>
 

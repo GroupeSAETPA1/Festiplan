@@ -27,14 +27,14 @@
             </div>
         </header>
 
-        <div class="ret">
-            <a href="createFestival2.php"><button class="retour"><i class="fa-solid fa-arrow-left"></i> Retour</button></a>
+        <div class="retour">
+            <a href="createFestival2.php"><button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button></a>
         </div>
 
         <div class="wrapper">
             <div class="container">
 
-            <div class="proot">
+            <div class="flex-row">
                 <div>
                     <h3><i class="fa-solid fa-circle-exclamation"></i>Spectacle :</h3>
                     <select>
@@ -42,12 +42,12 @@
                         <option value="descriauds">Descriaud's pectacle</option>
                     </select>
                 </div>
-                <div class="butSpec">
-                    <button class="ajoutS">Ajouter un spectacle +</button>
+                <div class="ajouter">
+                    Ajouter un Spectacle  <i class="fa-solid fa-plus"></i> <!-- TODO fontawesome -->
                 </div>
             </div>
 
-            <div class="proot">
+            <div class="flex-row">
                 <div>
                     <h3><i class="fa-solid fa-circle-exclamation"></i>Scène :</h3>
                     <select>
@@ -59,23 +59,23 @@
                         <option value="film">film</option>
                     </select>
                 </div>
-                <div class="butSpec">
-                    <button class="ajoutS">Ajouter une Scène +</button>
+                <div class="ajouter">
+                    Ajouter une Scène<i class="fa-solid fa-plus"></i>  <!-- TODO fontawesome -->
                 </div>
             </div>
             </div>
             </div>
 
-            <div class="babou">
-                <button class="ajoutGrij">Ajouter une GRIJ</button>
+            <div class="valid-annul-placement">
+                <button class="ajoutGrij">Générer une GRIJ</button>
             </div>
 
-        <div class="babou">
+        <div class="valid-annul-placement">
             <div class="annulChoix">
-                Annuler vos choix  <!-- TODO fontawesome -->
+                <i class="fa-regular fa-circle-xmark"></i>Annuler vos choix  <!-- TODO fontawesome -->
             </div>
-            <div class="butSpec">
-                <button class="valid">Valider</button>
+            <div class="button-flex-end">
+                <button class="valid">Valider <i class="fa-solid fa-check"></i></button>
             </div>
         </div>
         <?php
