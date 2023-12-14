@@ -37,7 +37,7 @@ var_dump($_GET);
     <div class="ret">
         <button class="retour"><i class="fa-solid fa-arrow-left"></i> Retour</button>
     </div>
-    <form method="post" action="/Festiplan/FestiplanWeb" enctype="multipart/form-data">
+    <form method="post" action="index.php" enctype="multipart/form-data">
         <div class="wrapper">
             <div class="container">
 
