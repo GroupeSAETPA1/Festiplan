@@ -52,6 +52,7 @@ header {
 .proot{
   display: flex;
   flex-direction: row;
+  align-items: flex-end;
 }
 
 .babou{
@@ -77,9 +78,7 @@ hr {
   margin: 0.5vh;
 }
 
-.respon{
-  margin: 10vh;
-}
+
 
 
 

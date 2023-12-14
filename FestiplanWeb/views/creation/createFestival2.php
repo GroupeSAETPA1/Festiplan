@@ -32,24 +32,26 @@
         </div>
         <div class="wrapper">
             <div class="container">
-                <div class="proot">
-                    <div>
-                        <h3> <i class="fa-solid fa-circle-exclamation"></i>Organisateur : </h3>
-                        <input class="text" type="text " id="rechercheOrga" name="rechercheOrga"
-                               placeholder="Entrez le nom d'un organisateur"/>
-                    </div>
-                    <div class="butSpec">
-                        <button class="ajoutS">Ajouter l'organisateur +</button>
-                    </div>
-                    <div class="butSpec">
-                        <button class="supp">Supprimer un organisateur</button>
-                    </div>
-                </div>
 
                 <div class="respon">
                     <h3> <i class="fa-solid fa-circle-exclamation"></i>Responsable :</h3>
-                    <input class="text" type="text " id="rechercheRespon" name="rechercheRespon"
+                    <input class="text" type="text" id="rechercheRespon" name="rechercheRespon"
                            placeholder="Entrez le nom du Responsable"/>
+                </div>
+
+                <div class="proot">
+                    <div>
+                        <h3> <i class="fa-solid fa-circle-exclamation"></i>Organisateur : </h3>
+                        <input class="text" type="text" id="rechercheOrga" name="rechercheOrga"
+                               placeholder="Entrez le nom d'un organisateur"/>
+                    </div>
+                    <div class="ajouterOrga">
+                                Ajouter l'organisateur + <!-- TODO fontawesome -->
+                    </div>
+
+                    <div class="suppOrga">
+                        Supprimer Organisateur - <!-- TODO fontawesome -->
+                    </div>
                 </div>
             </div>
         </div>

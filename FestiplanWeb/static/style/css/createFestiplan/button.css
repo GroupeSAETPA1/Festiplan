@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"); /* declaration des variables */
+/* ne codez pas ici, c'est le fichier pour les variables, etc. */
 .retour {
   line-height: 2;
   padding: 0 20px;
@@ -99,6 +101,42 @@
 
 .ret {
   padding: 2vh;
+}
+
+.ajouterOrga {
+  padding: 10px 25px;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  background-color: #99E1D9;
+  transition: background-color 0.3s ease;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 30px;
+  margin-left: 3vh;
+}
+
+.ajouterOrga:hover {
+  background-color: #85dbd2;
+  scale: 1.05;
+}
+
+.suppOrga {
+  padding: 10px 25px;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  background-color: #F7A072;
+  transition: background-color 0.3s ease;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 30px;
+  margin-left: 3vh;
+}
+
+.suppOrga:hover {
+  background-color: #f6905a;
+  scale: 1.05;
 }
 
 /*# sourceMappingURL=button.css.map */

@@ -50,6 +50,7 @@ header .logo i {
 .proot {
   display: flex;
   flex-direction: row;
+  align-items: flex-end;
 }
 
 .babou {
@@ -73,10 +74,6 @@ hr {
 .fa-circle-exclamation {
   color: red;
   margin: 0.5vh;
-}
-
-.respon {
-  margin: 10vh;
 }
 
 /*# sourceMappingURL=createFestiplan.css.map */
