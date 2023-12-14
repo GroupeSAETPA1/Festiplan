@@ -13,6 +13,7 @@ class UserController {
     private UserService $userService;
 
     public function __construct(UserService $userService) {
+        session_start();
         $this->userService = $userService;
     }
 
@@ -63,7 +64,7 @@ class UserController {
                 $view->setVar('displayLoginError', true);
             }
         } catch (\PDOException $e) {
-            $view->setVar('error', "Il y a une erreure :" . $e->getMessage());
+            $view->setVar('error', "Erreur d'inscription : " . $e->getMessage());
         }
         return  $view;
     }
@@ -73,11 +74,11 @@ class UserController {
      * @param $pdo pdo le pdo de l'application
      * @return View la vue dashboard si on arrive a se connecter, la vue index avec une erreure sinon
      */
-   public function connexion($pdo): View {
-      // Connecte l'utilisateur
+    public function connexion($pdo): View {
+        // Connecte l'utilisateur
 
-      $mdp =  htmlspecialchars(HttpHelper::getParam('mdp') ?: "");
-      $login =  htmlspecialchars(HttpHelper::getParam('login') ?: "");
+        $mdp =  htmlspecialchars(HttpHelper::getParam('mdp') ?: "");
+        $login =  htmlspecialchars(HttpHelper::getParam('login') ?: "");
 
       $view = null;
       try {
@@ -85,17 +86,26 @@ class UserController {
           if ($login != "" || $mdp != "") {
               if ($this->userService->utilisateurExiste($pdo, $mdp, $login)) {
                   $view = new View("/views/dashboard");
-                  $this->userService->connexion($pdo, $mdp, $login);
+                  $resultatRequete = $this->userService->connexion($pdo, $mdp, $login);
+                  while ($ligne=$resultatRequete->fetch()) {
+                    // Stockage dans les variables de session les attributs de l'utilisateur
+                    $_SESSION['connecte']= true;
+                    $_SESSION['id_utilisateur']= $ligne->id_utilisateur;
+                    $_SESSION['nom']= $ligne->nom;
+                    $_SESSION['prenom']= $ligne->prenom;
+                    }
                   $displayLoginError = false;
               } else {
                   $displayLoginError = true;
+                  $view->setVar('errorMessage', "Erreur de connexion : L'identifiant ou le mot de passe ne sont pas valides");
               }
           } else {
               $displayLoginError = true;
+              $view->setVar('errorMessage', "Erreur de connexion : Le login et le mot de passe ne doivent pas etre vides");
           }
       } catch (\PDOException $e ) {
           $displayLoginError = true;
-          $view->setVar('error', "Il y a une erreure :" . $e->getMessage());
+          $view->setVar('errorMessage', "Erreur de connexion : " . $e->getMessage());
       }
        $view->setVar('displayLoginError', $displayLoginError);
        $view->setVar('mdp', $mdp);

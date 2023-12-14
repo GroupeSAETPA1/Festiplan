@@ -108,6 +108,10 @@
                            value="<?php echo $mdp ?>"
                            required>
                 </div>
+                    
+                    <div <?php if($displayLoginError) {echo "";} else {echo "hidden";}?>>
+                        <?php echo $errorMessage; ?>
+                    </div>
                 <div id="switchToSignup" class="creerCompte">Créer un compte <i class="fa-solid fa-arrow-right"></i></div>
                 <input type="submit" class="boutonConnexion" value="Me Connecter">
                 <input hidden name="action" value="connexion">

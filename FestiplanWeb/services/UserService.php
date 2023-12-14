@@ -3,6 +3,7 @@ namespace services;
 
 use PDO;
 use PDOException;
+use PDOStatement;
 
 class UserService {
 
@@ -45,23 +46,18 @@ class UserService {
      * @param $pdo pdo le pdo de l'application
      * @param $mdp string le mot de passe de l'utillisateur a connecter
      * @param $login string le login de l'utillisateur a connecter
-     * @return void
+     * @return PDOStatement
      */
-    public function connexion($pdo, $mdp, $login): void {
+    public function connexion($pdo, $mdp, $login):PDOStatement {
         // Vérifie si l'utilisateur existe
         // Renvoie vrai ou faux en fonction si l'utilisateur a été trouvé.
-        $requeteUtilisateurExiste = $pdo->prepare("SELECT DISTINCT nom, prenom FROM utilisateurs WHERE login = :login AND mdp = :mdp");
-        $requeteUtilisateurExiste->bindParam(':login', $login);
-        $requeteUtilisateurExiste->bindParam(':mdp', $mdp);
+        $requeteConnexionUtilisateur = $pdo->prepare("SELECT DISTINCT id_utilisateur, nom, prenom FROM utilisateurs WHERE login = :login AND mdp = :mdp");
+        $requeteConnexionUtilisateur->bindParam(':login', $login);
+        $requeteConnexionUtilisateur->bindParam(':mdp', $mdp);
 
-        $requeteUtilisateurExiste->execute();
-        $requeteUtilisateurExiste->setFetchMode(PDO::FETCH_OBJ);
-        while ($ligne=$requeteUtilisateurExiste->fetch()) {
-            // Stockage dans les variables de session les attributs de l'utilisateur
-            $_SESSION['connecte']= true ;
-            $_SESSION['nom']= $ligne->nom;
-            $_SESSION['prenom']= $ligne->prenom;
-        }
+        $requeteConnexionUtilisateur->execute();
+        $requeteConnexionUtilisateur->setFetchMode(PDO::FETCH_OBJ);
+        return $requeteConnexionUtilisateur;
     }
 
     /**
@@ -69,8 +65,6 @@ class UserService {
      * @return void
      */
     public function deconnexion(): void {
-        $_SESSION['connecte']= false;
-        $_SESSION['nom']= "User";
-        $_SESSION['prenom']= "Unknown";
+        session_destroy();
     }
 }
