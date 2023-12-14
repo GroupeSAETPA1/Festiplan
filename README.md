@@ -1,6 +1,6 @@
 <h1 align="center">SAE S.A.01 - Projet Web : Festiplan </h1>
 
-
+[![CodeFactor](https://www.codefactor.io/repository/github/groupesaetpa1/festiplan/badge/main)](https://www.codefactor.io/repository/github/groupesaetpa1/festiplan/overview/main)
 
 ### Description :
 
@@ -21,12 +21,12 @@ concerts) sur les différentes scènes mise à disposition par les organisateurs
 
 Pour la répartition des rôles, ceux-ci changent a chaque itérations : 
 
-|             | quentin       | neo           | tom           | françois      | lucas         |
+|             | Quentin       | Néo           | Tom           | François      | Lucas         |
 |-------------|---------------|---------------|---------------|---------------|---------------|
-| itération 0 | product owner | SCRUM master  | développeur   | développeur   | product owner |
-| itération 1 | développeur   | dédveloppeur  | product owner | développeur   | SCRUM master  |
-| itération 2 | SCRUM master  | product owner | dédveloppeur  | développeur   | dédveloppeur  |
-| itération 3 | développeur   | product owner | SCRUM master  | product owner | product owner |
+| Itération 0 | product owner | SCRUM master  | développeur   | développeur   | product owner |
+| Itération 1 | développeur   | dédveloppeur  | product owner | développeur   | SCRUM master  |
+| Itération 2 | SCRUM master  | product owner | dédveloppeur  | développeur   | dédveloppeur  |
+| Itération 3 | développeur   | product owner | SCRUM master  | product owner | product owner |
 
 ### Board Agile :
 
