@@ -1,6 +1,6 @@
 <h1 align="center">SAE S.A.01 - Projet Web : Festiplan </h1>
 
-
+[![CodeFactor](https://www.codefactor.io/repository/github/groupesaetpa1/festiplan/badge/main)](https://www.codefactor.io/repository/github/groupesaetpa1/festiplan/overview/main)
 
 ### Description :
 
