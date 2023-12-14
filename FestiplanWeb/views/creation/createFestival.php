@@ -1,10 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
-
-<?php
-var_dump($_POST);
-var_dump($_GET);
-?>
+<html lang="fr">    
 
 <head>
     <meta charset="utf-8">
@@ -110,19 +105,19 @@ var_dump($_GET);
         </div>
         <input hidden name="action" value="validerCreationFestival">
         <input hidden name="controller" value="CreateFestival">
-        <button type="submit">Envoyer !!</button>
-    </form>
-    <footer>
-        <!-- Attendre que Quentin l'ai fait -->
-    </footer>
+
 
     <div class="babou">
         <div class="butSpec">
             <button class="annul">Annuler</button>
         </div>
-        <div class="butSpec">
+
+        <button type="submit" class="valid">Page suivante</button>
+
+        </form>
+        <!-- <div class="butSpec">
             <a href="createFestival2.php"><button class="valid">Page Suivante</button></a>
-        </div>
+        </div> -->
     </div>
 
     <?php

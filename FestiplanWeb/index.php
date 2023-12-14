@@ -6,6 +6,7 @@ require $_SERVER[ 'DOCUMENT_ROOT' ] . PREFIX_TO_RELATIVE_PATH . '/lib/vendor/aut
 use application\DefaultComponentFactory;
 use yasmf\DataSource;
 use yasmf\Router;
+use yasmf\HttpHelper;
 
 $dbConfig = require 'dbconfig.php';
 
@@ -17,6 +18,7 @@ $data_source = new DataSource(
     $dbConfig['db_pass'],
     $dbConfig['db_charset']
 );
+
 
 $router = new Router(new DefaultComponentFactory()) ;
 $router->route(PREFIX_TO_RELATIVE_PATH,$data_source);
