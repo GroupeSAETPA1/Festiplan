@@ -70,7 +70,7 @@
                     <div class="custom-file-input-wrapper">
                         <h3 class="custom-file-input-text">Illustration :</h3></br>
                         <label class="custom-file-input" for="fileInput">Parcourir</label>
-                        <input type="file" id="fileInput" name="fileInput" />
+                        <input type="file" id="fileInput" name="imageFestival" />
                     </div>
                     <div class="format">
                         <br>Format PNG,JPG,</br>

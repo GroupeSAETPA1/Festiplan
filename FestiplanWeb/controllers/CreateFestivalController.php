@@ -28,19 +28,18 @@ class CreateFestivalController {
 
     public function validerCreationFestival()
     {
-        //$this->photo();
-        //var_dump($_POST);
-        $tousOk = //$this->nomOk(HttpHelper::getParam("nom"))
-                  //&& $this->descriptionOk(HttpHelper::getParam("description"));
-                  //&& 
-                  $this->dateOk(HttpHelper::getParam("ddd"), HttpHelper::getParam("ddf"));
+        $this->photo();
+        $tousOk = $this->nomOk(HttpHelper::getParam("nom"))
+                  && $this-> descriptionOk(HttpHelper::getParam("description"));
+                  && $this-> dateOk(HttpHelper::getParam("ddd"), HttpHelper::getParam("ddf"))
+                  && $this-> photoOk(HttpHelper::getParam("nom"));
         //$this->photo();
        // return $tousOk;
-       if($tousOk) {
-           $view = new View("views/creation/createFestival2");
-       } else {
+       //if($tousOk) {
+       //    $view = new View("views/creation/createFestival2");
+       //} else {
            $view = new View("views/creation/createFestival");
-       }
+       //}
        return $view;
     }
 
@@ -56,23 +55,25 @@ class CreateFestivalController {
 
     public function dateOk(mixed $ddd, mixed $ddf)
     {
-        $debut = DateTime::createFromFormat('d/m/Y' , $ddd);
-        $fin = DateTime::createFromFormat('/d/m/Y' , $ddf);
-        var_dump($debut);
-        var_dump($fin);
-        return $debut < $fin ;
+        $debut = DateTime::createFromFormat('Y-m-d' , $ddd);
+        $fin = DateTime::createFromFormat('Y-m-d' , $ddf);
+        return $debut <= $fin ;
     }
 
-    public function photo() {
-        //var_dump($_FILES);
-        $file = $_FILES['fileInput'];
-
-        $fileName = $file['name'];
-        $fileTmpName = $file['tmp_name'];
-        $fileSize = $file['size'];
-        $fileError = $file['error'];
-        var_dump($fileName);
-        var_dump($fileTmpName);
-        //var_dump(file_get_contents($fileTmpName));
+    public function photoOk($nomFestival) {
+        //photo ajoute
+        if (isset($_FILES['imageFestival'])) {
+            $dossier = $_SERVER[ 'DOCUMENT_ROOT' ] . PREFIX_TO_RELATIVE_PATH . '/datas/img';
+            var_dump($fichier);
+            $nouveau_nom = $nomFestival."_image".time().$extension;
+            if (move_uploaded_file($_FILES['imageFestival']['tmp_name'] , $dossier."/".$nouveau_nom)) { 
+                return true ; 
+            } else { 
+                return false; 
+            }
+        // photo non ajouté
+        } else {
+            return true ;
+        }
     }
 }

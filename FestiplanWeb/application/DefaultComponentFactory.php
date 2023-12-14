@@ -71,6 +71,7 @@ class DefaultComponentFactory implements ComponentFactory
             "User" => $this->buildUserService(),
             "Session" => $this->buildSessionService(),
             "Dashboard" => $this->buildDashboardService(),
+            "CreateFestival" => $this->buildCreateFestivalService() , 
             default => throw new NoServiceAvailableForNameException($service_name)
         };
     }
