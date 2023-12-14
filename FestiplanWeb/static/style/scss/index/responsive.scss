@@ -6,25 +6,24 @@
   }
   .presentation {
     text-align: center;
+    margin-bottom: 25px;
     i {
-    font-size: 10vh;
+      font-size: 10vh;
+      padding-top: 55px;
     }
     .titre {
-    font-size: 50px;
+      font-size: 50px;
     }
     p {
-    font-size: 2vh;
-      }
+      font-size: 2vh;
+    }
+    p {
+      display: none;
+    }
   }
   .partiePrincipale {
     padding: 25px;
     justify-content: normal;
-  }
-  .presentation {
-    margin-bottom: 25px;
-    p {
-      display: none;
-    }
   }
   .connexion form {
     width: 100%;
@@ -36,6 +35,15 @@
 
 @media screen and (max-width: 600px) {
   .form-duo {
-    flex-direction: row;
+    flex-direction: column;
+  }
+  .creationCompte {
+    width: 75%;
+  }
+  .boutonCreation {
+    width: 50%;
+  }
+  .colonneCreationCompte {
+    width: 100%;
   }
 }

@@ -40,13 +40,13 @@
   row-gap: 20px;
 }
 
-#switchToSignup {
+.switchForm {
   text-align: center;
   margin-top: 10px;
   font-size: 20px;
   color: #F7A072;
 }
-#switchToSignup:hover {
+.switchForm:hover {
   cursor: pointer;
   text-decoration: underline #F7A072;
 }
@@ -69,9 +69,11 @@
   width: 500px;
 }
 .creationCompte .form-duo {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+.creationCompte .form-duo > div {
+  width: 45%;
 }
 .creationCompte button {
   padding: 10px;

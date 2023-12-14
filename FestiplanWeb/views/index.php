@@ -71,14 +71,10 @@
                     </div>
                 </div>
                 <div class="form-duo">
-                    <!-- TODO : changer en faux bouton -->
-                    <button class="retour">
-                        <i class="fa-solid fa-arrow-left"></i>
-                        Retour
-                    </button>
+                    <div id="switchToSLogin" class="switchForm"><i class="fa-solid fa-arrow-left"></i>Se connecter</div>
                     <input type="submit" class="boutonCreation" value="Créer le compte">
-                    <input hidden name="action" value="inscription">
                 </div>
+                <input hidden name="action" value="inscription">
             </form>
         </div>
         <div class="presentation">
@@ -109,7 +105,7 @@
                            value="<?php echo $mdp ?>"
                            required>
                 </div>
-                <div id="switchToSignup" class="creerCompte">Créer un compte <i class="fa-solid fa-arrow-right"></i></div>
+                <div id="switchToSignup" class="switchForm">Créer un compte <i class="fa-solid fa-arrow-right"></i></div>
                 <input type="submit" class="boutonConnexion" value="Me Connecter">
                 <input hidden name="action" value="connexion">
             </form>

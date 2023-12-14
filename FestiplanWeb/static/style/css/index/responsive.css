@@ -6,9 +6,11 @@
   }
   .presentation {
     text-align: center;
+    margin-bottom: 25px;
   }
   .presentation i {
     font-size: 10vh;
+    padding-top: 55px;
   }
   .presentation .titre {
     font-size: 50px;
@@ -16,15 +18,12 @@
   .presentation p {
     font-size: 2vh;
   }
+  .presentation p {
+    display: none;
+  }
   .partiePrincipale {
     padding: 25px;
     justify-content: normal;
-  }
-  .presentation {
-    margin-bottom: 25px;
-  }
-  .presentation p {
-    display: none;
   }
   .connexion form {
     width: 100%;
@@ -35,7 +34,16 @@
 }
 @media screen and (max-width: 600px) {
   .form-duo {
-    flex-direction: row;
+    flex-direction: column;
+  }
+  .creationCompte {
+    width: 75%;
+  }
+  .boutonCreation {
+    width: 50%;
+  }
+  .colonneCreationCompte {
+    width: 100%;
   }
 }
 
