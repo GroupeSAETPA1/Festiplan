@@ -33,6 +33,7 @@ use yasmf\ComponentFactory;
 use yasmf\NoControllerAvailableForNameException;
 use yasmf\NoServiceAvailableForNameException;
 
+use PDO;
 /**
  *  The controller factory
  */
@@ -120,7 +121,12 @@ class DefaultComponentFactory implements ComponentFactory
     private function buildCreateFestivalService(): createFestivalService
     {
         if($this->createFestivalService == null) {
-            $this->createFestivalService = new createFestivalService();
+            // TODO recuperer le pdo
+            $pdo = $this->getPDO("root", "root");
+            var_dump($pdo);
+            echo "<br>Service : ";
+            var_dump($this->createFestivalService);
+            $this->createFestivalService = new createFestivalService($pdo);
         }
         return $this->createFestivalService;
     }
@@ -139,5 +145,24 @@ class DefaultComponentFactory implements ComponentFactory
         return new DashboardController($this->buildDashboardService());
     }
 
+    
+    /**
+     * À partir d'un nom d'utilisateur et de son mot de passe,
+     * renvoie la PDO associé
+     * @param $user
+     * @param $mdp
+     * @return PDO
+     */
+    public function getPDO($user, $mdp): PDO
+    {
+        $ds_name = "mysql:host=localhost;port=0;dbname=festiplan;charset=utf8mb4";
+        $options = [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false,
+            PDO::ATTR_PERSISTENT => true
+        ];
 
+        return new PDO($ds_name, $user, $mdp, $options);
+    }
 }

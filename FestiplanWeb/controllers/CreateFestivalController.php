@@ -23,23 +23,24 @@ class CreateFestivalController {
 
     public function index(PDO $pdo): View{
         $view = new View("views/creation/createFestival");
+        $this -> CreateFestivalService -> recupererCategorie();
+        $view -> setVar('createFestival' , $categorie);
         return $view;
     }
 
     public function validerCreationFestival()
     {
-        $this->photo();
         $tousOk = $this->nomOk(HttpHelper::getParam("nom"))
-                  && $this-> descriptionOk(HttpHelper::getParam("description"));
+                  && $this-> descriptionOk(HttpHelper::getParam("description"))
                   && $this-> dateOk(HttpHelper::getParam("ddd"), HttpHelper::getParam("ddf"))
                   && $this-> photoOk(HttpHelper::getParam("nom"));
-        //$this->photo();
-       // return $tousOk;
-       //if($tousOk) {
-       //    $view = new View("views/creation/createFestival2");
-       //} else {
+                  var_dump($tousOk);
+       //var_dump($tousOk);
+       if($tousOk) {
+           $view = new View("views/creation/createFestival2");
+       } else {
            $view = new View("views/creation/createFestival");
-       //}
+       }
        return $view;
     }
 
@@ -62,10 +63,15 @@ class CreateFestivalController {
 
     public function photoOk($nomFestival) {
         //photo ajoute
-        if (isset($_FILES['imageFestival'])) {
+        if (isset($_FILES['imageFestival']) && $_FILES['imageFestival']['name'] != '') {
             $dossier = $_SERVER[ 'DOCUMENT_ROOT' ] . PREFIX_TO_RELATIVE_PATH . '/datas/img';
-            var_dump($fichier);
+            try {
+                $extension = $this->recupererExtension($_FILES['imageFestival']['name']);
+            } catch (Exception) {
+                return false ;
+            }
             $nouveau_nom = $nomFestival."_image".time().$extension;
+            var_dump($nouveau_nom);
             if (move_uploaded_file($_FILES['imageFestival']['tmp_name'] , $dossier."/".$nouveau_nom)) { 
                 return true ; 
             } else { 
@@ -74,6 +80,20 @@ class CreateFestivalController {
         // photo non ajouté
         } else {
             return true ;
+        }
+    }
+
+    public function recupererExtension($nomFichier) {
+        $extensionsPossibles = array(
+            strtoupper('.jpg') , 
+            strtoupper('.jpeg') , 
+            strtoupper('.gif') , 
+            strtoupper('.png'));
+        $extensionFichier = strtoupper(strrchr($nomFichier , '.'));
+        if (in_array($extensionFichier , $extensionsPossibles)) {
+            return $extensionFichier;
+        } else {
+            throw new Exception("Extension de fichier non valide");
         }
     }
 }

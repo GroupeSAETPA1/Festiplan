@@ -65,7 +65,7 @@
                 <div class="custom-file-input-wrapper">
                     <h3 class="custom-file-input-text">Illustration :</h3></br>
                     <label class="custom-file-input" for="fileInput"><i class="fa-solid fa-image"></i>Parcourir</label>
-                    <input type="file" id="fileInput" name="imageFestival" />
+                    <input type="file" id="fileInput" name="imageFestival" accept=".jpg, .jpeg, .png, .gif" />
                 </div>
                 <div class="format">
                     <br>Format PNG,JPG,GIF</br>
@@ -75,6 +75,12 @@
             <div>
                 <h3> <i class="fa-solid fa-circle-exclamation"></i>Catégorie :</h3>
                 <select>
+                    <?php
+                    var_dump($categorie);
+                        foreach($categorie as $ligne) {
+                            //echo '<option value = "'.$ligne
+                        }
+                    ?>
                     <option value=" "></option>
                     <option value="concert">concert</option>
                     <option value="theatre">theatre</option>
@@ -89,8 +95,10 @@
         <div class="annulChoix">
             <i class="fa-regular fa-circle-xmark"></i>Annuler vos choix  <!-- TODO fontawesome -->
         </div>
+        <div class="button-flex-end">
+            <button type="submit" class="valid">Page Suivante<i class="fa-solid fa-arrow-right"></i></button>
+        </div>
     </div>
-    <button type="submit" class="valid">Page suivante</button>
     <input hidden name="action" value="validerCreationFestival">
     <input hidden name="controller" value="CreateFestival">
     </form>
