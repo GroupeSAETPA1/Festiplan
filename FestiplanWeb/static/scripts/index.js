@@ -44,7 +44,7 @@ $('#switchToSignup').click(function() {
         .play();
 });
 
-$('.retour').click(function() {
+$('#switchToSLogin').click(function() {
     // inverse de la fonction précédente
     const TL = gsap.timeline({paused: false});
 

@@ -6,7 +6,6 @@
   padding: 45px;
   box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
   color: white;
-
   label {
     margin-bottom: 5px;
   }
@@ -38,10 +37,12 @@
     display: flex;
     flex-direction: column;
     row-gap: 20px;
+    width: fit-content;
+
   }
 }
 
-#switchToSignup {
+.switchForm {
   text-align: center;
   margin-top: 10px;
   font-size: 20px;
@@ -66,15 +67,9 @@
 .creationCompte {
   opacity: 0;
   display: none;
-  transform: translate(-500px, 0);
-
-  form {
-    width: 500px;
-  }
   .form-duo {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 50px;
+    display: flex;
+    justify-content: space-between;
   }
   button {
     padding: 10px;
@@ -86,8 +81,13 @@
     background: $light-blue;
     color: $dark-grey;
   }
-  .retour {
-    background: $orange;
-    color: $dark-grey;
+  .lastSection {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+  .colonneCreationCompte {
+    width: 100%;
+    padding: 10px;
   }
 }

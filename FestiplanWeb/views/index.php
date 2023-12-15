@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/index/index.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/index/forms.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svg.css">
-    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/footer.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components\footer.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/index/responsive.css">
 
     <!-- Font Awesome -->
@@ -24,7 +24,9 @@
     <script src="/Festiplan/node_modules/gsap/dist/gsap.min.js"></script>
     <script src="/Festiplan/node_modules/jquery/dist/jquery.min.js"></script>
     <!-- custom JS -->
-    <script src="/Festiplan/FestiplanWeb/static/scripts/index.js" defer></script
+    <!-- custom JS -->
+    <script src="/Festiplan/FestiplanWeb/static/scripts/index.js" defer></script>
+    <script src="/Festiplan/FestiplanWeb/static/scripts/indexResponsive.js" defer></script>
 </head>
 <body>
 <div class="app">
@@ -47,8 +49,8 @@
                                required>
                     </div>
                 </div>
-                <div class="colonneCreationCompte">
-                    <label for="mail">
+                <div class="colonneCreationCompte mail">
+                    <label for="mail" id="mail">
                         Email :
                     </label>
                     <input type="email" id="mail" name="email" placeholder="Votre email :" value="<?php echo $email ?>"
@@ -70,18 +72,12 @@
                                required>
                     </div>
                 </div>
-                <div class="form-duo">
-                    <div <?php if(isset($displaySignInError) && $displaySignInError) {echo "";} else {echo "hidden";}?>>
-                        <?php echo $errorMessage; ?>
-                    </div>
-                    <!-- TODO : changer en faux bouton -->
-                    <button class="retour">
-                        <i class="fa-solid fa-arrow-left"></i>
-                        Retour
-                    </button>
+                <div class="lastSection">
+                    <div id="switchToSLogin" class="switchForm"><i class="fa-solid fa-arrow-left"></i>Se connecter</div>
                     <input type="submit" class="boutonCreation" value="Créer le compte">
                     <input hidden name="action" value="inscription">
                 </div>
+
             </form>
         </div>
         <div class="presentation">
@@ -112,19 +108,15 @@
                            value="<?php echo $mdp ?>"
                            required>
                 </div>
-                    
-                    <div <?php if($displayLoginError) {echo "";} else {echo "hidden";}?>>
-                        <?php echo $errorMessage; ?>
-                    </div>
-                <div id="switchToSignup" class="creerCompte">Créer un compte <i class="fa-solid fa-arrow-right"></i></div>
+                <div id="switchToSignup" class="switchForm">Créer un compte <i class="fa-solid fa-arrow-right"></i></div>
                 <input type="submit" class="boutonConnexion" value="Me Connecter">
                 <input hidden name="action" value="connexion">
             </form>
         </div>
 
     </div>
-    <?php include $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/footer/footer-absolute.php" ?>
-</div>
 
+</div>
+<?php include $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/footer/footer.php" ?>
 </body>
 </html>
