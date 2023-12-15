@@ -36,7 +36,7 @@
                         <label for="nom">
                             Nom :
                         </label>
-                        <input type="text" id="nom" placeholder="Votre nom :" value="<?php echo $nom ?>"
+                        <input type="text" id="nom" name="nom" placeholder="Votre nom :" value="<?php echo $nom ?>"
                                required>
                     </div>
                     <div class="colonneCreationCompte">
@@ -71,6 +71,9 @@
                     </div>
                 </div>
                 <div class="form-duo">
+                    <div <?php if(isset($displaySignInError) && $displaySignInError) {echo "";} else {echo "hidden";}?>>
+                        <?php echo $errorMessage; ?>
+                    </div>
                     <!-- TODO : changer en faux bouton -->
                     <button class="retour">
                         <i class="fa-solid fa-arrow-left"></i>
