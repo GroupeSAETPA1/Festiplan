@@ -25,13 +25,6 @@ $('#switchToSignup').click(function() {
 
             x: "-100%",
         })
-        .add(() => {
-            if (window.innerWidth < 1_000) {
-                $(".partiePrincipale").css({
-                    flexDirection: "column-reverse",
-                });
-            }
-        })
         .to(".creationCompte", {
             duration: 0,
             delay: 0,
@@ -71,13 +64,6 @@ $('#switchToSLogin').click(function() {
             delay: 0,
 
             display: "none",
-        })
-        .add(() => {
-            if (window.innerWidth < 1_000) {
-                $(".partiePrincipale").css({
-                    flexDirection: "column",
-                });
-            }
         })
         .to(".presentation", {
             duration: 0,
