@@ -26,7 +26,8 @@
     <!-- custom JS -->
     <!-- custom JS -->
     <script src="/Festiplan/FestiplanWeb/static/scripts/index.js" defer></script>
-    <script src="/Festiplan/FestiplanWeb/static/scripts/indexResponsive.js" defer></script>
+    <script src="/Festiplan/FestiplanWeb/static/scripts/responsive/indexResponsive.js" defer></script>
+    <script src="/Festiplan/FestiplanWeb/static/scripts/responsive/footerResponsive.js" defer></script>
 </head>
 <body>
 <div class="app">
