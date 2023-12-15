@@ -20,7 +20,6 @@
 namespace application;
 
 use controllers\DashboardController;
-use controllers\HomeController;
 use controllers\UserController;
 use PDO;
 use services\DashboardService;
@@ -36,7 +35,6 @@ use yasmf\NoServiceAvailableForNameException;
 class DefaultComponentFactory implements ComponentFactory
 {
     private ?UserService $userService = null;
-    private ?SessionService $sessionService = null;
     private ?DashboardService $dashboardService = null;
 
     /**
@@ -62,7 +60,6 @@ class DefaultComponentFactory implements ComponentFactory
     {
         return match ($service_name) {
             "User" => $this->buildUserService(),
-            "Session" => $this->buildSessionService(),
             "Dashboard" => $this->buildDashboardService(),
             default => throw new NoServiceAvailableForNameException($service_name)
         };
@@ -77,17 +74,6 @@ class DefaultComponentFactory implements ComponentFactory
             $this->userService = new UserService();
         }
         return $this->userService;
-    }
-
-    /**
-     * @return SessionService
-     */
-    private function buildSessionService(): SessionService
-    {
-        if ($this->sessionService == null) {
-            $this->sessionService = new SessionService();
-        }
-        return $this->sessionService;
     }
 
     /**

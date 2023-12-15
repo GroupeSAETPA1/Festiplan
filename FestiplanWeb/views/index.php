@@ -30,20 +30,21 @@
     <script src="/Festiplan/FestiplanWeb/static/scripts/responsive/footerResponsive.js" defer></script>
 </head>
 <body>
+<input hidden id="displayInscription" value="<?php echo $displayInscription?>">
 <div class="app">
     <div class="partiePrincipale">
         <div class="formulaire creationCompte">
             <form method="get" action="/Festiplan/FestiplanWeb">
                 <div class="form-duo">
                     <div class="colonneCreationCompte">
-                        <label for="nom" id="nom">
+                        <label for="nom">
                             Nom :
                         </label>
-                        <input type="text" id="nom" placeholder="Votre nom :" value="<?php echo $nom ?>"
+                        <input type="text" id="nom" name="nom" placeholder="Votre nom :" value="<?php echo $nom ?>"
                                required>
                     </div>
                     <div class="colonneCreationCompte">
-                        <label for="prenom" id="prenom">
+                        <label for="prenom">
                             Prénom :
                         </label>
                         <input type="text" id="prenom" name="prenom" placeholder="Votre prénom :" value="<?php echo $prenom ?>"
@@ -59,22 +60,25 @@
                 </div>
                 <div class="form-duo">
                     <div class="colonneCreationCompte">
-                        <label for="identifiantCrea" id="identifiantCrea">
+                        <label for="identifiantCrea">
                             Identifiant :
                         </label>
                         <input type="text" id="identifiantCrea" name="login" placeholder="Votre identifiant :" value="<?php echo $login ?>"
                                required>
                     </div>
                     <div class="colonneCreationCompte">
-                        <label for="mdpCrea" id="mdpCrea">
+                        <label for="mdpCrea">
                             Mot de passe :
                         </label>
                         <input type="password" id="mdpCrea" name="mdp" placeholder="Votre mot de passe :" value="<?php echo $mdp ?>"
                                required>
                     </div>
                 </div>
+                <div>
+                    <?php if($displaySignInError) {echo $errorMessage;} else {echo "";} ?>
+                </div>
                 <div class="lastSection">
-                    <div id="switchToSLogin" class="switchForm"><i class="fa-solid fa-arrow-left"></i>Se connecter</div>
+                    <div id="switchToSLogin" class="switchForm"><i class="fa-solid fa-arrow-left"></i> Se connecter</div>
                     <input type="submit" class="boutonCreation" value="Créer le compte">
                     <input hidden name="action" value="inscription">
                 </div>
@@ -92,7 +96,7 @@
         <div class="formulaire connexion">
             <form method="get" action="/Festiplan/FestiplanWeb">
                 <div class="colonneCreationCompte">
-                    <label for="identifiant" id="identifiant">
+                    <label for="identifiant">
                         Identifiant
                     </label>
                     <input type="text" id="identifiant" name="login"
@@ -101,13 +105,16 @@
                            required>
                 </div>
                 <div class="colonneCreationCompte">
-                    <label for="mdp" id="mdp">
+                    <label for="mdp">
                         Mot de passe
                     </label>
                     <input type="password" id="mdp" name="mdp"
                            placeholder="Entrez votre mot de passe :"
                            value="<?php echo $mdp ?>"
                            required>
+                </div>
+                <div>
+                    <?php if($displayLoginError) {echo $errorMessage;} else {echo "";} ?>
                 </div>
                 <div id="switchToSignup" class="switchForm">Créer un compte <i class="fa-solid fa-arrow-right"></i></div>
                 <input type="submit" class="boutonConnexion" value="Me Connecter">
