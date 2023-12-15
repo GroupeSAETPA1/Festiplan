@@ -42,6 +42,7 @@ class CreateFestivalController {
            $view = new View("views/creation/createFestival2");
        } else {
            $view = new View("views/creation/createFestival");
+            $view -> setVar('tableauCategorie' , $this->categorieBD);
        }
        return $view;
     }

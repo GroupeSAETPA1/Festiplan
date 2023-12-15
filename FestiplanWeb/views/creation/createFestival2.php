@@ -32,7 +32,7 @@
     </header>
 
     <div class="retour">
-        <a href="createFestival.php"><button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button></a>
+        <a href="?controller=CreateFestival"><button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button></a>
     </div>
     <div class="wrapper">
         <div class="container">
