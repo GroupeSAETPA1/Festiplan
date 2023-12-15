@@ -7,7 +7,6 @@
   border-style: none;
   background-color: #F7A072;
 }
-
 .retour:hover {
   background-color: #c54b0b;
 }
@@ -21,7 +20,6 @@
   border-style: none;
   background-color: #99E1D9;
 }
-
 .ajoutS:hover {
   background-color: #33aea0;
 }
@@ -35,7 +33,6 @@
   border-style: none;
   background-color: #F7A072;
 }
-
 .supp:hover {
   background-color: #c54b0b;
 }
@@ -51,7 +48,6 @@
   display: flex;
   justify-content: center;
 }
-
 .ajoutGrij:hover {
   background-color: #33aea0;
 }
@@ -65,7 +61,6 @@
   border-style: none;
   background-color: #F7A072;
 }
-
 .annul:hover {
   background-color: #c54b0b;
 }
@@ -79,7 +74,6 @@
   border-style: none;
   background-color: #99E1D9;
 }
-
 .valid:hover {
   background-color: #33aea0;
 }
@@ -93,7 +87,6 @@
   border-style: none;
   background-color: #F7A072;
 }
-
 .mon-compte:hover {
   background-color: #c54b0b;
 }
@@ -107,7 +100,5 @@
 .ret {
   padding: 2vh;
 }
-
-
 
 /*# sourceMappingURL=button.css.map */

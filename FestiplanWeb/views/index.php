@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/index/index.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/index/forms.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svg.css">
-    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/footer.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components\footer.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/index/responsive.css">
 
     <!-- Font Awesome -->
@@ -19,16 +19,15 @@
           crossorigin="anonymous"
           referrerpolicy="no-referrer" />
 
-    <link rel="icon" href="../static/assets/img/Favicon.png" /> <!--  A remplacer quand on aura la favicon  -->
-
     <!-- Scripts -->
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
-    <!-- Jquery CDN -->
-    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
-    <!-- JS -->
-    <script src="../static/scripts/index.js" type="module" defer></script>
-
+    <!-- GSAP -->  <!-- Jquery -->
+    <script src="/Festiplan/node_modules/gsap/dist/gsap.min.js"></script>
+    <script src="/Festiplan/node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- custom JS -->
+    <!-- custom JS -->
+    <script src="/Festiplan/FestiplanWeb/static/scripts/index.js" defer></script>
+    <script src="/Festiplan/FestiplanWeb/static/scripts/responsive/indexResponsive.js" defer></script>
+    <script src="/Festiplan/FestiplanWeb/static/scripts/responsive/footerResponsive.js" defer></script>
 </head>
 <body>
 <div class="app">
@@ -51,7 +50,7 @@
                                required>
                     </div>
                 </div>
-                <div class="colonneCreationCompte">
+                <div class="colonneCreationCompte mail">
                     <label for="mail" id="mail">
                         Email :
                     </label>
@@ -74,14 +73,12 @@
                                required>
                     </div>
                 </div>
-                <div class="form-duo">
-                    <button class="retour">
-                        <i class="fa-solid fa-arrow-left"></i>
-                        Retour
-                    </button>
+                <div class="lastSection">
+                    <div id="switchToSLogin" class="switchForm"><i class="fa-solid fa-arrow-left"></i>Se connecter</div>
                     <input type="submit" class="boutonCreation" value="Créer le compte">
                     <input hidden name="action" value="inscription">
                 </div>
+
             </form>
         </div>
         <div class="presentation">
@@ -112,25 +109,15 @@
                            value="<?php echo $mdp ?>"
                            required>
                 </div>
-                <!-- TODO Faire un faux Bouton -->
-                <button class="creerCompte">Créer un compte <i class="fa-solid fa-arrow-right"></i></button>
+                <div id="switchToSignup" class="switchForm">Créer un compte <i class="fa-solid fa-arrow-right"></i></div>
                 <input type="submit" class="boutonConnexion" value="Me Connecter">
                 <input hidden name="action" value="connexion">
             </form>
         </div>
 
     </div>
-</div>
 
-<!--<?php include_once "/Festiplan/FestiplanWeb/static/components/footer.php" ?>-->
-<div class="footer">
-    <div class="spacer ratio wave-white-to-grey"></div>
-    <footer>
-        <div class="text-footer">
-            Copyrigths © 2023 - Festiplan - Tous droits réservés
-        </div>
-    </footer>
 </div>
-
+<?php include $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/footer/footer.php" ?>
 </body>
 </html>

@@ -16,7 +16,7 @@
 }
 
 .wave-white-to-grey {
-  background-image: url("../../assets/svgs/wave-white-to-grey.svg");
+  background-image: url("../../../assets/svgs/wave.svg");
 }
 
 footer {
@@ -36,9 +36,9 @@ footer {
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
   width: 100%;
 }
+
+
 
 /*# sourceMappingURL=footer.css.map */
