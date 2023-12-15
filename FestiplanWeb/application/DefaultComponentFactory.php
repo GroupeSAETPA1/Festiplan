@@ -26,7 +26,6 @@ use services\UsersService;
 
 use controllers\DashboardController;
 use controllers\UserController;
-use PDO;
 use services\DashboardService;
 use services\SessionService;
 use services\UserService;
@@ -125,15 +124,12 @@ class DefaultComponentFactory implements ComponentFactory
         if($this->createFestivalService == null) {
             // TODO recuperer le pdo
             $pdo = $this->getPDO("root", "root");
-            var_dump($pdo);
-            echo "<br>Service : ";
-            var_dump($this->createFestivalService);
             $this->createFestivalService = new createFestivalService($pdo);
         }
         return $this->createFestivalService;
     }
 
-    private function buildDashboardService(): ?DashboardService
+    private function buildDashboardService(): DashboardService
     {
         if ($this->dashboardService == null) {
             $pdo = $this->getPDO("root", "root");

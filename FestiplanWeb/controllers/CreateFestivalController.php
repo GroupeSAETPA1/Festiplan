@@ -16,25 +16,27 @@ const longueur_max_description = 1000 ;
 class CreateFestivalController {
 
     private CreateFestivalService $createFestivalService;
+    private array $categorieBD ;
+
     public function __construct(CreateFestivalService $createFestivalService )
     {
         $this->createFestivalService = $createFestivalService;
+        $this->categorieBD = $this -> createFestivalService->recupererCategorie();
     }
 
     public function index(PDO $pdo): View{
         $view = new View("views/creation/createFestival");
-        $this -> CreateFestivalService -> recupererCategorie();
-        $view -> setVar('createFestival' , $categorie);
+        $view -> setVar('tableauCategorie' , $this->categorieBD);
         return $view;
     }
 
-    public function validerCreationFestival()
-    {
+    public function validerPage1()
+    {   
         $tousOk = $this->nomOk(HttpHelper::getParam("nom"))
                   && $this-> descriptionOk(HttpHelper::getParam("description"))
+                  && $this-> categorieOk(HttpHelper::getParam("categorie"))
                   && $this-> dateOk(HttpHelper::getParam("ddd"), HttpHelper::getParam("ddf"))
                   && $this-> photoOk(HttpHelper::getParam("nom"));
-                  var_dump($tousOk);
        //var_dump($tousOk);
        if($tousOk) {
            $view = new View("views/creation/createFestival2");
@@ -59,6 +61,15 @@ class CreateFestivalController {
         $debut = DateTime::createFromFormat('Y-m-d' , $ddd);
         $fin = DateTime::createFromFormat('Y-m-d' , $ddf);
         return $debut <= $fin ;
+    }
+
+    public function categorieOk($categorie) {
+        foreach ($this -> categorieBD as $categorieValide) {
+            if ($categorieValide['nom'] == $categorie) {
+                return true ; 
+            }
+        }         
+        return false;
     }
 
     public function photoOk($nomFestival) {
