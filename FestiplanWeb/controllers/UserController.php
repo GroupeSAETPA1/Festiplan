@@ -41,8 +41,7 @@ class UserController
      * @param $pdo pdo le pdo de l'application
      * @return View la vue du dashboard si on a réussi a créer le compte, sinon la vue index
      */
-    public function inscription(PDO $pdo): View
-    {
+    public function inscription(PDO $pdo): View {
 
         $nom = htmlspecialchars(HttpHelper::getParam('nom') ?: "");
         $prenom = htmlspecialchars(HttpHelper::getParam('prenom') ?: "");
@@ -67,8 +66,7 @@ class UserController
                 $messageErreur =  "Erreur d'inscription : Un des champs requis n'est pas rempli";
                 $this->buildView($view, $nom, $prenom, $email, $mdp, $login, true, false, true, $messageErreur);
             }
-        } catch (PDOException $e) {
-
+        } catch (PDOException | \TypeError $e) {
             $messageErreur =  "Erreur d'inscription : " . $e->getMessage();
             $this->buildView($view, $nom, $prenom, $email, $mdp, $login, true, false, true, $messageErreur);
         } finally {
@@ -95,9 +93,9 @@ class UserController
         $view->setVar('email', $email ?: "");
         $view->setVar('mdp', $mdp ?: "");
         $view->setVar('login', $login ?: "");
-        $view->setVar('displayInscription', $displayInscription ?: "false");
-        $view->setVar('displayInscriptionError', $displaySignInError ?: "false");
-        $view->setVar('displayLoginError', $displayLoginError ?: "false");
+        $view->setVar('displayInscription', $displayInscription ?: false);
+        $view->setVar('displayLoginError', $displayLoginError ?: false);
+        $view->setVar('displaySignInError', $displaySignInError ?: false);
         $view->setVar('errorMessage', $errorMessage ?: "");
     }
 
@@ -137,11 +135,15 @@ class UserController
                 $displayLoginError = true;
                $messageErreur = "Erreur de connexion : Le login et le mot de passe ne doivent pas etre vides";
             }
-        } catch (PDOException $e) {
+        } catch (PDOException  | \TypeError $e) {
             $displayLoginError = true;
             $messageErreur = "Erreur de connexion : " . $e->getMessage();
         }
         $this->buildView($view, "", "", "", $mdp, $login, false, $displayLoginError, false, $messageErreur);
         return $view;
+    }
+
+    function PDONotFound() {
+        return new View("/views/Error504");
     }
 }

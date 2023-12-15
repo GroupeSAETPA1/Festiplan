@@ -20,11 +20,9 @@
 namespace application;
 
 use controllers\DashboardController;
-use controllers\HomeController;
 use controllers\UserController;
 use services\DashboardService;
 use services\UserService;
-use services\SessionService;
 use yasmf\ComponentFactory;
 use yasmf\NoControllerAvailableForNameException;
 use yasmf\NoServiceAvailableForNameException;

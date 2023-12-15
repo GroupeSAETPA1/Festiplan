@@ -36,4 +36,4 @@ responsive();
 window.addEventListener("resize", responsive);
 setInterval(() => {
     responsive();
-}, 500);
+}, 25);

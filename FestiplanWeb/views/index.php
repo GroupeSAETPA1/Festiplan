@@ -29,6 +29,7 @@
     <script src="/Festiplan/FestiplanWeb/static/scripts/indexResponsive.js" defer></script>
 </head>
 <body>
+<input hidden id="displayInscription" value="<?php echo $displayInscription?>">
 <div class="app">
     <div class="partiePrincipale">
         <div class="formulaire creationCompte">
@@ -72,8 +73,11 @@
                                required>
                     </div>
                 </div>
+                <div>
+                    <?php if($displaySignInError) {echo $errorMessage;} else {echo "";} ?>
+                </div>
                 <div class="lastSection">
-                    <div id="switchToSLogin" class="switchForm"><i class="fa-solid fa-arrow-left"></i>Se connecter</div>
+                    <div id="switchToSLogin" class="switchForm"><i class="fa-solid fa-arrow-left"></i> Se connecter</div>
                     <input type="submit" class="boutonCreation" value="Créer le compte">
                     <input hidden name="action" value="inscription">
                 </div>
@@ -107,6 +111,9 @@
                            placeholder="Entrez votre mot de passe :"
                            value="<?php echo $mdp ?>"
                            required>
+                </div>
+                <div>
+                    <?php if($displayLoginError) {echo $errorMessage;} else {echo "";} ?>
                 </div>
                 <div id="switchToSignup" class="switchForm">Créer un compte <i class="fa-solid fa-arrow-right"></i></div>
                 <input type="submit" class="boutonConnexion" value="Me Connecter">

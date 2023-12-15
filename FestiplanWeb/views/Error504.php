@@ -29,100 +29,13 @@
     <script src="/Festiplan/FestiplanWeb/static/scripts/indexResponsive.js" defer></script>
 </head>
 <body>
-<input hidden id="displayInscription" value="<?php echo $displayInscription?>">
 <div class="app">
     <div class="partiePrincipale">
-        <div class="formulaire creationCompte">
-            <form method="get" action="/Festiplan/FestiplanWeb">
-                <div class="form-duo">
-                    <div class="colonneCreationCompte">
-                        <label for="nom">
-                            Nom :
-                        </label>
-                        <input type="text" id="nom" name="nom" placeholder="Votre nom :" value="<?php echo $nom ?>"
-                               required>
-                    </div>
-                    <div class="colonneCreationCompte">
-                        <label for="prenom">
-                            Prénom :
-                        </label>
-                        <input type="text" id="prenom" name="prenom" placeholder="Votre prénom :" value="<?php echo $prenom ?>"
-                               required>
-                    </div>
-                </div>
-                <div class="colonneCreationCompte mail">
-                    <label for="mail" id="mail">
-                        Email :
-                    </label>
-                    <input type="email" id="mail" name="email" placeholder="Votre email :" value="<?php echo $email ?>"
-                           required>
-                </div>
-                <div class="form-duo">
-                    <div class="colonneCreationCompte">
-                        <label for="identifiantCrea">
-                            Identifiant :
-                        </label>
-                        <input type="text" id="identifiantCrea" name="login" placeholder="Votre identifiant :" value="<?php echo $login ?>"
-                               required>
-                    </div>
-                    <div class="colonneCreationCompte">
-                        <label for="mdpCrea">
-                            Mot de passe :
-                        </label>
-                        <input type="password" id="mdpCrea" name="mdp" placeholder="Votre mot de passe :" value="<?php echo $mdp ?>"
-                               required>
-                    </div>
-                </div>
-                <div>
-                    <?php if($displaySignInError) {echo $errorMessage;} else {echo "";} ?>
-                </div>
-                <div class="lastSection">
-                    <div id="switchToSLogin" class="switchForm"><i class="fa-solid fa-arrow-left"></i> Se connecter</div>
-                    <input type="submit" class="boutonCreation" value="Créer le compte">
-                    <input hidden name="action" value="inscription">
-                </div>
-
-            </form>
-        </div>
-        <div class="presentation">
-            <i class="fa-solid fa-calendar-days"></i>
-            <div class="titre">Festiplan</div>
-            <p>
-                Créer et gérer tous vos évenements,<br>
-                avec facilité et ergonomie.
-            </p>
-        </div>
-        <div class="formulaire connexion">
-            <form method="get" action="/Festiplan/FestiplanWeb">
-                <div class="colonneCreationCompte">
-                    <label for="identifiant">
-                        Identifiant
-                    </label>
-                    <input type="text" id="identifiant" name="login"
-                           placeholder="Entrez votre identifiant :"
-                           value="<?php echo $login ?>"
-                           required>
-                </div>
-                <div class="colonneCreationCompte">
-                    <label for="mdp">
-                        Mot de passe
-                    </label>
-                    <input type="password" id="mdp" name="mdp"
-                           placeholder="Entrez votre mot de passe :"
-                           value="<?php echo $mdp ?>"
-                           required>
-                </div>
-                <div>
-                    <?php if($displayLoginError) {echo $errorMessage;} else {echo "";} ?>
-                </div>
-                <div id="switchToSignup" class="switchForm">Créer un compte <i class="fa-solid fa-arrow-right"></i></div>
-                <input type="submit" class="boutonConnexion" value="Me Connecter">
-                <input hidden name="action" value="connexion">
-            </form>
-        </div>
-
+         <div class="presentation">
+                <i class="fa-regular fa-face-frown"></i>
+                <div class="titre">Error 504 : La base de donnée à eu un problème, veuillez réessayer plus tard </div>
+         </div>
     </div>
-
 </div>
 <?php include $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/footer/footer.php" ?>
 </body>
