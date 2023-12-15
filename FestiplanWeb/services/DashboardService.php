@@ -12,54 +12,36 @@ class DashboardService
      */
     private PDO $pdoLectureFestivalSpectacle;
 
-    public function __construct()//PDO $pdo)
+    public function __construct(PDO $pdo)
     {
-//        $this->pdoLectureFestivalSpectacle = $pdo;
+        $this->pdoLectureFestivalSpectacle = $pdo;
     }
 
-    public function getFestivals(int $id_gestionnaire) : array
+    public function getFestivals(int $id_gestionnaire): array
     {
-        $reponse = array();
+        $requete = "SELECT festival.id_festival, festival.nom AS nom, festival.description, festival.illustration, festival.debut, festival.fin, c.nom AS categorie
+                    FROM festival
+                    JOIN festiplan.categorie c on c.id_categorie = festival.id_categorie
+                    WHERE id_responsable = :id_gestionnaire";
 
-    //STUB
-    $id_festival = 1;
-    $nom_festival = 'De Scene Palais';
-    $date_debut = '16/12/2023';
-    $date_fin = '24/15/2023';
-    $lien_image = '/Festiplan/FestiplanWeb/static/assets/img/deScenePalais.jpg';
-    $categories = ['Musique', 'Divertissement', 'Divertissement', 'Divertissement', 'Divertissement', 'ABCDEF'];
+        $requete = $this->pdoLectureFestivalSpectacle->prepare($requete);
+        $requete->bindParam("id_gestionnaire", $id_gestionnaire);
+        $requete->execute();
 
-    $reponse[] = array(
-        'id_festival' => $id_festival,
-        'nom_festival' => $nom_festival,
-        'date_debut' => $date_debut,
-        'date_fin' => $date_fin,
-        'lien_image' => $lien_image,
-        'categories' => $categories
-    );
-
-    return $reponse;
+        return $requete->fetchAll();
     }
 
-    public function getSpectacles(int $id_gestionnaire) : array
+    public function getSpectacles(int $id_gestionnaire): array
     {
-            $reponse = array();
+        $requete = "SELECT id_spectacle,spectacle.nom, spectacle.illustration, c.nom AS categorie, spectacle.duree, spectacle.description
+                    FROM spectacle
+                    JOIN festiplan.categorie c ON spectacle.id_categorie = c.id_categorie
+                    WHERE responsable_spectacle = :id_gestionnaire";
 
-    //STUB
-    $id_spectacle = 1;
-    $nom_spectacle = 'De Scene Palais';
-    $lien_image = '/Festiplan/FestiplanWeb/static/assets/img/deScenePalais.jpg';
-    $categories = ['Musique', 'Divertissement', 'Divertissement', 'Divertissement', 'ABCDEF'];
-    $duree = 120;
+        $requete = $this->pdoLectureFestivalSpectacle->prepare($requete);
+        $requete->bindParam("id_gestionnaire", $id_gestionnaire);
+        $requete->execute();
 
-    $reponse[] = array(
-        'id_spectacle' => $id_spectacle,
-        'nom_spectacle' => $nom_spectacle,
-        'lien_image' => $lien_image,
-        'categories' => $categories,
-        'duree' => $duree
-    );
-
-    return $reponse;
+        return $requete->fetchAll();
     }
 }

@@ -19,8 +19,16 @@ class DashboardController
 
     public function index(PDO $pdo): View
     {
-        $id_gestionnaire = (int)HttpHelper::getParam('id_gestionnaire');
-
+        //On récupère l'id de l'utilisateur
+        $id_gestionnaire = $_SESSION['id_utilisateur'] ?? null;
+        $id_gestionnaire = 2; //TODO Remove STUB
+        //SI on a tenté d'accéder au dashboard sans être connecté on renvoie sue la page de connexion
+        if ($id_gestionnaire == null) {
+            $view = new View("views/index");
+            $view->setVar("login", "");
+            $view->setVar("mdp", "");
+            return $view;
+        }
         $festivals = $this->dashboardService->getFestivals($id_gestionnaire) ;
         $spectacles = $this->dashboardService->getSpectacles($id_gestionnaire) ;
 

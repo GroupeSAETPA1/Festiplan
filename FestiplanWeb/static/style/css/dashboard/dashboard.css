@@ -18,23 +18,19 @@ header {
   justify-content: space-between;
   color: #F0F7F4;
 }
-
 header .logo {
   margin: 1rem;
   display: flex;
   align-items: center;
 }
-
 header .logo i {
   color: #F7A072;
   font-size: 2rem;
   padding-right: 10%;
 }
-
 header .logo span {
   color: #F0F7F4;
 }
-
 header .mon-compte div {
   background-color: #F7A072;
   color: #363732;
@@ -43,12 +39,16 @@ header .mon-compte div {
 }
 
 img {
-  border-radius: 10%;
+  border-radius: 2vh;
   max-width: 100%;
 }
 
 div {
   border-radius: 2vh;
+}
+
+form {
+  margin: auto;
 }
 
 .wrapper {
@@ -74,7 +74,6 @@ div {
   margin: 0;
   padding: 1rem;
 }
-
 .entete-section a div {
   background-color: #F7A072;
   padding: 1rem;
@@ -85,12 +84,10 @@ div {
   font-size: 2.5vh;
   color: #363732;
 }
-
 .entete-section a div i {
   font-size: 3vh;
   margin: 1vh;
 }
-
 .entete-section a div p {
   margin: 0;
 }
@@ -104,7 +101,7 @@ div {
 .container-card-spectacles {
   display: flex;
   flex-direction: column;
-  padding: 0 2vh;
+  padding: 1vh 3vh;
 }
 
 .card-festival {
@@ -112,18 +109,15 @@ div {
   padding: 2vh;
   margin: 2vh;
 }
-
 .card-festival .haut-card {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
 }
-
 .card-festival .haut-card .description-festival {
   margin: 3vh;
   font-size: 2vh;
 }
-
 .card-festival .bas-card {
   display: flex;
   flex-direction: row;
@@ -131,7 +125,6 @@ div {
   align-items: flex-end;
   margin: 1vh;
 }
-
 .card-festival .bas-card .group-boutons {
   flex-direction: row;
 }
@@ -147,44 +140,33 @@ div {
   font-size: 2.5vh;
 }
 
-.categories {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-top: 1vh;
-}
-
-.categories span {
+.categorie {
   max-width: fit-content;
   flex: 1 1 auto;
   text-align: center;
-  background-color: grey;
-  border-radius: 1vh;
   padding: 0.25vh 0.5vh;
   margin: 0 0.25vh 0.25vh 0;
+  background-color: #363732;
+  color: #F0F7F4;
+  border-radius: 1vh;
 }
 
 .group-boutons {
   display: flex;
 }
-
 .group-boutons i {
   font-size: 4vh;
   margin: 1vh;
 }
-
 .group-boutons .fa-trash-can {
   color: red;
 }
-
 .group-boutons div {
   border-radius: 1vh;
 }
-
 .group-boutons div:hover {
   background-color: #cccccc;
 }
-
 .group-boutons div button {
   background-color: transparent;
   border: 1px solid transparent;
@@ -199,11 +181,9 @@ div {
   background-color: #F0F7F4;
   width: 100%;
 }
-
 .card-spectacles img {
   margin: 1vh;
 }
-
 .card-spectacles .description-spectacle {
   display: flex;
   flex-direction: row;
@@ -212,39 +192,47 @@ div {
   width: inherit;
   font-size: 120%;
 }
-
 .card-spectacles .description-spectacle p, .card-spectacles .description-spectacle div {
   margin: 0 1vh;
 }
-
 .card-spectacles .description-spectacle .group-categories {
   max-width: 40vh;
 }
-
 .card-spectacles .description-spectacle .duree {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-
 .card-spectacles .description-spectacle .group-boutons {
   flex-direction: column;
   justify-content: center;
 }
 
 @media screen and (max-width: 1200px) {
-  .label-duree {
+  .label-duree, .label-categorie {
     display: none;
   }
 }
 @media screen and (max-width: 1000px) {
-  .img-spectacle, .img-festival {
-    display: none;
+  .container-card-festivals {
+    grid-template-columns: repeat(1, 1fr);
   }
   .wrapper {
     padding: 0;
   }
 }
-
+@media screen and (max-width: 700px) {
+  .img-spectacle, .img-festival {
+    display: none;
+  }
+  .description-festival {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .description-festival p {
+    padding: 0 1vh;
+  }
+}
 
 /*# sourceMappingURL=dashboard.css.map */

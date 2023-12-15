@@ -26,9 +26,10 @@ use services\UsersService;
 
 use controllers\DashboardController;
 use controllers\UserController;
+use PDO;
 use services\DashboardService;
+use services\SessionService;
 use services\UserService;
-
 use yasmf\ComponentFactory;
 use yasmf\NoControllerAvailableForNameException;
 use yasmf\NoServiceAvailableForNameException;
@@ -50,7 +51,8 @@ class DefaultComponentFactory implements ComponentFactory
      * @return mixed the controller
      * @throws NoControllerAvailableForNameException when controller is not found
      */
-    public function buildControllerByName(string $controller_name): mixed {
+    public function buildControllerByName(string $controller_name): mixed
+    {
         return match ($controller_name) {
 
             "CreateFestival" => $this->buildCreateFestival(),
@@ -68,7 +70,7 @@ class DefaultComponentFactory implements ComponentFactory
      */
     public function buildServiceByName(string $service_name): mixed
     {
-        return match($service_name) {
+        return match ($service_name) {
             "User" => $this->buildUserService(),
             "Session" => $this->buildSessionService(),
             "Dashboard" => $this->buildDashboardService(),
@@ -134,7 +136,7 @@ class DefaultComponentFactory implements ComponentFactory
     private function buildDashboardService(): ?DashboardService
     {
         if ($this->dashboardService == null) {
-            $pdo = null; // TODO : récupérer le PDO
+            $pdo = $this->getPDO("root", "root");
             $this->dashboardService = new DashboardService($pdo);
         }
         return $this->dashboardService;
@@ -145,7 +147,7 @@ class DefaultComponentFactory implements ComponentFactory
         return new DashboardController($this->buildDashboardService());
     }
 
-    
+
     /**
      * À partir d'un nom d'utilisateur et de son mot de passe,
      * renvoie la PDO associé
