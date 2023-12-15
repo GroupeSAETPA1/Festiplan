@@ -38,11 +38,12 @@ class CreateFestivalController {
                   && $this-> dateOk(HttpHelper::getParam("ddd"), HttpHelper::getParam("ddf"))
                   && $this-> photoOk(HttpHelper::getParam("nom"));
        //var_dump($tousOk);
+       $tousOk = true;
        if($tousOk) {
            $view = new View("views/creation/createFestival2");
        } else {
            $view = new View("views/creation/createFestival");
-            $view -> setVar('tableauCategorie' , $this->categorieBD);
+           $view -> setVar('tableauCategorie' , $this->categorieBD);
        }
        return $view;
     }
