@@ -38,6 +38,7 @@
   display: flex;
   flex-direction: column;
   row-gap: 20px;
+  width: fit-content;
 }
 
 .switchForm {
@@ -63,17 +64,10 @@
 .creationCompte {
   opacity: 0;
   display: none;
-  transform: translate(-500px, 0);
-}
-.creationCompte form {
-  width: 500px;
 }
 .creationCompte .form-duo {
   display: flex;
   justify-content: space-between;
-}
-.creationCompte .form-duo > div {
-  width: 45%;
 }
 .creationCompte button {
   padding: 10px;
@@ -85,9 +79,14 @@
   background: #99E1D9;
   color: #363732;
 }
-.creationCompte .retour {
-  background: #F7A072;
-  color: #363732;
+.creationCompte .lastSection {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.creationCompte .colonneCreationCompte {
+  width: 100%;
+  padding: 10px;
 }
 
 /*# sourceMappingURL=forms.css.map */

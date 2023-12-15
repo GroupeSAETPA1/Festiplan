@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/index/index.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/index/forms.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svg.css">
-    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/footer.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components\footer.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/index/responsive.css">
 
     <!-- Font Awesome -->
@@ -24,7 +24,9 @@
     <script src="/Festiplan/node_modules/gsap/dist/gsap.min.js"></script>
     <script src="/Festiplan/node_modules/jquery/dist/jquery.min.js"></script>
     <!-- custom JS -->
-    <script src="/Festiplan/FestiplanWeb/static/scripts/index.js" defer></script
+    <!-- custom JS -->
+    <script src="/Festiplan/FestiplanWeb/static/scripts/index.js" defer></script>
+    <script src="/Festiplan/FestiplanWeb/static/scripts/footerResponsive.js" defer></script>
 </head>
 <body>
 <div class="app">
@@ -70,11 +72,12 @@
                                required>
                     </div>
                 </div>
-                <div class="form-duo">
+                <div class="lastSection">
                     <div id="switchToSLogin" class="switchForm"><i class="fa-solid fa-arrow-left"></i>Se connecter</div>
                     <input type="submit" class="boutonCreation" value="Créer le compte">
+                    <input hidden name="action" value="inscription">
                 </div>
-                <input hidden name="action" value="inscription">
+
             </form>
         </div>
         <div class="presentation">
@@ -112,8 +115,8 @@
         </div>
 
     </div>
-    <?php include $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/footer/footer-absolute.php" ?>
-</div>
 
+</div>
+<?php include $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/footer/footer.php" ?>
 </body>
 </html>

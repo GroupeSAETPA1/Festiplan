@@ -1,5 +1,5 @@
-@import "main";
-@import "svg";
+@import "../main";
+@import "../svg";
 
 footer {
   display: flex;
@@ -21,9 +21,4 @@ footer {
 
 .footer {
   width: 100% ;
-}
-
-.absolute {
-  position: absolute;
-  bottom: 0;
 }

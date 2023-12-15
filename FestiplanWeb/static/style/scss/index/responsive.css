@@ -26,10 +26,13 @@
     justify-content: normal;
   }
   .connexion form {
-    width: 100%;
+    width: fit-content;
   }
   .formulaire {
     padding: 15px;
+  }
+  .colonneCreationCompte {
+    padding: 10px;
   }
 }
 @media screen and (max-width: 600px) {
@@ -39,11 +42,15 @@
   .creationCompte {
     width: 75%;
   }
+  .creationCompte form {
+    width: 100%;
+  }
   .boutonCreation {
-    width: 50%;
+    width: 100%;
   }
   .colonneCreationCompte {
     width: 100%;
+    padding: 10px;
   }
 }
 
