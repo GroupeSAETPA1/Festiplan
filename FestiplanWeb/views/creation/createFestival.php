@@ -29,90 +29,73 @@
         </div>
     </header>
 
-    <div class="ret">
-        <button class="retour"><i class="fa-solid fa-arrow-left"></i> Retour</button>
+    <div class="retour">
+        <button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button>
     </div>
     <form method="post" action="index.php" enctype="multipart/form-data">
     <div class="wrapper">
-            <div class="container">
-
-
-                <!-- Premier paquet pour le premier cube d'information-->
-                <div class="proot">
-                    <!-- Contient un premier bloc avec le nom, les dates de début et de fin -->
-                    <div class="NDD">
-                        <div>
-
-                            <h3><i class="fa-solid fa-circle-exclamation"></i>Nom :</h3>
-                            <input class="text" type="text" name="nom" placeholder="Tapez le nom de votre festival"/>
-                        </div>
-                        <div>
-
-                            <h3><i class="fa-solid fa-circle-exclamation"></i>Date de début :</h3>
-                            <input class="text" type="date" name="ddd"/>
-                        </div>
-                        <div>
-
-                            <h3><i class="fa-solid fa-circle-exclamation"></i>Date de fin :</h3>
-                            <input class="text" type="date" name="ddf"/>
-                        </div>
+        <div class="container">
+            <!-- Premier paquet pour le premier cube d'information-->
+            <div class="flex-row">
+                <!-- Contient un premier bloc avec le nom, les dates de début et de fin -->
+                <div class="NDD">
+                    <div>
+                        <h3><i class="fa-solid fa-circle-exclamation"></i>Nom :</h3>
+                        <input class="text" type="text" name="nom" placeholder="Tapez le nom de votre festival"/>
                     </div>
-
-                    <div class="Descr">
-                        <!-- Contient un second bloc avec la description et qui se situe au cote a cote avec le premier bloc -->
-                        <div>
-
-                            <label for="description"><i class="fa-solid fa-circle-exclamation"></i>Description :</label>
-                            <textarea  id="description" name="description"></textarea>
-                        </div>
+                    <div>
+                        <h3><i class="fa-solid fa-circle-exclamation"></i>Date de début :</h3>
+                        <input class="text" type="date" name="ddd"/>
+                    </div>
+                    <div>
+                        <h3><i class="fa-solid fa-circle-exclamation"></i>Date de fin :</h3>
+                        <input class="text" type="date" name="ddf"/>
                     </div>
                 </div>
-
-
-                <!-- Second paquet qui va contenir le champ d'entrée d'image-->
-                <div class="proot">
-                    <div class="custom-file-input-wrapper">
-                        <h3 class="custom-file-input-text">Illustration :</h3></br>
-                        <label class="custom-file-input" for="fileInput">Parcourir</label>
-                        <input type="file" id="fileInput" name="fileInput" />
+                <div class="Description">
+                    <!-- Contient un second bloc avec la description et qui se situe au cote a cote avec le premier bloc -->
+                    <div>
+                        <label for="description"><i class="fa-solid fa-circle-exclamation"></i>Description :</label>
+                        <textarea  id="description" name="description"></textarea>
                     </div>
-                    <div class="format">
-                        <br>Format PNG,JPG,</br>
-                        <br>800x600</br>
-                    </div>
-                </div>
-
-
-                <div>
-                    <h3> <i class="fa-solid fa-circle-exclamation"></i>Catégorie :</h3>
-                    <select>
-                        <option value=" "></option>
-                        <option value="concert">concert</option>
-                        <option value="theatre">theatre</option>
-                        <option value="danse">danse</option>
-                        <option value="cirque">cirque</option>
-                        <option value="film">film</option>
-                    </select>
                 </div>
             </div>
+            <!-- Second paquet qui va contenir le champ d'entrée d'image-->
+            <div class="flex-row">
+                <div class="custom-file-input-wrapper">
+                    <h3 class="custom-file-input-text">Illustration :</h3></br>
+                    <label class="custom-file-input" for="fileInput"><i class="fa-solid fa-image"></i>Parcourir</label>
+                    <input type="file" id="fileInput" name="imageFestival" />
+                </div>
+                <div class="format">
+                    <br>Format PNG,JPG,GIF</br>
+                    <br>800x600</br>
+                </div>
+            </div>
+            <div>
+                <h3> <i class="fa-solid fa-circle-exclamation"></i>Catégorie :</h3>
+                <select>
+                    <option value=" "></option>
+                    <option value="concert">concert</option>
+                    <option value="theatre">theatre</option>
+                    <option value="danse">danse</option>
+                    <option value="cirque">cirque</option>
+                    <option value="film">film</option>
+                </select>
+            </div>
         </div>
-        <input hidden name="action" value="validerCreationFestival">
-        <input hidden name="controller" value="CreateFestival">
-
-
-    <div class="babou">
-        <div class="butSpec">
-            <button class="annul">Annuler</button>
-        </div>
-
-        <button type="submit" class="valid">Page suivante</button>
-
-        </form>
-        <!-- <div class="butSpec">
-            <a href="createFestival2.php"><button class="valid">Page Suivante</button></a>
-        </div> -->
     </div>
+    <div class="valid-annul-placement">
+        <div class="annulChoix">
+            <i class="fa-regular fa-circle-xmark"></i>Annuler vos choix  <!-- TODO fontawesome -->
+        </div>
+    </div>
+    <button type="submit" class="valid">Page suivante</button>
+    <input hidden name="action" value="validerCreationFestival">
+    <input hidden name="controller" value="CreateFestival">
+    </form>
 
     <?php
-    //include "../../static/components/footer.php"
-    ?>
+    include_once "../../static/components/footer/footer.php" ?>
+</body>
+</html>

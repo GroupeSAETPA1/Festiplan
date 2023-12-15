@@ -1,46 +1,18 @@
 @import '../main';
 
-.retour{
+.Retour{
   line-height: 2;
   padding: 0 20px;
   font-size: 1rem;
   text-align: center;
   border-radius: 30px;
   border-style: none;
-  background-color: #F7A072;
+  background-color: $orange;
 
   &:hover {
-    background-color: darken(#F7A072,30);
+    background-color: darken($orange,5);
   }
 }
-.ajoutS{
-  line-height: 2.5;
-  padding: 0 20px;
-  font-size: 1rem;
-  text-align: center;
-  border-radius: 30px;
-  border-style: none;
-  background-color: #99E1D9;
-
-  &:hover {
-    background-color: darken(#99E1D9,30);
-  }
-}
-
-.supp{
-  line-height: 2.5;
-  padding: 0 20px;
-  font-size: 1rem;
-  text-align: center;
-  border-radius: 30px;
-  border-style: none;
-  background-color: #F7A072;
-
-  &:hover {
-    background-color: darken(#F7A072,30);
-  }
-}
-
 .ajoutGrij {
   line-height: 2.5;
   padding: 0 500px;
@@ -48,40 +20,26 @@
   text-align: center;
   border-radius: 30px;
   border-style: none;
-  background-color: #99E1D9;
+  background-color: $light-blue;
   display: flex;
   justify-content: center;
 
   &:hover {
-    background-color: darken(#99E1D9, 30);
-  }
-}
-
-.annul{
-  line-height: 2.5;
-  padding: 0 150px;
-  font-size: 1rem;
-  text-align: center;
-  border-radius: 30px;
-  border-style: none;
-  background-color: #F7A072;
-
-  &:hover {
-    background-color: darken(#F7A072,30);
+    background-color: darken($light-blue, 5);
   }
 }
 
 .valid{
   line-height: 2.5;
-  padding: 0 150px;
+  padding: 0 50px;
   font-size: 1rem;
   text-align: center;
   border-radius: 30px;
   border-style: none;
-  background-color: #99E1D9;
+  background-color: $light-blue;
 
   &:hover {
-    background-color: darken(#99E1D9,30);
+    background-color: darken($light-blue,5);
   }
 }
 
@@ -92,20 +50,20 @@
   text-align: center;
   border-radius: 30px;
   border-style: none;
-  background-color: #F7A072;
+  background-color: $orange;
 
   &:hover {
-    background-color: darken(#F7A072,30);
+    background-color: darken($orange,5);
   }
 }
 
-.butSpec {
+.button-flex-end {
   display: flex;
   align-items: flex-end;
   padding: 0 05vh;
 }
 
-.ret {
+.retour {
   padding: 2vh;
 }
 

@@ -43,19 +43,19 @@ header {
   flex-direction: column;
 }
 
-.Descr{
+.Description{
   display: flex;
   justify-content: flex-end;
   padding: 0 10vh;
 }
 
-.proot{
+.flex-row{
   display: flex;
   flex-direction: row;
   align-items: flex-end;
 }
 
-.babou{
+.valid-annul-placement{
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -75,6 +75,28 @@ hr {
 
 .fa-circle-exclamation {
   color: red;
+  margin: 0.5vh;
+}
+
+.fa-image{
+  margin: 0.5vh;
+}
+
+.fa-circle-xmark{
+  margin: 0.5vh;
+}
+.fa-arrow-right{
+  margin: 0.5vh;
+}
+.fa-check{
+  margin: 0.5vh;
+}
+
+.fa-plus{
+  margin: 0.5vh;
+}
+
+.fa-delete-left{
   margin: 0.5vh;
 }
 
