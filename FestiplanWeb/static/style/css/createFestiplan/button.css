@@ -28,8 +28,9 @@
   background-color: #85dbd2;
 }
 
-.valid {
-  line-height: 2.5;
+.page-suivante {
+  width: 26vh;
+  height: 4.8vh;
   padding: 0 50px;
   font-size: 1rem;
   text-align: center;
@@ -37,8 +38,9 @@
   border-style: none;
   background-color: #99E1D9;
 }
-.valid:hover {
+.page-suivante:hover {
   background-color: #85dbd2;
+  scale: 1.05;
 }
 
 .mon-compte {
@@ -71,7 +73,7 @@
   cursor: pointer;
   background-color: #99E1D9;
   transition: background-color 0.3s ease;
-  width: fit-content;
+  width: 22vh;
   height: fit-content;
   border-radius: 30px;
   margin-left: 3vh;
@@ -92,7 +94,7 @@
   width: fit-content;
   height: fit-content;
   border-radius: 30px;
-  margin-left: 3vh;
+  margin-left: 4.5vh;
 }
 
 .suppOrga:hover {
@@ -107,7 +109,7 @@
   cursor: pointer;
   background-color: #F7A072;
   transition: background-color 0.3s ease;
-  width: fit-content;
+  width: 22vh;
   height: fit-content;
   border-radius: 30px;
   margin-left: 3vh;
@@ -115,6 +117,21 @@
 
 .annulChoix:hover {
   background-color: #f6905a;
+  scale: 1.05;
+}
+
+.valider {
+  width: 26vh;
+  height: 4.8vh;
+  padding: 0 50px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #99E1D9;
+}
+.valider:hover {
+  background-color: #85dbd2;
   scale: 1.05;
 }
 

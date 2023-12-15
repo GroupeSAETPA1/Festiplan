@@ -1,0 +1,12 @@
+@import '../main';
+
+@media screen and (max-width: 1000px) {
+
+  .flex-row{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  
+}

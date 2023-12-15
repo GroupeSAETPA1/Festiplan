@@ -29,8 +29,9 @@
   }
 }
 
-.valid{
-  line-height: 2.5;
+.page-suivante{
+  width: 26vh;
+  height: 4.8vh;
   padding: 0 50px;
   font-size: 1rem;
   text-align: center;
@@ -40,6 +41,7 @@
 
   &:hover {
     background-color: darken($light-blue,5);
+    scale: 1.05;
   }
 }
 
@@ -74,7 +76,7 @@
   cursor: pointer;
   background-color: $light-blue;
   transition: background-color 0.3s ease;
-  width: fit-content;
+  width: 22vh;
   height: fit-content;
   border-radius: 30px ;
   margin-left: 3vh;
@@ -95,7 +97,7 @@
     width: fit-content;
     height: fit-content;
     border-radius: 30px ;
-    margin-left: 3vh;
+    margin-left: 4.5vh;
 }
 .suppOrga:hover {
   background-color: darken($orange,5);
@@ -109,7 +111,7 @@
   cursor: pointer;
   background-color: $orange;
   transition: background-color 0.3s ease;
-  width: fit-content;
+  width: 22vh;
   height: fit-content;
   border-radius: 30px ;
   margin-left: 3vh;
@@ -117,4 +119,20 @@
 .annulChoix:hover {
   background-color: darken($orange,5);
   scale: 1.05;
+}
+
+.valider{
+  width: 26vh;
+  height: 4.8vh;
+  padding: 0 50px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: $light-blue;
+
+  &:hover {
+    background-color: darken($light-blue,5);
+    scale: 1.05;
+  }
 }

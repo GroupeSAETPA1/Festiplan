@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="../../static/style/css/createFestiplan/image.css">
         <link rel="stylesheet" href="../../static/style/css/createFestiplan/input.css">
         <link rel="stylesheet" href="../../static/style/css/footer.css">
+        <link rel="stylesheet" href="../../static/style/css/createFestiplan/responsive.css">
 
         <link rel="stylesheet" href="../../../framework/fontawesome-free-6.2.1-web/css/all.css">
 
@@ -36,7 +37,7 @@
 
 
                 <!-- Premier paquet pour le premier cube d'information-->
-                <div class="flex-row">
+                <div class="flex-row first-row">
                     <!-- Contient un premier bloc avec le nom, les dates de début et de fin -->
                     <div class="NDD">
                         <div>
@@ -60,7 +61,7 @@
                         <!-- Contient un second bloc avec la description et qui se situe au cote a cote avec le premier bloc -->
                         <div>
 
-                            <label for="description"><i class="fa-solid fa-circle-exclamation"></i>Description :</label>
+                            <h3><label for="description"><i class="fa-solid fa-circle-exclamation"></i>Description :</label></h3>
                             <textarea  id="description" name="description"></textarea>
                         </div>
                     </div>
@@ -100,7 +101,7 @@
                 <i class="fa-regular fa-circle-xmark"></i>Annuler vos choix  <!-- TODO fontawesome -->
             </div>
             <div class="button-flex-end">
-                <a href="createFestival2.php"><button class="valid">Page Suivante<i class="fa-solid fa-arrow-right"></i></button></a>
+                <a href="createFestival2.php"><button class="page-suivante">Page Suivante<i class="fa-solid fa-arrow-right"></i></button></a>
             </div>
         </div>
 

@@ -34,7 +34,7 @@
         <div class="wrapper">
             <div class="container">
 
-            <div class="flex-row">
+            <div class="flex-row end-row">
                 <div>
                     <h3><i class="fa-solid fa-circle-exclamation"></i>Spectacle :</h3>
                     <select>
@@ -47,7 +47,7 @@
                 </div>
             </div>
 
-            <div class="flex-row">
+            <div class="flex-row end-row">
                 <div>
                     <h3><i class="fa-solid fa-circle-exclamation"></i>Scène :</h3>
                     <select>
@@ -75,7 +75,7 @@
                 <i class="fa-regular fa-circle-xmark"></i>Annuler vos choix  <!-- TODO fontawesome -->
             </div>
             <div class="button-flex-end">
-                <button class="valid">Valider <i class="fa-solid fa-check"></i></button>
+                <button class="valider">Valider <i class="fa-solid fa-check"></i></button>
             </div>
         </div>
         <?php

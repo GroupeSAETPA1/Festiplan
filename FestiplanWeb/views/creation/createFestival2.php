@@ -39,7 +39,7 @@
                            placeholder="Entrez le nom du Responsable"/>
                 </div>
 
-                <div class="flex-row">
+                <div class="flex-row end-row">
                     <div>
                         <h3> <i class="fa-solid fa-circle-exclamation"></i>Organisateur : </h3>
                         <input class="text" type="text" id="rechercheOrga" name="rechercheOrga"
@@ -50,7 +50,7 @@
                     </div>
 
                     <div class="suppOrga">
-                        Supprimer Organisateur <i class="fa-solid fa-delete-left"></i> <!-- TODO fontawesome -->
+                        Supprimer Organisateur <i class="fa-solid fa-trash-can"></i><!-- TODO fontawesome -->
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                 <i class="fa-regular fa-circle-xmark"></i>Annuler vos choix  <!-- TODO fontawesome -->
             </div>
             <div class="button-flex-end">
-                <a href="createFestival3.php"><button class="valid">Page suivante <i class="fa-solid fa-arrow-right"></i> </button></a>
+                <a href="createFestival3.php"><button class="page-suivante">Page suivante <i class="fa-solid fa-arrow-right"></i> </button></a>
             </div>
         </div>
         <?php

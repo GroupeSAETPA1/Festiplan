@@ -44,14 +44,18 @@ header {
 }
 
 .Description{
-  display: flex;
-  justify-content: flex-end;
-  padding: 0 10vh;
+  width: 55vw;
+
 }
 
 .flex-row{
   display: flex;
   flex-direction: row;
+}
+.first-row{
+  justify-content: space-between;
+}
+.end-row{
   align-items: flex-end;
 }
 
@@ -59,7 +63,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 5vh;
+  margin-top: 10vh;
 }
 
 hr {
@@ -96,7 +100,7 @@ hr {
   margin: 0.5vh;
 }
 
-.fa-delete-left{
+.fa-trash-can{
   margin: 0.5vh;
 }
 
