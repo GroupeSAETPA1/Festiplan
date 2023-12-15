@@ -49,7 +49,7 @@
                                required>
                     </div>
                 </div>
-                <div class="colonneCreationCompte">
+                <div class="colonneCreationCompte mail">
                     <label for="mail" id="mail">
                         Email :
                     </label>

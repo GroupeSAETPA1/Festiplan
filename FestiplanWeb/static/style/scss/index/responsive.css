@@ -10,7 +10,7 @@
   }
   .presentation i {
     font-size: 10vh;
-    padding-top: 55px;
+    padding-top: 30px;
   }
   .presentation .titre {
     font-size: 50px;
@@ -35,7 +35,7 @@
     padding: 10px;
   }
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
   .form-duo {
     flex-direction: column;
   }
@@ -44,6 +44,7 @@
   }
   .creationCompte form {
     width: 100%;
+    row-gap: 0;
   }
   .boutonCreation {
     width: 100%;
@@ -51,6 +52,9 @@
   .colonneCreationCompte {
     width: 100%;
     padding: 10px;
+  }
+  .mail {
+    padding: 0 10px !important;
   }
 }
 
