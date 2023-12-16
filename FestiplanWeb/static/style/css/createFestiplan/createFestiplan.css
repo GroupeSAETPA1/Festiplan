@@ -58,6 +58,11 @@ header .logo i {
   align-items: flex-end;
 }
 
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
 .valid-annul-placement {
   display: flex;
   flex-direction: row;

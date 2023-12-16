@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="../../static/style/css/createFestiplan/image.css">
         <link rel="stylesheet" href="../../static/style/css/createFestiplan/input.css">
         <link rel="stylesheet" href="../../static/style/css/footer.css">
+        <link rel="stylesheet" href="../../static/style/css/createFestiplan/responsive.css">
 
         <link rel="stylesheet" href="../../../framework/fontawesome-free-6.2.1-web/css/all.css">
 
@@ -33,7 +34,7 @@
         <div class="wrapper">
             <div class="container">
 
-                <div class="respon">
+                <div class="flex-column end-row">
                     <h3> <i class="fa-solid fa-circle-exclamation"></i>Responsable :</h3>
                     <input class="text" type="text" id="rechercheRespon" name="rechercheRespon"
                            placeholder="Entrez le nom du Responsable"/>

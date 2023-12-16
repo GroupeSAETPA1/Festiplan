@@ -15,7 +15,6 @@
 
 .ajoutGrij {
   line-height: 2.5;
-  padding: 0 500px;
   font-size: 1rem;
   text-align: center;
   border-radius: 30px;
@@ -23,6 +22,7 @@
   background-color: #99E1D9;
   display: flex;
   justify-content: center;
+  width: 70%;
 }
 .ajoutGrij:hover {
   background-color: #85dbd2;

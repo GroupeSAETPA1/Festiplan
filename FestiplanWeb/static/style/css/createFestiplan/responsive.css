@@ -6,6 +6,9 @@
     flex-direction: column;
     align-items: center;
   }
+  .flex-column {
+    align-items: center;
+  }
 }
 
 /*# sourceMappingURL=responsive.css.map */
