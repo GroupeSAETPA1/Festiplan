@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Festiplan - Page d'Acceuil</title>
+    <title>Festiplan - Erreur 504</title>
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/index/index.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/index/forms.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svg.css">
@@ -34,6 +34,7 @@
          <div class="presentation">
                 <i class="fa-regular fa-face-frown"></i>
                 <div class="titre">Error 504 : La base de donnée à eu un problème, veuillez réessayer plus tard </div>
+                <h2><a href="../index.php">Recharger la page</a></h2>
          </div>
     </div>
 </div>
