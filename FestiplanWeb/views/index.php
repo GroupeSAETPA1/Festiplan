@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 <div class="lastSection">
-                    <div id="switchToSLogin" class="switchForm"><i class="fa-solid fa-arrow-left"></i>Se connecter</div>
+                    <div id="switchToSLogin" class="switchForm"><i class="fa-solid fa-arrow-left"></i> Se connecter</div>
                     <input type="submit" class="boutonCreation" value="Créer le compte">
                     <input hidden name="action" value="inscription">
                 </div>
