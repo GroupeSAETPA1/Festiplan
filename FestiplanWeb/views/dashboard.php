@@ -108,28 +108,24 @@ function minutesToHHMM(int $minutes): string
         <title>Festiplan - Dashboard</title>
 
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/dashboard/dashboard.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/responsive/header.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svg.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components\footer.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components\header.css">
 
         <!-- Fontawesome --><!-- TODO Custom Kit -->
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/framework/fontawesome-free-6.2.1-web/css/all.css">
 
+        <!-- Scripts -->
+        <!-- GSAP -->  <!-- Jquery -->
+        <script src="/Festiplan/node_modules/gsap/dist/gsap.min.js"></script>
+        <script src="/Festiplan/node_modules/jquery/dist/jquery.min.js"></script>
 <!--        <script src="/Festiplan/FestiplanWeb/static/scripts/TOOD" defer></script>-->
+        <script src="/Festiplan/FestiplanWeb/static/scripts/responsive/footerResponsive.js" defer></script>
     </head>
 
     <body>
-    <header>
-        <a href="/Festiplan/FestiplanWeb">
-            <div class="logo">
-                <i class="fa-solid fa-calendar-days"></i>
-                <span>Festiplan</span>
-            </div>
-        </a>
-        <div class="mon-compte">
-            <div>
-                <i class="fa-solid fa-user"></i>
-                <span>Mon Compte</span>
-            </div>
-        </div>
-    </header>
+    <?php include $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/header.php" ?>
     <div class="wrapper">
         <!-- Liste des festivals -->
         <div class="container entete-section">
@@ -181,7 +177,6 @@ function minutesToHHMM(int $minutes): string
             ?>
         </div>
     </div>
-    <!--TODO remetre le lien-->
-    <?php //include $_SERVER['DOCUMENT_ROOT']."Festiplan/FestiplanWeb/static/components/footer/footer-absolute.php" ?>
+    <?php include $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/footer.php" ?>
     </body>
 </html>
