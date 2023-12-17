@@ -131,7 +131,7 @@ function minutesToHHMM(int $minutes): string
         <div class="container entete-section">
             <h1>Mes festivals</h1>
             <a href=""> <!-- TODO : Lien vers la page de création de festival -->
-                <div>
+                <div class="rounded">
                     <i class="fa-regular fa-calendar-plus"></i>
                     <p>Cr&eacute;er un festival</p>
                 </div>
@@ -157,7 +157,7 @@ function minutesToHHMM(int $minutes): string
         <div class="container entete-section">
             <h1>Mes Spectacles</h1>
             <a href=""> <!-- TODO : Lien vers la page de création de spectacle -->
-                <div>
+                <div class="rounded">
                     <i class="fa-regular fa-calendar-plus"></i>
                     <p>Cr&eacute;er un spectacle</p>
                 </div>
