@@ -1,7 +1,5 @@
 <?php
 
-use yasmf\HttpHelper;
-
 /**
  * Affiche un festival
  * @param int $id_festival L'identifiant du festival
@@ -112,7 +110,7 @@ function minutesToHHMM(int $minutes): string
         <!-- Fontawesome --><!-- TODO Custom Kit -->
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/framework/fontawesome-free-6.2.1-web/css/all.css">
 
-<!--        <script src="/Festiplan/FestiplanWeb/static/scripts/TOOD" defer></script>-->
+        <!--        <script src="/Festiplan/FestiplanWeb/static/scripts/TOOD" defer></script>-->
     </head>
 
     <body>
@@ -131,6 +129,9 @@ function minutesToHHMM(int $minutes): string
         </div>
     </header>
     <div class="wrapper">
+        <?php
+        if (!empty($festivals)) {
+        ?>
         <!-- Liste des festivals -->
         <div class="container entete-section">
             <h1>Mes festivals</h1>
@@ -154,32 +155,39 @@ function minutesToHHMM(int $minutes): string
                 afficher_festival($id_festival, $nom_festival, $date_debut, $date_fin, $lien_image, $categorie);
             }
             ?>
-
         </div>
+        <?php
+        }
+        ?>
 
         <!-- Liste des spectacles -->
-        <div class="container entete-section">
-            <h1>Mes Spectacles</h1>
-            <a href=""> <!-- TODO : Lien vers la page de création de spectacle -->
-                <div>
-                    <i class="fa-regular fa-calendar-plus"></i>
-                    <p>Cr&eacute;er un spectacle</p>
-                </div>
-            </a>
-        </div>
-        <div class="container container-card-spectacles">
-            <?php
-
-            foreach ($spectacles as $spectacle) {
-                $id_spectacle = $spectacle['id_spectacle'];
-                $nom_spectacle = $spectacle['nom'];
-                $lien_image = $spectacle['illustration'];
-                $categorie = $spectacle['categorie'];
-                $duree = $spectacle['duree'];
-                afficher_spectacle($id_spectacle, $nom_spectacle, $lien_image, $categorie, $duree);
-            }
+        <?php
+        if (!empty($spectacles)) {
             ?>
-        </div>
+            <div class="container entete-section">
+                <h1>Mes Spectacles</h1>
+                <a href=""> <!-- TODO : Lien vers la page de création de spectacle -->
+                    <div>
+                        <i class="fa-regular fa-calendar-plus"></i>
+                        <p>Cr&eacute;er un spectacle</p>
+                    </div>
+                </a>
+            </div>
+            <div class="container container-card-spectacles">
+                <?php
+                foreach ($spectacles as $spectacle) {
+                    $id_spectacle = $spectacle['id_spectacle'];
+                    $nom_spectacle = $spectacle['nom'];
+                    $lien_image = $spectacle['illustration'];
+                    $categorie = $spectacle['categorie'];
+                    $duree = $spectacle['duree'];
+                    afficher_spectacle($id_spectacle, $nom_spectacle, $lien_image, $categorie, $duree);
+                }
+                ?>
+            </div>
+            <?php
+        }
+        ?>
     </div>
     <!--TODO remetre le lien-->
     <?php //include $_SERVER['DOCUMENT_ROOT']."Festiplan/FestiplanWeb/static/components/footer/footer-absolute.php" ?>
