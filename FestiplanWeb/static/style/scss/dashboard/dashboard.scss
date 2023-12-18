@@ -215,6 +215,7 @@ form {
     }
 }
 
+//Tablette
 @media screen and (max-width: 1200px) {
     .label-duree, .label-categorie {
         display: none;
@@ -222,9 +223,6 @@ form {
 }
 
 @media screen and (max-width: 1000px) {
-    //.img-spectacle, .img-festival {
-    //    display: none;
-    //}
 
     .container-card-festivals {
         grid-template-columns: repeat(1, 1fr);
@@ -235,6 +233,7 @@ form {
     }
 }
 
+//Téléphone
 @media screen and (max-width: 700px) {
     .img-spectacle, .img-festival {
         display: none;
@@ -247,6 +246,18 @@ form {
 
         p {
             padding: 0 1vh;
+        }
+    }
+
+    .entete-section {
+        justify-content: center;
+
+        h1 {
+            display: none;
+        }
+
+        a {
+            width: 100%;
         }
     }
 }

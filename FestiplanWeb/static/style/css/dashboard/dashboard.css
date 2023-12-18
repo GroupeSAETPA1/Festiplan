@@ -207,6 +207,15 @@ form {
   .description-festival p {
     padding: 0 1vh;
   }
+  .entete-section {
+    justify-content: center;
+  }
+  .entete-section h1 {
+    display: none;
+  }
+  .entete-section a {
+    width: 100%;
+  }
 }
 
 /*# sourceMappingURL=dashboard.css.map */
