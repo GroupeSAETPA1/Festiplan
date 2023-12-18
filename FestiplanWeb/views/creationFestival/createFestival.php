@@ -103,8 +103,7 @@
         <input hidden name="controller" value="CreateFestival">
     </form>
 
-    <?php
-    include_once $_SERVER['DOCUMENT_ROOT']. "/Festiplan/FestiplanWeb/static/components/footer/footer.php" ?>
+    <?php include_once $_SERVER['DOCUMENT_ROOT']. "/Festiplan/FestiplanWeb/static/components/footer/footer.php" ?>
 </body>
 
 </html>

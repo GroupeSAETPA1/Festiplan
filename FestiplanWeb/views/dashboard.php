@@ -118,7 +118,7 @@ function minutesToHHMM(int $minutes): string
               href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
               integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
               crossorigin="anonymous"
-              referrerpolicy="no-referrer" />
+              referrerpolicy="no-referrer"/>
 
         <!-- Scripts -->
         <!-- GSAP -->  <!-- Jquery -->
@@ -131,76 +131,66 @@ function minutesToHHMM(int $minutes): string
     </head>
 
     <body>
-    <?php include $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/header.php" ?>
-    <div class="wrapper">
-        <!-- Liste des festivals -->
-        <div class="container entete-section">
-            <h1>Mes festivals</h1>
-            <a href=""> <!-- TODO : Lien vers la page de création de festival -->
-                <div class="rounded">
-                    <i class="fa-regular fa-calendar-plus"></i>
-                    <p>Cr&eacute;er un festival</p>
-                </div>
-            </a>
-        </div>
-        <?php
-        if (!empty($festivals)) {
-            ?>
+    <div class="app">
 
-            <div class="container container-card-festivals">
-                <?php
-                foreach ($festivals as $festival) {
-                    $id_festival = $festival['id_festival'];
-                    $nom_festival = $festival['nom'];
-                    $date_debut = $festival['debut'];
-                    $date_fin = $festival['fin'];
-                    $lien_image = $festival['illustration'];
-                    $categorie = $festival['categorie'];
-                    afficher_festival($id_festival, $nom_festival, $date_debut, $date_fin, $lien_image, $categorie);
-                }
-                ?>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/header.php" ?>
+        <div class="wrapper">
+            <!-- Liste des festivals -->
+            <div class="container entete-section">
+                <h1>Mes festivals</h1>
+                <a href=""> <!-- TODO : Lien vers la page de création de festival -->
+                    <div class="rounded">
+                        <i class="fa-regular fa-calendar-plus"></i>
+                        <p>Cr&eacute;er un festival</p>
+                    </div>
+                </a>
             </div>
             <?php
-        }
-        ?>
-
-        <!-- Liste des spectacles -->
-        <div class="container entete-section">
-            <h1>Mes Spectacles</h1>
-            <a href=""> <!-- TODO : Lien vers la page de création de spectacle -->
-                <div class="rounded">
-                    <i class="fa-regular fa-calendar-plus"></i>
-                    <p>Cr&eacute;er un spectacle</p>
-                </div>
-            </a>
-        </div>
-        <?php
-            if (!empty($spectacles)) {
+            if (!empty($festivals)) {
                 ?>
-        <div class="container entete-section">
-            <h1>Mes Spectacles</h1>
-            <a href=""> <!-- TODO : Lien vers la page de création de spectacle -->
-                <div class="rounded">
-                    <i class="fa-regular fa-calendar-plus"></i>
-                    <p>Cr&eacute;er un spectacle</p>
-                </div>
-            </a>
-        </div>
-        <div class="container container-card-spectacles">
-            <?php
 
-            foreach ($spectacles as $spectacle) {
-                $id_spectacle = $spectacle['id_spectacle'];
-                $nom_spectacle = $spectacle['nom'];
-                $lien_image = $spectacle['illustration'];
-                $categorie = $spectacle['categorie'];
-                $duree = $spectacle['duree'];
-                afficher_spectacle($id_spectacle, $nom_spectacle, $lien_image, $categorie, $duree);
+                <div class="container container-card-festivals">
+                    <?php
+                    foreach ($festivals as $festival) {
+                        $id_festival = $festival['id_festival'];
+                        $nom_festival = $festival['nom'];
+                        $date_debut = $festival['debut'];
+                        $date_fin = $festival['fin'];
+                        $lien_image = $festival['illustration'];
+                        $categorie = $festival['categorie'];
+                        afficher_festival($id_festival, $nom_festival, $date_debut, $date_fin, $lien_image, $categorie);
+                    }
+                    ?>
+                </div>
+                <?php
             }
             ?>
 
+            <!-- Liste des spectacles -->
+            <div class="container entete-section">
+                <h1>Mes Spectacles</h1>
+                <a href=""> <!-- TODO : Lien vers la page de création de spectacle -->
+                    <div class="rounded">
+                        <i class="fa-regular fa-calendar-plus"></i>
+                        <p>Cr&eacute;er un spectacle</p>
+                    </div>
+                </a>
+            </div>
+            <?php
+            if (!empty($spectacles)) {
+            ?>
+            <div class="container entete-section">
+                <h1>Mes Spectacles</h1>
+                <a href=""> <!-- TODO : Lien vers la page de création de spectacle -->
+                    <div class="rounded">
+                        <i class="fa-regular fa-calendar-plus"></i>
+                        <p>Cr&eacute;er un spectacle</p>
+                    </div>
+                </a>
+            </div>
             <div class="container container-card-spectacles">
                 <?php
+
                 foreach ($spectacles as $spectacle) {
                     $id_spectacle = $spectacle['id_spectacle'];
                     $nom_spectacle = $spectacle['nom'];
@@ -210,11 +200,24 @@ function minutesToHHMM(int $minutes): string
                     afficher_spectacle($id_spectacle, $nom_spectacle, $lien_image, $categorie, $duree);
                 }
                 ?>
+
+                <div class="container container-card-spectacles">
+                    <?php
+                    foreach ($spectacles as $spectacle) {
+                        $id_spectacle = $spectacle['id_spectacle'];
+                        $nom_spectacle = $spectacle['nom'];
+                        $lien_image = $spectacle['illustration'];
+                        $categorie = $spectacle['categorie'];
+                        $duree = $spectacle['duree'];
+                        afficher_spectacle($id_spectacle, $nom_spectacle, $lien_image, $categorie, $duree);
+                    }
+                    ?>
+                </div>
+                <?php
+                }
+                ?>
             </div>
-            <?php
-        }
-        ?>
-    </div>
-    <?php include $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/footer.php" ?>
+        </div>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/footer.php" ?>
     </body>
 </html>

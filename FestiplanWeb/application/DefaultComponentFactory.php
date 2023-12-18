@@ -20,6 +20,7 @@
 namespace application;
 
 use controllers\CreateFestivalController;
+use controllers\ErrorController;
 use controllers\HomeController;
 use services\createFestivalService;
 use services\UsersService;
@@ -56,7 +57,7 @@ class DefaultComponentFactory implements ComponentFactory
             "CreateFestival" => $this->buildCreateFestival(),
             "Home" => $this->buildUserController(),
             "Dashboard" => $this->buildDashboardController(),
-
+            "Error" => new ErrorController(),
             default => throw new NoControllerAvailableForNameException($controller_name)
         };
     }
@@ -110,7 +111,7 @@ class DefaultComponentFactory implements ComponentFactory
     {
         if($this->createFestivalService == null) {
             // TODO recuperer le pdo
-            $pdo = $this->getPDO("admin", "admin");
+            $pdo = $this->getPDO("root", "root");
             $this->createFestivalService = new createFestivalService($pdo);
         }
         return $this->createFestivalService;

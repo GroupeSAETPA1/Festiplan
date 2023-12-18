@@ -17,7 +17,7 @@ CREATE TABLE `utilisateurs`
     `nom`            varchar(50) COLLATE utf8_bin NOT NULL,
     `prenom`         varchar(30) COLLATE utf8_bin NOT NULL,
     `mail`           varchar(70) COLLATE utf8_bin NOT NULL,
-    `mdp`            varchar(50) COLLATE utf8_bin NOT NULL,
+    `mdp`            varchar(64) COLLATE utf8_bin NOT NULL,
     `login`          varchar(50) COLLATE utf8_bin NOT NULL UNIQUE,
     PRIMARY KEY (id_utilisateur)
 );

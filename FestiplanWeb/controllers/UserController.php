@@ -33,7 +33,6 @@ class UserController
 
         $view = new View("views/index");
         $this->buildView($view, $nom, $prenom, $email, $mdp, $login, false, false, false, "");
-
         return $view;
     }
 

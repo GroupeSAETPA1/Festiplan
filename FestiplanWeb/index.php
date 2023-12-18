@@ -16,10 +16,11 @@ $data_source = new DataSource(
     $dbConfig['db_pass'], 
     $dbConfig['db_charset']
 );
-$Factory = new DefaultComponentFactory();
-$router = new Router($Factory);
+$router = new Router(new DefaultComponentFactory());
 try {
     $router->route(PREFIX_TO_RELATIVE_PATH,$data_source);
 } catch (PDOException $e) {
-    header('Location: views\Error504.php');
+    throw $e;
+    header('Location: /Festiplan/FestiplanWeb/?controller=Error');
+    exit();
 }
