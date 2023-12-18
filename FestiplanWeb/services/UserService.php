@@ -13,7 +13,7 @@ class UserService
         // Inscription d'un utilisateur
         // Renvoie vrai ou faux en fonction si l'utilisateur a été inscrit.
 
-        // TODO chiffrer le mot de passe
+       $mdp = hash("sha256", $mdp);
 
         $requeteCreationClient = $pdo->prepare('INSERT INTO utilisateurs (nom, prenom, mail, mdp, login) VALUES (:nom, :prenom, :email, :mdp, :login)');
         $requeteCreationClient->bindParam(':nom', $nom);
@@ -53,8 +53,10 @@ class UserService
      * @param $login string le login de l'utilisateur à connecter
      * @return PDOStatement
      */
-    public function connexion(PDO $pdo, string $mdp, string $login): PDOStatement
-    {
+    public function connexion($pdo, string $mdp, string $login):PDOStatement {
+
+        $mdp = hash("sha256", $mdp);
+
         // Vérifie si l'utilisateur existe
         // Renvoie vrai ou faux en fonction si l'utilisateur a été trouvé.
         $requeteConnexionUtilisateur = $pdo->prepare("SELECT DISTINCT id_utilisateur, nom, prenom FROM utilisateurs WHERE login = :login AND mdp = :mdp");

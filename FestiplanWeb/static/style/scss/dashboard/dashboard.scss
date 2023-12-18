@@ -12,48 +12,17 @@ a {
     text-decoration: none;
 }
 
-header {
-    background-color: $dark-grey;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: $white;
-
-    .logo {
-        margin: 1rem;
-        display: flex;
-        align-items: center;
-
-        i {
-            color: $orange;
-            font-size: 2rem;
-            padding-right: 10%;
-        }
-
-        span {
-            color: $white;
-        }
-    }
-
-    .mon-compte div {
-        background-color: $orange;
-        color: $dark-grey;
-        padding: 1vh;
-        margin: 1vh;
-    }
-}
-
 img {
     border-radius: 2vh;
     max-width: 100%;
 }
 
-div {
-    border-radius: 2vh;
-}
-
 form {
     margin: auto;
+}
+
+.rounded {
+    border-radius: 2vh !important;
 }
 
 .wrapper {
@@ -71,6 +40,7 @@ form {
     align-items: center;
     justify-content: space-between;
     margin: 3vh;
+    border-radius: 2vh;
 }
 
 .entete-section {

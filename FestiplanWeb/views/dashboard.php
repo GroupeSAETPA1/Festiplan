@@ -106,33 +106,37 @@ function minutesToHHMM(int $minutes): string
         <title>Festiplan - Dashboard</title>
 
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/dashboard/dashboard.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/responsive/header.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svg.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components\footer.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components\header.css">
 
         <!-- Fontawesome --><!-- TODO Custom Kit -->
-        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/framework/fontawesome-free-6.2.1-web/css/all.css">
 
-        <script src="/Festiplan/FestiplanWeb/static/scripts/redirection_logo.js" defer></script>
-        <script src="/Festiplan/FestiplanWeb/static/scripts/dashboard.js" defer></script>
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/framework/fontawesome-free-6.2.1-web/css/all.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+              integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+              crossorigin="anonymous"
+              referrerpolicy="no-referrer" />
+
+        <!-- Scripts -->
+        <!-- GSAP -->  <!-- Jquery -->
+        <script src="/Festiplan/node_modules/gsap/dist/gsap.min.js"></script>
+        <script src="/Festiplan/node_modules/jquery/dist/jquery.min.js"></script>
+<!--        <script src="/Festiplan/FestiplanWeb/static/scripts/TOOD" defer></script>-->
+        <script src="/Festiplan/FestiplanWeb/static/scripts/responsive/footerResponsive.js" defer></script>
     </head>
 
     <body>
-    <header>
-        <div class="logo" id="div_logo">
-            <i class="fa-solid fa-calendar-days"></i>
-            <span>Festiplan</span>
-        </div>
-        <div class="mon-compte">
-            <div>
-                <i class="fa-solid fa-user"></i>
-                <span><?php echo $prenom . ' ' . $nom ?></span>
-            </div>
-        </div>
-    </header>
+    <?php include $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/header.php" ?>
     <div class="wrapper">
         <!-- Liste des festivals -->
         <div class="container entete-section">
             <h1>Mes festivals</h1>
             <a href=""> <!-- TODO : Lien vers la page de création de festival -->
-                <div>
+                <div class="rounded">
                     <i class="fa-regular fa-calendar-plus"></i>
                     <p>Cr&eacute;er un festival</p>
                 </div>
@@ -170,7 +174,28 @@ function minutesToHHMM(int $minutes): string
             </a>
         </div>
         <?php
-        if (!empty($spectacles)) {
+            if (!empty($spectacles)) {
+                ?>
+        <div class="container entete-section">
+            <h1>Mes Spectacles</h1>
+            <a href=""> <!-- TODO : Lien vers la page de création de spectacle -->
+                <div class="rounded">
+                    <i class="fa-regular fa-calendar-plus"></i>
+                    <p>Cr&eacute;er un spectacle</p>
+                </div>
+            </a>
+        </div>
+        <div class="container container-card-spectacles">
+            <?php
+
+            foreach ($spectacles as $spectacle) {
+                $id_spectacle = $spectacle['id_spectacle'];
+                $nom_spectacle = $spectacle['nom'];
+                $lien_image = $spectacle['illustration'];
+                $categorie = $spectacle['categorie'];
+                $duree = $spectacle['duree'];
+                afficher_spectacle($id_spectacle, $nom_spectacle, $lien_image, $categorie, $duree);
+            }
             ?>
 
             <div class="container container-card-spectacles">
@@ -189,7 +214,6 @@ function minutesToHHMM(int $minutes): string
         }
         ?>
     </div>
-    <!--TODO remetre le lien-->
-    <?php //include $_SERVER['DOCUMENT_ROOT']."Festiplan/FestiplanWeb/static/components/footer/footer-absolute.php" ?>
+    <?php include $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/footer.php" ?>
     </body>
 </html>
