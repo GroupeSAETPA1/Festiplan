@@ -74,7 +74,7 @@
                                 Mot de passe :
                             </label>
                             <input type="password" id="mdpCrea" name="mdp" placeholder="Votre mot de passe :"
-                                   value="<?php echo $mdp ?>"
+                                   value="<?php echo $mdp ?>" minlength="8"
                                    required>
                         </div>
                     </div>
@@ -117,7 +117,7 @@
                         <label for="mdp">
                             Mot de passe
                         </label>
-                        <input type="password" id="mdp" name="mdp"
+                        <input type="password" id="mdp" name="mdp" minlength="8"
                                placeholder="Entrez votre mot de passe :"
                                value="<?php echo $mdp ?>"
                                required>
