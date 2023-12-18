@@ -34,7 +34,7 @@
         <div class="wrapper">
             <div class="container">
 
-                <div class="flex-column end-row">
+                <div class="align">
                     <h3> <i class="fa-solid fa-circle-exclamation"></i>Responsable :</h3>
                     <input class="text" type="text" id="rechercheRespon" name="rechercheRespon"
                            placeholder="Entrez le nom du Responsable"/>

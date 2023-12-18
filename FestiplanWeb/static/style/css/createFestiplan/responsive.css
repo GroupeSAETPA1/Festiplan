@@ -9,6 +9,12 @@
   .flex-column {
     align-items: center;
   }
+  .text {
+    width: 50vw;
+  }
+  .align {
+    padding: 0 150px;
+  }
 }
 
 /*# sourceMappingURL=responsive.css.map */

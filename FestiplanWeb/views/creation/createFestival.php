@@ -69,7 +69,7 @@
 
 
                 <!-- Second paquet qui va contenir le champ d'entrée d'image-->
-                <div class="flex-row first-row ">
+                <div class="flex-row">
                     <div class="custom-file-input-wrapper">
                         <h3 class="custom-file-input-text">Illustration :</h3></br>
                         <label class="custom-file-input" for="fileInput"><i class="fa-solid fa-image"></i>Parcourir</label>
