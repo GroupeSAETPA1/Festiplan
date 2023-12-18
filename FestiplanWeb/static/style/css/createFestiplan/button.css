@@ -13,6 +13,38 @@
   background-color: #f6905a;
 }
 
+.retour:hover {
+  background-color: #c54b0b;
+}
+
+.ajoutS {
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #99E1D9;
+}
+
+.ajoutS:hover {
+  background-color: #33aea0;
+}
+
+.supp {
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #F7A072;
+}
+
+.supp:hover {
+  background-color: #c54b0b;
+}
+
 .ajoutGrij {
   line-height: 2.5;
   padding: 0 500px;
@@ -24,8 +56,23 @@
   display: flex;
   justify-content: center;
 }
+
 .ajoutGrij:hover {
-  background-color: #85dbd2;
+  background-color: #33aea0;
+}
+
+.annul {
+  line-height: 2.5;
+  padding: 0 150px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #F7A072;
+}
+
+.annul:hover {
+  background-color: #c54b0b;
 }
 
 .valid {
@@ -37,6 +84,7 @@
   border-style: none;
   background-color: #99E1D9;
 }
+
 .valid:hover {
   background-color: #85dbd2;
 }
@@ -50,6 +98,7 @@
   border-style: none;
   background-color: #F7A072;
 }
+
 .mon-compte:hover {
   background-color: #f6905a;
 }

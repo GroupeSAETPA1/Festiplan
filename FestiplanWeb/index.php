@@ -16,6 +16,10 @@ $data_source = new DataSource(
     $dbConfig['db_pass'], 
     $dbConfig['db_charset']
 );
-
-$router = new Router(new DefaultComponentFactory()) ;
-$router->route(PREFIX_TO_RELATIVE_PATH,$data_source);
+$Factory = new DefaultComponentFactory();
+$router = new Router($Factory);
+try {
+    $router->route(PREFIX_TO_RELATIVE_PATH,$data_source);
+} catch (PDOException $e) {
+    header('Location: views\Error504.php');
+}

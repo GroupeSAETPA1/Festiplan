@@ -1,88 +1,155 @@
 <?php
+
 namespace controllers;
 
 use PDO;
+use PDOException;
 use services\UserService;
-use services\SessionService;
 use yasmf\HttpHelper;
 use yasmf\View;
 
 /**
  * Controleur de la gestion utilisateur
  */
-class UserController {
+class UserController
+{
     private UserService $userService;
 
-    public function __construct(UserService $userService) {
+    public function __construct(UserService $userService)
+    {
+        session_start();
         $this->userService = $userService;
     }
 
-    public function index($pdo): View {
-        $mdp =  htmlspecialchars(HttpHelper::getParam('mdp') ?: "");
-        $login =  htmlspecialchars(HttpHelper::getParam('identifiant') ?: "");
+    public function index($pdo): View
+    {
+        $this->userService->deconnexion();
+
+        $nom = htmlspecialchars(HttpHelper::getParam('nom') ?: "");
+        $prenom = htmlspecialchars(HttpHelper::getParam('prenom') ?: "");
+        $email = htmlspecialchars(HttpHelper::getParam('email') ?: "");
+        $mdp = htmlspecialchars(HttpHelper::getParam('mdp') ?: "");
+        $login = htmlspecialchars(HttpHelper::getParam('login') ?: "");
+
         $view = new View("views/index");
-        $view->setVar('nom', "");
-        $view->setVar('prenom', "");
-        $view->setVar('email', "");
-        $view->setVar('mdp', $mdp);
-        $view->setVar('login', $login);
-        $view->setVar('displayInscription', false);
-        $view->setVar('displayLoginError', false);
+        $this->buildView($view, $nom, $prenom, $email, $mdp, $login, false, false, false, "");
+
         return $view;
     }
 
-    public function inscription($pdo): View {
+    /**
+     * @param View $view
+     * @param string $nom
+     * @param string $prenom
+     * @param string $email
+     * @param string $mdp
+     * @param string $login
+     * @param bool $displayInscription
+     * @param bool $displayLoginError
+     * @param bool $displaySignInError
+     * @param string $errorMessage
+     * @return void
+     */
+    public function buildView(View $view, string $nom, string $prenom, string $email, string $mdp, string $login, bool $displayInscription, bool $displayLoginError, bool $displaySignInError, string $errorMessage): void
+    {
+        $view->setVar('nom', $nom ?: "");
+        $view->setVar('prenom', $prenom ?: "");
+        $view->setVar('email', $email ?: "");
+        $view->setVar('mdp', $mdp ?: "");
+        $view->setVar('login', $login ?: "");
+        $view->setVar('displayInscription', $displayInscription ?: false);
+        $view->setVar('displayLoginError', $displayLoginError ?: false);
+        $view->setVar('displaySignInError', $displaySignInError ?: false);
+        $view->setVar('errorMessage', $errorMessage ?: "");
+    }
 
-        $nom =  htmlspecialchars(HttpHelper::getParam('nom') ?: "");
-        $prenom =  htmlspecialchars(HttpHelper::getParam('prenom') ?: "");
-        $email =  htmlspecialchars(HttpHelper::getParam('email') ?: "");
-        $mdp =  htmlspecialchars(HttpHelper::getParam('mdp') ?: "");
-        $login =  htmlspecialchars(HttpHelper::getParam('login') ?: "");
+    /**
+     * Inscrit un utilisateur dans la base de données
+     * @param $pdo pdo le pdo de l'application
+     * @return View la vue du dashboard si on a réussi a créer le compte, sinon la vue index
+     */
+    public function inscription(PDO $pdo): View
+    {
+
+        $nom = htmlspecialchars(HttpHelper::getParam('nom') ?: "");
+        $prenom = htmlspecialchars(HttpHelper::getParam('prenom') ?: "");
+        $email = htmlspecialchars(HttpHelper::getParam('email') ?: "");
+        $mdp = htmlspecialchars(HttpHelper::getParam('mdp') ?: "");
+        $login = htmlspecialchars(HttpHelper::getParam('login') ?: "");
 
         $view = null;
         try {
-            // Si l'utilisateur n'existe pas, on le crée
-            if (!$this->userService->utilisateurExiste($pdo, $email, $mdp)) {
-                // TODO mettre les infos du dashboard de l'utilisateur
-                $view = new View("/views/dashboard");
-            // Si l'utilisateur existe déja, on affiche un message d'erreur
+            $view = new View("/views/index");
+            if ($nom != "" && $prenom != "" && $email != "" && $mdp != "" && $login != "") {
+                if (!$this->userService->utilisateurExiste($pdo, $login)) {
+                    $this->userService->createUser($pdo, $nom, $prenom, $email, $mdp, $login);
+                    $view = new View("/views/dashboard");
+                    // Si l'utilisateur existe déja, on affiche un message d'erreur
+                } else {
+                    $messageErreur = "Erreur d'inscription : Un utilisateur existe déja avec ce login";
+                    $this->buildView($view, $nom, $prenom, $email, $mdp, $login, true, false, true, $messageErreur);
+
+                }
             } else {
-                $view = new View("/views/index");
-                $view->setVar('nom', $nom);
-                $view->setVar('prenom', $prenom);
-                $view->setVar('email', $email);
-                $view->setVar('mdp', $mdp);
-                $view->setVar('login', $login);
-                $view->setVar('displayInscription', true);
-                $view->setVar('displayLoginError', true);
+                $messageErreur = "Erreur d'inscription : Un des champs requis n'est pas rempli";
+                $this->buildView($view, $nom, $prenom, $email, $mdp, $login, true, false, true, $messageErreur);
             }
-        } catch (\PDOException $e) {
-            $view->setVar('error', "Il y a une erreure :" . $e->getMessage());
+        } catch (PDOException|\TypeError $e) {
+            $messageErreur = "Erreur d'inscription : " . $e->getMessage();
+            $this->buildView($view, $nom, $prenom, $email, $mdp, $login, true, false, true, $messageErreur);
+        } finally {
+            return $view;
         }
-        return  $view;
     }
 
-   public function connexion($pdo): View {
-      // Connecte l'utilisateur
+    /**
+     * Tente de connecter l'utilisateur pour le renvoyer sur le dashboard de l'application
+     * @param $pdo pdo le pdo de l'application
+     * @return View la vue dashboard si on arrive a se connecter, la vue index avec une erreure sinon
+     */
+    public function connexion(PDO $pdo): View
+    {
+        // Connecte l'utilisateur
 
-      $mdp =  htmlspecialchars(HttpHelper::getParam('mdp') ?: "");
-      $login =  htmlspecialchars(HttpHelper::getParam('login') ?: "");
+        $mdp = htmlspecialchars(HttpHelper::getParam('mdp') ?: "");
+        $login = htmlspecialchars(HttpHelper::getParam('login') ?: "");
 
-      $view = null;
-      try {
-          $view = new View("/views/dashboard");
-          if ($this->userService->utilisateurExiste($pdo, $mdp, $login)) {
-              // TODO mettre les infos du dashboard de l'utilisateur
-          } else {
-              $view = new View("/views/index");
-              $view->setVar('mdp', $mdp);
-              $view->setVar('login', $login);
-              $view->setVar('displayInscription', false);
-              $view->setVar('displayLoginError', true);
-          }
-      } catch (\PDOException $e ) {
-          $view->setVar('error', "Il y a une erreure :" . $e->getMessage());
-      }
-       return $view;
-   }
+//        $view = null;
+        $view = new View("/views/index");
+        try {
+            if ($login != "" || $mdp != "") {
+                $resultatRequete = $this->userService->connexion($pdo, $mdp, $login);
+                if ($resultatRequete->rowCount() > 0) {
+                    $view = new View("/views/dashboard");
+                    while ($ligne = $resultatRequete->fetch()) {
+                        // Stockage dans les variables de session les attributs de l'utilisateur
+                        $_SESSION['connecte'] = true;
+                        $_SESSION['id_utilisateur'] = $ligne->id_utilisateur;
+                        $_SESSION['nom'] = $ligne->nom;
+                        $_SESSION['prenom'] = $ligne->prenom;
+                    }
+                    $messageErreur = "";
+                    $displayLoginError = false;
+                    header("Location: index.php?controller=Dashboard");
+                    exit();
+                } else {
+                    $displayLoginError = true;
+                    $messageErreur = "Erreur de connexion : L'identifiant ou le mot de passe ne sont pas valides";
+                }
+            } else {
+                $displayLoginError = true;
+                $messageErreur = "Erreur de connexion : Le login et le mot de passe ne doivent pas etre vides";
+            }
+        } catch (PDOException|\TypeError $e) {
+            $displayLoginError = true;
+            $messageErreur = "Erreur de connexion : " . $e->getMessage();
+        }
+        $this->buildView($view, "", "", "", $mdp, $login, false, $displayLoginError, false, $messageErreur);
+        return $view;
+    }
+
+    function PDONotFound()
+    {
+        return new View("/views/Error504");
+    }
 }

@@ -40,7 +40,6 @@ use PDO;
 class DefaultComponentFactory implements ComponentFactory
 {
     private ?UserService $userService = null;
-    private ?SessionService $sessionService = null;
     private ?DashboardService $dashboardService = null;
 
     private ?CreateFestivalService $createFestivalService = null;	
@@ -71,7 +70,6 @@ class DefaultComponentFactory implements ComponentFactory
     {
         return match ($service_name) {
             "User" => $this->buildUserService(),
-            "Session" => $this->buildSessionService(),
             "Dashboard" => $this->buildDashboardService(),
             "CreateFestival" => $this->buildCreateFestivalService() , 
             default => throw new NoServiceAvailableForNameException($service_name)
@@ -87,17 +85,6 @@ class DefaultComponentFactory implements ComponentFactory
             $this->userService = new UserService();
         }
         return $this->userService;
-    }
-
-    /**
-     * @return SessionService
-     */
-    private function buildSessionService(): SessionService
-    {
-        if ($this->sessionService == null) {
-            $this->sessionService = new SessionService();
-        }
-        return $this->sessionService;
     }
 
     /**

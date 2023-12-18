@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/index/index.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/index/forms.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svg.css">
-    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/footer.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components\footer.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/index/responsive.css">
 
     <!-- Font Awesome -->
@@ -19,39 +19,39 @@
           crossorigin="anonymous"
           referrerpolicy="no-referrer" />
 
-    <link rel="icon" href="../static/assets/img/Favicon.png" /> <!--  A remplacer quand on aura la favicon  -->
-
     <!-- Scripts -->
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
-    <!-- Jquery CDN -->
-    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
-    <!-- JS -->
-    <script src="../static/scripts/index.js"></script>
-
+    <!-- GSAP -->  <!-- Jquery -->
+    <script src="/Festiplan/node_modules/gsap/dist/gsap.min.js"></script>
+    <script src="/Festiplan/node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- custom JS -->
+    <!-- custom JS -->
+    <script src="/Festiplan/FestiplanWeb/static/scripts/index.js" defer></script>
+    <script src="/Festiplan/FestiplanWeb/static/scripts/responsive/indexResponsive.js" defer></script>
+    <script src="/Festiplan/FestiplanWeb/static/scripts/responsive/footerResponsive.js" defer></script>
 </head>
 <body>
+<input hidden id="displayInscription" value="<?php echo $displayInscription?>">
 <div class="app">
     <div class="partiePrincipale">
         <div class="formulaire creationCompte">
             <form method="get" action="/Festiplan/FestiplanWeb">
                 <div class="form-duo">
                     <div class="colonneCreationCompte">
-                        <label for="nom" id="nom">
+                        <label for="nom">
                             Nom :
                         </label>
-                        <input type="text" id="nom" placeholder="Votre nom :" value="<?php echo $nom ?>"
+                        <input type="text" id="nom" name="nom" placeholder="Votre nom :" value="<?php echo $nom ?>"
                                required>
                     </div>
                     <div class="colonneCreationCompte">
-                        <label for="prenom" id="prenom">
+                        <label for="prenom">
                             Prénom :
                         </label>
                         <input type="text" id="prenom" name="prenom" placeholder="Votre prénom :" value="<?php echo $prenom ?>"
                                required>
                     </div>
                 </div>
-                <div class="colonneCreationCompte">
+                <div class="colonneCreationCompte mail">
                     <label for="mail" id="mail">
                         Email :
                     </label>
@@ -60,28 +60,29 @@
                 </div>
                 <div class="form-duo">
                     <div class="colonneCreationCompte">
-                        <label for="identifiantCrea" id="identifiantCrea">
+                        <label for="identifiantCrea">
                             Identifiant :
                         </label>
                         <input type="text" id="identifiantCrea" name="login" placeholder="Votre identifiant :" value="<?php echo $login ?>"
                                required>
                     </div>
                     <div class="colonneCreationCompte">
-                        <label for="mdpCrea" id="mdpCrea">
+                        <label for="mdpCrea">
                             Mot de passe :
                         </label>
                         <input type="password" id="mdpCrea" name="mdp" placeholder="Votre mot de passe :" value="<?php echo $mdp ?>"
                                required>
                     </div>
                 </div>
-                <div class="form-duo">
-                    <button class="retour">
-                        <i class="fa-solid fa-arrow-left"></i>
-                        Retour
-                    </button>
+                <div>
+                    <?php if($displaySignInError) {echo $errorMessage;} else {echo "";} ?>
+                </div>
+                <div class="lastSection">
+                    <div id="switchToSLogin" class="switchForm"><i class="fa-solid fa-arrow-left"></i> Se connecter</div>
                     <input type="submit" class="boutonCreation" value="Créer le compte">
                     <input hidden name="action" value="inscription">
                 </div>
+
             </form>
         </div>
         <div class="presentation">
@@ -95,7 +96,7 @@
         <div class="formulaire connexion">
             <form method="get" action="/Festiplan/FestiplanWeb">
                 <div class="colonneCreationCompte">
-                    <label for="identifiant" id="identifiant">
+                    <label for="identifiant">
                         Identifiant
                     </label>
                     <input type="text" id="identifiant" name="login"
@@ -104,7 +105,7 @@
                            required>
                 </div>
                 <div class="colonneCreationCompte">
-                    <label for="mdp" id="mdp">
+                    <label for="mdp">
                         Mot de passe
                     </label>
                     <input type="password" id="mdp" name="mdp"
@@ -112,25 +113,18 @@
                            value="<?php echo $mdp ?>"
                            required>
                 </div>
-                <!-- TODO Faire un faux Bouton -->
-                <button class="creerCompte">Créer un compte <i class="fa-solid fa-arrow-right"></i></button>
+                <div>
+                    <?php if($displayLoginError) {echo $errorMessage;} else {echo "";} ?>
+                </div>
+                <div id="switchToSignup" class="switchForm">Créer un compte <i class="fa-solid fa-arrow-right"></i></div>
                 <input type="submit" class="boutonConnexion" value="Me Connecter">
                 <input hidden name="action" value="connexion">
             </form>
         </div>
 
     </div>
-</div>
 
-<!--<?php include_once "/Festiplan/FestiplanWeb/static/components/footer.php" ?>-->
-<div class="footer">
-    <div class="spacer ratio wave-white-to-grey"></div>
-    <footer>
-        <div class="text-footer">
-            Copyrigths © 2023 - Festiplan - Tous droits réservés
-        </div>
-    </footer>
 </div>
-
+<?php include $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/footer.php" ?>
 </body>
 </html>
