@@ -32,7 +32,9 @@
         <div class="retour">
             <a href="createFestival2.php"><button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button></a>
         </div>
-
+        <form action="index.php" method ="post">
+            <input hidden name="action" value="validerPage3">
+            <input hidden name="controller" value="CreateFestival">
         <div class="wrapper">
             <div class="container">
 
@@ -40,13 +42,11 @@
                 <div>
                     <h3><i class="fa-solid fa-circle-exclamation"></i>Spectacle :</h3>
 
-                    <select>
+                    <select name ='spectacle'>
                         <option value="vide"></option>
                         <?php
                         foreach ($tableauSpectacle as $ligne) {
-                            echo "<option value ='>".$ligne['nom']."'>".$ligne['nom']."</option>";
-                            //ar_dump($ligne);
-                            //echo $ligne ;
+                            echo "<option value ='".$ligne['nom']."'>".$ligne['nom']."</option>";
                         }
                         ?>
                     </select>
@@ -61,11 +61,10 @@
             <div class="flex-row">
                 <div>
                     <h3><i class="fa-solid fa-circle-exclamation"></i>Scène :</h3>
-                    <select>
+                    <select name="scene">
                         <option value="vide"></option>
                         <?php
                             foreach ($tableauScene as $ligne) {
-                                var_dump($tableauScene);
                                 echo "<option value='".$ligne['taille']."'>".$ligne['taille']."</option>" ;
                             }
                         ?>
@@ -90,6 +89,7 @@
                 <button class="valid">Valider <i class="fa-solid fa-check"></i></button>
             </div>
         </div>
+        </form>
          <?php include_once $_SERVER['DOCUMENT_ROOT']. "/Festiplan/FestiplanWeb/static/components/footer/footer.php" ?>
     </body>
 </html>

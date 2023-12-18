@@ -54,7 +54,7 @@ class CreateFestivalController {
     public  function validerPage2 () {
         //echo "valider page 2" ;
         //$view = new View("views/creation/createFestival2");
-        $tousOk = true ;
+        $tousOk = true ; // STUB
         if ($tousOk) {
             $view = new View("/views/creation/CreateFestival3");
             $view -> setVar('tableauSpectacle' , $this->spectacleBD);
@@ -65,6 +65,20 @@ class CreateFestivalController {
         return $view;
     }
 
+    public function validerPage3 () {
+        $tousOk = false ; //STUB
+        $tousOk =  $this->spectacleOk(HttpHelper::getParam("spectacle")) ;
+        var_dump($tousOk);
+        //var_dump($_POST);
+        if ($tousOk) {
+            //var_dump($_POST);
+            header("Location: /Festiplan/FestiplanWeb/?controller=Dashboard");
+            exit();
+        } else {
+            $view = new View("/views/creation/CreateFestival3");
+        }
+        return $view ;
+    }
     public function nomOk($aVerifier)
     {
         return $aVerifier != '' and strlen($aVerifier) <= longueur_nom_festival;
@@ -113,6 +127,19 @@ class CreateFestivalController {
         }
     }
 
+    public  function spectacleOk($tableauSpectacle) {
+        var_dump($tableauSpectacle);
+        echo '<br>';
+        $tableauSpectacle = array($tableauSpectacle);
+        var_dump($this->spectacleBD);
+        foreach ($tableauSpectacle as $spectacle) {
+            if (! array_search($spectacle , $this->spectacleBD)) {
+                echo 'ici ' ;
+                return false ;
+            }
+        }
+        return true ;
+    }
     public function recupererExtension($nomFichier) {
         $extensionsPossibles = array(
             strtoupper('.jpg') , 
