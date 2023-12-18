@@ -81,6 +81,7 @@
                         <option value="vide"></option>
                         <?php
                         foreach ($tableauCategorie as $ligne) {
+                            //var_dump($tableauCategorie);
                             echo '<option value = "' . $ligne['nom'] . '">' . $ligne['nom'] . "</option>";
                         }
                         ?>

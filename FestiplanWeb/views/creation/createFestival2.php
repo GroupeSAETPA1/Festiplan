@@ -34,6 +34,9 @@
     <div class="retour">
         <a href="?controller=CreateFestival"><button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button></a>
     </div>
+    <form method = "post" action ="index.php">
+        <input hidden name="action" value="validerPage2">
+        <input hidden name="controller" value="CreateFestival">
     <div class="wrapper">
         <div class="container">
 
@@ -70,6 +73,7 @@
                 </button></a>
         </div>
     </div>
+    </form>
     <?php include_once $_SERVER['DOCUMENT_ROOT']. "/Festiplan/FestiplanWeb/static/components/footer/footer.php" ?>
 </body>
 

@@ -1,6 +1,7 @@
 <?php
 namespace controllers;
 
+use Couchbase\ViewException;
 use PDO;
 use services\CreateFestivalService;
 use yasmf\HttpHelper;
@@ -22,6 +23,8 @@ class CreateFestivalController {
     {
         $this->createFestivalService = $createFestivalService;
         $this->categorieBD = $this -> createFestivalService->recupererCategorie();
+        $this->spectacleBD = $this -> createFestivalService->recupererSpectacle();
+        $this->sceneBD = $this -> createFestivalService->recupererTailleScene();
     }
 
     public function index(PDO $pdo): View{
@@ -46,6 +49,20 @@ class CreateFestivalController {
            $view -> setVar('tableauCategorie' , $this->categorieBD);
        }
        return $view;
+    }
+
+    public  function validerPage2 () {
+        //echo "valider page 2" ;
+        //$view = new View("views/creation/createFestival2");
+        $tousOk = true ;
+        if ($tousOk) {
+            $view = new View("/views/creation/CreateFestival3");
+            $view -> setVar('tableauSpectacle' , $this->spectacleBD);
+            $view -> setVar('tableauScene' , $this->sceneBD);
+        } else {
+            $view = new View("/views/creation/CreateFestival2");
+        }
+        return $view;
     }
 
     public function nomOk($aVerifier)

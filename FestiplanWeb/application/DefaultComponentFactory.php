@@ -123,7 +123,7 @@ class DefaultComponentFactory implements ComponentFactory
     {
         if($this->createFestivalService == null) {
             // TODO recuperer le pdo
-            $pdo = $this->getPDO("root", "root");
+            $pdo = $this->getPDO("admin", "admin");
             $this->createFestivalService = new createFestivalService($pdo);
         }
         return $this->createFestivalService;
