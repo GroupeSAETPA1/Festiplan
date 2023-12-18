@@ -165,7 +165,8 @@ function minutesToHHMM(int $minutes): string
 
         <!-- Liste des spectacles -->
         <?php
-        if (!empty($spectacles)) {
+            if (!empty($spectacles)) {
+                ?>
         <div class="container entete-section">
             <h1>Mes Spectacles</h1>
             <a href=""> <!-- TODO : Lien vers la page de création de spectacle -->
