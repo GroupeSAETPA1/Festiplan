@@ -19,9 +19,13 @@
 
 namespace application;
 
+use controllers\CreateFestivalController;
+use controllers\HomeController;
+use services\createFestivalService;
+use services\UsersService;
+
 use controllers\DashboardController;
 use controllers\UserController;
-use PDO;
 use services\DashboardService;
 use services\SessionService;
 use services\UserService;
@@ -29,6 +33,7 @@ use yasmf\ComponentFactory;
 use yasmf\NoControllerAvailableForNameException;
 use yasmf\NoServiceAvailableForNameException;
 
+use PDO;
 /**
  *  The controller factory
  */
@@ -36,6 +41,8 @@ class DefaultComponentFactory implements ComponentFactory
 {
     private ?UserService $userService = null;
     private ?DashboardService $dashboardService = null;
+
+    private ?CreateFestivalService $createFestivalService = null;	
 
     /**
      * @param string $controller_name the name of the controller to instanciate
@@ -45,8 +52,11 @@ class DefaultComponentFactory implements ComponentFactory
     public function buildControllerByName(string $controller_name): mixed
     {
         return match ($controller_name) {
+
+            "CreateFestival" => $this->buildCreateFestival(),
             "Home" => $this->buildUserController(),
             "Dashboard" => $this->buildDashboardController(),
+
             default => throw new NoControllerAvailableForNameException($controller_name)
         };
     }
@@ -61,6 +71,7 @@ class DefaultComponentFactory implements ComponentFactory
         return match ($service_name) {
             "User" => $this->buildUserService(),
             "Dashboard" => $this->buildDashboardService(),
+            "CreateFestival" => $this->buildCreateFestivalService() , 
             default => throw new NoServiceAvailableForNameException($service_name)
         };
     }
@@ -84,7 +95,28 @@ class DefaultComponentFactory implements ComponentFactory
         return new UserController($this->buildUserService());
     }
 
-    private function buildDashboardService(): ?DashboardService
+    /**
+     * @return CreateFestivalController
+     */
+    private function buildCreateFestival(): CreateFestivalController
+    {
+        return new CreateFestivalController($this->buildCreateFestivalService());
+    }
+
+    /**
+     * @return createFestivalService
+     */
+    private function buildCreateFestivalService(): createFestivalService
+    {
+        if($this->createFestivalService == null) {
+            // TODO recuperer le pdo
+            $pdo = $this->getPDO("admin", "admin");
+            $this->createFestivalService = new createFestivalService($pdo);
+        }
+        return $this->createFestivalService;
+    }
+
+    private function buildDashboardService(): DashboardService
     {
         if ($this->dashboardService == null) {
             $pdo = $this->getPDO("root", "root");
@@ -97,6 +129,7 @@ class DefaultComponentFactory implements ComponentFactory
     {
         return new DashboardController($this->buildDashboardService());
     }
+
 
     /**
      * À partir d'un nom d'utilisateur et de son mot de passe,

@@ -5,14 +5,15 @@
         <title>Festiplan</title>
 
         <!-- Lien vers mon CSS -->
-        <link rel="stylesheet" href="../../static/style/css/createFestiplan/createFestiplan.css">
-        <link rel="stylesheet" href="../../static/style/css/createFestiplan/button.css">
-        <link rel="stylesheet" href="../../static/style/css/createFestiplan/image.css">
-        <link rel="stylesheet" href="../../static/style/css/createFestiplan/input.css">
-        <link rel="stylesheet" href="../../static/style/css/footer.css">
-        <link rel="stylesheet" href="../../static/style/css/createFestiplan/responsive.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/createFestiplan.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/button.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/image.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/input.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/footer.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svg.css">
 
-        <link rel="stylesheet" href="../../../framework/fontawesome-free-6.2.1-web/css/all.css">
+
+        <link rel="stylesheet" href="/Festiplan/framework/fontawesome-free-6.2.1-web/css/all.css">
 
     </head>
     <body>
@@ -31,17 +32,26 @@
         <div class="retour">
             <a href="createFestival2.php"><button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button></a>
         </div>
-
+        <form action="index.php" method ="post">
+            <input hidden name="action" value="validerPage3">
+            <input hidden name="controller" value="CreateFestival">
         <div class="wrapper">
             <div class="container">
 
             <div class="flex-row end-row">
                 <div>
                     <h3><i class="fa-solid fa-circle-exclamation"></i>Spectacle :</h3>
-                    <select>
-                        <option value=" "></option>
-                        <option value="descriauds">Descriaud's pectacle</option>
+
+                    <select name ='spectacle'>
+                        <option value="vide"></option>
+                        <?php
+                        foreach ($tableauSpectacle as $ligne) {
+                            echo "<option value ='".$ligne['nom']."'>".$ligne['nom']."</option>";
+                        }
+                        ?>
                     </select>
+
+
                 </div>
                 <div class="ajouter">
                     Ajouter un Spectacle  <i class="fa-solid fa-plus"></i> <!-- TODO fontawesome -->
@@ -51,13 +61,13 @@
             <div class="flex-row end-row">
                 <div>
                     <h3><i class="fa-solid fa-circle-exclamation"></i>Scène :</h3>
-                    <select>
-                        <option value=" "></option>
-                        <option value="concert">concert</option>
-                        <option value="theatre">theatre</option>
-                        <option value="danse">danse</option>
-                        <option value="cirque">cirque</option>
-                        <option value="film">film</option>
+                    <select name="scene">
+                        <option value="vide"></option>
+                        <?php
+                            foreach ($tableauScene as $ligne) {
+                                echo "<option value='".$ligne['taille']."'>".$ligne['taille']."</option>" ;
+                            }
+                        ?>
                     </select>
                 </div>
                 <div class="ajouter">
@@ -79,7 +89,7 @@
                 <button class="valider">Valider <i class="fa-solid fa-check"></i></button>
             </div>
         </div>
-        <?php
-         include_once "../../static/components/footer/footer-absolute.php" ?>
+        </form>
+         <?php include_once $_SERVER['DOCUMENT_ROOT']. "/Festiplan/FestiplanWeb/static/components/footer/footer.php" ?>
     </body>
 </html>
