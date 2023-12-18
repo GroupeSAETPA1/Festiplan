@@ -46,13 +46,16 @@
                         <input class="text" type="text" id="rechercheOrga" name="rechercheOrga"
                                placeholder="Entrez le nom d'un organisateur"/>
                     </div>
-                    <div class="ajouter">
-                                Ajouter l'organisateur <i class="fa-solid fa-plus"></i> <!-- TODO fontawesome -->
+                    <div class="buttons">
+                        <div class="ajouter">
+                            Ajouter l'organisateur <i class="fa-solid fa-plus"></i> <!-- TODO fontawesome -->
+                        </div>
+
+                        <div class="suppOrga">
+                            Supprimer Organisateur <i class="fa-solid fa-trash-can"></i><!-- TODO fontawesome -->
+                        </div>
                     </div>
 
-                    <div class="suppOrga">
-                        Supprimer Organisateur <i class="fa-solid fa-trash-can"></i><!-- TODO fontawesome -->
-                    </div>
                 </div>
             </div>
         </div>

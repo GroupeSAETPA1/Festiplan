@@ -52,10 +52,12 @@ header .logo i {
 }
 
 .first-row {
+  display: flex;
   justify-content: space-between;
 }
 
 .end-row {
+  display: flex;
   align-items: flex-end;
 }
 
@@ -69,17 +71,6 @@ header .logo i {
   flex-direction: row;
   justify-content: center;
   margin-top: 10vh;
-}
-
-hr {
-  overflow: visible;
-  text-align: center;
-  border: none;
-  height: 0.2vh;
-  background-color: #363732;
-  margin-top: 10vh;
-  margin-bottom: 10vh;
-  width: 100vh;
 }
 
 .fa-circle-exclamation {
@@ -109,6 +100,11 @@ hr {
 
 .fa-trash-can {
   margin: 0.5vh;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
 }
 
 /*# sourceMappingURL=createFestiplan.css.map */

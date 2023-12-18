@@ -4,18 +4,33 @@
 
   .flex-row{
     display: flex;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
   }
 
   .flex-column{
     align-items: center;
   }
 
+  .end-row {
+    display: flex;
+    align-items: flex-end;
+  }
+
   .text{
     width: 50vw;
   }
-  .align{
-    padding: 0 150px
+  .container{
+    display: flex;
+    align-items: center;
   }
+
+
+}
+
+@media screen  and (max-height: 400px){
+  .text{
+    height: 3vh;
+  }
+
 }

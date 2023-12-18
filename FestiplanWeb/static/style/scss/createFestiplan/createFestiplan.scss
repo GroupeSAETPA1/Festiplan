@@ -53,9 +53,11 @@ header {
   flex-direction: row;
 }
 .first-row{
+  display: flex;
   justify-content: space-between;
 }
 .end-row{
+  display : flex;
   align-items: flex-end;
 }
 
@@ -71,16 +73,6 @@ header {
   margin-top: 10vh;
 }
 
-hr {
-  overflow: visible;
-  text-align: center;
-  border: none;
-  height: 0.2vh;
-  background-color: $dark-grey;
-  margin-top: 10vh;
-  margin-bottom: 10vh;
-  width: 100vh;
-}
 
 .fa-circle-exclamation {
   color: red;
@@ -109,6 +101,10 @@ hr {
   margin: 0.5vh;
 }
 
+.buttons {
+  display: flex;
+  flex-direction: row;
+}
 
 
 
