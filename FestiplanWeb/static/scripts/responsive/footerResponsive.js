@@ -1,6 +1,5 @@
 function footerResponsive() {
     const HAUTEUR_PAGE = $(".app").height();
-
     const FOOTER = $(".footer");
 
     if (HAUTEUR_PAGE < window.innerHeight - FOOTER.height()) {
