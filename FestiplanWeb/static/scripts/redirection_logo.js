@@ -1,4 +1,4 @@
-const div_logo = document.getElementById("div_logo");
+const div_logo = document.getElementById("logo");
 
 div_logo.style.cursor = "pointer";
 div_logo.addEventListener("click", () => {

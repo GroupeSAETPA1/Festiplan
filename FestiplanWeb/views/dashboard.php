@@ -12,7 +12,7 @@
  */
 function afficher_festival(int $id_festival, string $nom_festival, string $date_debut, string $date_fin, string $lien_image, string $categorie): void
 {
-    echo '<div class="card-festival">';
+    echo '<div class="card-festival rounded">';
     echo '    <div class="haut-card">';
     echo '        <div class="img-festival">';
     echo '           <img src="' . $lien_image . '" alt="Image du festival ' . $nom_festival . '">';
@@ -51,7 +51,7 @@ function afficher_festival(int $id_festival, string $nom_festival, string $date_
  */
 function afficher_spectacle(int $id_spectacle, string $nom_spectacle, string $lien_image, string $categorie, int $duree): void
 {
-    echo '<div class="card-spectacles">';
+    echo '<div class="card-spectacles rounded">';
     echo '    <div class="img-spectacle">';
     echo '        <img src="' . $lien_image . '" alt="L\'image du spectacle ' . $nom_spectacle . '">';
     echo '    </div>';
@@ -106,10 +106,9 @@ function minutesToHHMM(int $minutes): string
         <title>Festiplan - Dashboard</title>
 
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/dashboard/dashboard.css">
-        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/responsive/header.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svg.css">
-        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components\footer.css">
-        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components\header.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/footer.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/header.css">
 
         <!-- Fontawesome --><!-- TODO Custom Kit -->
 
@@ -125,7 +124,9 @@ function minutesToHHMM(int $minutes): string
         <!-- GSAP -->  <!-- Jquery -->
         <script src="/Festiplan/node_modules/gsap/dist/gsap.min.js"></script>
         <script src="/Festiplan/node_modules/jquery/dist/jquery.min.js"></script>
-<!--        <script src="/Festiplan/FestiplanWeb/static/scripts/TOOD" defer></script>-->
+
+        <script src="/Festiplan/FestiplanWeb/static/scripts/redirection_logo.js" defer></script>
+        <script src="/Festiplan/FestiplanWeb/static/scripts/dashboard.js" defer></script>
         <script src="/Festiplan/FestiplanWeb/static/scripts/responsive/footerResponsive.js" defer></script>
     </head>
 
@@ -167,7 +168,7 @@ function minutesToHHMM(int $minutes): string
         <div class="container entete-section">
             <h1>Mes Spectacles</h1>
             <a href=""> <!-- TODO : Lien vers la page de création de spectacle -->
-                <div>
+                <div class="rounded">
                     <i class="fa-regular fa-calendar-plus"></i>
                     <p>Cr&eacute;er un spectacle</p>
                 </div>
