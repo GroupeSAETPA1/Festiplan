@@ -43,22 +43,32 @@ header {
   flex-direction: column;
 }
 
-.Descr{
-  display: flex;
-  justify-content: flex-end;
-  padding: 0 10vh;
+.Description{
+  width: 55vw;
+  padding: 0 13px ;
 }
 
-.proot{
+.flex-row{
   display: flex;
   flex-direction: row;
 }
+.first-row{
+  justify-content: space-between;
+}
+.end-row{
+  align-items: flex-end;
+}
 
-.babou{
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+
+.valid-annul-placement{
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 5vh;
+  margin-top: 10vh;
 }
 
 hr {
@@ -71,6 +81,34 @@ hr {
   margin-bottom: 10vh;
   width: 100vh;
 }
+
+.fa-circle-exclamation {
+  color: red;
+  margin: 0.5vh;
+}
+
+.fa-image{
+  margin: 0.5vh;
+}
+
+.fa-circle-xmark{
+  margin: 0.5vh;
+}
+.fa-arrow-right{
+  margin: 0.5vh;
+}
+.fa-check{
+  margin: 0.5vh;
+}
+
+.fa-plus{
+  margin: 0.5vh;
+}
+
+.fa-trash-can{
+  margin: 0.5vh;
+}
+
 
 
 

@@ -1,17 +1,19 @@
 @import '../main';
 
 .text{
-  height:40px;
-  width:600px;
-  border-radius: 30px;
+  height:5vh;
+  width:30vw;
+  border-radius: 1vh;
   border-style: none;
 }
 
-.description{
-  height:250px;
-  width:1000px;
-  border-radius: 30px;
+textarea {
+  resize: none; /* Empêche le redimensionnement de la zone de texte */
+  height:27vh;
+  width:100%;
+  border-radius: 1vh;
   border-style: none;
+
 }
 
 .format{
@@ -23,6 +25,8 @@
 select{
   height:40px;
   width:250px;
-  border-radius: 30px;
+  border-radius: 1vh;
   border-style: none;
 }
+
+

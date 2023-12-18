@@ -1,5 +1,5 @@
 <?php
-const PREFIX_TO_RELATIVE_PATH = "Festiplan/FestiplanWeb";
+const PREFIX_TO_RELATIVE_PATH = "/Festiplan/FestiplanWeb";
 require $_SERVER[ 'DOCUMENT_ROOT' ] . PREFIX_TO_RELATIVE_PATH . '/lib/vendor/autoload.php';
 
 

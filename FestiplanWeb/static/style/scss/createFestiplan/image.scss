@@ -12,8 +12,8 @@ input[type="file"] {
   font-size: 14px;
   font-weight: bold;
   color: $dark-grey;
-  background-color: #99E1D9;
-  border: 1px solid #99E1D9 ;
+  background-color: $light-blue;
+  border: 1px solid $light-blue ;
   border-radius: 5px;
   cursor: pointer;
   margin-top: 15px;
@@ -35,6 +35,6 @@ input[type="file"] {
 
 /* Styliser le bouton lorsqu'il est survolé */
 .custom-file-input:hover {
-  background-color: #99E1D9;
-  border-color: #99E1D9;
+  background-color: $light-blue;
+  border-color: $light-blue;
 }
