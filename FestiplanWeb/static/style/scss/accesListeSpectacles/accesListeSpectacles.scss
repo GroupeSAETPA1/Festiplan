@@ -1,0 +1,73 @@
+@import '../main';
+
+body {
+    background-color: $white;
+    color: $dark-grey;
+    font-family: $font-family;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: $dark-grey;
+}
+
+.rounded {
+    border-radius: 2vh !important;
+}
+
+.retour {
+    background-color: $orange;
+    width: fit-content;
+    padding: 1.5vh;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.card-spectacles {
+    display: flex;
+    flex-direction: row;
+    margin: 1vh;
+    padding: 1vh;
+    background-color: $dark-grey;
+    width: 100%;
+    color: $white;
+
+
+    img {
+        margin: 1vh;
+    }
+
+    .description-spectacle {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: inherit;
+        font-size: 120%;
+
+        p, div {
+            margin: 0 1vh;
+        }
+
+        .group-categories {
+            max-width: 40vh;
+        }
+
+        .duree {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+        }
+
+        .group-boutons {
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+}

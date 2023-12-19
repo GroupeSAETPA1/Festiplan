@@ -19,9 +19,11 @@
 
 namespace application;
 
+use controllers\AccesListeSpectaclesController;
 use controllers\CreateFestivalController;
 use controllers\ErrorController;
 use controllers\HomeController;
+use services\AccesListeSpectaclesService;
 use services\createFestivalService;
 use services\UsersService;
 
@@ -58,6 +60,7 @@ class DefaultComponentFactory implements ComponentFactory
             "Home" => $this->buildUserController(),
             "Dashboard" => $this->buildDashboardController(),
             "Error" => new ErrorController(),
+            "AccesListeSpectacles" => $this->buildAccesListeSpectaclesController(),
             default => throw new NoControllerAvailableForNameException($controller_name)
         };
     }
@@ -72,7 +75,8 @@ class DefaultComponentFactory implements ComponentFactory
         return match ($service_name) {
             "User" => $this->buildUserService(),
             "Dashboard" => $this->buildDashboardService(),
-            "CreateFestival" => $this->buildCreateFestivalService() , 
+            "CreateFestival" => $this->buildCreateFestivalService(),
+            "AccesListeSpectacles" => $this->buildAccesListeSpectaclesService(),
             default => throw new NoServiceAvailableForNameException($service_name)
         };
     }
@@ -89,7 +93,7 @@ class DefaultComponentFactory implements ComponentFactory
     }
 
     /**
-     * @return HomeController
+     * @return UserController
      */
     private function buildUserController(): UserController
     {
@@ -131,8 +135,16 @@ class DefaultComponentFactory implements ComponentFactory
         return new DashboardController($this->buildDashboardService());
     }
 
+    private function buildAccesListeSpectaclesController(): AccesListeSpectaclesController
+    {
+        return new AccesListeSpectaclesController($this->buildAccesListeSpectaclesService());
+    }
+    private function buildAccesListeSpectaclesService() : AccesListeSpectaclesService
+    {
+        return new AccesListeSpectaclesService();
+    }
 
-    /**
+        /**
      * À partir d'un nom d'utilisateur et de son mot de passe,
      * renvoie la PDO associé
      * @param $user

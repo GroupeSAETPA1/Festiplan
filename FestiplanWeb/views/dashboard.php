@@ -138,13 +138,15 @@ function minutesToHHMM(int $minutes): string
             <!-- Liste des festivals -->
             <div class="container entete-section">
                 <h1>Mes festivals</h1>
-                <a href="/Festiplan/FestiplanWeb/?controller=CreateFestival"> <!-- TODO : Lien vers la page de création de festival -->
+                <a href="/Festiplan/FestiplanWeb/?controller=CreateFestival">
+                    <!-- TODO : Lien vers la page de création de festival -->
                     <div class="rounded">
                         <i class="fa-regular fa-calendar-plus"></i>
                         <p>Cr&eacute;er un festival</p>
                     </div>
                 </a>
             </div>
+
             <?php
             if (!empty($festivals)) {
                 ?>
@@ -176,29 +178,9 @@ function minutesToHHMM(int $minutes): string
                     </div>
                 </a>
             </div>
+
             <?php
             if (!empty($spectacles)) {
-            ?>
-            <div class="container entete-section">
-                <h1>Mes Spectacles</h1>
-                <a href=""> <!-- TODO : Lien vers la page de création de spectacle -->
-                    <div class="rounded">
-                        <i class="fa-regular fa-calendar-plus"></i>
-                        <p>Cr&eacute;er un spectacle</p>
-                    </div>
-                </a>
-            </div>
-            <div class="container container-card-spectacles">
-                <?php
-
-                foreach ($spectacles as $spectacle) {
-                    $id_spectacle = $spectacle['id_spectacle'];
-                    $nom_spectacle = $spectacle['nom'];
-                    $lien_image = $spectacle['illustration'];
-                    $categorie = $spectacle['categorie'];
-                    $duree = $spectacle['duree'];
-                    afficher_spectacle($id_spectacle, $nom_spectacle, $lien_image, $categorie, $duree);
-                }
                 ?>
 
                 <div class="container container-card-spectacles">
@@ -214,10 +196,10 @@ function minutesToHHMM(int $minutes): string
                     ?>
                 </div>
                 <?php
-                }
-                ?>
-            </div>
+            }
+            ?>
         </div>
-        <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/footer.php" ?>
+    </div>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/footer.php" ?>
     </body>
 </html>
