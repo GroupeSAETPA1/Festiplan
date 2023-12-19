@@ -4,19 +4,12 @@ body {
     background-color: $white;
     color: $dark-grey;
     font-family: $font-family;
-    margin: 0;
-}
-
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 15vh;
 }
 
 .retourBouton {
     background-color: $orange;
     color: $dark-grey;
+    padding: 30px;
     padding: 1vh;
     border-radius: 2vh;
     text-decoration: none;
@@ -26,11 +19,12 @@ body {
     background-color: $light-blue;
     color: $dark-grey;
     padding: 1vh;
-    margin: 2vh;
+    margin-bottom: 2vh;
     border-radius: 2vh;
     border: none;
 }
 .GriJ {
+    padding: 5vh;
     background-color: $dark-grey;
     color: $white;
     border-radius: 2vh;
