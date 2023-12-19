@@ -28,6 +28,11 @@ function afficher_festival(int $id_festival, string $nom_festival, string $date_
     echo '            <span class="label-categorie">Cat&eacute;gories :</span>';
     echo '            <span class="categorie">' . $categorie . '</span>';
     echo '        </div>';
+    echo '            <form method="post" action="/Festiplan/FestiplanWeb/index.php">';
+    echo '                <input hidden name="id-festival" value="' . $id_festival . '">';
+    echo '                <input hidden name="controller" value="AccesListeSpectacles">';
+    echo '                <div><button type="submit">Spectacles...</button></div>';
+    echo '            </form>';
     echo '        <div class="group-boutons">';
     echo '            <form method="post" action=""> <!-- TODO : mettre le lien pour éditer le festival -->';
     echo '                <input hidden name="id-festival" value="' . $id_festival . '">';

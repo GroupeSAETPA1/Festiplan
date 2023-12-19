@@ -26,7 +26,7 @@ class DBConfig
      *
      * @return array Les informations de connexion
      */
-    public function getRoot()
+    public function getRoot(): array
     {
         return [
             'db_host' => $this->db_host,
@@ -38,14 +38,14 @@ class DBConfig
         ];
     }
 
-    public function getLectureSpectacle()
+    public function getLectureSpectacle(): array
     {
         return [
             'db_host' => $this->db_host,
             'db_port' => $this->db_port,
             'db_name' => $this->db_name,
-            'db_user' => 'lectureSpectacles',
-            'db_pass' => '',
+            'db_user' => 'lectureSpectacle',
+            'db_pass' => 'spectacle',
             'db_charset' => $this->db_charset
         ];
     }

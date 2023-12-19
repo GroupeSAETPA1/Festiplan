@@ -20,16 +20,16 @@ INSERT INTO `taille_scene` (`id_taille`, `taille`) VALUES
 (3, 'Grande (30mx30m)'),
 (4, 'Très Grande (100mx100m)');
 
-INSERT INTO festival (id_festival, nom, description, debut, fin, id_categorie, id_responsable, `duree entre spectacle`, illustration)
+INSERT INTO festival (id_festival, nom, description, debut, fin, id_categorie, id_responsable, `duree_entre_spectacle`, illustration, heure_debut_spectacles, heure_fin_spectacles)
 VALUES
-(1,'Bonne année', 'premier festival de l\'anne',STR_TO_DATE('01/01/2024', '%d/%m/%Y') ,STR_TO_DATE('07/01/2024', '%d/%m/%Y') ,1,1,10, 'Rien'),
-(2,'Festival de la chanson', 'festival de la chanson',STR_TO_DATE('01/01/2024', '%d/%m/%Y') ,STR_TO_DATE('07/01/2024', '%d/%m/%Y') ,2,2,10, 'Rien'),
-(3,'Festival de la danse', 'festival de la danse',STR_TO_DATE('01/01/2024', '%d/%m/%Y') ,STR_TO_DATE('07/01/2024', '%d/%m/%Y') ,3,3,10, 'Rien'),
-(4,'Festival de la musique', 'festival de la musique',STR_TO_DATE('01/01/2024', '%d/%m/%Y') ,STR_TO_DATE('07/01/2024', '%d/%m/%Y') ,4,4,10, 'Rien'),
-(5,'Festival de la peinture', 'festival de la peinture',STR_TO_DATE('01/01/2024', '%d/%m/%Y') ,STR_TO_DATE('07/01/2024', '%d/%m/%Y') ,4,5,10, 'Rien'),
-(6,'Festival de la sculpture', 'festival de la sculpture',STR_TO_DATE('01/01/2024', '%d/%m/%Y') ,STR_TO_DATE('07/01/2024', '%d/%m/%Y') ,4,6,10, 'Rien'),
-(7,'Festival de la photographie', 'festival de la photographie',STR_TO_DATE('01/01/2024', '%d/%m/%Y') ,STR_TO_DATE('07/01/2024', '%d/%m/%Y') ,5,7,10, 'Rien'),
-(8,'Festival de la litterature', 'festival de la litterature',STR_TO_DATE('01/01/2024', '%d/%m/%Y') ,STR_TO_DATE('07/01/2024', '%d/%m/%Y') ,5,1,10, 'Rien');
+(1,'Bonne année', 'premier festival de l\'anne',                STR_TO_DATE('01/01/2024', '%d/%m/%Y') ,STR_TO_DATE('07/01/2024', '%d/%m/%Y') ,1,1,10, 'Rien', STR_TO_DATE('08:00', '%H:%i'), STR_TO_DATE('18:00', '%H:%i')),
+(2,'Festival de la chanson', 'festival de la chanson',          STR_TO_DATE('01/01/2024', '%d/%m/%Y') ,STR_TO_DATE('07/01/2024', '%d/%m/%Y') ,2,2,10, 'Rien', STR_TO_DATE('08:00', '%H:%i'), STR_TO_DATE('18:00', '%H:%i')),
+(3,'Festival de la danse', 'festival de la danse',              STR_TO_DATE('01/01/2024', '%d/%m/%Y') ,STR_TO_DATE('07/01/2024', '%d/%m/%Y') ,3,3,10, 'Rien', STR_TO_DATE('08:00', '%H:%i'), STR_TO_DATE('18:00', '%H:%i')),
+(4,'Festival de la musique', 'festival de la musique',          STR_TO_DATE('01/01/2024', '%d/%m/%Y') ,STR_TO_DATE('07/01/2024', '%d/%m/%Y') ,4,4,10, 'Rien', STR_TO_DATE('08:00', '%H:%i'), STR_TO_DATE('18:00', '%H:%i')),
+(5,'Festival de la peinture', 'festival de la peinture',        STR_TO_DATE('01/01/2024', '%d/%m/%Y') ,STR_TO_DATE('07/01/2024', '%d/%m/%Y') ,4,5,10, 'Rien', STR_TO_DATE('08:00', '%H:%i'), STR_TO_DATE('18:00', '%H:%i')),
+(6,'Festival de la sculpture', 'festival de la sculpture',      STR_TO_DATE('01/01/2024', '%d/%m/%Y') ,STR_TO_DATE('07/01/2024', '%d/%m/%Y') ,4,6,10, 'Rien', STR_TO_DATE('08:00', '%H:%i'), STR_TO_DATE('18:00', '%H:%i')),
+(7,'Festival de la photographie', 'festival de la photographie',STR_TO_DATE('01/01/2024', '%d/%m/%Y') ,STR_TO_DATE('07/01/2024', '%d/%m/%Y') ,5,7,10, 'Rien', STR_TO_DATE('08:00', '%H:%i'), STR_TO_DATE('18:00', '%H:%i')),
+(8,'Festival de la litterature', 'festival de la litterature',  STR_TO_DATE('01/01/2024', '%d/%m/%Y') ,STR_TO_DATE('07/01/2024', '%d/%m/%Y') ,5,1,10, 'Rien', STR_TO_DATE('08:00', '%H:%i'), STR_TO_DATE('18:00', '%H:%i'));
 
 INSERT INTO `scene` (`id_scene`, `nom`, `spectateurs`, `taille`) VALUES
 (1, 'amphi iut ', 500, 3),

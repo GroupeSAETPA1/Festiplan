@@ -22,6 +22,7 @@ namespace application;
 use controllers\AccesListeSpectaclesController;
 use controllers\CreateFestivalController;
 use controllers\ErrorController;
+use Exception;
 use services\AccesListeSpectaclesService;
 use services\createFestivalService;
 
@@ -41,14 +42,14 @@ class DefaultComponentFactory implements ComponentFactory
 {
     private ?UserService $userService = null;
     private ?DashboardService $dashboardService = null;
-
     private ?CreateFestivalService $createFestivalService = null;
+    private ?AccesListeSpectaclesService $accesListeSpectaclesService = null;
 
     /**
      * @param string $controller_name the name of the controller to instanciate
      * @return mixed the controller
      * @throws NoControllerAvailableForNameException when controller is not found
-     * @throws \Exception
+     * @throws Exception
      */
     public function buildControllerByName(string $controller_name): mixed
     {
@@ -67,7 +68,7 @@ class DefaultComponentFactory implements ComponentFactory
      * @param string $service_name the name of the service
      * @return mixed the created service
      * @throws NoServiceAvailableForNameException when service is not found
-     * @throws \Exception
+     * @throws Exception
      */
     public function buildServiceByName(string $service_name): mixed
     {
@@ -101,7 +102,7 @@ class DefaultComponentFactory implements ComponentFactory
 
     /**
      * @return CreateFestivalController
-     * @throws \Exception
+     * @throws Exception
      */
     private function buildCreateFestival(): CreateFestivalController
     {
@@ -110,7 +111,7 @@ class DefaultComponentFactory implements ComponentFactory
 
     /**
      * @return createFestivalService
-     * @throws \Exception
+     * @throws Exception
      */
     private function buildCreateFestivalService(): createFestivalService
     {
@@ -122,7 +123,7 @@ class DefaultComponentFactory implements ComponentFactory
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     private function buildDashboardService(): DashboardService
     {
@@ -134,7 +135,7 @@ class DefaultComponentFactory implements ComponentFactory
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     private function buildDashboardController(): DashboardController
     {
@@ -145,9 +146,17 @@ class DefaultComponentFactory implements ComponentFactory
     {
         return new AccesListeSpectaclesController($this->buildAccesListeSpectaclesService());
     }
+
+    /**
+     * @throws Exception
+     */
     private function buildAccesListeSpectaclesService() : AccesListeSpectaclesService
     {
-        return new AccesListeSpectaclesService();
+        if ($this->accesListeSpectaclesService == null) {
+            $pdo = $this->getPDO("lectureSpectacles");
+            $this->accesListeSpectaclesService = new AccesListeSpectaclesService($pdo);
+        }
+        return $this->accesListeSpectaclesService;
     }
 
 
@@ -155,7 +164,7 @@ class DefaultComponentFactory implements ComponentFactory
      * À partir d'un utilisateur, renvoie un PDO avec les informations de connexion
      * @param string $utilisateur L'utilisateur pour lequel on veut récupérer les informations de connexion
      * @return PDO Le PDO avec les informations de connexion
-     * @throws \Exception Si l'utilisateur n'existe pas
+     * @throws Exception Si l'utilisateur n'existe pas
      */
     public function getPDO(string $utilisateur): PDO
     {
@@ -163,7 +172,7 @@ class DefaultComponentFactory implements ComponentFactory
         $dbConfig = match ($utilisateur) {
             "root" => $dbConfig->getRoot(),
             "lectureSpectacles" => $dbConfig->getLectureSpectacle(),
-            default => throw new \Exception("Utilisateur inconnu")
+            default => throw new Exception("Utilisateur inconnu")
         };
         return new PDO(
             "mysql:host=" . $dbConfig['db_host'] . ";port=" . $dbConfig['db_port'] . ";dbname=" . $dbConfig['db_name'] . ";charset=" . $dbConfig['db_charset'],
