@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="../../static/style/css/createFestiplan/input.css">
         <link rel="stylesheet" href="../../static/style/css/footer.css">
         <link rel="stylesheet" href="../../static/style/css/createFestiplan/responsive.css">
+        <link rel="stylesheet" href="../../node_modules library root/bootstrap/dist/css/bootstrap.css">
 
         <link rel="stylesheet" href="../../../framework/fontawesome-free-6.2.1-web/css/all.css">
 
@@ -100,8 +101,13 @@
             <div class="annulChoix">
                 <i class="fa-regular fa-circle-xmark"></i>Annuler vos choix  <!-- TODO fontawesome -->
             </div>
+
             <div class="button-flex-end">
-                <a href="createFestival2.php"><button class="page-suivante">Page Suivante<i class="fa-solid fa-arrow-right"></i></button></a>
+                <a href="createFestival2.php">
+                    <button class="page-suivante">
+                        Page Suivante<i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </a>
             </div>
         </div>
 

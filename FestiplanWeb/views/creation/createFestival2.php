@@ -37,14 +37,14 @@
                 <div class="align">
                     <h3> <i class="fa-solid fa-circle-exclamation"></i>Responsable :</h3>
                     <input class="text" type="text" id="rechercheRespon" name="rechercheRespon"
-                           placeholder="Entrez le nom du Responsable"/>
+                           placeholder="Entrez le mail du responsable"/>
                 </div>
 
                 <div class="flex-row end-row">
                     <div>
                         <h3> <i class="fa-solid fa-circle-exclamation"></i>Organisateur : </h3>
                         <input class="text" type="text" id="rechercheOrga" name="rechercheOrga"
-                               placeholder="Entrez le nom d'un organisateur"/>
+                               placeholder="Entrez le mail d'un organisateur"/>
                     </div>
 
                     <div class="ajouter">
