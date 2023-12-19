@@ -15,7 +15,7 @@ class createFestivalService
 
     public function recupererCategorie() {
         try {
-            $sql = $this -> pdoCreationFestival->prepare('SELECT nom FROM categorie');
+            $sql = $this -> pdoCreationFestival->prepare('SELECT id_categorie , nom FROM categorie');
             $sql->execute();
             return $sql->fetchAll();
         } catch (PDOException $e) {
@@ -25,7 +25,7 @@ class createFestivalService
 
     public  function recupererSpectacle() {
         try {
-            $sql = $this -> pdoCreationFestival->prepare('SELECT nom FROM spectacle');
+            $sql = $this -> pdoCreationFestival->prepare('SELECT id_spectacle , nom FROM spectacle');
             $sql->execute();
             return $sql->fetchAll();
         } catch (PDOException $e) {
@@ -35,11 +35,15 @@ class createFestivalService
 
     public function recupererTailleScene() {
         try {
-            $sql = $this -> pdoCreationFestival->prepare('SELECT taille FROM taille_scene');
+            $sql = $this -> pdoCreationFestival->prepare('SELECT id_taille ,  taille FROM taille_scene');
             $sql->execute();
             return $sql -> fetchAll();
         } catch (PDOException $e) {
             return false ;
         }
+    }
+
+    public  function insertionFestival() {
+
     }
 }

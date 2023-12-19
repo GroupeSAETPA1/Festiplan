@@ -30,7 +30,11 @@
         </header>
 
         <div class="retour">
-            <a href="createFestival2.php"><button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button></a>
+            <a href=/Festiplan/FestiplanWeb/?controller=CreateFestival&action=validerPage2>
+                <button class="Retour">
+                    <i class="fa-solid fa-arrow-left"></i> Retour
+                </button>
+            </a>
         </div>
         <form action="index.php" method ="post">
             <input hidden name="action" value="validerPage3">
@@ -46,7 +50,7 @@
                         <option value="vide"></option>
                         <?php
                         foreach ($tableauSpectacle as $ligne) {
-                            echo "<option value ='".$ligne['nom']."'>".$ligne['nom']."</option>";
+                            echo "<option value ='".$ligne['id_spectacle']."'>".$ligne['nom']."</option>";
                         }
                         ?>
                     </select>
@@ -65,7 +69,7 @@
                         <option value="vide"></option>
                         <?php
                             foreach ($tableauScene as $ligne) {
-                                echo "<option value='".$ligne['taille']."'>".$ligne['taille']."</option>" ;
+                                echo "<option value='".$ligne['id_taille']."'>".$ligne['taille']."</option>" ;
                             }
                         ?>
                     </select>
@@ -86,7 +90,7 @@
                 <i class="fa-regular fa-circle-xmark"></i>Annuler vos choix  <!-- TODO fontawesome -->
             </div>
             <div class="button-flex-end">
-                <button class="valid">Valider <i class="fa-solid fa-check"></i></button>
+                <button type = "submit" class="valid">Valider <i class="fa-solid fa-check"></i></button>
             </div>
         </div>
         </form>

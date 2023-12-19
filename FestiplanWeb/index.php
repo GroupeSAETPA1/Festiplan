@@ -21,5 +21,6 @@ $router = new Router($Factory);
 try {
     $router->route(PREFIX_TO_RELATIVE_PATH,$data_source);
 } catch (PDOException $e) {
+    throw $e;
     header('Location: views\Error504.php');
 }

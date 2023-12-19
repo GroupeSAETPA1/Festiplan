@@ -32,7 +32,11 @@
     </header>
 
     <div class="retour">
-        <button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button>
+        <a href="/Festiplan/FestiplanWeb/?controller=Dashboard">
+        <button class="Retour">
+            <i class="fa-solid fa-arrow-left"></i> Retour
+        </button>
+        </a>
     </div>
     <form method="post" action="index.php" enctype="multipart/form-data">
         <div class="wrapper">
@@ -43,22 +47,22 @@
                     <div class="NDD">
                         <div>
                             <h3><i class="fa-solid fa-circle-exclamation"></i>Nom :</h3>
-                            <input class="text" type="text" name="nom" placeholder="Tapez le nom de votre festival" />
+                            <input class="text" type="text" name="nom" placeholder="Tapez le nom de votre festival" value = "<?php echo $nomFestival ?>" />
                         </div>
                         <div>
                             <h3><i class="fa-solid fa-circle-exclamation"></i>Date de début :</h3>
-                            <input class="text" type="date" name="ddd" />
+                            <input class="text" type="date" name="ddd" value = "<?php echo $ddd ?>" />
                         </div>
                         <div>
                             <h3><i class="fa-solid fa-circle-exclamation"></i>Date de fin :</h3>
-                            <input class="text" type="date" name="ddf" />
+                            <input class="text" type="date" name="ddf" value = "<?php echo $ddf ?>" />
                         </div>
                     </div>
                     <div class="Description">
                         <!-- Contient un second bloc avec la description et qui se situe au cote a cote avec le premier bloc -->
                         <div>
                             <label for="description"><i class="fa-solid fa-circle-exclamation"></i>Description :</label>
-                            <textarea id="description" name="description"></textarea>
+                            <textarea id="description" name="description" > <?php echo $descriptionFestival ?></textarea>
                         </div>
                     </div>
                 </div>
@@ -81,8 +85,11 @@
                         <option value="vide"></option>
                         <?php
                         foreach ($tableauCategorie as $ligne) {
-                            //var_dump($tableauCategorie);
-                            echo '<option value = "' . $ligne['nom'] . '">' . $ligne['nom'] . "</option>";
+                            echo '<option' ;
+                            if ($ligne['id_categorie'] == $_SESSION['categorie']    ) {
+                                echo ' selected' ;
+                            }
+                            echo  ' value = "' . $ligne['id_categorie'] . '">' . $ligne['nom'] . "</option>";
                         }
                         ?>
                     </select>

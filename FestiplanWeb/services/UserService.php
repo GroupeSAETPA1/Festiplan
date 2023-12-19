@@ -55,7 +55,7 @@ class UserService
      */
     public function connexion($pdo, string $mdp, string $login):PDOStatement {
 
-        $mdp = hash("sha256", $mdp);
+        //$mdp = hash("sha256", $mdp);
 
         // Vérifie si l'utilisateur existe
         // Renvoie vrai ou faux en fonction si l'utilisateur a été trouvé.

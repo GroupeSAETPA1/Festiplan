@@ -30,6 +30,7 @@
     <script src="/Festiplan/FestiplanWeb/static/scripts/responsive/footerResponsive.js" defer></script>
 </head>
 <body>
+
 <input hidden id="displayInscription" value="<?php echo $displayInscription?>">
 <div class="app">
     <div class="partiePrincipale">

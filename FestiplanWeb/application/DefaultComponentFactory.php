@@ -119,7 +119,7 @@ class DefaultComponentFactory implements ComponentFactory
     private function buildDashboardService(): DashboardService
     {
         if ($this->dashboardService == null) {
-            $pdo = $this->getPDO("root", "root");
+            $pdo = $this->getPDO("admin", "admin");
             $this->dashboardService = new DashboardService($pdo);
         }
         return $this->dashboardService;
