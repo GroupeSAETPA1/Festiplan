@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport">
-        <title>Festiplan - GriJ</title>
+        <title>Festiplan - Planification</title>
 
         <!-- Bootstrap 5.3 -->
         <link rel="stylesheet" href="/Festiplan/node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svg.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/footer.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/header.css">
-        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/GriJ/Grij.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/Planification/Planification.css">
 
 
         <!-- Fontawesome --><!-- TODO Custom Kit -->
@@ -31,7 +31,7 @@
         <!-- Fullcalendar -->
         <script src="/Festiplan/node_modules/fullcalendar/index.global.min.js"></script>
         <script src="/Festiplan/node_modules/@fullcalendar/timegrid/index.js"></script>
-        <script src="/Festiplan/FestiplanWeb/static/scripts/GriJ.js" defer></script>
+        <script src="/Festiplan/FestiplanWeb/static/scripts/Planification.js" defer></script>
 
         <script src="/Festiplan/FestiplanWeb/static/scripts/redirection_logo.js" defer></script>
         <script src="/Festiplan/FestiplanWeb/static/scripts/responsive/footerResponsive.js" defer></script>
@@ -46,11 +46,13 @@
                     <a href="" class="retourBouton"><i class="fa-solid fa-arrow-left"></i> Retour</a>
                 </div>
                 <div class="col-12">
-                    <h1>GriJ du festival <?php echo $nomFestival ?></h1>
-                    <div class="col-12 text-right"><button class="genererGriJBouton">Générer Automatiquement la GriJ</button></div>
-                    <div class="GriJ">
-                        <div id="calendar">
+                    <h1>Planification du festival <?php echo $nomFestival ?></h1>
+                    <div class="col-12 text-right"><button class="genererPlanificationBouton">Générer Automatiquement la Planification</button></div>
+                    <div class="Planification">
+                        <div class="scrollDIV">
+                            <div id="calendar" class="caldendar">
                             <!-- DIV complétée par la librairie fullcalendar -->
+                            </div> 
                         </div>
                     </div>
                 </div>

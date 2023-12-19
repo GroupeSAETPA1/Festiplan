@@ -15,7 +15,7 @@ body {
   text-decoration: none;
 }
 
-.genererGriJBouton {
+.genererPlanificationBouton {
   background-color: #99E1D9;
   color: #363732;
   padding: 1vh;
@@ -24,11 +24,22 @@ body {
   border: none;
 }
 
-.GriJ {
+.Planification {
   padding: 5vh;
   background-color: #363732;
   color: #F0F7F4;
   border-radius: 2vh;
 }
+.Planification a {
+  text-decoration: none;
+  color: #F0F7F4;
+}
+.Planification .fc tr {
+  height: 10vh;
+}
 
-/*# sourceMappingURL=GriJ.css.map */
+.scrollDIV {
+  width: 100%;
+}
+
+/*# sourceMappingURL=Planification.css.map */

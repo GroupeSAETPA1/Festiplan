@@ -13,9 +13,9 @@ body {
     padding: 1vh;
     border-radius: 2vh;
     text-decoration: none;
-}
+} 
 
-.genererGriJBouton {
+.genererPlanificationBouton {
     background-color: $light-blue;
     color: $dark-grey;
     padding: 1vh;
@@ -23,9 +23,21 @@ body {
     border-radius: 2vh;
     border: none;
 }
-.GriJ {
+.Planification {
     padding: 5vh;
     background-color: $dark-grey;
     color: $white;
     border-radius: 2vh;
+    
+    a {
+        text-decoration: none;
+        color: $white;
+    }
+    
+    .fc tr {
+        height: 10vh;
+    }
+}
+.scrollDIV {
+    width: 100%;
 }
