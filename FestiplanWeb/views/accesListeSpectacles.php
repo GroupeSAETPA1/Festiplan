@@ -6,7 +6,7 @@
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-        <title>Liste Spectacles</title>
+        <title>Festiplan - Liste Spectacles</title>
 
         <link rel="stylesheet"
               href="/Festiplan/FestiplanWeb/static/style/css/accesListeSpectacles/accesListeSpectacles.css">
@@ -29,8 +29,8 @@
         <script src="/Festiplan/node_modules/jquery/dist/jquery.min.js"></script>
 
         <script src="/Festiplan/FestiplanWeb/static/scripts/redirection_logo.js" defer></script>
-        <script src="/Festiplan/FestiplanWeb/static/scripts/dashboard.js" defer></script>
         <script src="/Festiplan/FestiplanWeb/static/scripts/responsive/footerResponsive.js" defer></script>
+        <script src="/Festiplan/FestiplanWeb/static/scripts/accesListeSpectacles.js" defer></script>
     </head>
     <body>
     <div class="app">
@@ -38,31 +38,66 @@
         <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/header.php" ?>
 
         <div class="retour rounded">
-            <a href="/Festiplan/FestiplanWeb/dashboard"><i class="fas fa-arrow-left"></i> Retour</a>
+            <a href="/Festiplan/FestiplanWeb/?controller=Dashboard"><i class="fas fa-arrow-left"></i> Retour</a>
         </div>
 
         <div class="wrapper">
 
-            <div class="titre"><h1>Les spectacles du festival NOM</h1></div>
+            <div class="titre">Les spectacles du festival NOM</div>
 
-            <div class="card-spectacles rounded">
-                <div class="img-spectacle">
-                    <img src=" $lien_image" alt="L'image du spectacle NOM">
+            <div class="card-festival-ligne rounded">
+                <div class="img-festival rounded">
+                    <img src="/estiplan/FestiplanWeb/static/assets/img/deScenePalais.jpg"
+                         alt="Image du festival ' . $nom_festival . '">
                 </div>
-                <div class="description-spectacle">
-                    <p class="nom-spectacle">Nom</p>
-                    <div class="group-categories">
-                        <span class="label-categorie">Cat&eacute;gories :</span>
-                        <span class="categorie">Categorie</span>
+                <p class="nom-festival">$nom_festival</p>
+                <div class="group-categories">
+                    <span class="label-categorie">Cat&eacute;gories :</span>
+                    <span class="categorie">$categorie</span>
+                </div>
+                <div class="date">
+                    <p>Du 10/12/2023</p>
+                    <p>Au 10/01/2023</p>
+                </div>
+            </div>
+
+            <div class="entete-section rounded">
+                <span class="titre-section titre">Les spectacles du festivals</span>
+                <a href=""><!-- TODO : Lien vers la page d'ajout d'un spectacle -->
+                    <div class="bouton-ajouter-spectacle rounded">
+                        <i class="fa-solid fa-square-plus"></i>
+                        <span>Ajouter un spectacle</span>
                     </div>
-                    <div class="duree">
-                        <span class="label-duree">Dur&eacute;e :</span>
-                        <span>90</span>
+                </a>
+            </div>
+
+            <div class="accordeon">
+                <div class="bouton-drop-down rounded" id="bouton-drop-down">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+
+                <div class="container-card-spectacles rounded" id="container-card-spectacles">
+                    <div class="card-spectacles rounded">
+                        <div class="img-spectacle rounded">
+                            <img src="" alt="L'image du spectacle Festiplan">
+                        </div>
+                        <div class="nom-spectacle">
+                            <span>Le spectacle de Festiplan</span>
+                        </div>
+                        <div class="group-categories">
+                            <span class="label-categorie">Cat&eacute;gories :</span>
+                            <span class="categorie">Projection de film</span>
+                        </div>
+                        <div class="duree">
+                            <span class="label-duree">Dur&eacute;e :</span>
+                            <span>00:50</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/footer.php" ?>
+    </div>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/footer.php" ?>
 
     </body>
 </html>

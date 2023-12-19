@@ -9,7 +9,6 @@ class AccesListeSpectaclesController
 
     function index()
     {
-        $view = new View("views/accesListeSpectacles");
-        return $view;
+        return new View("views/accesListeSpectacles");
     }
 }

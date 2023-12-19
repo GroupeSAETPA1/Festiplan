@@ -20,47 +20,138 @@ a {
   background-color: #F7A072;
   width: fit-content;
   padding: 1.5vh;
+  margin: 1.5vh;
+}
+
+.titre {
+  font-size: 30px;
 }
 
 .wrapper {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper > div {
+  margin: 1vh 0;
 }
 
-.card-spectacles {
+.card-festival-ligne {
   display: flex;
   flex-direction: row;
-  margin: 1vh;
+  align-items: center;
+  justify-content: space-between;
   padding: 1vh;
+  width: 90%;
+  height: 10vh;
   background-color: #363732;
-  width: 100%;
   color: #F0F7F4;
 }
-.card-spectacles img {
+.card-festival-ligne .nom-festival {
+  font-size: 30px;
+}
+.card-festival-ligne * {
   margin: 1vh;
 }
-.card-spectacles .description-spectacle {
+
+.categorie {
+  max-width: fit-content;
+  flex: 1 1 auto;
+  text-align: center;
+  padding: 0.25vh 0.5vh;
+  margin: 0 0.25vh 0.25vh 0;
+  color: #363732;
+  background-color: #F0F7F4;
+  border-radius: 1vh;
+}
+
+.entete-section {
+  background-color: #363732;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: inherit;
-  font-size: 120%;
+  width: 90%;
+  padding: 1vh;
 }
-.card-spectacles .description-spectacle p, .card-spectacles .description-spectacle div {
+.entete-section .titre-section {
+  color: #99E1D9;
+}
+.entete-section .bouton-ajouter-spectacle {
+  background-color: #F7A072;
+  padding: 2vh;
+  font-size: 1.2rem;
+}
+
+.accordeon {
+  background-color: #363732;
+  width: 90%;
+  padding: 1.5vh;
+}
+.accordeon .bouton-drop-down {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #F0F7F4;
+  padding: 1vh;
+}
+.accordeon .bouton-drop-down i {
+  font-size: 1.7rem;
+  margin: 0 1vh 0 0;
+}
+.accordeon .card-spectacles {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1vh 2vh;
+  margin: 1vh 0;
+  background-color: #F0F7F4;
+}
+.accordeon .card-spectacles .img-spectacle {
+  min-height: 20vh;
+  display: flex;
+  align-items: center;
+  background-color: #cccccc;
+}
+.accordeon .card-spectacles .img-spectacle img {
+  margin: 1vh;
+}
+.accordeon .card-spectacles p, .accordeon .card-spectacles div {
   margin: 0 1vh;
 }
-.card-spectacles .description-spectacle .group-categories {
+.accordeon .card-spectacles .group-categories {
   max-width: 40vh;
 }
-.card-spectacles .description-spectacle .duree {
+.accordeon .card-spectacles .duree {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.card-spectacles .description-spectacle .group-boutons {
-  flex-direction: column;
-  justify-content: center;
+
+@media screen and (max-width: 700px) {
+  .img-spectacle, .img-festival {
+    display: none !important;
+  }
+  .card-festival-ligne {
+    justify-content: center;
+  }
+  .card-festival-ligne .img-festival, .card-festival-ligne .date, .card-festival-ligne .label-categorie {
+    display: none;
+  }
+  .entete-section {
+    justify-content: space-between;
+  }
+  .entete-section a {
+    padding: 0 0 0 1vh;
+  }
+  .entete-section a div > span {
+    display: none;
+  }
+  .card-spectacles .group-categories > .label-categorie, .card-spectacles .duree > .label-duree {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=accesListeSpectacles.css.map */
