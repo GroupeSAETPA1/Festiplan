@@ -8,7 +8,8 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
         }
     },
     contentHeight: 600, // TODO définir une bonne hauteur
-    
+    slotMinTime: '00:00:00',
+    slotMaxTime: '10:00:00',
     titleFormat: { 
         year: 'numeric', 
         month: 'long', 
@@ -38,7 +39,6 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
     },
 
     slotLabelInterval : '00:30:00',
-    
     scrollTime : '10:00:00', // Temps affiché a l'initialisation
     scrollTimeReset: false,
 
@@ -53,6 +53,13 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
     editable: true,
     eventDurationEditable: false,
     events: [
+        {
+            title: 'Durée du Festival',
+            start: '2001-09-11T12:00',
+            end: '2001-09-14T17:30',
+            eventOverlap: false,
+            display: 'background'
+        },
         {
           title: 'Vidéo projection du seigneur des annaux : les deux tours',
           start: '2001-09-11T14:14',
