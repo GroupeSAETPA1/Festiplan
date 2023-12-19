@@ -22,15 +22,12 @@ namespace application;
 use controllers\AccesListeSpectaclesController;
 use controllers\CreateFestivalController;
 use controllers\ErrorController;
-use controllers\HomeController;
 use services\AccesListeSpectaclesService;
 use services\createFestivalService;
-use services\UsersService;
 
 use controllers\DashboardController;
 use controllers\UserController;
 use services\DashboardService;
-use services\SessionService;
 use services\UserService;
 use yasmf\ComponentFactory;
 use yasmf\NoControllerAvailableForNameException;
@@ -45,12 +42,13 @@ class DefaultComponentFactory implements ComponentFactory
     private ?UserService $userService = null;
     private ?DashboardService $dashboardService = null;
 
-    private ?CreateFestivalService $createFestivalService = null;	
+    private ?CreateFestivalService $createFestivalService = null;
 
     /**
      * @param string $controller_name the name of the controller to instanciate
      * @return mixed the controller
      * @throws NoControllerAvailableForNameException when controller is not found
+     * @throws \Exception
      */
     public function buildControllerByName(string $controller_name): mixed
     {
@@ -69,6 +67,7 @@ class DefaultComponentFactory implements ComponentFactory
      * @param string $service_name the name of the service
      * @return mixed the created service
      * @throws NoServiceAvailableForNameException when service is not found
+     * @throws \Exception
      */
     public function buildServiceByName(string $service_name): mixed
     {
@@ -102,6 +101,7 @@ class DefaultComponentFactory implements ComponentFactory
 
     /**
      * @return CreateFestivalController
+     * @throws \Exception
      */
     private function buildCreateFestival(): CreateFestivalController
     {
@@ -110,26 +110,32 @@ class DefaultComponentFactory implements ComponentFactory
 
     /**
      * @return createFestivalService
+     * @throws \Exception
      */
     private function buildCreateFestivalService(): createFestivalService
     {
         if($this->createFestivalService == null) {
-            // TODO recuperer le pdo
-            $pdo = $this->getPDO("root", "root");
+            $pdo = $this->getPDO("root");
             $this->createFestivalService = new createFestivalService($pdo);
         }
         return $this->createFestivalService;
     }
 
+    /**
+     * @throws \Exception
+     */
     private function buildDashboardService(): DashboardService
     {
         if ($this->dashboardService == null) {
-            $pdo = $this->getPDO("root", "root");
+            $pdo = $this->getPDO("root");
             $this->dashboardService = new DashboardService($pdo);
         }
         return $this->dashboardService;
     }
 
+    /**
+     * @throws \Exception
+     */
     private function buildDashboardController(): DashboardController
     {
         return new DashboardController($this->buildDashboardService());
@@ -144,23 +150,30 @@ class DefaultComponentFactory implements ComponentFactory
         return new AccesListeSpectaclesService();
     }
 
-        /**
-     * À partir d'un nom d'utilisateur et de son mot de passe,
-     * renvoie la PDO associé
-     * @param $user
-     * @param $mdp
-     * @return PDO
-     */
-    public function getPDO($user, $mdp): PDO
-    {
-        $ds_name = "mysql:host=localhost;port=0;dbname=festiplan;charset=utf8mb4";
-        $options = [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES => false,
-            PDO::ATTR_PERSISTENT => true
-        ];
 
-        return new PDO($ds_name, $user, $mdp, $options);
+    /**
+     * À partir d'un utilisateur, renvoie un PDO avec les informations de connexion
+     * @param string $utilisateur L'utilisateur pour lequel on veut récupérer les informations de connexion
+     * @return PDO Le PDO avec les informations de connexion
+     * @throws \Exception Si l'utilisateur n'existe pas
+     */
+    public function getPDO(string $utilisateur): PDO
+    {
+        $dbConfig = new \DBConfig();
+        $dbConfig = match ($utilisateur) {
+            "root" => $dbConfig->getRoot(),
+            "lectureSpectacles" => $dbConfig->getLectureSpectacle(),
+            default => throw new \Exception("Utilisateur inconnu")
+        };
+        return new PDO(
+            "mysql:host=" . $dbConfig['db_host'] . ";port=" . $dbConfig['db_port'] . ";dbname=" . $dbConfig['db_name'] . ";charset=" . $dbConfig['db_charset'],
+            $dbConfig['db_user'],
+            $dbConfig['db_pass'],
+            [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_PERSISTENT => true
+            ]
+        );
     }
 }

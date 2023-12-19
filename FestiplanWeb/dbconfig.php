@@ -37,5 +37,17 @@ class DBConfig
             'db_charset' => $this->db_charset
         ];
     }
+
+    public function getLectureSpectacle()
+    {
+        return [
+            'db_host' => $this->db_host,
+            'db_port' => $this->db_port,
+            'db_name' => $this->db_name,
+            'db_user' => 'lectureSpectacles',
+            'db_pass' => '',
+            'db_charset' => $this->db_charset
+        ];
+    }
 }
 
