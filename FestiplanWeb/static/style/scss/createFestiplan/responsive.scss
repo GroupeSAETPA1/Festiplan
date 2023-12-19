@@ -1,5 +1,10 @@
 @import '../main';
 
+@media screen and (max-width: 400px) and (max-height: 900px) {
+  .text {
+    height: 400px;
+  }
+}
 @media screen and (max-width: 1000px) {
 
   .flex-row{
@@ -28,9 +33,17 @@
 
 }
 
-@media screen  and (max-height: 400px){
-  .text{
-    height: 3vh;
+@media screen  and (max-width: 650px){
+
+  .annulChoix {
+    width: 26vh;
+    height: 4.8vh;
+    padding: 0 50px;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 30px;
+    border-style: none;
+    background-color: $orange;
   }
 
 }

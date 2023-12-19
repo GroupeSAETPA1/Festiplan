@@ -135,4 +135,30 @@
   scale: 1.05;
 }
 
+.button-end-page {
+  width: 26vh;
+  height: 4.8vh;
+  padding: 0 50px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+}
+
+.button-next {
+  background-color: #99E1D9;
+}
+.button-next:hover {
+  background-color: #85dbd2;
+  scale: 1.05;
+}
+
+.button-back {
+  background-color: #F7A072;
+}
+.button-back:hover {
+  background-color: #f6905a;
+  scale: 1.05;
+}
+
 /*# sourceMappingURL=button.css.map */
