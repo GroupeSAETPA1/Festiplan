@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svg.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/footer.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/header.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/GriJ/Grij.css">
 
         <!-- Fontawesome --><!-- TODO Custom Kit -->
 
@@ -25,7 +26,9 @@
         <script src="/Festiplan/node_modules/jquery/dist/jquery.min.js"></script>
 
         <!-- Fullcalendar (pas sur que ca soit le bon lien) TODO -->
-        <script src="/Festiplan/node_modules/fullcalendar/dist/index.global.min.js"></script>
+        <script src="/Festiplan/node_modules/fullcalendar/index.global.min.js" defer></script>
+        <script src="/Festiplan/FestiplanWeb/static/scripts/GriJ.js" defer></script>
+
 
         <script src="/Festiplan/FestiplanWeb/static/scripts/redirection_logo.js" defer></script>
         <script src="/Festiplan/FestiplanWeb/static/scripts/responsive/footerResponsive.js" defer></script>
@@ -33,15 +36,14 @@
 
     <body>
     <div class="app">
-
         <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/header.php" ?>
+        <a href="" class="retourBouton"><i class="fa-solid fa-arrow-left"></i> Retour</a>
         <div class="wrapper">
-            <a href=""><i class="fa-solid fa-arrow-left"></i> Retour</a>
             <h1>GriJ du festival <?php echo $nomFestival ?></h1>
-            <button>Générer Automatiquement la GriJ</button>
+            <button class="genererGriJBouton">Générer Automatiquement la GriJ</button>
             <div class="GriJ">
                 <div id="calendar">
-
+                    <!-- DIV complétée par la librairie fullcalendar -->
                 </div>
             </div>
         </div>
