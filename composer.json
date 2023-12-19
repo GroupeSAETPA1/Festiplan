@@ -1,0 +1,24 @@
+{
+    "name": "festiplan/festiplan-1",
+    "config": {
+      "vendor-dir": "FestiplanWeb/lib/vendor"
+    },
+    "repositories": [
+      {
+        "type": "vcs",
+        "url": "https://github.com/GroupeSAETPA1/Festiplan"
+      }
+    ],
+    "autoload": {
+      "psr-4": {
+        "controllers\\": "FestiplanWeb/controllers",
+        "services\\": "FestiplanWeb/services",
+        "application\\": "FestiplanWeb/application"
+      }
+    },
+    "require": {
+      "php": ">=8.1",
+      "ext-pdo": "*",
+      "yasmf/yasmf": ">=1.6.1"
+    }
+  }

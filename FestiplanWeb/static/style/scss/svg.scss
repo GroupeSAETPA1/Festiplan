@@ -1,0 +1,17 @@
+@import 'main';
+
+.spacer {
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  overflow-x: hidden;
+}
+
+.ratio {
+  aspect-ratio: 1920/200;
+}
+
+.wave-clear-to-grey {
+  background-image: url('../../../assets/svgs/wave.svg');
+}
