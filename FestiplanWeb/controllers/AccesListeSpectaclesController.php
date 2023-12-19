@@ -2,13 +2,28 @@
 
 namespace controllers;
 
+use services\AccesListeSpectaclesService;
 use yasmf\View;
 
 class AccesListeSpectaclesController
 {
 
-    function index()
+    private ?AccesListeSpectaclesService $accesListeSpectaclesService = null;
+
+    public function __construct(AccesListeSpectaclesService $accesListeSpectaclesService )
     {
-        return new View("views/accesListeSpectacles");
+        $this->accesListeSpectaclesService = $accesListeSpectaclesService;
+    }
+
+    function index(): View
+    {
+        $spctacles = $this->accesListeSpectaclesService->getSpectacles();
+
+        $view = new View("views/accesListeSpectacles");
+
+
+
+
+        return $view;
     }
 }
