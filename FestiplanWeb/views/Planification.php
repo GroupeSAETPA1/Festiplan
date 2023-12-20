@@ -29,8 +29,8 @@
         <script src="/Festiplan/node_modules/jquery/dist/jquery.min.js"></script>
 
         <!-- Fullcalendar -->
-        <script src="/Festiplan/node_modules/fullcalendar/index.global.min.js"></script>
-        <script src="/Festiplan/node_modules/@fullcalendar/timegrid/index.js"></script>
+        <script src="/Festiplan/node_modules/fullcalendar/index.global.min.js" defer></script>
+
         <script src="/Festiplan/FestiplanWeb/static/scripts/Planification.js" defer></script>
 
         <script src="/Festiplan/FestiplanWeb/static/scripts/redirection_logo.js" defer></script>
@@ -48,9 +48,8 @@
                 <div class="col-12">
                     <h1>Planification du festival <?php echo $festival["nom"] ?></h1>
                     <?php var_dump($festival);
-                          echo "<H1>SUITE</H1>";
+                          echo "<H1>Specacle</H1>";
                           var_dump($spectaclesFestival)?>
-                    <input hidden id="dataFestival" value="<?php echo json_encode($festival) ?>"/>
                     <div class="col-12 text-right"><button class="genererPlanificationBouton">Générer Automatiquement la Planification</button></div>
                     <div class="Planification">
                         <div class="scrollDIV">

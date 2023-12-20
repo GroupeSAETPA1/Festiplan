@@ -18,8 +18,9 @@ class PlanificationController
         $this->planificationService = $planificationService;
     }
 
+    // GROS TODO changer la méthode pour utiliser que ce qu'on a besoin car on a pas besoin des specacles par exemple
     public function index(PDO $pdo): View {
-        // On récupère l'id de l'utilisateur
+        // On récupère l'id de l'utilisateur et le festival sélectionné
         $id_organisateur = 1; // $_SESSION['id_utilisateur'] ?? null;
         $id_festival = 1; // $_SESSION['id_festival'] ?? null;
         // Si on tente d'accéder a la page de planification sans être connecté ou sans avoir séléctionné un festival,
@@ -44,6 +45,27 @@ class PlanificationController
         $view->setVar('spectaclesFestival', $spectaclesFestival);
         $view->setVar('nom', $_SESSION['nom'] ?? '');
         $view->setVar('prenom', $_SESSION['prenom'] ?? ''); 
+        return $view;
+    }
+
+    public function getDataFestival() {
+        // On récupère l'id de l'utilisateur et le festival sélectionné
+        $id_organisateur = 1; // $_SESSION['id_utilisateur'] ?? null;
+        $id_festival = 1; // $_SESSION['id_festival'] ?? null;
+
+        $dataFestival = $this->planificationService->getFestival($id_festival, $id_organisateur);
+        $view = new View("views/planificationDataFestival");
+        $view->setVar('dataFestival', $dataFestival);
+        return $view;
+    }
+
+    public function getDataSpectacle() {
+        // On récupère l'id du festival sélectionné
+        $id_festival = 1; // $_SESSION['id_festival'] ?? null;
+
+        $dataSpectacle = $this->planificationService->getSpectaclesFestival($id_festival);
+        $view = new View("views/planificationDataSpectacles");
+        $view->setVar('dataSpectacle', $dataSpectacle);
         return $view;
     }
 }

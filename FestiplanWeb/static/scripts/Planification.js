@@ -1,6 +1,52 @@
-var dataFestival = document.getElementById('dataFestival').value;
-console.log(dataFestival[0]);
+function getDataFestival() {
+    return new Promise((resolve, reject) => {
+        const xmlhttp = new XMLHttpRequest();
 
+        xmlhttp.onload = function() {
+            resolve(this.responseText);
+        };
+
+        xmlhttp.onerror = function() {
+            reject(new Error("Erreur lors de la requête AJAX"));
+        };
+
+        let controllerActionUrl = "/Festiplan/FestiplanWeb/index.php?controller=Planification&action=getDataFestival";
+        xmlhttp.open("GET", controllerActionUrl);
+        xmlhttp.send();
+    });
+}
+
+function getDataSpectacle() {
+    return new Promise((resolve, reject) => {
+        const xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.onload = function() {
+            resolve(this.responseText);
+        };
+
+        xmlhttp.onerror = function() {
+            reject(new Error("Erreur lors de la requête AJAX"));
+        };
+
+        let controllerActionUrl = "/Festiplan/FestiplanWeb/index.php?controller=Planification&action=getDataSpectacle";
+        xmlhttp.open("GET", controllerActionUrl);
+        xmlhttp.send();
+    });
+}
+
+async function getAllData() {
+    try {
+        festival = await getDataFestival();
+        spectacles = await getDataSpectacle();
+        console.log(festival['nom']);
+        console.log(spectacles);
+    } catch (error) {
+        console.error("Erreur lors de la récupération des données du festival", error);
+        return;
+    }
+}
+
+getAllData();
 var calendarEl = document.getElementById('calendar');
 var calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'timeGridCustomDuration',
@@ -76,3 +122,7 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
     ]
 });
 calendar.render();
+
+
+
+
