@@ -96,3 +96,13 @@ CREATE TABLE `spectacle`
     FOREIGN KEY (taille_scene) REFERENCES taille_scene (id_taille),
     FOREIGN KEY (responsable_spectacle) REFERENCES utilisateurs (id_utilisateur)
 );
+
+-- Structure de la table `liste_spectacle_temporaire`
+-- La table liste_spectacle_temporaire est une table temporaire qui permet de stocker les spectacles qui seront ajoutés au festival
+-- dans le formulaire d'ajout de spectacle.
+CREATE TABLE `liste_spectacle_temporaire`
+(
+    `id_festival`  int(6) NOT NULL,
+    `id_spectacle` int(6) NOT NULL,
+    PRIMARY KEY (id_festival, id_spectacle)
+);

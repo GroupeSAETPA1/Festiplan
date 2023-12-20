@@ -1,28 +1,17 @@
 @import '../main';
+@import "../util";
 
 $taille_div: 90%;
-
-body {
-    background-color: $white;
-    color: $dark-grey;
-    font-family: $font-family;
-    margin: 0;
-}
-
-a {
-    text-decoration: none;
-    color: $dark-grey;
-}
-
-.rounded {
-    border-radius: 2vh !important;
-}
 
 .retour {
     background-color: $orange;
     width: fit-content;
-    padding: 1.5vh;
+    height: fit-content;
     margin: 1.5vh;
+    padding: 1.5vh;
+
+    a {
+    }
 }
 
 .titre {
@@ -93,13 +82,13 @@ a {
 
     .bouton-ajouter-spectacle {
         background-color: $orange;
-        padding: 2vh;
-
         button {
+            padding: 2vh;
             width: max-content;
             background-color: transparent;
             border: 1px solid transparent;
             border-radius: 1vh;
+            cursor: pointer;
             span, i {
                 font-size: 1.2rem;
             }

@@ -2,30 +2,30 @@
 function afficher_spectacle(string $id_spectacle, string $nom_spectacle, string $illustration, string $duree, string $categorie): void
 {
     global $id_festival;
-    echo'<div class="card-spectacles rounded">';
-    echo'    <div class="img-spectacle rounded">';
-    echo'        <img src="'.$illustration.'" alt="L\'image du spectacle Festiplan">';
-    echo'    </div>';
-    echo'    <div class="nom-spectacle">';
-    echo'        <span>'.$nom_spectacle.'</span>';
-    echo'    </div>';
-    echo'    <div class="group-categories">';
-    echo'        <span class="label-categorie">Cat&eacute;gories :</span>';
-    echo'        <span class="categorie">'.$categorie.'</span>';
-    echo'    </div>';
-    echo'    <div class="duree">';
-    echo'        <span class="label-duree">Dur&eacute;e :</span>';
-    echo'        <span>'.minutesToHHMM($duree).'</span>';
-    echo'    </div>';
-    echo'    <form method="post" action="">';
-    echo'        <!-- TODO : mettre le lien pour retirer le spectacles du festival -->';
-    echo'        <input hidden name="id-festival" value="' . $id_festival . '">';
-    echo'        <input hidden name="id-festival" value="' . $id_spectacle . '">';
-    echo'        <div class="btn-retirer-spectacle">';
-    echo'            <button type="submit" title="Retirer le spectacle"><i class="fa-solid fa-times"></i></button>';
-    echo'        </div>';
-    echo'   </form>';
-    echo'</div>';
+    echo '<div class="card-spectacles rounded">';
+    echo '    <div class="img-spectacle rounded">';
+    echo '        <img src="' . $illustration . '" alt="L\'image du spectacle Festiplan">';
+    echo '    </div>';
+    echo '    <div class="nom-spectacle">';
+    echo '        <span>' . $nom_spectacle . '</span>';
+    echo '    </div>';
+    echo '    <div class="group-categories">';
+    echo '        <span class="label-categorie">Cat&eacute;gories :</span>';
+    echo '        <span class="categorie">' . $categorie . '</span>';
+    echo '    </div>';
+    echo '    <div class="duree">';
+    echo '        <span class="label-duree">Dur&eacute;e :</span>';
+    echo '        <span>' . minutesToHHMM($duree) . '</span>';
+    echo '    </div>';
+    echo '    <form method="post" action="">';
+    echo '        <!-- TODO : mettre le lien pour retirer le spectacles du festival -->';
+    echo '        <input hidden name="id-festival" value="' . $id_festival . '">';
+    echo '        <input hidden name="id-festival" value="' . $id_spectacle . '">';
+    echo '        <div class="btn-retirer-spectacle">';
+    echo '            <button type="submit" title="Retirer le spectacle"><i class="fa-solid fa-times"></i></button>';
+    echo '        </div>';
+    echo '   </form>';
+    echo '</div>';
 }
 
 /**
@@ -57,7 +57,7 @@ function minutesToHHMM(int $minutes): string
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/header.css">
 
         <!-- Fontawesome --><!-- TODO Custom Kit -->
-                <link rel="stylesheet" href="/Festiplan/FestiplanWeb/framework/fontawesome-free-6.2.1-web/css/all.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/framework/fontawesome-free-6.2.1-web/css/all.css">
         <!-- Font Awesome -->
         <!--
         <link rel="stylesheet"
@@ -107,10 +107,11 @@ function minutesToHHMM(int $minutes): string
             <div class="entete-section rounded">
                 <span class="titre-section titre">Les spectacles du festivals</span>
                 <form action="" method="post">
+
+                    <input type="hidden" name="controller" value="AjouterListesSpectacles">
+                    <input type="hidden" name="id_festival" value="<?php echo $id_festival; ?>">
+                    <input type="hidden" name="nom_festival" value="<?php echo $nom_festival; ?>">
                     <div class="bouton-ajouter-spectacle rounded">
-                        <input type="hidden" name="controller" value="">
-                        <input type="hidden" name="action" value="">
-                        <input type="hidden" name="id_festival" value="<?php echo $id_festival; ?>">
                         <button type="submit" title="Ajouter un spectacle au festival">
                             <i class="fa-solid fa-square-plus"></i>
                             <span>Ajouter un spectacle</span>

@@ -1,0 +1,18 @@
+@import "main";
+
+body {
+    background-color: $white;
+    color: $dark-grey;
+    font-family: $font-family;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: $dark-grey;
+}
+
+.rounded {
+    border-radius: 2vh !important;
+}
+

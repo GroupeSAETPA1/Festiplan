@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"); /* declaration des variables */
+/* ne codez pas ici, c'est le fichier pour les variables, etc. */
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"); /* declaration des variables */
+/* ne codez pas ici, c'est le fichier pour les variables, etc. */
+body {
+  background-color: #F0F7F4;
+  color: #363732;
+  font-family: "Rubik", sans-serif;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #363732;
+}
+
+.rounded {
+  border-radius: 2vh !important;
+}
+
+.retour {
+  background-color: #F7A072;
+  width: fit-content;
+  height: fit-content;
+  margin: 1.5vh;
+}
+.retour button {
+  background-color: transparent;
+  border: none;
+  padding: 1.5vh;
+  cursor: pointer;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper > div {
+  margin: 1vh 0;
+}
+.wrapper > * {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+
+.titre {
+  font-size: 2rem;
+  color: #363732;
+}
+
+.section-spectacles-diposnible {
+  background-color: #363732;
+  justify-content: flex-start;
+  color: #99E1D9;
+  font-size: 1.75rem;
+  padding: 1.5vh;
+}
+
+.container-card-spectacle {
+  background-color: #363732;
+  padding: 2vh;
+}
+.container-card-spectacle .card-spectacle-dispo {
+  background-color: #F0F7F4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 2vh;
+  font-size: 1.5rem;
+}
+.container-card-spectacle .card-spectacle-dispo .img-spectacle {
+  min-height: 10vh;
+  max-height: 15vh;
+  display: flex;
+  align-items: center;
+}
+.container-card-spectacle .card-spectacle-dispo .img-spectacle img {
+  max-height: inherit;
+  margin: 1vh;
+}
+.container-card-spectacle .card-spectacle-dispo p, .container-card-spectacle .card-spectacle-dispo div {
+  margin: 0 1vh;
+}
+.container-card-spectacle .card-spectacle-dispo .group-responsive {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.container-card-spectacle .card-spectacle-dispo .group-responsive .nom-spectacle {
+  padding: 0 10vh 0 0;
+}
+.container-card-spectacle .card-spectacle-dispo .group-categories {
+  max-width: 40vh;
+}
+.container-card-spectacle .card-spectacle-dispo .group-categories .categorie {
+  background-color: #363732;
+  color: #F0F7F4;
+  margin: 1vh 0 0 0;
+  padding: 0.25vh 1vh;
+  white-space: nowrap;
+}
+.container-card-spectacle .card-spectacle-dispo .duree {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.container-card-spectacle .card-spectacle-dispo .group-bouton-ajouter-spectacle i {
+  font-size: 3rem;
+}
+.container-card-spectacle .card-spectacle-dispo .group-bouton-ajouter-spectacle i.fa-circle-xmark {
+  display: none;
+}
+.container-card-spectacle .card-spectacle-dispo .group-bouton-ajouter-spectacle button {
+  background-color: transparent;
+  border: none;
+  padding: 1vh;
+}
+.container-card-spectacle .card-spectacle-dispo .group-bouton-ajouter-spectacle button:hover {
+  background-color: #cccccc;
+}
+
+@media screen and (max-width: 900px) {
+  .img-spectacle {
+    display: none !important;
+  }
+  .card-spectacle-dispo {
+    padding: 1vh !important;
+  }
+}
+@media screen and (max-width: 700px) {
+  .img-spectacle {
+    display: none !important;
+  }
+  .card-spectacles .group-categories > .label-categorie {
+    display: none;
+  }
+  .group-responsive {
+    display: flex;
+    flex-direction: column !important;
+    justify-content: center;
+    align-items: center;
+  }
+  .group-responsive > div {
+    margin: 1vh !important;
+  }
+  .group-responsive .nom-spectacle {
+    padding: 0 !important;
+  }
+}
+@media screen and (max-width: 740px) {
+  .label-categorie, .label-duree {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=ajoutListeSpectacles.css.map */
