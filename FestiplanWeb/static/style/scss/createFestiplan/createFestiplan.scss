@@ -38,7 +38,7 @@ header {
   flex-direction: column;
 }
 
-.NDD{
+.NDD{ //abrevation de Nom - Date Début - Date Fin
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -67,7 +67,7 @@ header {
   flex-direction: column;
 }
 
-.valid-annul-placement{
+.valid-annul-placement{  //contient les boutons page suivant ou valider et annuler choix
   display: flex;
   flex-direction: row;
   justify-content: space-around;

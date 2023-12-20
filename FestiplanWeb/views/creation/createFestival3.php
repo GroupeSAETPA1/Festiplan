@@ -12,14 +12,24 @@
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/footer.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/responsive.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/header.css">
-        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/scripts/responsive/footerResponsive.js">
-
-        <link rel="stylesheet" href="../../../framework/fontawesome-free-6.2.1-web/css/all.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+              integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+              crossorigin="anonymous"
+              referrerpolicy="no-referrer" />
+        <!-- Scripts -->
+        <!-- GSAP -->  <!-- Jquery -->
+        <script src="/Festiplan/node_modules/gsap/dist/gsap.min.js"></script>
+        <script src="/Festiplan/node_modules/jquery/dist/jquery.min.js"></script>
+        <!-- custom JS -->
+        <!-- custom JS -->
+        <script src="/Festiplan/FestiplanWeb/static/scripts/responsive/footerResponsive.js" defer></script>
 
     </head>
     <body>
-    <?php
-    include_once "../../static/components/header.php" ?>
+    <div class="app">
+        <?php include $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/header.php" ?>
 
         <div class="retour">
             <a href="createFestival.php"><button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button></a>
@@ -28,35 +38,35 @@
         <div class="wrapper">
             <div class="container">
 
-            <div class="buttons  end-row">
-                <div>
-                    <h3><i class="fa-solid fa-circle-exclamation"></i>Spectacle :</h3>
-                    <select>
-                        <option value=" "></option>
-                        <option value="descriauds">Descriaud's pectacle</option>
-                    </select>
+                <div class="buttons  end-row">
+                    <div>
+                        <h3><i class="fa-solid fa-circle-exclamation"></i>Spectacle :</h3>
+                        <select>
+                            <option value=" "></option>
+                            <option value="descriauds">Descriaud's pectacle</option>
+                        </select>
+                    </div>
+                    <div class="ajouter">
+                        Ajouter un Spectacle  <i class="fa-solid fa-plus"></i> <!-- TODO fontawesome -->
+                    </div>
                 </div>
-                <div class="ajouter">
-                    Ajouter un Spectacle  <i class="fa-solid fa-plus"></i> <!-- TODO fontawesome -->
-                </div>
-            </div>
 
-            <div class="buttons end-row">
-                <div>
-                    <h3><i class="fa-solid fa-circle-exclamation"></i>Scène :</h3>
-                    <select>
-                        <option value=" "></option>
-                        <option value="concert">concert</option>
-                        <option value="theatre">theatre</option>
-                        <option value="danse">danse</option>
-                        <option value="cirque">cirque</option>
-                        <option value="film">film</option>
-                    </select>
+                <div class="buttons end-row">
+                    <div>
+                        <h3><i class="fa-solid fa-circle-exclamation"></i>Scène :</h3>
+                        <select>
+                            <option value=" "></option>
+                            <option value="concert">concert</option>
+                            <option value="theatre">theatre</option>
+                            <option value="danse">danse</option>
+                            <option value="cirque">cirque</option>
+                            <option value="film">film</option>
+                        </select>
+                    </div>
+                    <div class="ajouter">
+                        Ajouter une Scène<i class="fa-solid fa-plus"></i>  <!-- TODO fontawesome -->
+                    </div>
                 </div>
-                <div class="ajouter">
-                    Ajouter une Scène<i class="fa-solid fa-plus"></i>  <!-- TODO fontawesome -->
-                </div>
-            </div>
                 <div class="flex-row end-row">
                     <div>
                         <h3> <i class="fa-solid fa-circle-exclamation"></i>Organisateur : </h3>
@@ -73,7 +83,7 @@
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
         <div class="valid-annul-placement">
             <div class="annulChoix">
                 <i class="fa-regular fa-circle-xmark"></i>Annuler vos choix  <!-- TODO fontawesome -->
@@ -82,7 +92,7 @@
                 <a href="createFestival2.php"><button class="page-suivante">Page suivante <i class="fa-solid fa-arrow-right"></i> </button></a>
             </div>
         </div>
-        <?php
-        include_once "../../static/components/footer.php" ?>
+    </div>
+    <?php include $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/footer.php" ?>
     </body>
 </html>
