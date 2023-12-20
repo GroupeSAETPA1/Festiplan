@@ -2,23 +2,27 @@ const interList = [];
 const BUTTON = $(".button-add-inter");
 const INPUT = $('#inter');
 
-function addInter() {
+async function addInter() {
     const input = INPUT.val();
-    var isMail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    const isMail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
     if (input && isMail.test(input)) {
         INPUT.css({
             border: "1px solid black",
         });
-        console.log(typeof checkInter(input));
 
-        var ok = checkInter(input) === "1";
+        let emailValid;
+        try {
+            emailValid = await checkInter(input);
+        } catch (error) {
+            console.error("Erreur lors de la vérification de l'email", error);
+            return;
+        }
 
-        console.log(ok)
         let inter = {
             id: interList.length,
             name: input,
-            valid: checkInter(input),
+            valid: emailValid === "1",
         };
 
         interList.push(inter);
@@ -51,19 +55,21 @@ function displayInter() {
 }
 
 function checkInter(mail) {
-    const xmlhttp = new XMLHttpRequest();
+    return new Promise((resolve, reject) => {
+        const xmlhttp = new XMLHttpRequest();
 
-    let emailValid;
+        xmlhttp.onload = function() {
+            resolve(this.responseText);
+        };
 
-    xmlhttp.onload = function() {
-        emailValid = this.responseText;
-        console.log(typeof emailValid);
-    };
-    let controllerActionUrl = "/Festiplan/FestiplanWeb/index.php?controller=CreateSpectacle&action=checkUserByEmail";
-    xmlhttp.open("GET", controllerActionUrl + "&email=" + encodeURIComponent(mail));
-    xmlhttp.send();
+        xmlhttp.onerror = function() {
+            reject(new Error("Erreur lors de la requête AJAX"));
+        };
 
-    return emailValid;
+        let controllerActionUrl = "/Festiplan/FestiplanWeb/index.php?controller=CreateSpectacle&action=checkUserByEmail";
+        xmlhttp.open("GET", controllerActionUrl + "&email=" + encodeURIComponent(mail));
+        xmlhttp.send();
+    });
 }
 
 $('.selections').on('click', '.delete', function() {

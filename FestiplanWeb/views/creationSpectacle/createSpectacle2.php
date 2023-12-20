@@ -3,7 +3,7 @@ $tempIntervenants = ["quentin", "pierre", "paul", "jacques"];
 ?>
 
 <!doctype html>
-<html lang="fr">
+<html lang="fr" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -36,7 +36,7 @@ $tempIntervenants = ["quentin", "pierre", "paul", "jacques"];
     <div class="wrapper">
         <div class="custom-select">
             <label for="inter">Intervenants :</label>
-            <div class="text">Veuillez rentrer l'email du compte </div>
+            <div class="text">Veuillez rentrer l'email du compte, </br>le compte n'existe pas, vous pouvez le crer avec le + </div>
             <div class="row">
                 <input id="inter" type="text" placeholder="exemple@mail.fr">
                 <div class="button-add-inter">
