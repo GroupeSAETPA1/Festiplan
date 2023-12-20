@@ -18,13 +18,11 @@ header {
   justify-content: space-between;
   color: #F0F7F4;
 }
-
 header .logo {
   margin: 1rem;
   display: flex;
   align-items: center;
 }
-
 header .logo i {
   color: #F7A072;
   font-size: 2rem;
