@@ -4,12 +4,17 @@ const INPUT = $('#inter');
 
 function addInter() {
     const input = INPUT.val();
+    var isMail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-    if (input) {
+    if (input && isMail.test(input)) {
         INPUT.css({
             border: "1px solid black",
         });
+        console.log(typeof checkInter(input));
 
+        var ok = checkInter(input) === "1";
+
+        console.log(ok)
         let inter = {
             id: interList.length,
             name: input,
@@ -52,8 +57,10 @@ function checkInter(mail) {
 
     xmlhttp.onload = function() {
         emailValid = this.responseText;
+        console.log(typeof emailValid);
     };
-    xmlhttp.open("GET", "fichier.php?q=" + mail);
+    let controllerActionUrl = "/Festiplan/FestiplanWeb/index.php?controller=CreateSpectacle&action=checkUserByEmail";
+    xmlhttp.open("GET", controllerActionUrl + "&email=" + encodeURIComponent(mail));
     xmlhttp.send();
 
     return emailValid;

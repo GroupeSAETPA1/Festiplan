@@ -19,9 +19,11 @@
 
 namespace application;
 
+use controllers\CreateSpectacleController;
 use controllers\DashboardController;
 use controllers\UserController;
 use PDO;
+use services\CreateSpectacleService;
 use services\DashboardService;
 use services\SessionService;
 use services\UserService;
@@ -36,6 +38,7 @@ class DefaultComponentFactory implements ComponentFactory
 {
     private ?UserService $userService = null;
     private ?DashboardService $dashboardService = null;
+    private ?CreateSpectacleService $createSpectacleService = null;
 
     /**
      * @param string $controller_name the name of the controller to instanciate
@@ -47,6 +50,7 @@ class DefaultComponentFactory implements ComponentFactory
         return match ($controller_name) {
             "Home" => $this->buildUserController(),
             "Dashboard" => $this->buildDashboardController(),
+            "CreateSpectacle" => $this->buildCreateSpectacleController(),
             default => throw new NoControllerAvailableForNameException($controller_name)
         };
     }
@@ -61,6 +65,7 @@ class DefaultComponentFactory implements ComponentFactory
         return match ($service_name) {
             "User" => $this->buildUserService(),
             "Dashboard" => $this->buildDashboardService(),
+            "CreateSpectacle" => $this->buildCreateSpectacleService(),
             default => throw new NoServiceAvailableForNameException($service_name)
         };
     }
@@ -93,6 +98,15 @@ class DefaultComponentFactory implements ComponentFactory
         return $this->dashboardService;
     }
 
+    /**
+     * @return CreateSpectacleController
+     */
+    private function buildCreateSpectacleController(): CreateSpectacleController
+    {
+        return new CreateSpectacleController($this->buildCreateSpectacleService()
+                                           , $this->buildUserService(), $this->getPDO("root", "root"));
+    }
+
     private function buildDashboardController(): DashboardController
     {
         return new DashboardController($this->buildDashboardService());
@@ -116,5 +130,13 @@ class DefaultComponentFactory implements ComponentFactory
         ];
 
         return new PDO($ds_name, $user, $mdp, $options);
+    }
+
+    private function buildCreateSpectacleService(): ?CreateSpectacleService
+    {
+        if ($this->createSpectacleService == null) {
+            $this->createSpectacleService = new CreateSpectacleService();
+        }
+        return $this->createSpectacleService;
     }
 }
