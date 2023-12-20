@@ -32,15 +32,17 @@ class PlanificationService
         return $requete->fetch();
     }
 
-    public function getSpectacles(int $id_gestionnaire): array
-    {
-        $requete = "SELECT id_spectacle,spectacle.nom, spectacle.illustration, c.nom AS categorie, spectacle.duree, spectacle.description
+    public function getSpectaclesFestival(int $id_festival) {
+        $requete = "SELECT *
                     FROM spectacle
-                    JOIN festiplan.categorie c ON spectacle.id_categorie = c.id_categorie
-                    WHERE responsable_spectacle = :id_gestionnaire";
+                    JOIN liste_spectacle
+                    ON spectacle.id_spectacle = liste_spectacle.id_spectacle
+                    JOIN festival
+                    ON liste_spectacle.id_festival = festival.id_festival
+                    WHERE festival.id_festival = :id_festival";                    
 
         $requete = $this->pdoLecture->prepare($requete);
-        $requete->bindParam("id_gestionnaire", $id_gestionnaire);
+        $requete->bindParam("id_festival", $id_festival);
         $requete->execute();
 
         return $requete->fetchAll();

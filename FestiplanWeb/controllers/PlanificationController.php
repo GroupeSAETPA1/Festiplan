@@ -20,8 +20,8 @@ class PlanificationController
 
     public function index(PDO $pdo): View {
         // On récupère l'id de l'utilisateur
-        $id_organisateur = $_SESSION['id_utilisateur'] ?? null;
-        $id_festival = $_SESSION['id_festival'] ?? null;
+        $id_organisateur = 1; // $_SESSION['id_utilisateur'] ?? null;
+        $id_festival = 1; // $_SESSION['id_festival'] ?? null;
         // Si on tente d'accéder a la page de planification sans être connecté ou sans avoir séléctionné un festival,
         // on renvoie sur la page de connexion
         if ($id_organisateur == null || $id_festival == null) {

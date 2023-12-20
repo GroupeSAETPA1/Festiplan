@@ -1,3 +1,6 @@
+var dataFestival = document.getElementById('dataFestival').value;
+console.log(dataFestival[0]);
+
 var calendarEl = document.getElementById('calendar');
 var calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'timeGridCustomDuration',
