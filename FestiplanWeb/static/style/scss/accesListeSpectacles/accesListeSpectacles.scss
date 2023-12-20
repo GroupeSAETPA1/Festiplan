@@ -27,6 +27,7 @@ a {
 
 .titre {
     font-size: 30px;
+    width: $taille_div;
 }
 
 .wrapper {
@@ -93,7 +94,16 @@ a {
     .bouton-ajouter-spectacle {
         background-color: $orange;
         padding: 2vh;
-        font-size: 1.2rem;
+
+        button {
+            width: max-content;
+            background-color: transparent;
+            border: 1px solid transparent;
+            border-radius: 1vh;
+            span, i {
+                font-size: 1.2rem;
+            }
+        }
     }
 }
 
@@ -156,6 +166,29 @@ a {
     }
 }
 
+.btn-retirer-spectacle {
+    border-radius: 1vh;
+
+    i {
+        font-size: 4vh;
+        margin: 0.5vh
+    }
+
+    .fa-times {
+        color: red
+    }
+
+    &:hover {
+        background-color: $gris;
+    }
+
+    button {
+        background-color: transparent;
+        border: 1px solid transparent;
+        border-radius: 1vh;
+    }
+}
+
 //Téléphone
 @media screen and (max-width: 700px) {
     .img-spectacle, .img-festival {
@@ -165,7 +198,7 @@ a {
     .card-festival-ligne {
         justify-content: center;
 
-        .img-festival, .date, .label-categorie {
+        .img-festival, .date {
             display: none;
         }
     }
@@ -183,8 +216,14 @@ a {
     }
 
     .card-spectacles {
-        .group-categories > .label-categorie, .duree > .label-duree {
+        .group-categories > .label-categorie {
             display: none;
         }
+    }
+}
+
+@media screen and (max-width: 740px) {
+    .label-categorie, .label-duree {
+        display: none;
     }
 }

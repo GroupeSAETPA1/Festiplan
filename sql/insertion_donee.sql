@@ -43,7 +43,7 @@ INSERT INTO liste_scene (id_scene, id_festival) VALUES
 (1, 1),
 (1, 2);
 
-INSERT INTO liste_spectacle (le_festival, id_spectacle) VALUES
+INSERT INTO liste_spectacle (id_festival, id_spectacle) VALUES
 (1, 1),
 (1, 2);
 

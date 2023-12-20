@@ -3,6 +3,7 @@
 namespace controllers;
 
 use services\AccesListeSpectaclesService;
+use yasmf\HttpHelper;
 use yasmf\View;
 
 class AccesListeSpectaclesController
@@ -19,9 +20,9 @@ class AccesListeSpectaclesController
     function index(): View
     {
         $id_gestionnaire = $_SESSION['id_utilisateur'] ?? null;
-        $id_festival_actif = $_SESSION['id_festival_actif'] ?? null;
-
-        $id_festival_actif = 1; // TODO : A supprimer STUB
+        $id_festival_actif = HttpHelper::getParam("id_festival") ?? null;
+        $nom_festival = HttpHelper::getParam("nom_festival") ?? null;
+        $categorie = HttpHelper::getParam("categorie") ?? null;
 
         if ($id_gestionnaire == null || $id_festival_actif == null) {
             header("Location: /Festiplan/FestiplanWeb/");
@@ -32,7 +33,10 @@ class AccesListeSpectaclesController
 
         $view = new View("views/accesListeSpectacles");
 
-
+        $view->setVar("spectacles", $spctacles);
+        $view->setVar("id_festval", $id_festival_actif);
+        $view->setVar("nom_festival", $nom_festival);
+        $view->setVar("categorie", $categorie);
 
 
         return $view;

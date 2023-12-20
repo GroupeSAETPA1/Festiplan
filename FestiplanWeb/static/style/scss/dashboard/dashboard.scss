@@ -114,6 +114,14 @@ form {
 
         .group-boutons {
             flex-direction: row;
+
+            .btn-acces-spectacles {
+                background-color: $gris;
+                margin: 0 1vh;
+                &:hover {
+                    background-color: darken($gris, 20);
+                }
+            }
         }
     }
 }

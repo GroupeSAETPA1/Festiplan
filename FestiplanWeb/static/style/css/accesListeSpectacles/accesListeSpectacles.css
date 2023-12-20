@@ -25,6 +25,7 @@ a {
 
 .titre {
   font-size: 30px;
+  width: 90%;
 }
 
 .wrapper {
@@ -81,6 +82,14 @@ a {
 .entete-section .bouton-ajouter-spectacle {
   background-color: #F7A072;
   padding: 2vh;
+}
+.entete-section .bouton-ajouter-spectacle button {
+  width: max-content;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 1vh;
+}
+.entete-section .bouton-ajouter-spectacle button span, .entete-section .bouton-ajouter-spectacle button i {
   font-size: 1.2rem;
 }
 
@@ -130,6 +139,25 @@ a {
   justify-content: center;
 }
 
+.btn-retirer-spectacle {
+  border-radius: 1vh;
+}
+.btn-retirer-spectacle i {
+  font-size: 4vh;
+  margin: 0.5vh;
+}
+.btn-retirer-spectacle .fa-times {
+  color: red;
+}
+.btn-retirer-spectacle:hover {
+  background-color: #cccccc;
+}
+.btn-retirer-spectacle button {
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 1vh;
+}
+
 @media screen and (max-width: 700px) {
   .img-spectacle, .img-festival {
     display: none !important;
@@ -137,7 +165,7 @@ a {
   .card-festival-ligne {
     justify-content: center;
   }
-  .card-festival-ligne .img-festival, .card-festival-ligne .date, .card-festival-ligne .label-categorie {
+  .card-festival-ligne .img-festival, .card-festival-ligne .date {
     display: none;
   }
   .entete-section {
@@ -149,7 +177,12 @@ a {
   .entete-section a div > span {
     display: none;
   }
-  .card-spectacles .group-categories > .label-categorie, .card-spectacles .duree > .label-duree {
+  .card-spectacles .group-categories > .label-categorie {
+    display: none;
+  }
+}
+@media screen and (max-width: 740px) {
+  .label-categorie, .label-duree {
     display: none;
   }
 }
