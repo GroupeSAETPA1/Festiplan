@@ -1,0 +1,9 @@
+@charset "UTF-8";
+textarea {
+  resize: none; /* Empêche le redimensionnement de la zone de texte */
+  height: 27vh;
+  width: 100%;
+  border-radius: 30px;
+}
+
+/*# sourceMappingURL=input.css.map */

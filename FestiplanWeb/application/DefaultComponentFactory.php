@@ -111,7 +111,7 @@ class DefaultComponentFactory implements ComponentFactory
     {
         if($this->createFestivalService == null) {
             // TODO recuperer le pdo
-            $pdo = $this->getPDO("root", "root");
+            $pdo = $this->getPDO("admin", "admin");
             $this->createFestivalService = new createFestivalService($pdo);
         }
         return $this->createFestivalService;
@@ -120,7 +120,7 @@ class DefaultComponentFactory implements ComponentFactory
     private function buildDashboardService(): DashboardService
     {
         if ($this->dashboardService == null) {
-            $pdo = $this->getPDO("root", "root");
+            $pdo = $this->getPDO("admin", "admin");
             $this->dashboardService = new DashboardService($pdo);
         }
         return $this->dashboardService;
