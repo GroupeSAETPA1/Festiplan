@@ -43,6 +43,9 @@ Essayez de ne pas modifier le fichier css directement car il sera écrasé à ch
 
 # Utilisation de jQuery :
 
+```HTML
+<script src="/Festiplan/node_modules/jquery/dist/jquery.js"></script>
+```
 ```js
 var jsdom = require("jsdom").jsdom;
 global.$ = require('jquery/dist/jquery')(jsdom().createWindow());
@@ -63,7 +66,7 @@ Cela permet de sélectionner un élément du DOM et de pouvoir le manipuler.
 
 # Utilisation de GSAP :
 
-```<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>```
+```<script src="/Festiplan/node_modules/gsap/dist/gsap.min.js"></script>```
 
 GSAP est une bibliothèque JavaScript qui permet de créer des animations. Elle permet de créer des animations de manière plus simple et plus rapide que le JavaScript.
 GSAP permet de créer des animations sur les propriétés CSS, les objets JavaScript, les propriétés DOM et les attributs SVG.
