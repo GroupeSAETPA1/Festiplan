@@ -25,6 +25,9 @@ use controllers\HomeController;
 use services\createFestivalService;
 use services\UsersService;
 
+use controllers\PlanificationController;
+use services\PlanificationService;
+
 use controllers\DashboardController;
 use controllers\UserController;
 use services\DashboardService;
@@ -42,7 +45,7 @@ class DefaultComponentFactory implements ComponentFactory
 {
     private ?UserService $userService = null;
     private ?DashboardService $dashboardService = null;
-
+    private ?PlanificationService $planificationService = null;
     private ?CreateFestivalService $createFestivalService = null;	
 
     /**
@@ -57,6 +60,7 @@ class DefaultComponentFactory implements ComponentFactory
             "CreateFestival" => $this->buildCreateFestival(),
             "Home" => $this->buildUserController(),
             "Dashboard" => $this->buildDashboardController(),
+            "Planification" => $this->buildPlanificationController(),
             "Error" => new ErrorController(),
             default => throw new NoControllerAvailableForNameException($controller_name)
         };
@@ -72,7 +76,8 @@ class DefaultComponentFactory implements ComponentFactory
         return match ($service_name) {
             "User" => $this->buildUserService(),
             "Dashboard" => $this->buildDashboardService(),
-            "CreateFestival" => $this->buildCreateFestivalService() , 
+            "CreateFestival" => $this->buildCreateFestivalService(),
+            "Planification" => $this->buildPlanificationService(), 
             default => throw new NoServiceAvailableForNameException($service_name)
         };
     }
@@ -130,6 +135,21 @@ class DefaultComponentFactory implements ComponentFactory
     {
         return new DashboardController($this->buildDashboardService());
     }
+
+    private function buildPlanificationService(): PlanificationService
+    {
+        if ($this->planificationService == null) {
+            $pdo = $this->getPDO("root", "root");
+            $this->planificationService = new PlanificationService($pdo);
+        }
+        return $this->planificationService;
+    }
+
+    private function buildPlanificationController(): PlanificationController
+    {
+        return new PlanificationController($this->buildPlanificationService());
+    }
+
 
 
     /**

@@ -47,6 +47,7 @@
                 </div>
                 <div class="col-12">
                     <h1>Planification du festival <?php echo $nomFestival ?></h1>
+                    <?php var_dump($festival)?>
                     <div class="col-12 text-right"><button class="genererPlanificationBouton">Générer Automatiquement la Planification</button></div>
                     <div class="Planification">
                         <div class="scrollDIV">
