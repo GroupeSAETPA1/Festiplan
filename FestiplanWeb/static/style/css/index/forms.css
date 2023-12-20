@@ -83,16 +83,24 @@ body {
   background: #99E1D9;
   color: #363732;
 }
+<<<<<<< Updated upstream
 .creationCompte .Retour {
   background: #F7A072;
   color: #363732;
 }
 .creationCompte .Retour .lastSection {
+=======
+.creationCompte .lastSection {
+>>>>>>> Stashed changes
   display: flex;
   flex-direction: column;
   row-gap: 20px;
 }
+<<<<<<< Updated upstream
 .creationCompte .Retour .colonneCreationCompte {
+=======
+.creationCompte .colonneCreationCompte {
+>>>>>>> Stashed changes
   width: 100%;
   padding: 10px;
 }

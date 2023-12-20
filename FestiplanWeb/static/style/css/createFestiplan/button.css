@@ -13,8 +13,39 @@ body {
   border-style: none;
   background-color: #F7A072;
 }
+<<<<<<< Updated upstream
 .Retour:hover {
   background-color: #f6905a;
+=======
+.retour:hover {
+  background-color: #c54b0b;
+}
+
+.ajoutS {
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #99E1D9;
+}
+.ajoutS:hover {
+  background-color: #33aea0;
+}
+
+.supp {
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #F7A072;
+}
+.supp:hover {
+  background-color: #c54b0b;
+>>>>>>> Stashed changes
 }
 
 .ajoutGrij {
@@ -32,19 +63,43 @@ body {
   background-color: #85dbd2;
 }
 
+<<<<<<< Updated upstream
 .page-suivante {
   width: 26vh;
   height: 4.8vh;
   padding: 0 50px;
+=======
+.annul {
+  line-height: 2.5;
+  padding: 0 150px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #F7A072;
+}
+.annul:hover {
+  background-color: #c54b0b;
+}
+
+.valid {
+  line-height: 2.5;
+  padding: 0 150px;
+>>>>>>> Stashed changes
   font-size: 1rem;
   text-align: center;
   border-radius: 30px;
   border-style: none;
   background-color: #99E1D9;
 }
+<<<<<<< Updated upstream
 .page-suivante:hover {
   background-color: #85dbd2;
   scale: 1.05;
+=======
+.valid:hover {
+  background-color: #33aea0;
+>>>>>>> Stashed changes
 }
 
 .mon-compte {
@@ -70,6 +125,7 @@ body {
   padding: 2vh;
 }
 
+<<<<<<< Updated upstream
 .ajouter {
   padding: 10px 25px;
   font-size: 1rem;
@@ -139,4 +195,6 @@ body {
   scale: 1.05;
 }
 
+=======
+>>>>>>> Stashed changes
 /*# sourceMappingURL=button.css.map */
