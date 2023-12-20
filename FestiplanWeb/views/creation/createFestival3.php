@@ -29,7 +29,7 @@
         </header>
 
         <div class="retour">
-            <a href="createFestival2.php"><button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button></a>
+            <a href="createFestival.php"><button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button></a>
         </div>
 
         <div class="wrapper">
@@ -64,19 +64,29 @@
                     Ajouter une Scène<i class="fa-solid fa-plus"></i>  <!-- TODO fontawesome -->
                 </div>
             </div>
-            </div>
-            </div>
+                <div class="flex-row end-row">
+                    <div>
+                        <h3> <i class="fa-solid fa-circle-exclamation"></i>Organisateur : </h3>
+                        <input class="text" type="text" id="rechercheOrga" name="rechercheOrga"
+                               placeholder="Entrez le mail d'un organisateur"/>
+                    </div>
 
-            <div class="valid-annul-placement">
-                <button class="ajoutGrij">Générer une GRIJ</button>
-            </div>
+                    <div class="ajouter">
+                        Ajouter l'organisateur <i class="fa-solid fa-plus"></i> <!-- TODO fontawesome -->
+                    </div>
 
+                    <div class="suppOrga">
+                        Supprimer Organisateur <i class="fa-solid fa-trash-can"></i><!-- TODO fontawesome -->
+                    </div>
+                </div>
+            </div>
+            </div>
         <div class="valid-annul-placement">
             <div class="annulChoix">
                 <i class="fa-regular fa-circle-xmark"></i>Annuler vos choix  <!-- TODO fontawesome -->
             </div>
             <div class="button-flex-end">
-                <button class="valider">Valider <i class="fa-solid fa-check"></i></button>
+                <a href="createFestival2.php"><button class="page-suivante">Page suivante <i class="fa-solid fa-arrow-right"></i> </button></a>
             </div>
         </div>
         <?php

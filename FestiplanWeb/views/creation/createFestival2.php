@@ -29,30 +29,32 @@
         </header>
 
         <div class="retour">
-            <a href="createFestival.php"><button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button></a>
+            <a href="createFestival3.php"><button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button></a>
         </div>
         <div class="wrapper">
             <div class="container">
-
-                <div class="align">
-                    <h3> <i class="fa-solid fa-circle-exclamation"></i>Responsable :</h3>
-                    <input class="text" type="text" id="rechercheRespon" name="rechercheRespon"
-                           placeholder="Entrez le mail du responsable"/>
+                <div>
+                    <h2>Grille Journalière de Contrainte(Grij)</h2>
                 </div>
 
-                <div class="flex-row end-row">
-                    <div>
-                        <h3> <i class="fa-solid fa-circle-exclamation"></i>Organisateur : </h3>
-                        <input class="text" type="text" id="rechercheOrga" name="rechercheOrga"
-                               placeholder="Entrez le mail d'un organisateur"/>
-                    </div>
+                <div class="flex-row first-row">
+                    <!-- Contient un premier bloc avec le nom, les dates de début et de fin -->
+                    <div class="NDD">
+                        <div>
 
-                    <div class="ajouter">
-                                Ajouter l'organisateur <i class="fa-solid fa-plus"></i> <!-- TODO fontawesome -->
-                    </div>
+                            <h3><i class="fa-solid fa-circle-exclamation"></i>Nom :</h3>
+                            <input class="text" type="text" name="nom" placeholder="Tapez le nom de votre festival"/>
+                        </div>
+                        <div>
 
-                    <div class="suppOrga">
-                        Supprimer Organisateur <i class="fa-solid fa-trash-can"></i><!-- TODO fontawesome -->
+                            <h3><i class="fa-solid fa-circle-exclamation"></i>Date de début :</h3>
+                            <input class="text" type="date" name="ddd"/>
+                        </div>
+                        <div>
+
+                            <h3><i class="fa-solid fa-circle-exclamation"></i>Date de fin :</h3>
+                            <input class="text" type="date" name="ddf"/>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -63,7 +65,7 @@
                 <i class="fa-regular fa-circle-xmark"></i>Annuler vos choix  <!-- TODO fontawesome -->
             </div>
             <div class="button-flex-end">
-                <a href="createFestival3.php"><button class="page-suivante">Page suivante <i class="fa-solid fa-arrow-right"></i> </button></a>
+                <button class="valider">Valider <i class="fa-solid fa-check"></i></button>
             </div>
         </div>
         <?php

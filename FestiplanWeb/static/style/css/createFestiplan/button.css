@@ -13,21 +13,6 @@
   background-color: #f6905a;
 }
 
-.ajoutGrij {
-  line-height: 2.5;
-  font-size: 1rem;
-  text-align: center;
-  border-radius: 30px;
-  border-style: none;
-  background-color: #99E1D9;
-  display: flex;
-  justify-content: center;
-  width: 70%;
-}
-.ajoutGrij:hover {
-  background-color: #85dbd2;
-}
-
 .page-suivante {
   width: fit-content;
   padding: 10px 50px;

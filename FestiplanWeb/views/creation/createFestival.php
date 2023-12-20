@@ -103,7 +103,7 @@
             </div>
 
             <div class="button-flex-end">
-                <a href="createFestival2.php">
+                <a href="createFestival3.php">
                     <button class="page-suivante">
                         Page Suivante<i class="fa-solid fa-arrow-right"></i>
                     </button>
