@@ -29,16 +29,8 @@
   }
 }
 
-
-
-.button-flex-end {
-  display: flex;
-  align-items: flex-end;
-  padding: 0 05vh;
-}
-
 .retour {
-  padding: 2vh;
+  padding: 15px;
 }
 
 .ajouter{
@@ -51,7 +43,7 @@
   width: 22vh;
   height: fit-content;
   border-radius: 30px ;
-  margin-left: 3vh;
+  margin-left: 30px;
 }
 .ajouter:hover {
   background-color: darken($light-blue,5);
@@ -69,7 +61,7 @@
     width: fit-content;
     height: fit-content;
     border-radius: 30px ;
-    margin-left: 4.5vh;
+    margin-left: 30px;
 }
 .suppOrga:hover {
   background-color: darken($orange,5);
@@ -87,7 +79,7 @@
   width: fit-content;
   height: fit-content;
   border-radius: 30px ;
-  margin-left: 3vh;
+  margin-left: 30px;
 }
 .annulChoix:hover {
   background-color: darken($orange,5);
@@ -96,7 +88,6 @@
 
 .valider{
   width: fit-content;
-  //height: 4.8vh;
   padding: 10px 50px;
   font-size: 1rem;
   text-align: center;
@@ -106,32 +97,6 @@
 
   &:hover {
     background-color: darken($light-blue,5);
-    scale: 1.05;
-  }
-}
-
-.button-end-page {
-  width: 26vh;
-  height: 4.8vh;
-  padding: 0 50px;
-  font-size: 1rem;
-  text-align: center;
-  border-radius: 30px;
-  border-style: none;
-}
-
-.button-next {
-  background-color: $light-blue;
-  &:hover {
-    background-color: darken($light-blue, 5);
-    scale: 1.05;
-  }
-}
-
-.button-back {
-  background-color: $orange;
-  &:hover {
-    background-color: darken($orange, 5);
     scale: 1.05;
   }
 }
