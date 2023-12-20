@@ -42,18 +42,18 @@
                     <div class="NDD">
                         <div>
 
-                            <h3><i class="fa-solid fa-circle-exclamation"></i>Nom :</h3>
-                            <input class="text" type="text" name="nom" placeholder="Tapez le nom de votre festival"/>
+                            <h3><i class="fa-solid fa-circle-exclamation"></i>Heure de début des spactacles de la journée : </h3>
+                            <input class="text" type="time" id="HDS" name="HDS" min="09:00" max="18:00"/>
                         </div>
                         <div>
 
-                            <h3><i class="fa-solid fa-circle-exclamation"></i>Date de début :</h3>
-                            <input class="text" type="date" name="ddd"/>
+                            <h3><i class="fa-solid fa-circle-exclamation"></i>Heure de fin des spactacles de la journée : </h3>
+                            <input class="text" type="time" id="HFS" name="HFS" min="09:00" max="18:00"/>
                         </div>
                         <div>
 
-                            <h3><i class="fa-solid fa-circle-exclamation"></i>Date de fin :</h3>
-                            <input class="text" type="date" name="ddf"/>
+                            <h3><i class="fa-solid fa-circle-exclamation"></i>Temps de pause entre les spactcales : </h3>
+                            <input class="text" type="time" id="TPS" name="TPS" min="09:00" max="18:00"/>
                         </div>
                     </div>
                 </div>
@@ -69,6 +69,6 @@
             </div>
         </div>
         <?php
-        include_once "../../static/components/footer/footer-absolute.php" ?>
+        include_once "../../static/components/footer/footer.php" ?>
     </body>
 </html>
