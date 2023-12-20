@@ -76,4 +76,18 @@ class UserService
     {
         session_destroy();
     }
+
+    /**
+     * verifie si un utilisateur existe avec l'email
+     * @param $pdo pdo le pdo de l'application
+     * @param $email string l'email de l'utilisateur a rechercher
+     */
+    public function emailExiste($pdo, $email): bool
+    {
+        $requeteEmailExiste = $pdo->prepare("SELECT DISTINCT nom, prenom FROM utilisateurs WHERE mail = :email");
+        $requeteEmailExiste->bindParam(':email', $email);
+        $requeteEmailExiste->execute();
+
+        return $requeteEmailExiste->rowCount() > 0;
+    }
 }

@@ -33,7 +33,6 @@ class UserController
 
         $view = new View("views/index");
         $this->buildView($view, $nom, $prenom, $email, $mdp, $login, false, false, false, "");
-
         return $view;
     }
 
@@ -77,29 +76,38 @@ class UserController
         $mdp = htmlspecialchars(HttpHelper::getParam('mdp') ?: "");
         $login = htmlspecialchars(HttpHelper::getParam('login') ?: "");
 
-        $view = null;
-        try {
-            $view = new View("/views/index");
-            if ($nom != "" && $prenom != "" && $email != "" && $mdp != "" && $login != "") {
-                if (!$this->userService->utilisateurExiste($pdo, $login)) {
-                    $this->userService->createUser($pdo, $nom, $prenom, $email, $mdp, $login);
-                    $view = new View("/views/dashboard");
-                    // Si l'utilisateur existe déja, on affiche un message d'erreur
-                } else {
-                    $messageErreur = "Erreur d'inscription : Un utilisateur existe déja avec ce login";
-                    $this->buildView($view, $nom, $prenom, $email, $mdp, $login, true, false, true, $messageErreur);
+        $pattern = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/";
+        $mdpValide = preg_match($pattern,$mdp);
 
+        $view = new View("/views/index");
+        if ($mdpValide) {
+            try {
+                if ($nom != "" && $prenom != "" && $email != "" && $mdp != "" && $login != "") {
+                    if (!$this->userService->utilisateurExiste($pdo, $login)) {
+                        $this->userService->createUser($pdo, $nom, $prenom, $email, $mdp, $login);
+                        $view = new View("/views/dashboard");
+                        // Si l'utilisateur existe déja, on affiche un message d'erreur
+                    } else {
+                        $messageErreur = "Erreur d'inscription : Un utilisateur existe déja avec ce login";
+                        $this->buildView($view, $nom, $prenom, $email, $mdp, $login, true, false, true, $messageErreur);
+
+                    }
+                } else {
+                    $messageErreur = "Erreur d'inscription : Un des champs requis n'est pas rempli";
+                    $this->buildView($view, $nom, $prenom, $email, $mdp, $login, true, false, true, $messageErreur);
                 }
-            } else {
-                $messageErreur = "Erreur d'inscription : Un des champs requis n'est pas rempli";
+            } catch (PDOException|\TypeError $e) {
+                $messageErreur = "Erreur d'inscription : " . $e->getMessage();
                 $this->buildView($view, $nom, $prenom, $email, $mdp, $login, true, false, true, $messageErreur);
             }
-        } catch (PDOException|\TypeError $e) {
-            $messageErreur = "Erreur d'inscription : " . $e->getMessage();
+        } else {
+            $messageErreur = "Le mot de passe n'est pas valide !". PHP_EOL
+                            ."Il faut qu'il contienne 8 characteres, au moins une minuscule,". PHP_EOL
+                            ." une majuscule, un chiffre et un characteres spécial";
             $this->buildView($view, $nom, $prenom, $email, $mdp, $login, true, false, true, $messageErreur);
-        } finally {
-            return $view;
         }
+        return $view;
+
     }
 
     /**

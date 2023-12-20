@@ -63,14 +63,13 @@
         </div>
     </div>
 
-    <div class="valid-annul-placement">
-        <div class="annulChoix">
-            <i class="fa-regular fa-circle-xmark"></i>Annuler vos choix
-            <!-- TODO fontawesome -->
-        </div>
-        <div class="button-flex-end">
-            <a href="createFestival3.php"><button class="valid">Page suivante <i class="fa-solid fa-arrow-right"></i>
-                </button></a>
+        <div class="valid-annul-placement">
+            <div class="annulChoix">
+                <i class="fa-regular fa-circle-xmark"></i>Annuler vos choix  <!-- TODO fontawesome -->
+            </div>
+            <div class="button-flex-end">
+                <a href="createFestival3.php"><button class="page-suivante">Page suivante <i class="fa-solid fa-arrow-right"></i> </button></a>
+            </div>
         </div>
     </div>
     </form>

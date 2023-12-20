@@ -14,7 +14,7 @@ INSERT INTO categorie (id_categorie, nom) VALUES
 (4, 'Danse'),
 (5, 'Projection de film');
 
-INSERT INTO `taille scene` (`id_taille`, `taille`) VALUES
+INSERT INTO `taille_scene` (`id_taille`, `taille`) VALUES
 (1, 'Petite (4mx4m)'),
 (2, 'Moyenne (10mx10m)'),
 (3, 'Grande (30mx30m)'),

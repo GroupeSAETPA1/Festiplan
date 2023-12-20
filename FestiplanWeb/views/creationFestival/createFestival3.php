@@ -42,7 +42,7 @@
         <div class="wrapper">
             <div class="container">
 
-            <div class="flex-row">
+            <div class="flex-row end-row">
                 <div>
                     <h3><i class="fa-solid fa-circle-exclamation"></i>Spectacle :</h3>
 
@@ -62,7 +62,7 @@
                 </div>
             </div>
 
-            <div class="flex-row">
+            <div class="flex-row end-row">
                 <div>
                     <h3><i class="fa-solid fa-circle-exclamation"></i>Scène :</h3>
                     <select name="scene">
