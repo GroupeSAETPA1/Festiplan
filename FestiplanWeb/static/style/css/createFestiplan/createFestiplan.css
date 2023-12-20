@@ -18,11 +18,13 @@ header {
   justify-content: space-between;
   color: #F0F7F4;
 }
+
 header .logo {
   margin: 1rem;
   display: flex;
   align-items: center;
 }
+
 header .logo i {
   color: #F7A072;
   font-size: 2rem;
@@ -86,7 +88,6 @@ hr {
   width: 100vh;
 }
 
-<<<<<<< Updated upstream
 .fa-circle-exclamation {
   color: red;
   margin: 0.5vh;
@@ -116,6 +117,6 @@ hr {
   margin: 0.5vh;
 }
 
-=======
->>>>>>> Stashed changes
+
+
 /*# sourceMappingURL=createFestiplan.css.map */

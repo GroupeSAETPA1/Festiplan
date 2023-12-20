@@ -87,7 +87,12 @@ body {
   background: #F7A072;
   color: #363732;
 }
-.creationCompte .colonneCreationCompte {
+.creationCompte .Retour .lastSection {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.creationCompte .Retour .colonneCreationCompte {
   width: 100%;
   padding: 10px;
 }
