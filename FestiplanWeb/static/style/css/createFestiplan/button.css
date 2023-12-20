@@ -27,20 +27,6 @@
   scale: 1.05;
 }
 
-.mon-compte {
-  line-height: 2.5;
-  padding: 0 20px;
-  font-size: 1rem;
-  text-align: center;
-  border-radius: 30px;
-  border-style: none;
-  background-color: #F7A072;
-}
-
-.mon-compte:hover {
-  background-color: #f6905a;
-}
-
 .button-flex-end {
   display: flex;
   align-items: flex-end;

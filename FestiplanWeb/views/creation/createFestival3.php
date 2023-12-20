@@ -5,28 +5,21 @@
         <title>Festiplan</title>
 
         <!-- Lien vers mon CSS -->
-        <link rel="stylesheet" href="../../static/style/css/createFestiplan/createFestiplan.css">
-        <link rel="stylesheet" href="../../static/style/css/createFestiplan/button.css">
-        <link rel="stylesheet" href="../../static/style/css/createFestiplan/image.css">
-        <link rel="stylesheet" href="../../static/style/css/createFestiplan/input.css">
-        <link rel="stylesheet" href="../../static/style/css/footer.css">
-        <link rel="stylesheet" href="../../static/style/css/createFestiplan/responsive.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/createFestiplan.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/button.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/image.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/input.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/footer.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/responsive.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/header.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/scripts/responsive/footerResponsive.js">
 
         <link rel="stylesheet" href="../../../framework/fontawesome-free-6.2.1-web/css/all.css">
 
     </head>
     <body>
-        <header>
-            <div class="logo">
-                <i class="fa-solid fa-calendar-days"></i>
-                <span>Festiplan</span>
-            </div>
-            <div>
-                <div>
-                    <button class="mon-compte"><i class="fa-solid fa-user"></i> Mon Compte</button>
-                </div>
-            </div>
-        </header>
+    <?php
+    include_once "../../static/components/header.php" ?>
 
         <div class="retour">
             <a href="createFestival.php"><button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button></a>
@@ -90,6 +83,6 @@
             </div>
         </div>
         <?php
-         include_once "../../static/components/footer/footer-absolute.php" ?>
+        include_once "../../static/components/footer.php" ?>
     </body>
 </html>

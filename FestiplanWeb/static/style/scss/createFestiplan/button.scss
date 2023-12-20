@@ -29,19 +29,7 @@
   }
 }
 
-.mon-compte{
-  line-height: 2.5;
-  padding: 0 20px;
-  font-size: 1rem;
-  text-align: center;
-  border-radius: 30px;
-  border-style: none;
-  background-color: $orange;
 
-  &:hover {
-    background-color: darken($orange,5);
-  }
-}
 
 .button-flex-end {
   display: flex;
@@ -87,6 +75,7 @@
   background-color: darken($orange,5);
   scale: 1.05;
 }
+
 
 .annulChoix{
   padding: 10px 25px;
