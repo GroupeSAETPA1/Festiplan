@@ -11,44 +11,17 @@ a {
   text-decoration: none;
 }
 
-header {
-  background-color: #363732;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: #F0F7F4;
-}
-
-header .logo {
-  margin: 1rem;
-  display: flex;
-  align-items: center;
-}
-
-header .logo i {
-  color: #F7A072;
-  font-size: 2rem;
-  padding-right: 10%;
-}
-
-header .logo span {
-  color: #F0F7F4;
-}
-
-header .mon-compte div {
-  background-color: #F7A072;
-  color: #363732;
-  padding: 1vh;
-  margin: 1vh;
-}
-
 img {
-  border-radius: 10%;
+  border-radius: 2vh;
   max-width: 100%;
 }
 
-div {
-  border-radius: 2vh;
+form {
+  margin: auto;
+}
+
+.rounded {
+  border-radius: 2vh !important;
 }
 
 .wrapper {
@@ -66,6 +39,7 @@ div {
   align-items: center;
   justify-content: space-between;
   margin: 3vh;
+  border-radius: 2vh;
 }
 
 .entete-section h1 {
@@ -104,7 +78,7 @@ div {
 .container-card-spectacles {
   display: flex;
   flex-direction: column;
-  padding: 0 2vh;
+  padding: 1vh 3vh;
 }
 
 .card-festival {
@@ -147,21 +121,15 @@ div {
   font-size: 2.5vh;
 }
 
-.categories {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-top: 1vh;
-}
-
-.categories span {
+.categorie {
   max-width: fit-content;
   flex: 1 1 auto;
   text-align: center;
-  background-color: grey;
-  border-radius: 1vh;
   padding: 0.25vh 0.5vh;
   margin: 0 0.25vh 0.25vh 0;
+  background-color: #363732;
+  color: #F0F7F4;
+  border-radius: 1vh;
 }
 
 .group-boutons {
@@ -233,16 +201,29 @@ div {
 }
 
 @media screen and (max-width: 1200px) {
-  .label-duree {
+  .label-duree, .label-categorie {
     display: none;
   }
 }
 @media screen and (max-width: 1000px) {
-  .img-spectacle, .img-festival {
-    display: none;
+  .container-card-festivals {
+    grid-template-columns: repeat(1, 1fr);
   }
   .wrapper {
     padding: 0;
+  }
+}
+@media screen and (max-width: 700px) {
+  .img-spectacle, .img-festival {
+    display: none;
+  }
+  .description-festival {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .description-festival p {
+    padding: 0 1vh;
   }
 }
 

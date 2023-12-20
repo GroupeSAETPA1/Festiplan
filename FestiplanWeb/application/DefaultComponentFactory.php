@@ -19,8 +19,13 @@
 
 namespace application;
 
+use controllers\DashboardController;
 use controllers\HomeController;
-use services\UsersService;
+use controllers\UserController;
+use PDO;
+use services\DashboardService;
+use services\SessionService;
+use services\UserService;
 use yasmf\ComponentFactory;
 use yasmf\NoControllerAvailableForNameException;
 use yasmf\NoServiceAvailableForNameException;
@@ -30,16 +35,20 @@ use yasmf\NoServiceAvailableForNameException;
  */
 class DefaultComponentFactory implements ComponentFactory
 {
-    private ?UsersService $usersService = null;
+    private ?UserService $userService = null;
+    private ?SessionService $sessionService = null;
+    private ?DashboardService $dashboardService = null;
 
     /**
      * @param string $controller_name the name of the controller to instanciate
      * @return mixed the controller
      * @throws NoControllerAvailableForNameException when controller is not found
      */
-    public function buildControllerByName(string $controller_name): mixed {
+    public function buildControllerByName(string $controller_name): mixed
+    {
         return match ($controller_name) {
-            "Home" => $this->buildHomeController(),
+            "Home" => $this->buildUserController(),
+            "Dashboard" => $this->buildDashboardController(),
             default => throw new NoControllerAvailableForNameException($controller_name)
         };
     }
@@ -51,28 +60,75 @@ class DefaultComponentFactory implements ComponentFactory
      */
     public function buildServiceByName(string $service_name): mixed
     {
-        return match($service_name) {
-            "Users" => $this->buildUsersService(),
+        return match ($service_name) {
+            "User" => $this->buildUserService(),
+            "Session" => $this->buildSessionService(),
+            "Dashboard" => $this->buildDashboardService(),
             default => throw new NoServiceAvailableForNameException($service_name)
         };
     }
 
     /**
-     * @return UsersService
+     * @return UserService
      */
-    private function buildUsersService(): UsersService
+    private function buildUserService(): UserService
     {
-        if ($this->usersService == null) {
-            $this->usersService = new UsersService();
+        if ($this->userService == null) {
+            $this->userService = new UserService();
         }
-        return $this->usersService;
+        return $this->userService;
+    }
+
+    /**
+     * @return SessionService
+     */
+    private function buildSessionService(): SessionService
+    {
+        if ($this->sessionService == null) {
+            $this->sessionService = new SessionService();
+        }
+        return $this->sessionService;
     }
 
     /**
      * @return HomeController
      */
-    private function buildHomeController(): HomeController
+    private function buildUserController(): UserController
     {
-        return new HomeController($this->buildUsersService());
+        return new UserController($this->buildUserService());
+    }
+
+    private function buildDashboardService(): ?DashboardService
+    {
+        if ($this->dashboardService == null) {
+            $pdo = $this->getPDO("root", "root");
+            $this->dashboardService = new DashboardService($pdo);
+        }
+        return $this->dashboardService;
+    }
+
+    private function buildDashboardController(): DashboardController
+    {
+        return new DashboardController($this->buildDashboardService());
+    }
+
+    /**
+     * À partir d'un nom d'utilisateur et de son mot de passe,
+     * renvoie la PDO associé
+     * @param $user
+     * @param $mdp
+     * @return PDO
+     */
+    public function getPDO($user, $mdp): PDO
+    {
+        $ds_name = "mysql:host=localhost;port=0;dbname=festiplan;charset=utf8mb4";
+        $options = [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false,
+            PDO::ATTR_PERSISTENT => true
+        ];
+
+        return new PDO($ds_name, $user, $mdp, $options);
     }
 }

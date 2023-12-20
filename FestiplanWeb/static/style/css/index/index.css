@@ -16,7 +16,6 @@ body {
 .app {
   display: flex;
   flex-direction: column;
-  height: 70vh;
   width: 100%;
 }
 
