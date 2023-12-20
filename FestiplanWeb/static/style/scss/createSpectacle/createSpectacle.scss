@@ -10,6 +10,7 @@
 .button-add-inter {
   background: $light-blue;
   color: $dark-grey;
+  text-align: center;
   border: none;
   border-radius: 10px;
   padding: 10px 20px;
@@ -38,7 +39,6 @@
     font-size: 1.2rem;
     background: $white;
     color: $dark-grey;
-    cursor: pointer;
   }
 }
 
@@ -47,5 +47,59 @@
   flex-direction: column;
   label {
     font-size: 1.5rem;
+  }
+  .text {
+    color: grey;
+  }
+}
+
+.selection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2px;
+  .delete {
+    color: red;
+    font-size: 35px;
+    padding: 5px;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      background: lightgrey;
+      scale: 1.05;
+    }
+  }
+  .left {
+    font-size: 40px;
+    .add {
+      background: $orange;
+      color: $white;
+      border: none;
+      border-radius: 10px;
+      padding: 3px 5px;
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+      &:hover {
+          scale: 1.05;
+      }
+    }
+    .ok {
+      background: $light-blue;
+      color: $white;
+      border: none;
+      border-radius: 10px;
+      padding: 3px 5px;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+  .name {
+    width: 100%;
+    font-size: 1.5rem;
+    background: lightgrey;
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin: 5px;
+    text-align: center;
   }
 }

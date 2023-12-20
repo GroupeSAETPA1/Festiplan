@@ -28,19 +28,24 @@ $tempIntervenants = ["quentin", "pierre", "paul", "jacques"];
     <script src="/Festiplan/node_modules/jquery/dist/jquery.min.js"></script>
     <!-- custom js -->
     <script src="/Festiplan/FestiplanWeb/static/scripts/responsive/footerResponsive.js" defer></script>
+    <script src="/Festiplan/FestiplanWeb/static/scripts/customInput.js" defer></script>
 </head>
 <body>
 <div class="app">
     <?php include $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/header.php" ?>
     <div class="wrapper">
         <div class="custom-select">
-            <label for="inter">Intervenant :</label>
+            <label for="inter">Intervenants :</label>
+            <div class="text">Veuillez rentrer l'email du compte </div>
             <div class="row">
-                <input type="text">
+                <input id="inter" type="text" placeholder="exemple@mail.fr">
                 <div class="button-add-inter">
                     <i class="fa-solid fa-plus"></i>
-                    ajouter un intervenant
+                    Ajouter l'intervenant
                 </div>
+            </div>
+            <div class="selections">
+                <!-- rempli avec le js -->
             </div>
         </div>
     </div>

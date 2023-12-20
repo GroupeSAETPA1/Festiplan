@@ -14,6 +14,7 @@ body {
 .button-add-inter {
   background: #99E1D9;
   color: #363732;
+  text-align: center;
   border: none;
   border-radius: 10px;
   padding: 10px 20px;
@@ -45,7 +46,6 @@ body {
   font-size: 1.2rem;
   background: #F0F7F4;
   color: #363732;
-  cursor: pointer;
 }
 
 .custom-select {
@@ -55,6 +55,68 @@ body {
 
 .custom-select label {
   font-size: 1.5rem;
+}
+
+.custom-select .text {
+  color: grey;
+}
+
+.selection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2px;
+}
+
+.selection .delete {
+  color: red;
+  font-size: 35px;
+  padding: 5px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.selection .delete:hover {
+  background: lightgrey;
+  scale: 1.05;
+}
+
+.selection .left {
+  font-size: 40px;
+}
+
+.selection .left .add {
+  background: #F7A072;
+  color: #F0F7F4;
+  border: none;
+  border-radius: 10px;
+  padding: 3px 5px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.selection .left .add:hover {
+  scale: 1.05;
+}
+
+.selection .left .ok {
+  background: #99E1D9;
+  color: #F0F7F4;
+  border: none;
+  border-radius: 10px;
+  padding: 3px 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.selection .name {
+  width: 100%;
+  font-size: 1.5rem;
+  background: lightgrey;
+  border-radius: 10px;
+  padding: 10px 15px;
+  margin: 5px;
+  text-align: center;
 }
 
 
