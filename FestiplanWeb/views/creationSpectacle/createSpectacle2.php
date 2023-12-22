@@ -41,6 +41,7 @@ $tempIntervenants = ["quentin", "pierre", "paul", "jacques"];
                 <input id="inter" type="text" placeholder="exemple@mail.fr">
                 <div class="button-add-inter">
                     <i class="fa-solid fa-plus"></i>
+
                     Ajouter l'intervenant
                 </div>
             </div>

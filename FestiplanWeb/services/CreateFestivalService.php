@@ -35,7 +35,7 @@ class createFestivalService
 
     public function recupererTailleScene() {
         try {
-            $sql = $this -> pdoCreationFestival->prepare('SELECT id_taille ,  taille FROM taille_scene');
+            $sql = $this -> pdoCreationFestival->prepare('SELECT nom  , nb_spectateurs FROM scene');
             $sql->execute();
             return $sql -> fetchAll();
         } catch (PDOException $e) {

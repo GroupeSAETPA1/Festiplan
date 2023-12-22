@@ -28,8 +28,6 @@ use services\UsersService;
 use controllers\DashboardController;
 use controllers\UserController;
 use controllers\CreateSpectacleController;
-use controllers\DashboardController;
-use controllers\UserController;
 use PDO;
 use services\CreateSpectacleService;
 use services\DashboardService;
@@ -39,7 +37,7 @@ use yasmf\ComponentFactory;
 use yasmf\NoControllerAvailableForNameException;
 use yasmf\NoServiceAvailableForNameException;
 
-use PDO;
+
 /**
  *  The controller factory
  */
@@ -118,7 +116,7 @@ class DefaultComponentFactory implements ComponentFactory
     {
         if($this->createFestivalService == null) {
             // TODO recuperer le pdo
-            $pdo = $this->getPDO("root", "root");
+            $pdo = $this->getPDO("admin", "admin");
             $this->createFestivalService = new createFestivalService($pdo);
         }
         return $this->createFestivalService;
@@ -139,7 +137,7 @@ class DefaultComponentFactory implements ComponentFactory
     private function buildCreateSpectacleController(): CreateSpectacleController
     {
         return new CreateSpectacleController($this->buildCreateSpectacleService()
-                                           , $this->buildUserService(), $this->getPDO("root", "root"));
+                                           , $this->buildUserService(), $this->getPDO("admin", "admin"));
     }
 
     private function buildDashboardController(): DashboardController

@@ -12,9 +12,20 @@
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/input.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/footer.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svg.css">
-    
 
-    <link rel="stylesheet" href="/Festiplan/framework/fontawesome-free-6.2.1-web/css/all.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Scripts -->
+    <!-- GSAP -->  <!-- Jquery -->
+    <script src="/Festiplan/node_modules/gsap/dist/gsap.min.js"></script>
+    <script src="/Festiplan/node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- custom js -->
+    <script src="/Festiplan/FestiplanWeb/static/scripts/responsive/footerResponsive.js" defer></script>
+    <script src="/Festiplan/FestiplanWeb/static/scripts/customInput.js" defer></script>
 
 </head>
 
@@ -47,22 +58,22 @@
                     <div class="NDD">
                         <div>
                             <h3><i class="fa-solid fa-circle-exclamation"></i>Nom :</h3>
-                            <input class="text" type="text" name="nom" placeholder="Tapez le nom de votre festival" value = "<?php echo $nomFestival ?>" />
+                            <input class="text" type="text" name="nom" placeholder="Tapez le nom de votre festival" value = "<?php echo $nomFestival ?: "" ?>" />
                         </div>
                         <div>
                             <h3><i class="fa-solid fa-circle-exclamation"></i>Date de début :</h3>
-                            <input class="text" type="date" name="ddd" value = "<?php echo $ddd ?>" />
+                            <input class="text" type="date" name="ddd" value = "<?php echo $ddd ?: "" ?>" />
                         </div>
                         <div>
                             <h3><i class="fa-solid fa-circle-exclamation"></i>Date de fin :</h3>
-                            <input class="text" type="date" name="ddf" value = "<?php echo $ddf ?>" />
+                            <input class="text" type="date" name="ddf" value = "<?php echo $ddf ?: "" ?>" />
                         </div>
                     </div>
                     <div class="Description">
                         <!-- Contient un second bloc avec la description et qui se situe au cote a cote avec le premier bloc -->
                         <div>
                             <label for="description"><i class="fa-solid fa-circle-exclamation"></i>Description :</label>
-                            <textarea id="description" name="description" > <?php echo $descriptionFestival ?></textarea>
+                            <textarea id="description" name="description" > <?php echo $descriptionFestival ?: "" ?></textarea>
                         </div>
                     </div>
                 </div>
@@ -81,12 +92,14 @@
                 </div>
                 <div>
                     <h3> <i class="fa-solid fa-circle-exclamation"></i>Catégorie :</h3>
+
                     <select name="categorie">
                         <option value="vide"></option>
                         <?php
+
                         foreach ($tableauCategorie as $ligne) {
                             echo '<option' ;
-                            if ($ligne['id_categorie'] == $_SESSION['categorie']    ) {
+                            if (isset($_SESSION['categorie']) && $ligne['id_categorie'] == $_SESSION['categorie']    ) {
                                 echo ' selected' ;
                             }
                             echo  ' value = "' . $ligne['id_categorie'] . '">' . $ligne['nom'] . "</option>";
@@ -101,7 +114,7 @@
                 <i class="fa-regular fa-circle-xmark"></i>Annuler vos choix <!-- TODO fontawesome -->
             </div>
             <div class="button-flex-end">
-                <button type="submit" class="valid">Page Suivante<i class="fa-solid fa-arrow-right"></i></button>
+                <button type="submit" class="valider">Page Suivante<i class="fa-solid fa-arrow-right"></i></button>
             </div>
         </div>
         <input hidden name="action" value="validerPage1">
@@ -109,7 +122,7 @@
     </form>
 
     <?php
-    include_once $_SERVER['DOCUMENT_ROOT']. "/Festiplan/FestiplanWeb/static/components/footer/footer.php" ?>
+    include_once $_SERVER['DOCUMENT_ROOT']. "/Festiplan/FestiplanWeb/static/components/footer.php" ?>
 </body>
 
 </html>

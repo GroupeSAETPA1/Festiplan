@@ -33,7 +33,8 @@ class CreateFestivalController {
 
     public function index(PDO $pdo): View{
         //$this -> connectionOk();
-        $view = new View("views/creation/createFestival");
+        $view = new View("views/creationFestival/createFestival");
+        $view = new View("views/creationFestival/createFestival");
         $view -> setVar('tableauCategorie' , $this->categorieBD);
         $this->reAfficherElementPage1($view);
         return $view;
@@ -56,9 +57,9 @@ class CreateFestivalController {
            $_SESSION['ddf'] = HttpHelper::getParam('ddf');
            $_SESSION['photoFestival'] = $this->photoOk(HttpHelper::getParam("nom"));
            $_SESSION['categorie'] = HttpHelper::getParam('categorie');
-           $view = new View("views/creation/createFestival2");
+           $view = new View("views/creationFestival/createFestival2");
        } else {
-           $view = new View("views/creation/createFestival");
+           $view = new View("views/creationFestival/createFestival");
            $view -> setVar('tableauCategorie' , $this->categorieBD);
            $this -> reAfficherElementPage1($view);
        }
@@ -69,13 +70,13 @@ class CreateFestivalController {
         $this->connectionOk();
         //echo "valider page 2" ;
         //$view = new View("views/creation/createFestival2");
-        $tousOk = false ; // STUB
+        $tousOk = true ; // STUB
         if ($tousOk) {
-            $view = new View("/views/creation/CreateFestival3");
+            $view = new View("/views/creationFestival/CreateFestival3");
             $view -> setVar('tableauSpectacle' , $this->spectacleBD);
             $view -> setVar('tableauScene' , $this->sceneBD);
         } else {
-            $view = new View("/views/creation/CreateFestival2");
+            $view = new View("/views/creationFestival/CreateFestival2");
         }
         return $view;
     }
@@ -209,12 +210,13 @@ class CreateFestivalController {
 
     public function reAfficherElementPage1($view) : void
     {
-        $view->setVar('nomFestival', $_SESSION['nomFestival'] ?: "");
-        $view->setVar('descriptionFestival', $_SESSION['descriptionFestival'] ?: "");
-        $view->setVar('ddd', $_SESSION['ddd'] ?: "");
-        $view->setVar('ddf', $_SESSION['ddf'] ?: "");
-        $view->setVar('photo', $_SESSION['photoFestival'] ?: "");
-        $view->setVar('categorie', $_SESSION['categorie'] ?: "");
+        //ar_dump($_SESSION['nomFestival'] ?? "");
+        $view->setVar('nomFestival', $_SESSION['nomFestival'] ?? "");
+        $view->setVar('descriptionFestival', $_SESSION['descriptionFestival'] ?? "");
+        $view->setVar('ddd', $_SESSION['ddd'] ?? "");
+        $view->setVar('ddf', $_SESSION['ddf'] ?? "");
+        $view->setVar('photo', $_SESSION['photoFestival'] ?? "");
+        $view->setVar('categorie', $_SESSION['categorie'] ?? "");
     }
 }
 
