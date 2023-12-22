@@ -1,3 +1,3 @@
 <?php 
-    echo $dataFestival;
+    echo json_encode($dataFestival);
 ?>

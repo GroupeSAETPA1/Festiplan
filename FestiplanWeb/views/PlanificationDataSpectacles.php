@@ -1,3 +1,3 @@
 <?php 
-    echo $dataSpectacle;
+    echo json_encode($dataSpectacle);
 ?>

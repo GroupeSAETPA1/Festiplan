@@ -43,8 +43,8 @@ class PlanificationController
         $view = new View("views/planification");
         $view->setVar('festival', $festival);
         $view->setVar('spectaclesFestival', $spectaclesFestival);
-        $view->setVar('nom', $_SESSION['nom'] ?? '');
-        $view->setVar('prenom', $_SESSION['prenom'] ?? ''); 
+        $view->setVar('nom', $_SESSION['nom'] ?? 'Nom Inconnu');
+        $view->setVar('prenom', $_SESSION['prenom'] ?? 'Uknown User'); 
         return $view;
     }
 
@@ -64,7 +64,7 @@ class PlanificationController
         $id_festival = 1; // $_SESSION['id_festival'] ?? null;
 
         $dataSpectacle = $this->planificationService->getSpectaclesFestival($id_festival);
-        $view = new View("views/planificationDataSpectacles");
+        $view = new View("views/PlanificationDataSpectacles");
         $view->setVar('dataSpectacle', $dataSpectacle);
         return $view;
     }
