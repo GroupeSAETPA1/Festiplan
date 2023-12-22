@@ -1,4 +1,55 @@
 <?php
+
+function afficherSpectacle($nom_spectacle, $categorie, $duree, $illustration, $id_festival, $nom_festival, $id_spectacle, $action)
+{
+    echo '<div class="card-spectacle-dispo rounded">';
+    echo '    <div class="img-spectacle">';
+    echo '        <img src="' . $illustration . '"';
+    echo '             alt="Image du spectacle ' . $nom_spectacle . '"';
+    echo '             class="rounded">';
+    echo '    </div>';
+    echo '        <div class="nom-spectacle hors-group-responsive">';
+    echo            $nom_spectacle;
+    echo '       </div>';
+    echo '       <div class="group-categories hors-group-responsive">';
+    echo '           <span class="label-categorie">Cat&eacute;gories :<br></span>';
+    echo '           <span class="categorie rounded">' . $categorie . '</span>';
+    echo '       </div>';
+    echo '    <div class="group-responsive">';
+    echo '        <div class="nom-spectacle">';
+    echo            $nom_spectacle;
+    echo '       </div>';
+    echo '       <div class="group-categories">';
+    echo '           <span class="label-categorie">Cat&eacute;gories :<br></span>';
+    echo '           <span class="categorie rounded">' . $categorie . '</span>';
+    echo '       </div>';
+    echo '   </div>';
+    echo '   <div class="duree">';
+    echo '       <span class="label-duree">Dur&eacute;e :</span>';
+    echo '       <span class="duree">' . $duree . '</span>';
+    echo '   </div>';
+    echo '   <div class="group-bouton-ajouter-spectacle rounded">';
+    echo '       <form action="/Festiplan/FestiplanWeb" method="post">';
+    echo '           <input type="hidden" name="controller" value="AjouterListesSpectacles">';
+    echo '           <input type="hidden" name="action" value="' . $action . '">';
+    echo '           <input type="hidden" name="id_festival" value="' . $id_festival . '">';
+    echo '           <input type="hidden" name="nom_festival" value="' . $nom_festival . '">';
+    echo '           <input type="hidden" name="id_spectacle" value="' . $id_spectacle . '">';
+    echo '           <div class="bouton-ajouter-spectacle rounded">';
+    $titreBouton = $action == "ajouterSpectacle" ? "Ajouter un spectacle au festival" : "Retirer le spectacle";
+    echo '               <button type="submit" title="'. $titreBouton .'" class="rounded">';
+    if ($action == "ajouterSpectacle") {
+        echo '               <i class="fa-solid fa-circle-plus"></i>';
+    } else {
+        echo '               <i class="fa-solid fa-circle-check"></i>';
+    }
+    echo '               </button>';
+    echo '           </div>';
+    echo '       </form>';
+    echo '   </div>';
+    echo '</div>';
+}
+
 ?>
 <!doctype html>
 <html lang="fr">
@@ -32,15 +83,10 @@
 
         <script src="/Festiplan/FestiplanWeb/static/scripts/redirection_logo.js" defer></script>
         <script src="/Festiplan/FestiplanWeb/static/scripts/responsive/footerResponsive.js" defer></script>
-        <script src="/Festiplan/FestiplanWeb/static/scripts/accesListeSpectacles.js" defer></script>
+        <script src="/Festiplan/FestiplanWeb/static/scripts/ajouterListeSpectacles.js" defer></script>
 
     </head>
     <body>
-    <?php
-    $nom_spectacle = "Spectacle 1";
-    $categorie = "Categorie 1";
-    $duree = "01:30";
-    ?>
     <div class="app">
         <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/header.php" ?>
 
@@ -66,41 +112,19 @@
             </div>
 
             <div class="container-card-spectacle rounded">
-                <div class="card-spectacle-dispo rounded">
-                    <div class="img-spectacle">
-                        <img src="/Festiplan/FestiplanWeb/static/assets/img/deScenePalais.jpg"
-                             alt="Image du spectacle <?php echo $nom_spectacle ?>"
-                             class="rounded">
-                    </div>
-                    <div class="group-responsive">
-                        <div class="nom-spectacle">
-                            <?php echo $nom_spectacle ?>
-                        </div>
-                        <div class="group-categories">
-                            <span class="label-categorie">Cat&eacute;gories :<br></span>
-                            <span class="categorie rounded"><?php echo $categorie ?></span>
-                        </div>
-                    </div>
-                    <div class="duree">
-                        <span class="label-duree">Dur&eacute;e :</span>
-                        <span class="duree"><?php echo $duree ?></span>
-                    </div>
-                    <div class="group-bouton-ajouter-spectacle rounded">
-                        <form action="/Festiplan/FestiplanWeb/index.php" method="post">
-                            <input type="hidden" name="controller" value="AjouterListesSpectacles">
-                            <input type="hidden" name="action" value="ajouter" id="action">
-                            <input type="hidden" name="id_festival" value="<?php echo $id_festival ?>">
-                            <input type="hidden" name="nom_festival" value="<?php echo $nom_festival ?>">
-                            <input type="hidden" name="id_spectacle" value="<?php echo $id_spectacle ?>">
-                            <div class="bouton-ajouter-spectacle rounded">
-                                <button type="submit" title="Ajouter un spectacle au festival" class="rounded">
-                                    <i class="fa-solid fa-circle-plus"></i>
-                                    <i class="fa-solid fa-circle-xmark"></i>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                <?php
+                foreach ($spectaclesDisponible as $spectacle) {
+
+                    $nom_spectacle = $spectacle['nom'];
+                    $categorie = $spectacle['categorie'];
+                    $duree = $spectacle['duree'];
+                    $illustration = $spectacle['illustration'];
+                    $id_spectacle = $spectacle['id_spectacle'];
+                    $action = $spectacle['action'];
+
+                    afficherSpectacle($nom_spectacle, $categorie, $duree, $illustration, $id_festival, $nom_festival, $id_spectacle, $action);
+                }
+                ?>
             </div>
         </div>
 

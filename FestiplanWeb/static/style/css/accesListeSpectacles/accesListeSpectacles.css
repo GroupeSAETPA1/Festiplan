@@ -112,6 +112,9 @@ a {
   font-size: 1.7rem;
   margin: 0 1vh 0 0;
 }
+.accordeon .bouton-drop-down:hover {
+  background-color: #cccccc;
+}
 .accordeon .card-spectacles {
   display: flex;
   flex-direction: row;
@@ -186,6 +189,11 @@ a {
 }
 @media screen and (max-width: 740px) {
   .label-categorie, .label-duree {
+    display: none;
+  }
+}
+@media screen and (max-width: 430px) {
+  .bouton-ajouter-spectacle > button > span {
     display: none;
   }
 }

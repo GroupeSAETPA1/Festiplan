@@ -49,6 +49,9 @@ $taille_div: 90%;
 }
 
 .container-card-spectacle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: $dark-grey;
     padding: 2vh;
 
@@ -58,7 +61,8 @@ $taille_div: 90%;
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        padding: 2vh;
+        padding: 2vh 0;
+        margin: 1vh 0;
         font-size: 1.5rem;
 
         .img-spectacle {
@@ -79,7 +83,7 @@ $taille_div: 90%;
         }
 
         .group-responsive {
-            display: flex;
+            display: none;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
@@ -109,12 +113,8 @@ $taille_div: 90%;
         }
 
         .group-bouton-ajouter-spectacle {
-            i {
+            svg, i {
                 font-size: 3rem;
-
-                &.fa-circle-xmark {
-                    display: none;
-                }
             }
 
             button {
@@ -140,6 +140,7 @@ $taille_div: 90%;
     }
 }
 
+
 //Téléphone
 @media screen and (max-width: 700px) {
     .img-spectacle {
@@ -152,9 +153,12 @@ $taille_div: 90%;
         }
     }
 
+    .hors-group-responsive {
+        display: none;
+    }
 
     .group-responsive {
-        display: flex;
+        display: flex !important;
         flex-direction: column !important;
         justify-content: center;
         align-items: center;

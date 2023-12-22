@@ -60,6 +60,9 @@ a {
 }
 
 .container-card-spectacle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #363732;
   padding: 2vh;
 }
@@ -69,7 +72,8 @@ a {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 2vh;
+  padding: 2vh 0;
+  margin: 1vh 0;
   font-size: 1.5rem;
 }
 .container-card-spectacle .card-spectacle-dispo .img-spectacle {
@@ -86,7 +90,7 @@ a {
   margin: 0 1vh;
 }
 .container-card-spectacle .card-spectacle-dispo .group-responsive {
-  display: flex;
+  display: none;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -109,11 +113,8 @@ a {
   flex-direction: column;
   justify-content: center;
 }
-.container-card-spectacle .card-spectacle-dispo .group-bouton-ajouter-spectacle i {
+.container-card-spectacle .card-spectacle-dispo .group-bouton-ajouter-spectacle svg, .container-card-spectacle .card-spectacle-dispo .group-bouton-ajouter-spectacle i {
   font-size: 3rem;
-}
-.container-card-spectacle .card-spectacle-dispo .group-bouton-ajouter-spectacle i.fa-circle-xmark {
-  display: none;
 }
 .container-card-spectacle .card-spectacle-dispo .group-bouton-ajouter-spectacle button {
   background-color: transparent;
@@ -139,8 +140,11 @@ a {
   .card-spectacles .group-categories > .label-categorie {
     display: none;
   }
+  .hors-group-responsive {
+    display: none;
+  }
   .group-responsive {
-    display: flex;
+    display: flex !important;
     flex-direction: column !important;
     justify-content: center;
     align-items: center;

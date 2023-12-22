@@ -16,8 +16,8 @@ class AccesListeSpectaclesService
     {
         $requete = "SELECT spectacle.id_spectacle, spectacle.nom, description, illustration, duree, c.nom as categorie 
                     FROM spectacle 
-                    JOIN festiplan.categorie c on c.id_categorie = spectacle.id_categorie
-                    JOIN festiplan.liste_spectacle ls on spectacle.id_spectacle = ls.id_spectacle
+                    JOIN categorie c on c.id_categorie = spectacle.id_categorie
+                    JOIN liste_spectacle ls on spectacle.id_spectacle = ls.id_spectacle
                     WHERE ls.id_festival = :id_festival";
 
         $stmt = $this->pdoLectureSpectacle->prepare($requete);
@@ -30,7 +30,7 @@ class AccesListeSpectaclesService
     {
         $requete = "SELECT id_festival, festival.nom, c.nom as categorie
                     FROM festival
-                    JOIN festiplan.categorie c on c.id_categorie = festival.id_categorie
+                    JOIN categorie c on c.id_categorie = festival.id_categorie
                     WHERE festival.id_festival = :id_festival";
 
         $stmt = $this->pdoLectureSpectacle->prepare($requete);

@@ -1,5 +1,5 @@
 INSERT INTO `utilisateurs` (`nom`, `prenom`, `mail`, `mdp`, `login`) VALUES
-('Delaclasse', 'Hubert', 'hubert.delaclasse@gmail.com', 'hubert12$', 'hubert'),
+('Delaclasse', 'Hubert', 'hubert.delaclasse@gmail.com', 'eccb683f08f51a94814a065de13cd9167e6e2e0462f89ca73281830d61710c23', 'hubert'),
 ('de Lande d\'Aussac de Saint Palais', 'François', 'francois.desaintpalais@iut-rodez.fr', 'mf>N=tyS$9){', 'francois_SP'),
 ('Costes', 'Quentin', 'quentin.costes@iut-rodez.fr', 'mf>N=tyS$9){', 'quentinformatique'),
 ('Descriaud', 'Lucas', 'lucas.descriaud@iut-rodez.fr', 'luc@$123', 'lucas'),
@@ -36,8 +36,31 @@ INSERT INTO `scene` (`id_scene`, `nom`, `spectateurs`, `taille`) VALUES
 (2, 'salle b301', 70, 2);
 
 INSERT INTO `spectacle` (`nom`, `description`, `illustration`, `duree`, id_categorie, taille_scene, responsable_spectacle) VALUES
-('Festiplan', 'ouverture du site web', '', 50, 5, 1, 2),
-('Marathon hunger game', 'regardez la trilogie en une journée', '', 600, 5, 2, 6);
+-- ('Festiplan', 'ouverture du site web', '', 50, 5, 1, 2),
+-- ('Marathon hunger game', 'regardez la trilogie en une journée', '', 600, 5, 2, 6),
+('Spectacle de magie', 'Un spectacle de magie époustouflant', '', 120, 3, 1, 1),
+('Concert de rock', 'Un concert de rock endiablé', '', 180, 1, 2, 2),
+('Pièce de théâtre classique', 'Une pièce de théâtre de Molière', '', 90, 2, 1, 3),
+('Exposition de peinture', 'Exposition des œuvres de Van Gogh', '', 240, 5, 2, 4),
+('Projection de film', 'Projection du film Inception', '', 148, 5, 1, 5),
+('Spectacle de danse contemporaine', 'Un spectacle de danse contemporaine innovant', '', 60, 4, 2, 6),
+('Cirque acrobatique', 'Un spectacle de cirque avec des acrobates de haut niveau', '', 120, 3, 1, 7),
+('Concert de musique classique', 'Un concert de musique classique avec un orchestre symphonique', '', 120, 1, 2, 1),
+('Pièce de théâtre moderne', 'Une pièce de théâtre moderne', '', 90, 2, 1, 2),
+('Exposition de sculpture', 'Exposition des œuvres de Rodin', '', 240, 5, 2, 1),
+('Projection de film', 'Projection du film Interstellar', '', 169, 5, 1, 2),
+('Spectacle de danse classique', 'Un spectacle de danse classique', '', 60, 4, 2, 3),
+('Cirque avec animaux', 'Un spectacle de cirque avec des animaux', '', 120, 3, 1, 4),
+('Concert de musique électronique', 'Un concert de musique électronique', '', 120, 1, 2, 5),
+('Pièce de théâtre contemporaine', 'Une pièce de théâtre contemporaine', '', 90, 2, 1, 6),
+('Exposition de photographie', 'Exposition des œuvres de Cartier-Bresson', '', 240, 5, 2, 7),
+('Projection de film', 'Projection du film Le Seigneur des Anneaux', '', 228, 5, 1, 1),
+('Spectacle de danse moderne', 'Un spectacle de danse moderne', '', 60, 4, 2, 2),
+('Cirque avec clowns', 'Un spectacle de cirque avec des clowns', '', 120, 3, 1, 3),
+('Concert de musique pop', 'Un concert de musique pop', '', 120, 1, 2, 4),
+('Pièce de théâtre classique', 'Une pièce de théâtre classique', '', 90, 2, 1, 5),
+('Exposition de peinture', 'Exposition des œuvres de Picasso', '', 240, 5, 2, 6),
+('Projection de film', 'Projection du film Le Parrain', '', 175, 5, 1, 7);
 
 INSERT INTO liste_scene (id_scene, id_festival) VALUES
 (1, 1),

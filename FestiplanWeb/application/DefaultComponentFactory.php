@@ -25,7 +25,7 @@ use controllers\CreateFestivalController;
 use controllers\ErrorController;
 use Exception;
 use services\AccesListeSpectaclesService;
-use services\AjouterLIstesSpectaclesServices;
+use services\AjouterListesSpectaclesServices;
 use services\createFestivalService;
 
 use controllers\DashboardController;
@@ -46,7 +46,7 @@ class DefaultComponentFactory implements ComponentFactory
     private ?DashboardService $dashboardService = null;
     private ?CreateFestivalService $createFestivalService = null;
     private ?AccesListeSpectaclesService $accesListeSpectaclesService = null;
-    private ?AjouterLIstesSpectaclesServices $ajouterListesSpectaclesServices = null;
+    private ?AjouterListesSpectaclesServices $ajouterListesSpectaclesServices = null;
 
     /**
      * @param string $controller_name the name of the controller to instanciate
@@ -206,11 +206,11 @@ class DefaultComponentFactory implements ComponentFactory
     /**
      * @throws Exception
      */
-    private function buildAjouterListesSpectaclesService() : AjouterLIstesSpectaclesServices
+    private function buildAjouterListesSpectaclesService() : AjouterListesSpectaclesServices
     {
         if ($this->ajouterListesSpectaclesServices == null) {
             $pdo = $this->getPDO("root");
-            $this->ajouterListesSpectaclesServices = new AjouterLIstesSpectaclesServices($pdo);
+            $this->ajouterListesSpectaclesServices = new AjouterListesSpectaclesServices($pdo);
         }
         return $this->ajouterListesSpectaclesServices;
     }

@@ -82,6 +82,7 @@ $taille_div: 90%;
 
     .bouton-ajouter-spectacle {
         background-color: $orange;
+
         button {
             padding: 2vh;
             width: max-content;
@@ -89,6 +90,7 @@ $taille_div: 90%;
             border: 1px solid transparent;
             border-radius: 1vh;
             cursor: pointer;
+
             span, i {
                 font-size: 1.2rem;
             }
@@ -113,6 +115,10 @@ $taille_div: 90%;
         i {
             font-size: 1.7rem;
             margin: 0 1vh 0 0;
+        }
+
+        &:hover {
+            background-color: $gris;
         }
     }
 
@@ -213,6 +219,12 @@ $taille_div: 90%;
 
 @media screen and (max-width: 740px) {
     .label-categorie, .label-duree {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .bouton-ajouter-spectacle > button > span {
         display: none;
     }
 }
