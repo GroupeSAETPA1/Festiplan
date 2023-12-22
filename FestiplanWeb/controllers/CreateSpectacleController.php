@@ -30,14 +30,13 @@ class CreateSpectacleController
     {
         $email = htmlspecialchars(HttpHelper::getParam('email') ?: "");
         $result = $this->userService->emailExiste($this->pdo, $email);
-        $view = new View("views/creationSpectacle/checkUserByEmail");
+        $view = new View("views/creationSpectacle.scss/checkUserByEmail");
         $view->setVar("result", $result);
         return $view;
     }
 
     public function index(PDO $pdo): View{
-        $view = new View("views/creationSpectacle/createSpectacle2");
-        return $view;
+        return new View("views/creationSpectacle.scss/createSpectacle1");
     }
 
 

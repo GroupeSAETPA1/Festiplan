@@ -2,6 +2,10 @@
 /* ne codez pas ici, c'est le fichier pour les variables, etc. */
 body {
   min-height: 100vh;
+  background-color: #F0F7F4;
+  color: #363732;
+  font-family: "Rubik", sans-serif;
+  margin: 0;
 }
 
 .wrapper {
@@ -25,7 +29,6 @@ body {
   transition: all 0.3s ease-in-out;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
 }
-
 .button-add-inter:hover {
   scale: 1.05;
 }
@@ -36,7 +39,6 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-
 .row input {
   width: 100%;
   height: 40px;
@@ -52,11 +54,9 @@ body {
   display: flex;
   flex-direction: column;
 }
-
 .custom-select label {
   font-size: 1.5rem;
 }
-
 .custom-select .text {
   color: grey;
 }
@@ -67,7 +67,6 @@ body {
   align-items: center;
   margin: 2px;
 }
-
 .selection .delete {
   color: red;
   font-size: 35px;
@@ -76,16 +75,13 @@ body {
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
-
 .selection .delete:hover {
   background: lightgrey;
   scale: 1.05;
 }
-
 .selection .left {
   font-size: 40px;
 }
-
 .selection .left .add {
   background: #F7A072;
   color: #F0F7F4;
@@ -95,11 +91,9 @@ body {
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
-
 .selection .left .add:hover {
   scale: 1.05;
 }
-
 .selection .left .ok {
   background: #99E1D9;
   color: #F0F7F4;
@@ -108,7 +102,6 @@ body {
   padding: 3px 5px;
   transition: all 0.3s ease-in-out;
 }
-
 .selection .name {
   width: 100%;
   font-size: 1.5rem;
@@ -119,6 +112,4 @@ body {
   text-align: center;
 }
 
-
-
-/*# sourceMappingURL=createSpectacle.css.map */
+/*# sourceMappingURL=customInput.css.map */

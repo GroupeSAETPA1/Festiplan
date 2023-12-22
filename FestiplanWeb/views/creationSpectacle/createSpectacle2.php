@@ -48,6 +48,37 @@ $tempIntervenants = ["quentin", "pierre", "paul", "jacques"];
                 <!-- rempli avec le js -->
             </div>
         </div>
+        <div class="creation-compte">
+            <div class="title">
+                <h2>Création de compte</h2>
+            </div>
+            <div class="row">
+                <div class="input">
+                    <label for="nom">Nom :</label>
+                    <input id="nom" type="text" placeholder="Nom">
+                </div>
+                <div class="input">
+                    <label for="prenom">Prénom :</label>
+                    <input id="prenom" type="text" placeholder="Prénom">
+                </div>
+            </div>
+            <div class="row">
+                <div class="input">
+                    <label for="email">Email :</label>
+                    <input id="email" type="text" placeholder="Email">
+                </div>
+                <div class="input">
+                    <label for="mdp">Mot de passe :</label>
+                    <input id="mdp" type="password" placeholder="Mot de passe">
+                </div>
+            </div>
+            <div class="row">
+                <div class="input">
+                    <label for="mdp2">Confirmer le mot de passe :</label>
+                    <input id="mdp2" type="password" placeholder="Confirmer le mot de passe">
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <?php include $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/footer.php" ?>

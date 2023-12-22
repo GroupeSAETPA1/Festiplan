@@ -1,0 +1,61 @@
+@import '../main';
+
+.wrapper {
+  padding: 0 10vh;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.NDD{ //abrevation de Nom - Date Début - Date Fin
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.Description{
+  width: 55vw;
+  padding: 0 13px ;
+}
+
+.flex-row{
+  display: flex;
+  flex-direction: row;
+}
+.first-row{
+  display: flex;
+  justify-content: space-between;
+}
+.end-row{
+  display : flex;
+  align-items: flex-end;
+}
+
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+
+.valid-annul-placement{  //contient les boutons page suivant ou valider et annuler choix
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 120px;
+}
+
+
+.fa-circle-exclamation {
+  color: red;
+
+}
+.fa-solid {
+  margin: 5px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+}
