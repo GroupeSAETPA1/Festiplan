@@ -9,7 +9,7 @@ function afficherSpectacle($nom_spectacle, $categorie, $duree, $illustration, $i
     echo '             class="rounded">';
     echo '    </div>';
     echo '        <div class="nom-spectacle hors-group-responsive">';
-    echo            $nom_spectacle;
+    echo $nom_spectacle;
     echo '       </div>';
     echo '       <div class="group-categories hors-group-responsive">';
     echo '           <span class="label-categorie">Cat&eacute;gories :<br></span>';
@@ -17,10 +17,10 @@ function afficherSpectacle($nom_spectacle, $categorie, $duree, $illustration, $i
     echo '       </div>';
     echo '    <div class="group-responsive">';
     echo '        <div class="nom-spectacle">';
-    echo            $nom_spectacle;
+    echo $nom_spectacle;
     echo '       </div>';
     echo '       <div class="group-categories">';
-    echo '           <span class="label-categorie">Cat&eacute;gories :<br></span>';
+    echo '           <span class="label-categorie">Cat&eacute;gories :</span><br>';
     echo '           <span class="categorie rounded">' . $categorie . '</span>';
     echo '       </div>';
     echo '   </div>';
@@ -29,19 +29,19 @@ function afficherSpectacle($nom_spectacle, $categorie, $duree, $illustration, $i
     echo '       <span class="duree">' . $duree . '</span>';
     echo '   </div>';
     echo '   <div class="group-bouton-ajouter-spectacle rounded">';
-    echo '       <form action="/Festiplan/FestiplanWeb" method="post">';
+    echo '       <form action="/Festiplan/FestiplanWeb/index.php" method="post">';
     echo '           <input type="hidden" name="controller" value="AjouterListesSpectacles">';
     echo '           <input type="hidden" name="action" value="' . $action . '">';
-    echo '           <input type="hidden" name="id_festival" value="' . $id_festival . '">';
-    echo '           <input type="hidden" name="nom_festival" value="' . $nom_festival . '">';
+    //echo '           <input type="hidden" name="id_festival" value="' . $id_festival . '">';
+    //echo '           <input type="hidden" name="nom_festival" value="' . $nom_festival . '">';
     echo '           <input type="hidden" name="id_spectacle" value="' . $id_spectacle . '">';
     echo '           <div class="bouton-ajouter-spectacle rounded">';
     $titreBouton = $action == "ajouterSpectacle" ? "Ajouter un spectacle au festival" : "Retirer le spectacle";
-    echo '               <button type="submit" title="'. $titreBouton .'" class="rounded">';
+    echo '               <button type="submit" title="' . $titreBouton . '" class="rounded">';
     if ($action == "ajouterSpectacle") {
         echo '               <i class="fa-solid fa-circle-plus"></i>';
     } else {
-        echo '               <i class="fa-solid fa-circle-check"></i>';
+        echo '               <i class="fa-regular fa-square-check"></i>';
     }
     echo '               </button>';
     echo '           </div>';
@@ -87,6 +87,22 @@ function afficherSpectacle($nom_spectacle, $categorie, $duree, $illustration, $i
 
     </head>
     <body>
+    <?php
+    //TODO remove STUB
+    //$nom_festival = "";
+    //$spectaclesDisponible =
+    //    [
+    //        [
+    //            "nom" => "Nom",
+    //            "categorie" => "Categorie",
+    //            "duree"=>"123",
+    //            "illustration" => "",
+    //            "action"=>"",
+    //            "id_spectacle" => 1
+    //        ]
+    //    ];
+    //$id_festival = 1;
+    ?>
     <div class="app">
         <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/header.php" ?>
 
@@ -102,12 +118,23 @@ function afficherSpectacle($nom_spectacle, $categorie, $duree, $illustration, $i
 
         <div class="wrapper">
             <div class="titre">
-                Ajouter des spectacles au festival <?php echo $nom_festival; ?>
+                Ajouter des spectacles au festival &af; <span class="bold"> <?php echo $nom_festival; ?></span>
             </div>
 
             <div class="section-spectacles-diposnible rounded">
                 <div class="titre-section">
                     Spectacles disponibles
+                </div>
+                <div class="btn-valider-spectacles-selectionne rounded">
+                    <form action="/Festiplan/FestiplanWeb/index.php" method="post">
+                        <input type="hidden" name="controller" value="AjouterListesSpectacles">
+                        <input type="hidden" name="action" value="validerSpectaclesSelectionne">
+                        <!--                        <input type="hidden" name="id_festival" value="<?php //echo $id_festival ?>">
+                        <input type="hidden" name="nom_festival" value="<?php //echo $nom_festival ?>">-->
+                        <button type="submit" class="rounded">
+                            <i class="fa-solid fa-circle-check"></i>Valider les spectacles s&eacute;lectionn&eacute;s
+                        </button>
+                    </form>
                 </div>
             </div>
 

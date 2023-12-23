@@ -18,6 +18,10 @@ a {
   border-radius: 2vh !important;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 .retour {
   background-color: #F7A072;
   width: fit-content;
@@ -53,10 +57,25 @@ a {
 
 .section-spectacles-diposnible {
   background-color: #363732;
-  justify-content: flex-start;
+  justify-content: space-between;
+  align-items: center;
   color: #99E1D9;
   font-size: 1.75rem;
   padding: 1.5vh;
+}
+.section-spectacles-diposnible .btn-valider-spectacles-selectionne {
+  background-color: #F7A072;
+}
+.section-spectacles-diposnible .btn-valider-spectacles-selectionne button {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  padding: 1vh;
+  font-size: 0.8em;
+}
+.section-spectacles-diposnible .btn-valider-spectacles-selectionne:hover {
+  background-color: #cccccc;
 }
 
 .container-card-spectacle {
@@ -134,6 +153,12 @@ a {
   }
 }
 @media screen and (max-width: 700px) {
+  .section-spectacles-diposnible {
+    flex-direction: column;
+  }
+  .section-spectacles-diposnible > .titre-section {
+    margin-bottom: 1vh;
+  }
   .img-spectacle {
     display: none !important;
   }

@@ -42,10 +42,29 @@ $taille_div: 90%;
 
 .section-spectacles-diposnible {
     background-color: $dark-grey;
-    justify-content: flex-start;
+    justify-content: space-between;
+    align-items: center;
     color: $light-blue;
     font-size: 1.75rem;
     padding: 1.5vh;
+
+    .btn-valider-spectacles-selectionne {
+        background-color: $orange;
+
+        button {
+            display: flex;
+            align-items: center;
+            background-color: transparent;
+            border: none;
+            padding: 1vh;
+            font-size: 0.8em;
+        }
+
+        &:hover {
+            //                background-color: darken($orange, 20);
+            background-color: $gris;
+        }
+    }
 }
 
 .container-card-spectacle {
@@ -143,6 +162,13 @@ $taille_div: 90%;
 
 //Téléphone
 @media screen and (max-width: 700px) {
+    .section-spectacles-diposnible {
+        flex-direction: column;
+        &>.titre-section {
+            margin-bottom: 1vh;
+        }
+    }
+
     .img-spectacle {
         display: none !important;
     }

@@ -18,6 +18,10 @@ a {
   border-radius: 2vh !important;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 .retour {
   background-color: #F7A072;
   width: fit-content;

@@ -19,6 +19,7 @@ class AjouterListesSpectaclesController
 
     public function index(): View
     {
+//        var_dump($_SESSION);
         $id_gestionnaire = $_SESSION['id_utilisateur'] ?? null;
         $id_festival_actif = HttpHelper::getParam("id_festival") ?? null;
         $nom_festival = HttpHelper::getParam("nom_festival") ?? null;
@@ -30,7 +31,8 @@ class AjouterListesSpectaclesController
         if ($id_gestionnaire == null || $id_festival_actif == null) {
             //header("Location: /Festiplan/FestiplanWeb/");
             //exit();
-            echo "Erreur : id_festival ou id_spectacle est null index()";
+            if ($id_gestionnaire == null) echo "Erreur : id_gestionnaire est null index()";
+            if ($id_festival_actif == null) echo "Erreur : id_festival_actif est null index()";
         }
 
         return $this->construireVue($id_festival_actif, $nom_festival);
@@ -76,15 +78,18 @@ class AjouterListesSpectaclesController
             //exit();
             echo "Erreur : id_festival ou id_spectacle est null ajouterSpectacle()";
         }
-
-        $this->ajouterListesSpectaclesServices->ajouterSpectacle($id_festival, $id_spectacle);
+        try {
+            $this->ajouterListesSpectaclesServices->ajouterSpectacle($id_festival, $id_spectacle);
+        } catch (\PDOException $e) {
+        }
 
         return $this->construireVue($id_festival, $nom_festival);
     }
 
-    public function retirerSpectacle(): void
+    public function retirerSpectacle(): View
     {
-        $id_festival = HttpHelper::getParam("id_festival") ?? null;
+        $id_festival = $_SESSION['ajouterListesSpectacles']['id_festival'] ?? null;
+        $nom_festival = $_SESSION['ajouterListesSpectacles']['nom_festival'] ?? null;
         $id_spectacle = HttpHelper::getParam("id_spectacle") ?? null;
 
         if ($id_festival == null || $id_spectacle == null) {
@@ -92,7 +97,15 @@ class AjouterListesSpectaclesController
             //exit();
             echo "Erreur : id_festival ou id_spectacle est null retirerSpectacle()";
         }
-
         $this->ajouterListesSpectaclesServices->retirerSpectacle($id_festival, $id_spectacle);
+
+
+        return $this->construireVue($id_festival, $nom_festival);
+    }
+
+    public function validerSpectaclesSelectionne() : View
+    {
+        //TODO enregistrer les spectacle ajouté dans `liste_spectacle`
+        //TODO Rediriger vers la page AcceListeSpectacle
     }
 }
