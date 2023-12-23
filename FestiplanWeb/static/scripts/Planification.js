@@ -46,7 +46,6 @@ async function getAllData() {
         return;
     }
 }
-
 construireCalendrier();
 
 async function construireCalendrier() {
@@ -57,70 +56,73 @@ async function construireCalendrier() {
         views: {
             timeGridCustomDuration: {
                 type: 'timeGrid',
-                duration: { days: await getFestivalDuration()} // TODO recuperer le nombre de jour du festival ou faire 4 jour et apres regler gauche droite
+                duration: { days: await getFestivalDuration()}
             }
         },
         contentHeight: 600, // TODO définir une bonne hauteur
-        slotMinTime: '00:00:00',
-        slotMaxTime: '10:00:00',
-        titleFormat: { 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric' 
+        slotMinTime: festival.heure_debut_spectacles,
+        slotMaxTime: festival.heure_fin_spectacles,
+        titleFormat: {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
         },
-    
+
         headerToolbar: {
             left: '',
             center: 'title',
             end: 'prev,next'
         },
-    
+
         dayHeaderFormat: {
-            weekday: 'long', 
-            month: 'numeric', 
+            weekday: 'long',
+            month: 'numeric',
             day: 'numeric'
         },
-    
+
         locale: 'fr',
         allDaySlot: false,
         slotDuration: '00:30:00', // la durée des intervalles affichés
-    
+
         slotLabelFormat: {
             hour: 'numeric',
             minute: '2-digit',
             omitZeroMinute: false,
         },
-    
-        slotLabelInterval : '00:30:00',
-        scrollTime : '10:00:00', // Temps affiché a l'initialisation
+
+        slotLabelInterval : "00:30",
+        scrollTime : festival.heure_debut_spectacles, // Temps affiché a l'initialisation
         scrollTimeReset: false,
-    
-        initialDate: new Date(festival.debut), // Date d'initialisation du spectacle 
+
+        initialDate: new Date(festival.debut), // Date d'initialisation du spectacle
         validRange: {
             start: new Date(festival.debut), // Date de début et de fin du spéctacle
             end: new Date(festival.fin)
         },
-    
+
         // Pour les Events
         slotEventOverlap:false,
         editable: true,
         eventDurationEditable: false,
-        events: [
-            {
-              title: 'Vidéo projection du seigneur des annaux : les deux tours',
-              start: '2001-09-11T14:14',
-              end: '2001-09-11T17:30'
-            },
-            {
-                title: 'Concert de Mariah Carey',
-                start: '2001-09-11T13:00',
-                end: '2001-09-11T15:30'
-            }
-        ]
+        events: displayEvents()
     });
     calendar.render();
 }
-
+function displayEvents(){
+    let resultat = "[";
+    for (let i = 0; i < spectacles.length; i++) {
+        let nomSpectacle = spectacles[i].nom;
+        resultat += `{title : "${nomSpectacle}",
+                      start: "2024-01-01T14:00",
+                      end: "2024-01-01T15:30"}`
+        if (i < spectacles.length - 1) {
+            resultat += ",";
+        }
+    }
+    resultat += "]";
+    console.log(resultat);
+    return resultat;
+}
 function getFestivalDuration() {
     let dateDebutFestival = new Date(festival.debut);
     let dateFinFestival = new Date(festival.fin);
@@ -135,6 +137,5 @@ function getFestivalDuration() {
     // Si la durée est plus grande que 4 jours on affiche que 4 jour 
     // pour plus de visibilitée pour l'utilisateur
     resultat = DifferenceEnJour > 4 ? 4 : DifferenceEnJour;
-    console.log(resultat);
     return resultat;
 }
