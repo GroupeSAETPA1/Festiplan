@@ -74,7 +74,7 @@
                         ?>
                     </select>
                 </div>
-                <div class="">
+                <div class="sceneSelect">
                     <!-- rempli avec le js -->
                 </div>
             </div>

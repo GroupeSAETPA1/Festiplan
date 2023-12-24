@@ -43,6 +43,21 @@ class createFestivalService
         }
     }
 
+    public function emailExiste($email): bool
+    {
+        $requeteEmailExiste = $this -> pdoCreationFestival ->prepare("SELECT DISTINCT nom, prenom FROM utilisateurs WHERE mail = :email");
+        $requeteEmailExiste->bindParam(':email', $email);
+        $requeteEmailExiste->execute();
+        return $requeteEmailExiste->rowCount() > 0;
+    }
+
+    public function sceneExiste($scene): bool
+    {
+        $requeteSceneExiste = $this -> pdoCreationFestival -> prepare( "SELECT * FROM SCENE WHERE nom = :nom");
+        $requeteSceneExiste->bindParam(':nom' , $scene);
+        $requeteSceneExiste->execute();
+        return $requeteSceneExiste->rowCount() > 0 ;
+    }
     public  function insertionFestival() {
 
     }

@@ -218,5 +218,21 @@ class CreateFestivalController {
         $view->setVar('photo', $_SESSION['photoFestival'] ?? "");
         $view->setVar('categorie', $_SESSION['categorie'] ?? "");
     }
+
+    public function checkUserByEmail() {
+        $email = htmlspecialchars(HttpHelper::getParam('email') ?: "");
+        $result = $this->createFestivalService->emailExiste($email);
+        $view = new View("views/creationFestival/checkUserByEmail");
+        $view->setVar("result", $result);
+        return $view;
+    }
+
+    public function verifierScene() {
+        $scene = htmlspecialchars(HttpHelper::getParam('scene') ?: "");
+        $result = $this->createFestivalService-> sceneExiste($scene);
+        $view = new View("/views/creationFestival/sceneExistante");
+        $view->setVar("result" , $result);
+        return $view;
+    }
 }
 

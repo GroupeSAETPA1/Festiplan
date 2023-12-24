@@ -7,8 +7,10 @@ const INPUT = $('#orga');
 async function addOrga() {
     const input = INPUT.val();
     const isMail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-
-    if (input && isMail.test(input)) {
+    console.log(interList)
+    const isDuplicate = interList.some(orga => orga.name === input);
+    console.log(isDuplicate);
+    if (input && isMail.test(input) && !isDuplicate) {
         INPUT.css({
             border: "1px solid black",
         });
@@ -37,19 +39,28 @@ async function addOrga() {
     }
 }
 
-function addScene() {
-    console.log(SCENE.val());
+async function addScene() {
     input = SCENE.val();
-    if (input && input != 'vide' && !sceneList.includes(input)) {
-        //console.log("oui");
+    console.log(sceneList);
+    const isDuplicate = sceneList.some(scene => scene.name === input);
+    if (input && input != 'vide' && !isDuplicate) {
         SCENE.css({border: "1px solid black"});
 
         let choixValide;
         try {
-            choixValide = await checChoixValide(input);
+            choixValide = await checkChoixValide(input);
         } catch (error) {
             console.log("erreur de verification")
         }
+
+        let scene = {
+            id: sceneList.length,
+            name: input,
+            valid: choixValide === "1",
+        };
+        sceneList.push(scene);
+        INPUT.val('');
+        displayScene();
     } else {
         SCENE.css({border: "1px solid red"});
     }
@@ -73,6 +84,24 @@ function displayInter() {
     }
 }
 
+function displayScene() {
+    let selection = $('.sceneSelect')[0];
+    selection.innerHTML = '';
+    for (let i = 0; i < sceneList.length; i++) {
+        let htmlContent = `<div class="selection">
+            <div class="left">
+                <i class="fa-${sceneList[i].valid ? 'solid fa-check ok' : 'regular fa-plus add'}"></i>
+            </div>
+            <div class="name">${sceneList[i].name}</div>
+            <div class="delete" data-index="${i}">
+                <i class="fa-solid fa-trash-can"></i>
+            </div>
+        </div>`;
+
+        selection.innerHTML += htmlContent;
+    }
+}
+
 function checkInter(mail) {
     return new Promise((resolve, reject) => {
         const xmlhttp = new XMLHttpRequest();
@@ -85,27 +114,28 @@ function checkInter(mail) {
             reject(new Error("Erreur lors de la requête AJAX"));
         };
 
-        let controllerActionUrl = "/Festiplan/FestiplanWeb/index.php?controller=CreateSpectacle&action=checkUserByEmail";
+        let controllerActionUrl = "/Festiplan/FestiplanWeb/index.php?controller=CreateFestival&action=checkUserByEmail";
         xmlhttp.open("GET", controllerActionUrl + "&email=" + encodeURIComponent(mail));
         xmlhttp.send();
     });
 }
 
-function checChoixValide(scene) {
-    return new Promise(resolve , reject ) => {
-        const xmlhttp = New XMLHttpRequest();
+function checkChoixValide(scene) {
+    return new Promise((resolve, reject) => {
+        const xmlhttp = new XMLHttpRequest();
 
-        xmlhttp.onload = function ()   {
+        xmlhttp.onload = function () {
             resolve(this.responseText);
         };
 
-        xmlhttp.onerror = function() {
+        xmlhttp.onerror = function () {
             reject(new Error("Erreur lors de la requete ajax"));
         };
 
-        let controllerActionUrl = "/Festiplan/FestiplanWeb/index.php?controller=CreateFestival&action="
-
-    }
+        let controllerActionUrl = "/Festiplan/FestiplanWeb/index.php?controller=CreateFestival&action=verifierScene";
+        xmlhttp.open("GET", controllerActionUrl +"&scene=" + encodeURIComponent(scene));
+        xmlhttp.send();
+    });
 }
 
 $('.selections').on('click', '.delete', function() {
@@ -115,6 +145,16 @@ $('.selections').on('click', '.delete', function() {
 
     // Refresh the display
     displayInter();
+});
+
+$('.sceneSelect').on('click', '.delete', function() {
+    let index = $(this).data('index');
+
+    // Supprimez la scène correspondante de sceneList
+    sceneList.splice(index, 1);
+
+    // Rafraîchissez l'affichage
+    displayScene();
 });
 
 BUTTON.on('click', addOrga);
