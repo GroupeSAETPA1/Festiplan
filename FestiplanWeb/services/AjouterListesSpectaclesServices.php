@@ -51,13 +51,30 @@ class AjouterListesSpectaclesServices
 
         $stmt = $this->pdoAjouterSpectacle->prepare($requete);
         $stmt->execute();
-        return $stmt->fetchAll();
+
+        $tab = $stmt->fetchAll();
+        $result = array();
+
+        foreach ($tab as $item) {
+            $result[] = $item['id_spectacle'];
+        }
+
+        return $result;
     }
 
     public function viderTableTemporaire(): void
     {
         $requete = "DELETE FROM festiplan.liste_spectacle_temporaire";
         $this->pdoAjouterSpectacle->exec($requete);
+    }
+
+    public function ajouterSpectacleAuFestival(int $id_festival, int $id_spectacle)
+    {
+        $requete = "INSERT INTO liste_spectacle (id_festival, id_spectacle) VALUES (:id_festival, :id_spectacle);";
+        $stmt = $this->pdoAjouterSpectacle->prepare($requete);
+        $stmt->bindParam("id_festival", $id_festival);
+        $stmt->bindParam("id_spectacle", $id_spectacle);
+        $stmt->execute();
     }
 
 }

@@ -14,6 +14,7 @@ $taille_div: 90%;
         border: none;
         padding: 1.5vh;
         cursor: pointer;
+        font-size: 1.2rem;
     }
 }
 
@@ -73,6 +74,15 @@ $taille_div: 90%;
     align-items: center;
     background-color: $dark-grey;
     padding: 2vh;
+
+    .aucun-spectacle{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h1, h2 {
+            color: $white;
+        }
+    }
 
     .card-spectacle-dispo {
         background-color: $white;

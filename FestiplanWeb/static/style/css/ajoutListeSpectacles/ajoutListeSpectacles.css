@@ -33,6 +33,7 @@ a {
   border: none;
   padding: 1.5vh;
   cursor: pointer;
+  font-size: 1.2rem;
 }
 
 .wrapper {
@@ -84,6 +85,14 @@ a {
   align-items: center;
   background-color: #363732;
   padding: 2vh;
+}
+.container-card-spectacle .aucun-spectacle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container-card-spectacle .aucun-spectacle h1, .container-card-spectacle .aucun-spectacle h2 {
+  color: #F0F7F4;
 }
 .container-card-spectacle .card-spectacle-dispo {
   background-color: #F0F7F4;

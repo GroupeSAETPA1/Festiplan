@@ -49,8 +49,8 @@ class AjouterListesSpectaclesController
         $spectacleSelectionne = $this->ajouterListesSpectaclesServices->getSpectaclesTemporaire();
 
         foreach ($spectacleDisponible as &$spectacle) {
-            foreach ($spectacleSelectionne as $spectacleTemporaire) {
-                if ($spectacle['id_spectacle'] == $spectacleTemporaire['id_spectacle']) {
+            foreach ($spectacleSelectionne as $id) {
+                if ($spectacle['id_spectacle'] == $id) {
                     $spectacle["action"] = "retirerSpectacle";
                 }
             }
@@ -105,7 +105,18 @@ class AjouterListesSpectaclesController
 
     public function validerSpectaclesSelectionne() : View
     {
+        $id_festival = $_SESSION['ajouterListesSpectacles']['id_festival'] ?? null;
+        $nom_festival = $_SESSION['ajouterListesSpectacles']['nom_festival'] ?? null;
         //TODO enregistrer les spectacle ajouté dans `liste_spectacle`
-        //TODO Rediriger vers la page AcceListeSpectacle
+        //TODO Rediriger vers la page AccesListeSpectacle
+        $tab_spectacle_valider = $this->ajouterListesSpectaclesServices->getSpectaclesTemporaire();
+
+        foreach ($tab_spectacle_valider as $item) {
+            try {
+                $this->ajouterListesSpectaclesServices->ajouterSpectacleAuFestival($id_festival, $item);
+            } catch (\PDOException $e) {}
+        }
+
+        return $this->construireVue($id_festival, $nom_festival);
     }
 }

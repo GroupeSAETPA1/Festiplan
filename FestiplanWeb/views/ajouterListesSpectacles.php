@@ -106,6 +106,7 @@ function afficherSpectacle($nom_spectacle, $categorie, $duree, $illustration, $i
     <div class="app">
         <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/header.php" ?>
 
+        <!-- Bouton retour -->
         <form action="/Festiplan/FestiplanWeb/index.php" method="post">
             <input type="hidden" name="controller" value="AccesListeSpectacles">
             <input type="hidden" name="id_festival" value="<?php echo $id_festival ?>">
@@ -140,6 +141,24 @@ function afficherSpectacle($nom_spectacle, $categorie, $duree, $illustration, $i
 
             <div class="container-card-spectacle rounded">
                 <?php
+                if (sizeof($spectaclesDisponible) == 0) {
+                    ?>
+                    <div class="aucun-spectacle">
+                        <h1 class="bold">Aucun spectacle disponible</h1>
+                        <h2>Tous les spectacles sont ajout&eacute; &agrave; votre festival</h2>
+                    </div>
+                    <!-- Bouton retour -->
+                    <form action="/Festiplan/FestiplanWeb/index.php" method="post">
+                        <input type="hidden" name="controller" value="AccesListeSpectacles">
+                        <input type="hidden" name="id_festival" value="<?php echo $id_festival ?>">
+                        <div class="retour rounded">
+                            <button type="submit">
+                                <i class="fas fa-arrow-left"></i> Retour
+                            </button>
+                        </div>
+                    </form>
+                    <?php
+                }
                 foreach ($spectaclesDisponible as $spectacle) {
 
                     $nom_spectacle = $spectacle['nom'];
