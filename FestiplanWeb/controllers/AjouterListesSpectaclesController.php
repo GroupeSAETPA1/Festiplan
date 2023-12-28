@@ -111,6 +111,8 @@ class AjouterListesSpectaclesController
         //TODO Rediriger vers la page AccesListeSpectacle
         $tab_spectacle_valider = $this->ajouterListesSpectaclesServices->getSpectaclesTemporaire();
 
+        $this->ajouterListesSpectaclesServices->viderTableTemporaire();
+
         foreach ($tab_spectacle_valider as $item) {
             try {
                 $this->ajouterListesSpectaclesServices->ajouterSpectacleAuFestival($id_festival, $item);

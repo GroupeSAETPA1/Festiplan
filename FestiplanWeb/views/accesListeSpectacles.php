@@ -1,10 +1,10 @@
 <?php
-function afficher_spectacle(string $id_spectacle, string $nom_spectacle, string $illustration, string $duree, string $categorie): void
+
+function afficher_spectacle(string $id_spectacle, string $nom_spectacle, string $illustration, string $duree, string $categorie, int $id_festival): void
 {
-    global $id_festival;
     echo '<div class="card-spectacles rounded">';
     echo '    <div class="img-spectacle rounded">';
-    echo '        <img src="' . $illustration . '" alt="L\'image du spectacle Festiplan">';
+    echo '        <img src="' . $illustration . '" alt="L\'image du spectacle '.$nom_spectacle.'">';
     echo '    </div>';
     echo '    <div class="nom-spectacle">';
     echo '        <span>' . $nom_spectacle . '</span>';
@@ -19,8 +19,10 @@ function afficher_spectacle(string $id_spectacle, string $nom_spectacle, string 
     echo '    </div>';
     echo '    <form method="post" action="">';
     echo '        <!-- TODO : mettre le lien pour retirer le spectacles du festival -->';
-    echo '        <input hidden name="id-festival" value="' . $id_festival . '">';
-    echo '        <input hidden name="id-festival" value="' . $id_spectacle . '">';
+    echo '        <input hidden name="controller" value="AccesListeSpectacles">';
+    echo '        <input hidden name="action" value="retirerSpectacle">';
+    echo '        <input hidden name="id_festival" value="' . $id_festival . '">';
+    echo '        <input hidden name="id_spectacle" value="' . $id_spectacle . '">';
     echo '        <div class="btn-retirer-spectacle">';
     echo '            <button type="submit" title="Retirer le spectacle"><i class="fa-solid fa-times"></i></button>';
     echo '        </div>';
@@ -134,7 +136,7 @@ function minutesToHHMM(int $minutes): string
                         $illustration = $spectacle['illustration'];
                         $duree = $spectacle['duree'];
                         $categorie = $spectacle['categorie'];
-                        afficher_spectacle($id_spectacle, $nom_spectacle, $illustration, $duree, $categorie);
+                        afficher_spectacle($id_spectacle, $nom_spectacle, $illustration, $duree, $categorie, $id_festival);
                     }
                     ?>
                 </div>

@@ -19,15 +19,27 @@ class AccesListeSpectaclesController
 
     function index(): View
     {
-        $id_gestionnaire = $_SESSION['id_utilisateur'] ?? null;
-        $id_festival_actif = HttpHelper::getParam("id_festival") ?? null;
+        $id_festival_actif = $this->verifierConnecte();
+        return $this->construireVue($id_festival_actif);
+    }
 
+    public function retirerSpectacle(): View
+    {
+        $id_festival_actif = $this->verifierConnecte();
 
-        //if ($id_gestionnaire == null || $id_festival_actif == null) {
-        //    header("Location: /Festiplan/FestiplanWeb/");
-        //    exit();
-        //}
+        $id_spectacle = HttpHelper::getParam("id_spectacle") ?? null;
 
+        $this->accesListeSpectaclesService->retirerSpectacle($id_spectacle, $id_festival_actif);
+
+        return $this->construireVue($id_festival_actif);
+    }
+
+    /**
+     * @param string|null $id_festival_actif
+     * @return View
+     */
+    public function construireVue(?string $id_festival_actif): View
+    {
         $spctacles = $this->accesListeSpectaclesService->getSpectacles($id_festival_actif);
         $info_festival = $this->accesListeSpectaclesService->getInfoFestival($id_festival_actif);
 
@@ -43,5 +55,21 @@ class AccesListeSpectaclesController
 
 
         return $view;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function verifierConnecte(): ?string
+    {
+        $id_gestionnaire = $_SESSION['id_utilisateur'] ?? null;
+        $id_festival_actif = HttpHelper::getParam("id_festival") ?? null;
+
+//TODO decomenter pour la version finale
+        //if ($id_gestionnaire == null || $id_festival_actif == null) {
+        //    header("Location: /Festiplan/FestiplanWeb/");
+        //    exit();
+        //}
+        return $id_festival_actif;
     }
 }
