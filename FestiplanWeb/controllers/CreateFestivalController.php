@@ -234,5 +234,13 @@ class CreateFestivalController {
         $view->setVar("result" , $result);
         return $view;
     }
+
+    public function verifierSpectacle() {
+        $spectacle = htmlspecialchars(HttpHelper::getParam('spectacle') ?: "");
+        $result = $this->createFestivalService -> spectacleExiste($spectacle);
+        $view = new View("/views/creationFestival/spectacleExiste");
+        $view-> setVar("result" , $result);
+        return $view;
+    }
 }
 

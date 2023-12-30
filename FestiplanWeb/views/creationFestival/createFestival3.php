@@ -78,6 +78,23 @@
                     <!-- rempli avec le js -->
                 </div>
             </div>
+            <div class="custom-select">
+                <label for="spectacle"> Spectacle : </label>
+                <div class="text">Veuillez selectioner les spectacles que vous souhaitez integrer a votre festival</div>
+                <div class="rowCustomInput">
+                    <select id="listeSpectacle">
+                        <option value = "vide"></option>
+                        <?php
+                            foreach($tableauSpectacle as $ligne) {
+                                echo '<option value="'.$ligne['nom'].'">'.$ligne['nom'].'</option>';
+                            }
+                        ?>
+                    </select>
+                </div>
+                <div class="spectacleSelect">
+                    <!-- rempli avec le js -->
+                </div>
+            </div>
         </div>
          <?php include_once $_SERVER['DOCUMENT_ROOT']. "/Festiplan/FestiplanWeb/static/components/footer.php" ?>
     </body>

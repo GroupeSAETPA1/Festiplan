@@ -58,6 +58,14 @@ class createFestivalService
         $requeteSceneExiste->execute();
         return $requeteSceneExiste->rowCount() > 0 ;
     }
+
+    public function spectacleExiste($spectacle) : bool
+    {
+        $requeteSpectacleExiste = $this -> pdoCreationFestival -> prepare( "SELECT * FROM SPECTACLE WHERE nom = :spectacle");
+        $requeteSpectacleExiste->bindParam('spectacle' , $spectacle);
+        $requeteSpectacleExiste -> execute();
+        return $requeteSpectacleExiste->rowCount() > 0;
+    }
     public  function insertionFestival() {
 
     }

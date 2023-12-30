@@ -1,7 +1,9 @@
 const interList = [];
 const sceneList = [];
+const spectacleList = [] ;
 const BUTTON = $(".button-add-orga");
 const SCENE = $("#listeScene");
+const SPECTACLE = $("#listeSpectacle");
 const INPUT = $('#orga');
 
 async function addOrga() {
@@ -36,12 +38,13 @@ async function addOrga() {
         INPUT.css({
             border: "1px solid red",
         });
+
     }
 }
 
 async function addScene() {
     input = SCENE.val();
-    console.log(sceneList);
+    //console.log(sceneList);
     const isDuplicate = sceneList.some(scene => scene.name === input);
     if (input && input != 'vide' && !isDuplicate) {
         SCENE.css({border: "1px solid black"});
@@ -65,6 +68,42 @@ async function addScene() {
         SCENE.css({border: "1px solid red"});
     }
 }
+
+async function addSpectacle() {
+    input = SPECTACLE.val();
+    const isDuplicate = spectacleList.some(spectacle => spectacle.name === input);
+    if (input && input != 'vide' && !isDuplicate) {
+        SPECTACLE.css({border: "1px solid black"});
+
+        let choixValide;
+        try {
+            choixValide = await checkSpectacleValide(input);
+        } catch (error) {
+            console.log("erreur lors de la verification du spectacle");
+        }
+
+        console.log(choixValide);
+        let spectacle = {
+            id: spectacleList.length ,
+            name : input ,
+            valid: choixValide === "1" ,
+        };
+
+        spectacleList.push(spectacle);
+        INPUT.val('');
+        displaySpectacle();
+    } else {
+        SPECTACLE.css({border: "1px solid red"});
+    }
+    console.log("ici");
+}
+
+function displaySpectacle() {
+    for (let i = 0 ; i < spectacleList.length ; i++ ) {
+        console.log(spectacleList[i]);
+    }
+}
+
 function displayInter() {
     let selection = $('.selections')[0];
     selection.innerHTML = '';
@@ -138,6 +177,24 @@ function checkChoixValide(scene) {
     });
 }
 
+function checkSpectacleValide(spectacle) {
+    return new Promise((resolve, reject) => {
+        const xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.onload = function () {
+            resolve(this.responseText);
+        };
+
+        xmlhttp.onerror = function () {
+            reject(new Error("Erreur lors de la requete ajax"));
+        };
+
+        let controllerActionUrl = "/Festiplan/FestiplanWeb/index.php?controller=CreateFestival&action=verifierSpectacle";
+        xmlhttp.open("GET", controllerActionUrl +"&spectacle=" + encodeURIComponent(spectacle));
+        xmlhttp.send();
+    });
+}
+
 $('.selections').on('click', '.delete', function() {
     let index = $(this).data('index');
 
@@ -159,3 +216,4 @@ $('.sceneSelect').on('click', '.delete', function() {
 
 BUTTON.on('click', addOrga);
 SCENE.on('change' , addScene);
+SPECTACLE.on('change' , addSpectacle);
