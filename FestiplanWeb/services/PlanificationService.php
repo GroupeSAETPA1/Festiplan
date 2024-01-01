@@ -33,13 +33,13 @@ class PlanificationService
     }
 
     public function getSpectaclesFestival(int $id_festival) {
-        $requete = "SELECT *
+        $requete = "SELECT spectacle.nom, spectacle.description, spectacle.illustration, spectacle.duree, spectacle.id_categorie, spectacle.taille_scene, spectacle.responsable_spectacle
                     FROM spectacle
                     JOIN liste_spectacle
                     ON spectacle.id_spectacle = liste_spectacle.id_spectacle
                     JOIN festival
                     ON liste_spectacle.id_festival = festival.id_festival
-                    WHERE festival.id_festival = :id_festival";                    
+                    WHERE festival.id_festival = :id_festival";
 
         $requete = $this->pdoLecture->prepare($requete);
         $requete->bindParam("id_festival", $id_festival);

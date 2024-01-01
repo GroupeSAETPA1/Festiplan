@@ -90,7 +90,6 @@ class UserController
                     } else {
                         $messageErreur = "Erreur d'inscription : Un utilisateur existe déja avec ce login";
                         $this->buildView($view, $nom, $prenom, $email, $mdp, $login, true, false, true, $messageErreur);
-
                     }
                 } else {
                     $messageErreur = "Erreur d'inscription : Un des champs requis n'est pas rempli";

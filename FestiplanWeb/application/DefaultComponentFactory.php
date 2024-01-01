@@ -156,7 +156,7 @@ class DefaultComponentFactory implements ComponentFactory
     private function buildPlanificationService(): PlanificationService
     {
         if ($this->planificationService == null) {
-            $pdo = $this->getPDO("admin", "admin");
+            $pdo = $this->getPDO("root"); // TODO faire un user approprié
             $this->planificationService = new PlanificationService($pdo);
         }
         return $this->planificationService;

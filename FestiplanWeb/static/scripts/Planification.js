@@ -1,5 +1,5 @@
-var festival;
-var spectacles;
+let festival;
+let spectacles;
 
 function getDataFestival() {
     return new Promise((resolve, reject) => {
@@ -41,9 +41,10 @@ async function getAllData() {
     try {
         festival = JSON.parse(await getDataFestival());
         spectacles = JSON.parse(await getDataSpectacle());
+        console.log(spectacles);
+        console.log(festival);
     } catch (error) {
-        console.error("Erreur lors de la récupération des données du festival", error);
-        return;
+        console.error("Erreur lors de la récupération des données du festival", error.stack);
     }
 }
 construireCalendrier();
@@ -104,26 +105,30 @@ async function construireCalendrier() {
         slotEventOverlap:false,
         editable: true,
         eventDurationEditable: false,
-        events: displayEvents()
+        events: await displayEvents()
     });
+    console.log(calendar);
     calendar.render();
 }
-function displayEvents(){
-    let resultat = "[";
+async function displayEvents(){
+    let events = [];
+
     for (let i = 0; i < spectacles.length; i++) {
         let nomSpectacle = spectacles[i].nom;
-        resultat += `{title : "${nomSpectacle}",
-                      start: "2024-01-01T14:00",
-                      end: "2024-01-01T15:30"}`
-        if (i < spectacles.length - 1) {
-            resultat += ",";
-        }
+        let dateDebut = new Date("2024-01-01T14:00");
+        let dateFin = new Date(dateDebut.getTime() + spectacles[i].duree * 60000);
+
+        events.push({
+            title: nomSpectacle,
+            start: dateDebut,
+            end: dateFin
+        });
     }
-    resultat += "]";
-    console.log(resultat);
-    return resultat;
+    console.log(events);
+    return events;
 }
-function getFestivalDuration() {
+async function getFestivalDuration() {
+    let resultat;
     let dateDebutFestival = new Date(festival.debut);
     let dateFinFestival = new Date(festival.fin);
 
