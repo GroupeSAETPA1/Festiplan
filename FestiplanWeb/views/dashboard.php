@@ -29,12 +29,19 @@ function afficher_festival(int $id_festival, string $nom_festival, string $date_
     echo '            <span class="categorie">' . $categorie . '</span>';
     echo '        </div>';
     echo '        <div class="group-boutons">';
+    echo '            <form method="post" action="/Festiplan/FestiplanWeb/index.php">';
+    echo '                <input hidden name="controller" value="AccesListeSpectacles">';
+    echo '                <input hidden name="id_festival" value="' . $id_festival . '">';
+    echo '                <input hidden name="nom_festival" value="' . $nom_festival . '">';
+    echo '                <input hidden name="categorie" value="' . $categorie . '">';
+    echo '                <div class="btn-acces-spectacles rounded"><button type="submit">Spectacles ...</button></div>';
+    echo '            </form>';
     echo '            <form method="post" action=""> <!-- TODO : mettre le lien pour éditer le festival -->';
-    echo '                <input hidden name="id-festival" value="' . $id_festival . '">';
+    echo '                <input hidden name="id_festival" value="' . $id_festival . '">';
     echo '                <div><button type="submit"><i class="fa-solid fa-pen-to-square"></i></button></div>';
     echo '            </form>';
     echo '            <form method="post" action=""> <!-- TODO : mettre le lien pour supprimer le festival -->';
-    echo '                <input hidden name="id-festival" value="' . $id_festival . '">';
+    echo '                <input hidden name="id_festival" value="' . $id_festival . '">';
     echo '                <div><button type="submit"><i class="fa-solid fa-trash-can"></i></button></div>';
     echo '            </form>';
     echo '        </div>';
@@ -146,6 +153,7 @@ function minutesToHHMM(int $minutes): string
                     </div>
                 </a>
             </div>
+
             <?php
             if (!empty($festivals)) {
                 ?>
@@ -177,29 +185,9 @@ function minutesToHHMM(int $minutes): string
                     </div>
                 </a>
             </div>
+
             <?php
             if (!empty($spectacles)) {
-            ?>
-            <div class="container entete-section">
-                <h1>Mes Spectacles</h1>
-                <a href=""> <!-- TODO : Lien vers la page de création de spectacle -->
-                    <div class="rounded">
-                        <i class="fa-regular fa-calendar-plus"></i>
-                        <p>Cr&eacute;er un spectacle</p>
-                    </div>
-                </a>
-            </div>
-            <div class="container container-card-spectacles">
-                <?php
-
-                foreach ($spectacles as $spectacle) {
-                    $id_spectacle = $spectacle['id_spectacle'];
-                    $nom_spectacle = $spectacle['nom'];
-                    $lien_image = $spectacle['illustration'];
-                    $categorie = $spectacle['categorie'];
-                    $duree = $spectacle['duree'];
-                    afficher_spectacle($id_spectacle, $nom_spectacle, $lien_image, $categorie, $duree);
-                }
                 ?>
 
                 <div class="container container-card-spectacles">
@@ -215,10 +203,10 @@ function minutesToHHMM(int $minutes): string
                     ?>
                 </div>
                 <?php
-                }
-                ?>
-            </div>
+            }
+            ?>
         </div>
-        <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/footer.php" ?>
+    </div>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/footer.php" ?>
     </body>
 </html>

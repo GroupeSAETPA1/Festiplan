@@ -1,0 +1,75 @@
+<?php
+
+namespace controllers;
+
+use services\AccesListeSpectaclesService;
+use yasmf\HttpHelper;
+use yasmf\View;
+
+class AccesListeSpectaclesController
+{
+
+    private ?AccesListeSpectaclesService $accesListeSpectaclesService = null;
+
+    public function __construct(AccesListeSpectaclesService $accesListeSpectaclesService )
+    {
+        session_start();
+        $this->accesListeSpectaclesService = $accesListeSpectaclesService;
+    }
+
+    function index(): View
+    {
+        $id_festival_actif = $this->verifierConnecte();
+        return $this->construireVue($id_festival_actif);
+    }
+
+    public function retirerSpectacle(): View
+    {
+        $id_festival_actif = $this->verifierConnecte();
+
+        $id_spectacle = HttpHelper::getParam("id_spectacle") ?? null;
+
+        $this->accesListeSpectaclesService->retirerSpectacle($id_spectacle, $id_festival_actif);
+
+        return $this->construireVue($id_festival_actif);
+    }
+
+    /**
+     * @param string|null $id_festival_actif
+     * @return View
+     */
+    public function construireVue(?string $id_festival_actif): View
+    {
+        $spctacles = $this->accesListeSpectaclesService->getSpectacles($id_festival_actif);
+        $info_festival = $this->accesListeSpectaclesService->getInfoFestival($id_festival_actif);
+
+        $nom_festival = $info_festival['nom'];
+        $categorie = $info_festival['categorie'];
+
+        $view = new View("views/accesListeSpectacles");
+
+        $view->setVar("spectacles", $spctacles);
+        $view->setVar("id_festival", $id_festival_actif);
+        $view->setVar("nom_festival", $nom_festival);
+        $view->setVar("categorie", $categorie);
+
+
+        return $view;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function verifierConnecte(): ?string
+    {
+        $id_gestionnaire = $_SESSION['id_utilisateur'] ?? null;
+        $id_festival_actif = HttpHelper::getParam("id_festival") ?? null;
+
+//TODO decomenter pour la version finale
+        //if ($id_gestionnaire == null || $id_festival_actif == null) {
+        //    header("Location: /Festiplan/FestiplanWeb/");
+        //    exit();
+        //}
+        return $id_festival_actif;
+    }
+}

@@ -21,7 +21,7 @@ class DashboardService
     {
         $requete = "SELECT festival.id_festival, festival.nom AS nom, festival.description, festival.illustration, festival.debut, festival.fin, c.nom AS categorie
                     FROM festival
-                    JOIN festiplan.categorie c on c.id_categorie = festival.id_categorie
+                    JOIN categorie c on c.id_categorie = festival.id_categorie
                     WHERE id_responsable = :id_gestionnaire";
 
         $requete = $this->pdoLectureFestivalSpectacle->prepare($requete);

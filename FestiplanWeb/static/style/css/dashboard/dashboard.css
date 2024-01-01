@@ -109,6 +109,13 @@ form {
 .card-festival .bas-card .group-boutons {
   flex-direction: row;
 }
+.card-festival .bas-card .group-boutons .btn-acces-spectacles {
+  background-color: #cccccc;
+  margin: 0 1vh;
+}
+.card-festival .bas-card .group-boutons .btn-acces-spectacles:hover {
+  background-color: #999999;
+}
 
 .img-spectacle, .img-festival {
   display: flex;

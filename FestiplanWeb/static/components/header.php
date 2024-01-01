@@ -9,8 +9,8 @@
             <i class="fa-solid fa-user"></i>
             <span>
                 <?php
-                if (isset($nom) && isset($prenom)) {
-                    echo $prenom . " " . $nom;
+                if (isset($_SESSION['nom']) && isset($_SESSION['prenom'])) {
+                    echo $_SESSION['prenom'] . " " . $_SESSION['nom'];
                 } else {
                     echo "Mon Compte";
                 }
