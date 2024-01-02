@@ -60,7 +60,7 @@ async function construireCalendrier() {
                 duration: { days: await getFestivalDuration()}
             }
         },
-        contentHeight: 600, // TODO définir une bonne hauteur
+        contentHeight: 800, // TODO définir une bonne hauteur
         slotMinTime: festival.heure_debut_spectacles,
         slotMaxTime: festival.heure_fin_spectacles,
         titleFormat: {
@@ -72,7 +72,7 @@ async function construireCalendrier() {
         headerToolbar: {
             left: '',
             center: 'title',
-            end: 'prev,next'
+            end: ''
         },
 
         dayHeaderFormat: {
@@ -83,7 +83,8 @@ async function construireCalendrier() {
 
         locale: 'fr',
         allDaySlot: false,
-        slotDuration: '00:30:00', // la durée des intervalles affichés
+        slotDuration: '01:00:00', // la durée des intervalles affichés
+        snapDuration: '00:15:00',
 
         slotLabelFormat: {
             hour: 'numeric',
@@ -91,7 +92,6 @@ async function construireCalendrier() {
             omitZeroMinute: false,
         },
 
-        slotLabelInterval : "00:30",
         scrollTime : festival.heure_debut_spectacles, // Temps affiché a l'initialisation
         scrollTimeReset: false,
 
@@ -100,7 +100,8 @@ async function construireCalendrier() {
             start: new Date(festival.debut), // Date de début et de fin du spéctacle
             end: new Date(festival.fin)
         },
-
+        startTime: festival.heure_debut_spectacles,
+        endTime: festival.heure_fin_spectacles,
         // Pour les Events
         slotEventOverlap:false,
         editable: true,
@@ -111,7 +112,12 @@ async function construireCalendrier() {
     calendar.render();
 }
 async function displayEvents(){
-    let events = [];
+    let events = [{
+        groupId: 'heureValideFestival',
+        startTime: festival.heure_debut_spectacles,
+        endTime: festival.heure_fin_spectacles,
+        display: 'none'
+    }];
 
     for (let i = 0; i < spectacles.length; i++) {
         let nomSpectacle = spectacles[i].nom;
@@ -121,7 +127,8 @@ async function displayEvents(){
         events.push({
             title: nomSpectacle,
             start: dateDebut,
-            end: dateFin
+            end: dateFin,
+            constraint: 'heureValideFestival'
         });
     }
     console.log(events);
@@ -136,11 +143,11 @@ async function getFestivalDuration() {
     let DifferenceDeTemps = dateFinFestival.getTime() - dateDebutFestival.getTime();
  
     // Pour calculer apres cette différence en jour
-    let DifferenceEnJour = 
+    let DifferenceEnJour =
     Math.round(DifferenceDeTemps / (1000 * 3600 * 24)) + 1;
 
-    // Si la durée est plus grande que 4 jours on affiche que 4 jour 
+    // Si la durée est plus grande que 4 jours on affiche que 4 jour
     // pour plus de visibilitée pour l'utilisateur
-    resultat = DifferenceEnJour > 4 ? 4 : DifferenceEnJour;
-    return resultat;
+    // resultat = DifferenceEnJour > 4 ? 4 : DifferenceEnJour;
+    return DifferenceEnJour;
 }
