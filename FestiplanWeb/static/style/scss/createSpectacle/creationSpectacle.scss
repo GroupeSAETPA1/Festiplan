@@ -4,34 +4,31 @@
   padding: 0 10vh;
 }
 
-.container{
+.flex {
   display: flex;
+}
+
+.container {
   justify-content: center;
   flex-direction: column;
 }
 
-.NDD{ //abrevation de Nom - Date Début - Date Fin
-  display: flex;
+.NDD { //abrevation de Nom - Date Début - Date Fin
   justify-content: flex-start;
   flex-direction: column;
 }
 
-.Description{
+.Description {
   width: 55vw;
   padding: 0 13px ;
 }
 
-.flex-row{
+.flex-row {
   display: flex;
   flex-direction: row;
 }
-.first-row{
-  display: flex;
+.first-row {
   justify-content: space-between;
-}
-.end-row{
-  display : flex;
-  align-items: flex-end;
 }
 
 .flex-column{
@@ -40,8 +37,6 @@
 }
 
 .valid-annul-placement{  //contient les boutons page suivant ou valider et annuler choix
-  display: flex;
-  flex-direction: row;
   justify-content: space-around;
   margin-top: 120px;
 }
@@ -55,7 +50,53 @@
   margin: 5px;
 }
 
-.buttons {
-  display: flex;
-  flex-direction: row;
+
+.annulChoix{
+  padding: 10px 25px;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  background-color: $orange;
+  transition: background-color 0.3s ease;
+  width: 22vh;
+  height: fit-content;
+  border-radius: 30px ;
+  margin-left: 3vh;
+}
+.annulChoix:hover {
+  background-color: darken($orange,5);
+  scale: 1.05;
+}
+
+.page-suivante{
+  width: 26vh;
+  height: 4.8vh;
+  padding: 0 50px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: $light-blue;
+
+  &:hover {
+    background-color: darken($light-blue,5);
+    scale: 1.05;
+  }
+}
+
+.retour {
+  padding: 10px 25px;
+  .Retour{
+    line-height: 2;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 30px;
+    border-style: none;
+    background-color: $orange;
+
+    &:hover {
+      background-color: darken($orange,5);
+    }
+  }
 }

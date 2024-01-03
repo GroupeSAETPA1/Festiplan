@@ -33,15 +33,15 @@
 <body>
 <div class="app">
     <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/header.php" ?>
-
     <div class="retour">
         <button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button>
     </div>
     <div class="wrapper">
-        <div class="container">
+
+        <div class="container flex">
             <!-- Premier paquet pour le premier cube d'information-->
             <div class="flex-row first-row">
-                <div class="NDD">
+                <div class="NDD flex">
                     <div>
                         <h3><i class="fa-solid fa-circle-exclamation"></i>Nom :</h3>
                         <input class="text" type="text" name="nom" placeholder="Tapez le nom de votre festival"/>
@@ -96,13 +96,13 @@
                 <input type="number" min="0" max="1000" step="1" value="0" id="rangeValue">
         </div>
 
-            <div class="valid-annul-placement">
+            <div class="valid-annul-placement flex-row">
                 <div class="annulChoix">
                     <i class="fa-regular fa-circle-xmark"></i>Annuler vos choix  <!-- TODO fontawesome -->
                 </div>
 
                 <div class="button-flex-end">
-                    <a href="createFestival3.php">
+                    <a href="createSpectacle2.php">
                         <button class="page-suivante">
                             Page Suivante<i class="fa-solid fa-arrow-right"></i>
                         </button>
