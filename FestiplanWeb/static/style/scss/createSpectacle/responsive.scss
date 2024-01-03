@@ -1,7 +1,6 @@
 @import '../main';
 
 @media screen and (max-width: 1000px) {
-
   .flex-row{
     display: flex;
     flex-direction: column;
@@ -12,10 +11,19 @@
     align-items: center;
   }
 
-  .text{
-    width: 50vw;
+  input[type="text"]{
+    width: 70vw;
   }
-  .align{
-    padding: 0 150px
+  input[type="number"]{
+    width: 70vw;
+  }
+  textarea{
+    width: 70vw;
+  }
+  select{
+      width: 70vw;
+  }
+  .Description{
+    width: 70vw;
   }
 }

@@ -37,8 +37,11 @@
         <button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button>
     </div>
     <div class="wrapper">
-
         <div class="container flex">
+            <div class="title">
+                <h1>Création d'un spectacle</h1>
+            </div>
+
             <!-- Premier paquet pour le premier cube d'information-->
             <div class="flex-row first-row">
                 <div class="NDD flex">
@@ -90,26 +93,24 @@
                 </select>
             </div>
             <!-- selection de la taille de la scene-->
-            <div class="range-wrap">
+            <div class="flex-column">
                 <h3><i class="fa-solid fa-circle-exclamation"></i>Taille de la scène :</h3>
                 <div class="text">Veuillez rentrer la taille de la scene en m²</div>
                 <input type="number" min="0" max="1000" step="1" value="0" >
-        </div>
-
-            <div class="valid-annul-placement flex-row">
-                <div class="annulChoix">
-                    <i class="fa-regular fa-circle-xmark"></i>Annuler vos choix  <!-- TODO fontawesome -->
-                </div>
-
-                <div class="button-flex-end">
-                    <a href="createSpectacle2.php">
-                        <button class="page-suivante">
-                            Page Suivante<i class="fa-solid fa-arrow-right"></i>
-                        </button>
-                    </a>
-                </div>
             </div>
-    </div>
+        </div>
+        <div class="valid-annul-placement flex-row">
+            <div class="annulChoix lastButton">
+                <i class="fa-regular fa-circle-xmark"></i> Annuler vos choix  <!-- TODO fontawesome -->
+            </div>
+            <div class="page-suivante lastButton">
+                <a href="createSpectacle2.php">
+                    <div>
+                        Page Suivante<i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
     <?php
     include_once "../../static/components/footer.php" ?>
