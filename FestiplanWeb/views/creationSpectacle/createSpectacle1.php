@@ -44,11 +44,11 @@
                 <div class="NDD flex">
                     <div>
                         <h3><i class="fa-solid fa-circle-exclamation"></i>Nom :</h3>
-                        <input class="text" type="text" name="nom" placeholder="Tapez le nom de votre festival"/>
+                        <input type="text" name="nom" placeholder="Tapez le nom de votre festival"/>
                     </div>
                     <div>
                         <h3><i class="fa-solid fa-circle-exclamation"></i>Durée :</h3>
-                        <input class="text" type="text" name="nom" placeholder="Tapez le nom de votre festival"/>
+                        <input type="text" name="nom" placeholder="Tapez le nom de votre festival"/>
                     </div>
                 </div>
 
@@ -93,7 +93,7 @@
             <div class="range-wrap">
                 <h3><i class="fa-solid fa-circle-exclamation"></i>Taille de la scène :</h3>
                 <div class="text">Veuillez rentrer la taille de la scene en m²</div>
-                <input type="number" min="0" max="1000" step="1" value="0" id="rangeValue">
+                <input type="number" min="0" max="1000" step="1" value="0" >
         </div>
 
             <div class="valid-annul-placement flex-row">
