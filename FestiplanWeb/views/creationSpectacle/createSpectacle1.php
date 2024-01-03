@@ -12,10 +12,9 @@
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svg.css">
 
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createSpectacle/creationSpectacle.css">
-    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/image.css">
-    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/input.css">
-    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/responsive.css">
-    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createSpectacle/rangeInput.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/formsInput/image.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/formsInput/input.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createSpectacle/responsive.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet"
