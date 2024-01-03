@@ -1,29 +1,34 @@
 @import '../main';
 
 @media screen and (max-width: 1000px) {
-  .flex-row{
+  .flex-row {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  .flex-column{
+  .flex-column {
     align-items: center;
   }
+  
+  .page-suivante {
+    margin-top: 5vh;
+  }
 
-  input[type="text"]{
+  input[type="text"] {
     width: 70vw;
   }
-  input[type="number"]{
+  input[type="number"] {
     width: 70vw;
   }
-  textarea{
+  textarea {
     width: 70vw;
   }
-  select{
+  select {
       width: 70vw;
   }
-  .Description{
+  .Description {
     width: 70vw;
   }
+
 }

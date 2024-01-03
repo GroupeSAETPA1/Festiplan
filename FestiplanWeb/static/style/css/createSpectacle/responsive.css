@@ -17,6 +17,9 @@ body {
   .flex-column {
     align-items: center;
   }
+  .page-suivante {
+    margin-top: 5vh;
+  }
   input[type=text] {
     width: 70vw;
   }
