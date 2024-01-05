@@ -16,12 +16,12 @@
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createSpectacle/intervenantInputs.css">
 
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/index/index.css">
-    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/index/responsive.css">
+
     <!-- Font Awesome -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
           integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
     <!-- Scripts -->
     <!-- GSAP -->  <!-- Jquery -->
@@ -32,31 +32,49 @@
     <script src="/Festiplan/FestiplanWeb/static/scripts/customInput.js" defer></script>
 </head>
 <body>
+<?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/header.php" ?>
+<div class="retour">
+    <button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button>
+</div>
 <div class="app">
-    <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/header.php" ?>
-    <div class="retour">
-        <button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button>
-    </div>
     <div class="wrapper">
         <div class="container flex">
             <div class="title">
                 <h1>Création d'un spectacle</h1>
             </div>
-
-            <div class="custom-select">
-                <label for="inter">Intervenants :</label>
-                <div class="text">Veuillez rentrer l'email du compte, </br>le compte n'existe pas, vous pouvez le crer avec le + </div>
-                <div class="row">
-                    <input id="inter" type="text" placeholder="exemple@mail.fr">
-                    <div class="button-add-inter">
-                        <i class="fa-solid fa-plus"></i>
-                        Ajouter l'intervenant
+            <section>
+                <div class="custom-select">
+                    <label for="inter">Intervenants sur scene:</label>
+                    <div class="text">Veuillez rentrer l'email du compte, </br>le compte n'existe pas, vous pouvez le crer avec le + </div>
+                    <div class="row">
+                        <input id="inter" type="text" placeholder="exemple@mail.fr">
+                        <div class="button-add-inter">
+                            <i class="fa-solid fa-plus"></i>
+                            Ajouter l'intervenant
+                        </div>
+                    </div>
+                    <div class="selections">
+                        <!-- rempli avec le js -->
                     </div>
                 </div>
-                <div class="selections">
-                    <!-- rempli avec le js -->
+            </section>
+            <hr>
+            <section class="interHorsScene">
+                <div class="custom-select">
+                    <label for="inter">Intervenants hors scene:</label>
+                    <div class="text">Veuillez rentrer l'email du compte, </br>le compte n'existe pas, vous pouvez le crer avec le + </div>
+                    <div class="row">
+                        <input id="interHorsScene" type="text" placeholder="exemple@mail.fr">
+                        <div class="button-add-inter">
+                            <i class="fa-solid fa-plus"></i>
+                            Ajouter l'intervenant
+                        </div>
+                    </div>
+                    <div class="selections">
+                        <!-- rempli avec le js -->
+                    </div>
                 </div>
-            </div>
+            </section>
             <div class="formulaire creationCompte">
                 <form method="get" action="/Festiplan/FestiplanWeb">
                     <div class="form-duo">
@@ -102,6 +120,6 @@
         </div>
     </div>
 </div>
-<?php include $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/footer.php" ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/footer.php" ?>
 </body>
 </html>

@@ -1,7 +1,19 @@
 @import '../main';
 
+.app {
+    justify-content: center;
+    align-items: center;
+}
+
 .wrapper {
   padding: 0 10vh;
+  width: 80vw;
+  hr {
+    margin: 40px 0;
+    height: 4px;
+    background-color: $dark-grey;
+    border: none;
+  }
 }
 
 .flex {

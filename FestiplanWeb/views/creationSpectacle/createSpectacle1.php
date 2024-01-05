@@ -111,8 +111,7 @@
             </div>
         </div>
     </div>
-    <?php
-    include_once "../../static/components/footer.php" ?>
 </div>
+<?php include_once "../../static/components/footer.php" ?>
 </body>
 </html>

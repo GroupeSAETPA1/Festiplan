@@ -8,13 +8,6 @@ body {
   margin: 0;
 }
 
-.wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 60vh;
-}
-
 .button-add-inter {
   background: #99E1D9;
   color: #363732;

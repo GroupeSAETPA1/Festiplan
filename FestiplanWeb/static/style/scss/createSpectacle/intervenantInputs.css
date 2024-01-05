@@ -70,16 +70,13 @@ body {
   color: #363732;
   padding: 10px 20px;
 }
-.creationCompte .Retour {
-  background: #F7A072;
-  color: #363732;
-}
-.creationCompte .Retour .lastSection {
+.creationCompte .lastSection {
   display: flex;
   flex-direction: column;
   row-gap: 20px;
+  margin: 0 10px;
 }
-.creationCompte .Retour .colonneCreationCompte {
+.creationCompte .colonneCreationCompte {
   width: 100%;
   padding: 10px;
 }
