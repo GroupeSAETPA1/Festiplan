@@ -20,6 +20,9 @@ body {
   .page-suivante {
     margin-top: 5vh;
   }
+  .container {
+    align-items: center;
+  }
   input[type=text] {
     width: 70vw;
   }
@@ -35,6 +38,10 @@ body {
   .Description {
     width: 70vw;
   }
+  .wrapper {
+    width: 100%;
+    padding: 0;
+  }
 }
 
-/*# sourceMappingURL=responsive.css.map */
+/*# sourceMappingURL=responsivePage1.css.map */

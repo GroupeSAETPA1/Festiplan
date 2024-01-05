@@ -13,6 +13,7 @@
     height: 4px;
     background-color: $dark-grey;
     border: none;
+    width: 100%;
   }
 }
 
@@ -23,6 +24,7 @@
 .container {
   justify-content: center;
   flex-direction: column;
+  // align-items: center;
   .title {
     display: flex;
     justify-content: center;

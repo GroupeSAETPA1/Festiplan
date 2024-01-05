@@ -17,11 +17,43 @@ body {
   .flex-column {
     align-items: center;
   }
-  .text {
-    width: 50vw;
+  .page-suivante {
+    margin-top: 5vh;
   }
-  .align {
-    padding: 0 150px;
+  input[type=text] {
+    width: 70vw;
+  }
+  input[type=number] {
+    width: 70vw;
+  }
+  textarea {
+    width: 70vw;
+  }
+  select {
+    width: 70vw;
+  }
+  .Description {
+    width: 70vw;
+  }
+  .form-duo {
+    flex-direction: column;
+  }
+  .creationCompte {
+    width: 75%;
+  }
+  .creationCompte form {
+    width: 100%;
+    row-gap: 0;
+  }
+  .boutonCreation {
+    width: 100%;
+  }
+  .colonneCreationCompte {
+    width: 100%;
+    padding: 10px;
+  }
+  .mail {
+    padding: 0 10px !important;
   }
 }
 

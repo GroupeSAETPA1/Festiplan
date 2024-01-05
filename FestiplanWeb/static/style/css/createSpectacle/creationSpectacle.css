@@ -17,12 +17,12 @@ body {
   padding: 0 10vh;
   width: 80vw;
 }
-
 .wrapper hr {
   margin: 40px 0;
   height: 4px;
   background-color: #363732;
   border: none;
+  width: 100%;
 }
 
 .flex {
@@ -33,14 +33,12 @@ body {
   justify-content: center;
   flex-direction: column;
 }
-
 .container .title {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 50px;
 }
-
 .container .title h1 {
   font-size: 2.5rem;
   font-weight: 700;
@@ -77,7 +75,6 @@ body {
   align-items: center;
   padding: 0 10vh;
 }
-
 .valid-annul-placement .lastButton {
   width: 26vh;
   height: 4.8vh;
@@ -89,27 +86,22 @@ body {
   cursor: pointer;
   line-height: 2.7;
 }
-
 .valid-annul-placement .annulChoix {
   background-color: #F7A072;
   transition: 0.3s ease;
 }
-
 .valid-annul-placement .annulChoix:hover {
   background-color: #f6905a;
   scale: 1.05;
 }
-
 .valid-annul-placement .page-suivante {
   background-color: #99E1D9;
   transition: 0.3s ease;
 }
-
 .valid-annul-placement .page-suivante:hover {
   background-color: #85dbd2;
   scale: 1.05;
 }
-
 .valid-annul-placement .page-suivante a {
   text-decoration: none;
   color: black;
@@ -126,7 +118,6 @@ body {
 .retour {
   padding: 10px 25px;
 }
-
 .retour .Retour {
   line-height: 2;
   padding: 0 20px;
@@ -136,11 +127,8 @@ body {
   border-style: none;
   background-color: #F7A072;
 }
-
 .retour .Retour:hover {
   background-color: #f6905a;
 }
-
-
 
 /*# sourceMappingURL=creationSpectacle.css.map */
