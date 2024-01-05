@@ -1,7 +1,3 @@
-<?php
-$tempIntervenants = ["quentin", "pierre", "paul", "jacques"];
-?>
-
 <!doctype html>
 <html lang="fr" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -9,13 +5,18 @@ $tempIntervenants = ["quentin", "pierre", "paul", "jacques"];
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Festiplan- creation spectacle 1</title>
+    <title>Festiplan- creation spectacle 2</title>
 
-    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/dashboard/dashboard.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/footer.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/header.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svg.css">
-    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components\footer.css">
-    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components\header.css">
-    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createSpectacle/createSpectacle.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/formsInput/customInput.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createSpectacle/responsive.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createSpectacle/creationSpectacle.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createSpectacle/intervenantInputs.css">
+
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/index/index.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/index/responsive.css">
     <!-- Font Awesome -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -32,51 +33,71 @@ $tempIntervenants = ["quentin", "pierre", "paul", "jacques"];
 </head>
 <body>
 <div class="app">
-    <?php include $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/header.php" ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/header.php" ?>
+    <div class="retour">
+        <button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button>
+    </div>
     <div class="wrapper">
-        <div class="custom-select">
-            <label for="inter">Intervenants :</label>
-            <div class="text">Veuillez rentrer l'email du compte, </br>le compte n'existe pas, vous pouvez le crer avec le + </div>
-            <div class="row">
-                <input id="inter" type="text" placeholder="exemple@mail.fr">
-                <div class="button-add-inter">
-                    <i class="fa-solid fa-plus"></i>
-                    Ajouter l'intervenant
-                </div>
-            </div>
-            <div class="selections">
-                <!-- rempli avec le js -->
-            </div>
-        </div>
-        <div class="creation-compte">
+        <div class="container flex">
             <div class="title">
-                <h2>Création de compte</h2>
+                <h1>Création d'un spectacle</h1>
             </div>
-            <div class="row">
-                <div class="input">
-                    <label for="nom">Nom :</label>
-                    <input id="nom" type="text" placeholder="Nom">
+
+            <div class="custom-select">
+                <label for="inter">Intervenants :</label>
+                <div class="text">Veuillez rentrer l'email du compte, </br>le compte n'existe pas, vous pouvez le crer avec le + </div>
+                <div class="row">
+                    <input id="inter" type="text" placeholder="exemple@mail.fr">
+                    <div class="button-add-inter">
+                        <i class="fa-solid fa-plus"></i>
+                        Ajouter l'intervenant
+                    </div>
                 </div>
-                <div class="input">
-                    <label for="prenom">Prénom :</label>
-                    <input id="prenom" type="text" placeholder="Prénom">
-                </div>
-            </div>
-            <div class="row">
-                <div class="input">
-                    <label for="email">Email :</label>
-                    <input id="email" type="text" placeholder="Email">
-                </div>
-                <div class="input">
-                    <label for="mdp">Mot de passe :</label>
-                    <input id="mdp" type="password" placeholder="Mot de passe">
+                <div class="selections">
+                    <!-- rempli avec le js -->
                 </div>
             </div>
-            <div class="row">
-                <div class="input">
-                    <label for="mdp2">Confirmer le mot de passe :</label>
-                    <input id="mdp2" type="password" placeholder="Confirmer le mot de passe">
-                </div>
+            <div class="formulaire creationCompte">
+                <form method="get" action="/Festiplan/FestiplanWeb">
+                    <div class="form-duo">
+                        <div class="colonneCreationCompte">
+                            <label for="nom">
+                                Nom :
+                            </label>
+                            <input type="text" id="nom" name="nom" placeholder="Votre nom :" required>
+                        </div>
+                        <div class="colonneCreationCompte">
+                            <label for="prenom">
+                                Prénom :
+                            </label>
+                            <input type="text" id="prenom" name="prenom" placeholder="Votre prénom :" required>
+                        </div>
+                    </div>
+                    <div class="colonneCreationCompte mail">
+                        <label for="mail" id="mail">
+                            Email :
+                        </label>
+                        <input type="email" id="mail" name="email" placeholder="Votre email :" required>
+                    </div>
+                    <div class="form-duo">
+                        <div class="colonneCreationCompte">
+                            <label for="identifiantCrea">
+                                Identifiant :
+                            </label>
+                            <input type="text" id="identifiantCrea" name="login" placeholder="Votre identifiant :" required>
+                        </div>
+                        <div class="colonneCreationCompte">
+                            <label for="mdpCrea">
+                                Mot de passe :
+                            </label>
+                            <input type="password" id="mdpCrea" name="mdp" placeholder="Votre mot de passe :" minlength="8" required>
+                        </div>
+                    </div>
+                    <div class="lastSection">
+                        <input type="submit" class="boutonCreation" value="Créer le compte">
+                        <input hidden name="action" value="inscription">
+                    </div>
+                </form>
             </div>
         </div>
     </div>

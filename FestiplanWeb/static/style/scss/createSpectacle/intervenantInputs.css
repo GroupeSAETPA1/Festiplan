@@ -49,31 +49,12 @@ body {
   width: fit-content;
 }
 
-.switchForm {
-  text-align: center;
-  margin-top: 10px;
-  font-size: 20px;
-  color: #F7A072;
-}
-.switchForm:hover {
-  cursor: pointer;
-  text-decoration: underline #F7A072;
-}
-
 .colonneCreationCompte {
   display: flex;
   flex-direction: column;
   margin: 0 10px;
 }
 
-.connexion form {
-  width: 400px;
-}
-
-.creationCompte {
-  opacity: 0;
-  display: none;
-}
 .creationCompte .form-duo {
   display: flex;
   justify-content: space-between;
@@ -87,6 +68,7 @@ body {
 .creationCompte .boutonCreation {
   background: #99E1D9;
   color: #363732;
+  padding: 10px 20px;
 }
 .creationCompte .Retour {
   background: #F7A072;
@@ -102,4 +84,4 @@ body {
   padding: 10px;
 }
 
-/*# sourceMappingURL=forms.css.map */
+/*# sourceMappingURL=intervenantInputs.css.map */
