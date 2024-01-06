@@ -54,21 +54,27 @@ CREATE TABLE `liste_organisateur`
 (
     `id_festival`     int(6) NOT NULL,
     `id_organisateur` int(6) NOT NULL,
-    PRIMARY KEY (id_festival, id_organisateur)
+    PRIMARY KEY (id_festival, id_organisateur),
+    FOREIGN KEY (id_festival) REFERENCES festival (id_festival),
+    FOREIGN KEY (id_organisateur) REFERENCES utilisateurs (id_utilisateur)
 );
 -- Structure de la table `liste_scene`
 CREATE TABLE `liste_scene`
 (
     `id_festival` int(6) NOT NULL,
     `id_scene`    int(6) NOT NULL,
-    PRIMARY KEY (id_festival, id_scene)
+    PRIMARY KEY (id_festival, id_scene),
+    FOREIGN KEY (id_festival) REFERENCES festival (id_festival),
+    FOREIGN KEY (id_scene) REFERENCES scene (id_scene)
 );
 -- Structure de la table `liste_spectacle`
 CREATE TABLE `liste_spectacle`
 (
     `id_festival`  int(6) NOT NULL,
     `id_spectacle` int(6) NOT NULL,
-    PRIMARY KEY (id_festival, id_spectacle)
+    PRIMARY KEY (id_festival, id_spectacle),
+    FOREIGN KEY (id_festival) REFERENCES festival (id_festival),
+    FOREIGN KEY (id_spectacle) REFERENCES spectacle (id_spectacle)
 );
 -- Structure de la table `scene`
 CREATE TABLE `scene`
@@ -77,9 +83,12 @@ CREATE TABLE `scene`
     `nom`            varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'nom de la scene',
     `id_taille`      int(11)                      NOT NULL COMMENT 'id taille depuis taille scene',
     `nb_spectateurs` int(11)                      NOT NULL COMMENT 'nombre de spectateurs maximum',
+    `logitude`       FLOAT(2,5)                   NOT NULL COMMENT 'longitude de la scence',
+    `latitude`       FLOAT(2,5)                   NOT NULL COMMENT 'latitude de la scence',
     PRIMARY KEY (id_scene),
     FOREIGN KEY (id_taille) REFERENCES `taille_scene` (id_taille)
 );
+
 -- Structure de la table `spectacle`
 CREATE TABLE `spectacle`
 (
@@ -95,4 +104,14 @@ CREATE TABLE `spectacle`
     FOREIGN KEY (id_categorie) REFERENCES categorie (id_categorie),
     FOREIGN KEY (taille_scene) REFERENCES taille_scene (id_taille),
     FOREIGN KEY (responsable_spectacle) REFERENCES utilisateurs (id_utilisateur)
+);
+
+-- Structure de la table `liste_spectacle_temporaire`
+-- La table liste_spectacle_temporaire est une table temporaire qui permet de stocker les spectacles qui seront ajoutés au festival
+-- dans le formulaire d'ajout de spectacle.
+CREATE TABLE `liste_spectacle_temporaire`
+(
+    `id_festival`  int(6) NOT NULL,
+    `id_spectacle` int(6) NOT NULL,
+    PRIMARY KEY (id_festival, id_spectacle)
 );
