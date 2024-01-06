@@ -128,3 +128,25 @@ CREATE TABLE `liste_spectacle_temporaire`
     `id_spectacle` int(6) NOT NULL,
     PRIMARY KEY (id_festival, id_spectacle)
 );
+
+-- Structure de la table `liste_inter_hors_scene`
+-- La table liste_inter_hors_scene est une table qui permet de stocker les intervenants qui sont hors de la scene d'un spectacle.
+CREATE TABLE `liste_inter_hors_scene`
+(
+    `id_spectacle` int(6) NOT NULL,
+    `id_inter`     int(6) NOT NULL,
+    PRIMARY KEY (id_spectacle, id_inter),
+    FOREIGN KEY (id_spectacle) REFERENCES spectacle (id_spectacle),
+    FOREIGN KEY (id_inter) REFERENCES intervenant (id_inter)
+);
+
+-- Structure de la table `liste_inter_scene`
+-- La table liste_inter_scene est une table qui permet de stocker les intervenants qui sont dans la scene d'un spectacle.
+CREATE TABLE `liste_inter_scene`
+(
+    `id_spectacle` int(6) NOT NULL,
+    `id_inter`     int(6) NOT NULL,
+    PRIMARY KEY (id_spectacle, id_inter),
+    FOREIGN KEY (id_spectacle) REFERENCES spectacle (id_spectacle),
+    FOREIGN KEY (id_inter) REFERENCES intervenant (id_inter)
+);
