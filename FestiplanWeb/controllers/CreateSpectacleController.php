@@ -16,6 +16,7 @@ class CreateSpectacleController
     private $userService;
     private $pdo;
     private $categorieBD;
+    private $tailleSceneBD;
 
     public function __construct(CreateSpectacleService $createSpectacleService, UserService $userService, CreateFestivalService $createFestivalService, PDO $pdo)
     {
@@ -24,12 +25,14 @@ class CreateSpectacleController
         $this->createFestivalService = $createFestivalService;
         $this->createSpectacleService = $createSpectacleService;
         $this->categorieBD = $this -> createFestivalService->recupererCategorie();
+        $this->tailleSceneBD = $this -> createSpectacleService->recupererTailleScene();
         $this->userService = $userService;
     }
 
     public function index(PDO $pdo): View{
-        $view = new View("views/creationSpectacle.scss/createSpectacle1");
+        $view = new View("views/creationSpectacle/createSpectacle1");
         $view -> setVar('tableauCategorie' , $this->categorieBD);
+        $view -> setVar('tableauTailleScene' , $this->tailleSceneBD);
         $this->reAfficherElementsPage1($view);
         return $view;
     }
@@ -49,11 +52,11 @@ class CreateSpectacleController
 
     private function reAfficherElementsPage1(View $view)
     {
-        $view->setVar("nom", $_SESSION['nom'] ?? "");
-        $view->setVar("duree", $_SESSION['duree'] ?? "");
-        $view->setVar("description", $_SESSION['description'] ?? "");
-        $view->setVar("categorie", $_SESSION['categorie'] ?? "");
-        $view->setVar("image", $_SESSION['image'] ?? "");
-        $view->setVar("categorie", $_SESSION['categorie'] ?? "");
+        $view->setVar("nomSpectacle", $_SESSION['nomSpectacle'] ?? "");
+        $view->setVar("dureeSpectacle", $_SESSION['duree'] ?? "");
+        $view->setVar("descriptionSpectacle", $_SESSION['description'] ?? "");
+        $view->setVar("categorieSpectacle", $_SESSION['categorie'] ?? "");
+        $view->setVar("imageSpectacle", $_SESSION['image'] ?? "");
+        $view->setVar("tailleSceneSpectacle", $_SESSION['tailleSceneSpectacle'] ?? "");
     }
 }

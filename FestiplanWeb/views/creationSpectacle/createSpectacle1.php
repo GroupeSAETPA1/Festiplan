@@ -49,11 +49,11 @@
                     <div class="NDD flex">
                         <div>
                             <h3><i class="fa-solid fa-circle-exclamation"></i>Nom :</h3>
-                            <input type="text" name="nom" placeholder="Tapez le nom de votre spectacle"  value = "<?php echo $nom ?: "" ?>" />
+                            <input type="text" name="nom" placeholder="Tapez le nom de votre spectacle"  value = "<?php echo $nomSpectacle ?: "" ?>" />
                         </div>
                         <div>
                             <h3><i class="fa-solid fa-circle-exclamation"></i>Durée en minute:</h3>
-                            <input type="text" name="nom" placeholder="Entrez la durée en minutes de votre spectacle"  value = "<?php echo $duree ?: "" ?>" />
+                            <input type="text" name="nom" placeholder="Entrez la durée en minutes de votre spectacle"  value = "<?php echo $dureeSpectacle ?: "" ?>" />
                         </div>
                     </div>
 
@@ -64,7 +64,7 @@
                             <h3><label for="description"><i class="fa-solid fa-circle-exclamation"></i>Description :</label>
                             </h3>
                             <textarea id="description" name="description">
-                                 <?php echo $description ?: "" ?>
+                                 <?php echo $descriptionSpectacle ?: "" ?>
                             </textarea>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
 
                         foreach ($tableauCategorie as $ligne) {
                             echo '<option' ;
-                            if (isset($_SESSION['categorie']) && $ligne['id_categorie'] == $_SESSION['categorie']    ) {
+                            if (isset($_SESSION['categorieSpectacle']) && $ligne['id_categorie'] == $_SESSION['categorieSpectacle']    ) {
                                 echo ' selected' ;
                             }
                             echo  ' value = "' . $ligne['id_categorie'] . '">' . $ligne['nom'] . "</option>";
@@ -104,8 +104,19 @@
                 <!-- selection de la taille de la scene-->
                 <div class="flex-column">
                     <h3><i class="fa-solid fa-circle-exclamation"></i>Taille de la scène :</h3>
-                    <div class="text">Veuillez rentrer la taille de la scene en m²</div>
-                    <input type="number" min="0" max="1000" step="1" value="0" >
+                    <div class="text">Veuillez selectionner la taille de scene nécessaire</div>
+                    <select>
+                        <option value="vide"></option>
+                        <?php
+                        foreach ($tableauTailleScene as $ligne) {
+                            echo '<option' ;
+                            if (isset($_SESSION['tailleSceneSpectacle']) && $ligne['id_taille'] == $_SESSION['tailleSceneSpectacle']    ) {
+                                echo ' selected' ;
+                            }
+                            echo  ' value = "' . $ligne['id_taille'] . '">' . $ligne['taille'] . "</option>";
+                        }
+                        ?>
+                    </select>
                 </div>
                 <input hidden name="action" value="validerPage1">
                 <input hidden name="controller" value="CreateSpectacle">
@@ -125,6 +136,6 @@
         </div>
     </div>
 </div>
-<?php include_once "../../static/components/footer.php" ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/footer.php" ?>
 </body>
 </html>

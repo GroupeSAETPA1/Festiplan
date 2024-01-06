@@ -181,7 +181,7 @@ function minutesToHHMM(int $minutes): string
             ?>
             <div class="container entete-section">
                 <h1>Mes Spectacles</h1>
-                <a href="/Festiplan/FestiplanWeb/?controller=CreateSpectacle"> <!-- TODO : Lien vers la page de création de spectacle -->
+                <a href="/Festiplan/FestiplanWeb/?controller=CreateSpectacle">
                     <div class="rounded">
                         <i class="fa-regular fa-calendar-plus"></i>
                         <p>Cr&eacute;er un spectacle</p>
