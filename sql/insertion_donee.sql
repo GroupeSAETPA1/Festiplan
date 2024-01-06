@@ -17,8 +17,7 @@ INSERT INTO categorie (id_categorie, nom) VALUES
 INSERT INTO `taille_scene` (`id_taille`, `taille`) VALUES
 (1, 'Petite (4mx4m)'),
 (2, 'Moyenne (10mx10m)'),
-(3, 'Grande (30mx30m)'),
-(4, 'Très Grande (100mx100m)');
+(3, 'Grande (30mx30m)');
 
 INSERT INTO festival (id_festival, nom, description, debut, fin, id_categorie, id_responsable, `duree_entre_spectacle`, illustration, heure_debut_spectacles, heure_fin_spectacles)
 VALUES

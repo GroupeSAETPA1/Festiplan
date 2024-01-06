@@ -11,9 +11,8 @@
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svg.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components\footer.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components\header.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/ceateSpectacle/createSpectacle.css">
 
-    <!-- Fontawesome --><!-- TODO Custom Kit -->
-    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/framework/fontawesome-free-6.2.1-web/css/all.css">
     <!-- Font Awesome -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -25,7 +24,7 @@
     <!-- GSAP -->  <!-- Jquery -->
     <script src="/Festiplan/node_modules/gsap/dist/gsap.min.js"></script>
     <script src="/Festiplan/node_modules/jquery/dist/jquery.min.js"></script>
-    <!--        <script src="/Festiplan/FestiplanWeb/static/scripts/TOOD" defer></script>-->
+    <!-- custom js -->
     <script src="/Festiplan/FestiplanWeb/static/scripts/responsive/footerResponsive.js" defer></script>
 </head>
 <body>

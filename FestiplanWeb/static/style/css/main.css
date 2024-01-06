@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Rubik:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 /* declaration des variables */
 /* ne codez pas ici, c'est le fichier pour les variables, etc. */
+body {
+  min-height: 100vh;
+}
 
 
 /*# sourceMappingURL=main.css.map */
