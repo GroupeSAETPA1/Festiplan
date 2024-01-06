@@ -38,7 +38,4 @@ class CreateSpectacleController
     public function index(PDO $pdo): View{
         return new View("views/creationSpectacle.scss/createSpectacle1");
     }
-
-
-
 }
