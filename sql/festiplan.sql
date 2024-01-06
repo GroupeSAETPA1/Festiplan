@@ -72,16 +72,6 @@ CREATE TABLE `scene`
     FOREIGN KEY (id_taille) REFERENCES `taille_scene` (id_taille)
 );
 
--- Structure de la table `liste_scene`
-CREATE TABLE `liste_scene`
-(
-    `id_festival` int(6) NOT NULL,
-    `id_scene`    int(6) NOT NULL,
-    PRIMARY KEY (id_festival, id_scene),
-    FOREIGN KEY (id_festival) REFERENCES festival (id_festival),
-    FOREIGN KEY (id_scene) REFERENCES scene (id_scene)
-);
-
 -- Structure de la table `spectacle`
 CREATE TABLE `spectacle`
 (
