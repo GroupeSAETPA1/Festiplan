@@ -25,7 +25,8 @@ INSERT INTO `taille_scene` (`id_taille`, `taille`) VALUES
 -- Insertion dans la table `festival`
 INSERT INTO festival (nom, description, debut, fin, id_categorie, id_responsable, `duree_entre_spectacle`, heure_debut_spectacles, heure_fin_spectacles, illustration)
 VALUES
-('Bonne année', 'premier festival de l\'année', '2024-01-01', '2024-01-07', 1, 1, 10, '12:00:00', '23:59:59', 'Rien');
+('Bonne année', 'premier festival de l\'année', '2024-01-01', '2024-01-07', 1, 1, 10, '12:00:00', '23:59:59', 'Rien'),
+('festival de quentin', 'premier festival pour quentin', '2024-01-10', '2024-01-11', 1, 1, 10, '12:00:00', '23:59:59', 'Rien');
 
 
 -- Insertion dans la table `scene`
