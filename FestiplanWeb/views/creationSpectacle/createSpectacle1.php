@@ -33,7 +33,9 @@
 <div class="app">
     <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/header.php" ?>
     <div class="retour">
-        <button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button>
+        <a href="/Festiplan/FestiplanWeb/?controller=Dashboard">
+            <button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button>
+        </a>
     </div>
     <div class="wrapper">
         <div class="container flex">
@@ -47,11 +49,11 @@
                     <div class="NDD flex">
                         <div>
                             <h3><i class="fa-solid fa-circle-exclamation"></i>Nom :</h3>
-                            <input type="text" name="nom" placeholder="Tapez le nom de votre festival"/>
+                            <input type="text" name="nom" placeholder="Tapez le nom de votre spectacle"  value = "<?php echo $nom ?: "" ?>" />
                         </div>
                         <div>
-                            <h3><i class="fa-solid fa-circle-exclamation"></i>Durée :</h3>
-                            <input type="text" name="nom" placeholder="Tapez le nom de votre festival"/>
+                            <h3><i class="fa-solid fa-circle-exclamation"></i>Durée en minute:</h3>
+                            <input type="text" name="nom" placeholder="Entrez la durée en minutes de votre spectacle"  value = "<?php echo $duree ?: "" ?>" />
                         </div>
                     </div>
 
@@ -61,7 +63,9 @@
 
                             <h3><label for="description"><i class="fa-solid fa-circle-exclamation"></i>Description :</label>
                             </h3>
-                            <textarea id="description" name="description"></textarea>
+                            <textarea id="description" name="description">
+                                 <?php echo $description ?: "" ?>
+                            </textarea>
                         </div>
                     </div>
                 </div>
