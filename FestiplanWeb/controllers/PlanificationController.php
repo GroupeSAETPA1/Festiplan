@@ -25,17 +25,17 @@ class PlanificationController
         $id_festival = 1; // $_SESSION['id_festival'] ?? null;
         // Si on tente d'accéder a la page de planification sans être connecté ou sans avoir séléctionné un festival,
         // on renvoie sur la page de connexion
-        if ($id_organisateur == null || $id_festival == null) {
-            header("Location: /Festiplan/FestiplanWeb/");
-            exit();
-        }
-        
+//        if ($id_organisateur == null || $id_festival == null) {
+//            header("Location: /Festiplan/FestiplanWeb/");
+//            exit();
+//        }
+//
         $festival = $this->planificationService->getFestival($id_festival, $id_organisateur);
 
-        if ($festival == null) {
-            header("Location: /Festiplan/FestiplanWeb/"); // TODO renvoyer sur la bonne page avec éventuellement un message d'erreur
-            exit();
-        } // else
+//        if ($festival == null) {
+//            header("Location: /Festiplan/FestiplanWeb/"); // TODO renvoyer sur la bonne page avec éventuellement un message d'erreur
+//            exit();
+//        } // else
 
 
         $spectaclesFestival = $this->planificationService->getSpectaclesFestival($id_festival);

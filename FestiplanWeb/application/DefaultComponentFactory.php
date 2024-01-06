@@ -28,23 +28,22 @@ use services\AccesListeSpectaclesService;
 use services\AjouterListesSpectaclesServices;
 use services\createFestivalService;
 
+
+use controllers\UserController;
+use services\UserService;
+use controllers\DashboardController;
+use services\DashboardService;
 use controllers\PlanificationController;
 use services\PlanificationService;
-
-use controllers\DashboardController;
-use controllers\UserController;
 use controllers\CreateSpectacleController;
-use controllers\DashboardController;
-use controllers\UserController;
-use PDO;
 use services\CreateSpectacleService;
-use services\DashboardService;
-use services\UserService;
+
 use yasmf\ComponentFactory;
 use yasmf\NoControllerAvailableForNameException;
 use yasmf\NoServiceAvailableForNameException;
 
 use PDO;
+
 /**
  *  The controller factory
  */
