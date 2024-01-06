@@ -37,66 +37,75 @@
     </div>
     <div class="wrapper">
         <div class="container flex">
-            <div class="title">
-                <h1>Création d'un spectacle</h1>
-            </div>
+            <form method="post" action="index.php">
+                <div class="title">
+                    <h1>Création d'un spectacle</h1>
+                </div>
 
-            <!-- Premier paquet pour le premier cube d'information-->
-            <div class="flex-row first-row">
-                <div class="NDD flex">
-                    <div>
-                        <h3><i class="fa-solid fa-circle-exclamation"></i>Nom :</h3>
-                        <input type="text" name="nom" placeholder="Tapez le nom de votre festival"/>
+                <!-- Premier paquet pour le premier cube d'information-->
+                <div class="flex-row first-row">
+                    <div class="NDD flex">
+                        <div>
+                            <h3><i class="fa-solid fa-circle-exclamation"></i>Nom :</h3>
+                            <input type="text" name="nom" placeholder="Tapez le nom de votre festival"/>
+                        </div>
+                        <div>
+                            <h3><i class="fa-solid fa-circle-exclamation"></i>Durée :</h3>
+                            <input type="text" name="nom" placeholder="Tapez le nom de votre festival"/>
+                        </div>
                     </div>
-                    <div>
-                        <h3><i class="fa-solid fa-circle-exclamation"></i>Durée :</h3>
-                        <input type="text" name="nom" placeholder="Tapez le nom de votre festival"/>
+
+                    <div class="Description">
+                        <!-- Contient un second bloc avec la description et qui se situe au cote a cote avec le premier bloc -->
+                        <div>
+
+                            <h3><label for="description"><i class="fa-solid fa-circle-exclamation"></i>Description :</label>
+                            </h3>
+                            <textarea id="description" name="description"></textarea>
+                        </div>
                     </div>
                 </div>
 
-                <div class="Description">
-                    <!-- Contient un second bloc avec la description et qui se situe au cote a cote avec le premier bloc -->
-                    <div>
 
-                        <h3><label for="description"><i class="fa-solid fa-circle-exclamation"></i>Description :</label>
-                        </h3>
-                        <textarea id="description" name="description"></textarea>
+                <!-- Second paquet qui va contenir le champ d'entrée d'image-->
+                <div class="flex-row">
+                    <div class="custom-file-input-wrapper">
+                        <h3 class="custom-file-input-text">Illustration :</h3></br>
+                        <label class="custom-file-input" for="fileInput"><i class="fa-solid fa-image"></i>Parcourir</label>
+                        <input type="file" id="fileInput" name="fileInput"/>
+                    </div>
+                    <div class="format">
+                        <br>Format PNG,JPG,GIF</br>
+                        <br>800x600</br>
                     </div>
                 </div>
-            </div>
 
 
-            <!-- Second paquet qui va contenir le champ d'entrée d'image-->
-            <div class="flex-row">
-                <div class="custom-file-input-wrapper">
-                    <h3 class="custom-file-input-text">Illustration :</h3></br>
-                    <label class="custom-file-input" for="fileInput"><i class="fa-solid fa-image"></i>Parcourir</label>
-                    <input type="file" id="fileInput" name="fileInput"/>
+                <div class="flex-column">
+                    <h3><i class="fa-solid fa-circle-exclamation"></i>Catégorie :</h3>
+                    <select>
+                        <option value="vide"></option>
+                        <?php
+
+                        foreach ($tableauCategorie as $ligne) {
+                            echo '<option' ;
+                            if (isset($_SESSION['categorie']) && $ligne['id_categorie'] == $_SESSION['categorie']    ) {
+                                echo ' selected' ;
+                            }
+                            echo  ' value = "' . $ligne['id_categorie'] . '">' . $ligne['nom'] . "</option>";
+                        }
+                        ?>
+                    </select>
                 </div>
-                <div class="format">
-                    <br>Format PNG,JPG,GIF</br>
-                    <br>800x600</br>
+                <!-- selection de la taille de la scene-->
+                <div class="flex-column">
+                    <h3><i class="fa-solid fa-circle-exclamation"></i>Taille de la scène :</h3>
+                    <div class="text">Veuillez rentrer la taille de la scene en m²</div>
+                    <input type="number" min="0" max="1000" step="1" value="0" >
                 </div>
-            </div>
-
-
-            <div class="flex-column">
-                <h3><i class="fa-solid fa-circle-exclamation"></i>Catégorie :</h3>
-                <select>
-                    <option value=" "></option>
-                    <option value="concert">concert</option>
-                    <option value="theatre">theatre</option>
-                    <option value="danse">danse</option>
-                    <option value="cirque">cirque</option>
-                    <option value="film">film</option>
-                </select>
-            </div>
-            <!-- selection de la taille de la scene-->
-            <div class="flex-column">
-                <h3><i class="fa-solid fa-circle-exclamation"></i>Taille de la scène :</h3>
-                <div class="text">Veuillez rentrer la taille de la scene en m²</div>
-                <input type="number" min="0" max="1000" step="1" value="0" >
-            </div>
+                <input hidden name="action" value="validerPage1">
+                <input hidden name="controller" value="CreateSpectacle">
+            </form>
         </div>
         <div class="valid-annul-placement flex-row">
             <div class="annulChoix lastButton">
