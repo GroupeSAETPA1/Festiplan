@@ -106,6 +106,19 @@ CREATE TABLE `spectacle`
     FOREIGN KEY (responsable_spectacle) REFERENCES utilisateurs (id_utilisateur)
 );
 
+-- Structure de la table `spectacle_festival_scene`
+-- La table spectacle_festival_scene est une table qui permet de stocker les spectacles qui sont dans un festival et dans une scene.
+CREATE TABLE `spectacle_festival_scene`
+(
+    `id_festival`  int(6) NOT NULL,
+    `id_spectacle` int(6) NOT NULL,
+    `id_scene`     int(6) NOT NULL,
+    PRIMARY KEY (id_festival, id_spectacle, id_scene),
+    FOREIGN KEY (id_festival) REFERENCES festival (id_festival),
+    FOREIGN KEY (id_spectacle) REFERENCES spectacle (id_spectacle),
+    FOREIGN KEY (id_scene) REFERENCES scene (id_scene)
+);
+
 -- Structure de la table `liste_spectacle_temporaire`
 -- La table liste_spectacle_temporaire est une table temporaire qui permet de stocker les spectacles qui seront ajoutés au festival
 -- dans le formulaire d'ajout de spectacle.
