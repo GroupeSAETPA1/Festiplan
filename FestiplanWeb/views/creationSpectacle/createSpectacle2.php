@@ -30,54 +30,56 @@
     <script src="/Festiplan/node_modules/jquery/dist/jquery.min.js"></script>
     <!-- custom js -->
     <script src="/Festiplan/FestiplanWeb/static/scripts/responsive/footerResponsive.js" defer></script>
-    <script src="/Festiplan/FestiplanWeb/static/scripts/customInput.js" defer></script>
+    <script src="/Festiplan/FestiplanWeb/static/scripts/creationSpectacle/inputIntervenantsScene.js" defer></script>
 </head>
 <body>
 <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/header.php" ?>
 <div class="retour">
-    <button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button>
+    <a href="/Festiplan/FestiplanWeb/?controller=CreateSpectacle">
+        <button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button>
+    </a>
 </div>
 <div class="app">
     <div class="wrapper">
-        <div class="container flex">
-            <div class="title">
-                <h1>Création d'un spectacle</h1>
-            </div>
-            <section>
-                <div class="custom-select">
-                    <label for="inter">Intervenants sur scene:</label>
-                    <div class="text">Veuillez rentrer l'email du compte, </br>le compte n'existe pas, vous pouvez le crer avec le + </div>
-                    <div class="row">
-                        <input id="inter" type="text" placeholder="exemple@mail.fr">
-                        <div class="button-add-inter">
-                            <i class="fa-solid fa-plus"></i>
-                            Ajouter l'intervenant
+        <form method="post" action="index.php">
+            <div class="container flex">
+                <div class="title">
+                    <h1>Création d'un spectacle</h1>
+                </div>
+                <section>
+                    <div class="custom-select">
+                        <label for="inter">Intervenants sur scene:</label>
+                        <div class="text">Veuillez rentrer l'email du compte, </br>Le compte n'existe pas ? vous pouvez le crer avec le + </br> Si vous ne créer pas le compte il ne sera pas pris en compte </div>
+                        <div class="row">
+                            <input id="inter" type="text" placeholder="exemple@mail.fr">
+                            <div class="button-add-inter add-inter">
+                                <i class="fa-solid fa-plus"></i>
+                                Ajouter l'intervenant
+                            </div>
+                        </div>
+                        <div class="selections">
+                            <!-- rempli avec le js -->
                         </div>
                     </div>
-                    <div class="selections">
-                        <!-- rempli avec le js -->
-                    </div>
-                </div>
-            </section>
-            <hr>
-            <section class="interHorsScene">
-                <div class="custom-select">
-                    <label for="inter">Intervenants hors scene:</label>
-                    <div class="text">Veuillez rentrer l'email du compte, </br>le compte n'existe pas, vous pouvez le crer avec le + </div>
-                    <div class="row">
-                        <input id="interHorsScene" type="text" placeholder="exemple@mail.fr">
-                        <div class="button-add-inter">
-                            <i class="fa-solid fa-plus"></i>
-                            Ajouter l'intervenant
+                </section>
+                <hr>
+                <section class="interHorsScene">
+                    <div class="custom-select">
+                        <label for="interHorsScene">Intervenants hors scene:</label>
+                        <div class="text">Veuillez rentrer l'email du compte, </br>Le compte n'existe pas ? vous pouvez le crer avec le + </br> Si vous ne créer pas le compte il ne sera pas pris en compte</div>
+                        <div class="row">
+                            <input id="interHorsScene" type="text" placeholder="exemple@mail.fr">
+                            <div class="button-add-interHorsScene add-inter">
+                                <i class="fa-solid fa-plus"></i>
+                                Ajouter l'intervenant
+                            </div>
+                        </div>
+                        <div class="selectionsHorsScene">
+                            <!-- rempli avec le js -->
                         </div>
                     </div>
-                    <div class="selections">
-                        <!-- rempli avec le js -->
-                    </div>
-                </div>
-            </section>
-            <div class="formulaire creationCompte">
-                <form method="get" action="/Festiplan/FestiplanWeb">
+                </section>
+                <div class="formulaire creationCompte" hidden>
                     <div class="form-duo">
                         <div class="colonneCreationCompte">
                             <label for="nom">
@@ -116,9 +118,19 @@
                         <input type="submit" class="boutonCreation" value="Créer le compte">
                         <input hidden name="action" value="inscription">
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
+            <input hidden name="action" value="validerPage2">
+            <input hidden name="controller" value="CreateSpectacle">
+            <div class="valid-annul-placement flex-row">
+                <div class="annulChoix lastButton">
+                    <i class="fa-regular fa-circle-xmark"></i> Annuler vos choix
+                </div>
+                <button type="submit" class="valider page-suivante lastButton">
+                    Page Suivante<i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </form>
     </div>
 </div>
 <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/footer.php" ?>
