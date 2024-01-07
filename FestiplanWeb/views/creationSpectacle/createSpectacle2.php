@@ -79,46 +79,7 @@
                         </div>
                     </div>
                 </section>
-                <div class="formulaire creationCompte" hidden>
-                    <div class="form-duo">
-                        <div class="colonneCreationCompte">
-                            <label for="nom">
-                                Nom :
-                            </label>
-                            <input type="text" id="nom" name="nom" placeholder="Votre nom :" required>
-                        </div>
-                        <div class="colonneCreationCompte">
-                            <label for="prenom">
-                                Prénom :
-                            </label>
-                            <input type="text" id="prenom" name="prenom" placeholder="Votre prénom :" required>
-                        </div>
-                    </div>
-                    <div class="colonneCreationCompte mail">
-                        <label for="mail" id="mail">
-                            Email :
-                        </label>
-                        <input type="email" id="mail" name="email" placeholder="Votre email :" required>
-                    </div>
-                    <div class="form-duo">
-                        <div class="colonneCreationCompte">
-                            <label for="identifiantCrea">
-                                Identifiant :
-                            </label>
-                            <input type="text" id="identifiantCrea" name="login" placeholder="Votre identifiant :" required>
-                        </div>
-                        <div class="colonneCreationCompte">
-                            <label for="mdpCrea">
-                                Mot de passe :
-                            </label>
-                            <input type="password" id="mdpCrea" name="mdp" placeholder="Votre mot de passe :" minlength="8" required>
-                        </div>
-                    </div>
-                    <div class="lastSection">
-                        <input type="submit" class="boutonCreation" value="Créer le compte">
-                        <input hidden name="action" value="inscription">
-                    </div>
-                </div>
+
             </div>
             <input hidden name="action" value="validerPage2">
             <input hidden name="controller" value="CreateSpectacle">
@@ -131,6 +92,46 @@
                 </button>
             </div>
         </form>
+        <div class="formulaire creationCompte" >
+            <div class="form-duo">
+                <div class="colonneCreationCompte">
+                    <label for="nom">
+                        Nom :
+                    </label>
+                    <input type="text" id="nom" name="nom" placeholder="Votre nom :" required>
+                </div>
+                <div class="colonneCreationCompte">
+                    <label for="prenom">
+                        Prénom :
+                    </label>
+                    <input type="text" id="prenom" name="prenom" placeholder="Votre prénom :" required>
+                </div>
+            </div>
+            <div class="colonneCreationCompte mail">
+                <label for="mail" id="mail">
+                    Email :
+                </label>
+                <input type="email" id="mail" name="email" placeholder="Votre email :" required>
+            </div>
+            <div class="form-duo">
+                <div class="colonneCreationCompte">
+                    <label for="identifiantCrea">
+                        Identifiant :
+                    </label>
+                    <input type="text" id="identifiantCrea" name="login" placeholder="Votre identifiant :" required>
+                </div>
+                <div class="colonneCreationCompte">
+                    <label for="mdpCrea">
+                        Mot de passe :
+                    </label>
+                    <input type="password" id="mdpCrea" name="mdp" placeholder="Votre mot de passe :" minlength="8" required>
+                </div>
+            </div>
+            <div class="lastSection">
+                <input type="submit" class="boutonCreation" value="Créer le compte">
+                <input hidden name="action" value="inscription">
+            </div>
+        </div>
     </div>
 </div>
 <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/footer.php" ?>
