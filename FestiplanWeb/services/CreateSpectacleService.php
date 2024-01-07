@@ -9,9 +9,12 @@ class CreateSpectacleService
 
     private PDO $pdoCreationSpectacle;
 
-    public function __construct(PDO $pdo)
+    private UserService $userService;
+
+    public function __construct(PDO $pdo, UserService $userService)
     {
         $this->pdoCreationSpectacle = $pdo;
+        $this->userService = $userService;
     }
 
     public function recupererTailleScene() {
@@ -44,7 +47,6 @@ class CreateSpectacleService
             $sql->bindParam(':taille_scene', $tailleSceneSpectacle);
             $sql->bindParam(':categorie', $categorieSpectacle);
             $sql->bindParam(':photo', $photoSpectacle);
-            var_dump($_SESSION);
             $sql->bindParam(':responsable_spectacle', $_SESSION['id_utilisateur']);
             $sql->execute();
             $idSpectacle = $pdo->lastInsertId();
@@ -60,9 +62,10 @@ class CreateSpectacleService
     {
         try {
             foreach ($listeInter as $inter) {
+                $idInter = $this->userService->getIdUtilisateur($pdo, $inter);
                 $sql = $pdo->prepare('INSERT INTO liste_inter_scene (id_spectacle, id_inter) VALUES (:id_spectacle, :id_inter)');
                 $sql->bindParam(':id_spectacle', $idSpectacle);
-                $sql->bindParam(':id_inter', $inter);
+                $sql->bindParam(':id_inter', $idInter);
                 $sql->execute();
             }
             return true;
@@ -75,9 +78,10 @@ class CreateSpectacleService
     {
         try {
             foreach ($listInterHorsScene as $inter) {
+                $idInter = $this->userService->getIdUtilisateur($pdo, $inter);
                 $sql = $pdo->prepare('INSERT INTO liste_inter_hors_scene (id_spectacle, id_inter) VALUES (:id_spectacle, :id_inter)');
                 $sql->bindParam(':id_spectacle', $idSpectacle);
-                $sql->bindParam(':id_inter', $inter);
+                $sql->bindParam(':id_inter', $idInter);
                 $sql->execute();
             }
             return true;

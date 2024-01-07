@@ -168,7 +168,7 @@ class DefaultComponentFactory implements ComponentFactory
     {
         if ($this->createSpectacleService == null) {
             $pdo = $this->getPDO("root", "root");
-            $this->createSpectacleService = new CreateSpectacleService($pdo);
+            $this->createSpectacleService = new CreateSpectacleService($pdo, $this->buildUserService());
         }
         return $this->createSpectacleService;
     }
