@@ -20,8 +20,8 @@ class CreateSpectacleController
     private CreateFestivalService $createFestivalService;
     private UserService $userService;
     private PDO $pdo;
-    private array|false $categorieBD;
-    private array|false $tailleSceneBD;
+    private array $categorieBD;
+    private array $tailleSceneBD;
 
     public function __construct(CreateSpectacleService $createSpectacleService, UserService $userService, CreateFestivalService $createFestivalService, PDO $pdo)
     {
@@ -50,7 +50,7 @@ class CreateSpectacleController
     {
         $email = htmlspecialchars(HttpHelper::getParam('email') ?: "");
         $result = $this->userService->emailExiste($this->pdo, $email);
-        $view = new View("views/creationSpectacle.scss/checkUserByEmail");
+        $view = new View("views/creationSpectacle/checkUserByEmail");
         $view->setVar("result", $result);
         return $view;
     }
@@ -74,14 +74,22 @@ class CreateSpectacleController
             && $this-> photoOk(HttpHelper::getParam("fileInput"));
         if($tousOk) {
             $view = new View("views/creationSpectacle/createSpectacle2");
-            $this->reAfficherElementsPage1($view);
-            $view -> setVar('tableauCategorie' , $this->categorieBD);
-            $view -> setVar('tableauTailleScene' , $this->tailleSceneBD);
         } else {
             $view = new View("views/creationSpectacle/createSpectacle1");
             $view -> setVar('tableauCategorie' , $this->categorieBD);
             $view -> setVar('tableauTailleScene' , $this->tailleSceneBD);
             $this->reAfficherElementsPage1($view);
+        }
+        return $view;
+    }
+
+    public function validerPage2(): View
+    {
+        $tousOk = true ; // STUB
+        if ($tousOk) {
+            $view = new View("views/creationSpectacle/createSpectacle3");
+        } else {
+            $view = new View("views/creationSpectacle/createSpectacle2");
         }
         return $view;
     }

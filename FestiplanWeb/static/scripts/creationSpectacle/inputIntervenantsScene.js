@@ -1,12 +1,20 @@
 const interList = [];
-const BUTTON = $(".button-add-inter");
-const INPUT = $('#inter');
+const interListHorsScene = [];
 
-async function addInter() {
+const BUTTON = $(".button-add-inter");
+const BUTTON_HORS_SCENE = $(".button-add-interHorsScene");
+
+const INPUT = $('#inter');
+const INPUT_HORS_SCENE = $('#interHorsScene');
+
+const SELECTION = $('.selections');
+const SELECTION_HORS_SCENE = $('.selectionsHorsScene');
+
+async function addInter(INPUT, list, SELECTION) {
     const input = INPUT.val();
     const isMail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-    if (input && isMail.test(input) && !interList.find(inter => inter.name === input)) {
+    if (input && isMail.test(input) && !list.find(inter => inter.name === input)) {
         INPUT.css({
             border: "1px solid black",
         });
@@ -19,18 +27,17 @@ async function addInter() {
             console.error("Erreur lors de la vérification de l'email", error);
             return;
         }
-
         let inter = {
-            id: interList.length,
+            id: list.length,
             name: input,
             valid: emailValid === "1",
         };
 
-        interList.push(inter);
+        list.push(inter);
         INPUT.val('');
-        displayInter();
+        displayInter(SELECTION, list);
     } else {
-        if (interList.find(inter => inter.name === input)) {
+        if (list.find(inter => inter.name === input)) {
             alert("L'adresse mail est déjà présente");
         }
         INPUT.css({
@@ -39,20 +46,20 @@ async function addInter() {
     }
 }
 
-function displayInter() {
-    let selection = $('.selections')[0];
+function displayInter(SELECTION, list) {
+    let selection = SELECTION[0];
     selection.innerHTML = '';
 
-    for (let i = 0; i < interList.length; i++) {
+    for (let i = 0; i < list.length; i++) {
         let htmlContent = `<div class="selection">
             <div class="left">
-                <i class="fa-${interList[i].valid ? 'solid fa-check ok' : 'regular fa-plus add'}"></i>
+                <i class="fa-${list[i].valid ? 'solid fa-check ok' : 'regular fa-plus add'}"></i>
             </div>
-            <div class="name">${interList[i].name}</div>
+            <div class="name">${list[i].name}</div>
             <div class="delete" data-index="${i}">
                 <i class="fa-solid fa-trash-can"></i>
             </div>
-            <input name="inter[${i}]" type="hidden" value="${interList[i].name}"> 
+            <input name="inter[${i}]" type="hidden" value="${list[i].name}"> 
         </div>`;
 
         selection.innerHTML += htmlContent;
@@ -77,13 +84,25 @@ function checkInter(mail) {
     });
 }
 
-$('.selections').on('click', '.delete', function() {
+SELECTION.on('click', '.delete', function() {
     let index = $(this).data('index');
 
     interList.splice(index, 1);
-
     // Refresh the display
-    displayInter();
+    displayInter(SELECTION, interList);
+});
+SELECTION_HORS_SCENE.on('click', '.delete', function() {
+    let index = $(this).data('index');
+
+    interListHorsScene.splice(index, 1);
+    // Refresh the display
+    displayInter(SELECTION_HORS_SCENE, interListHorsScene);
 });
 
-BUTTON.on('click', addInter);
+
+BUTTON.on('click', function() {
+    addInter(INPUT, interList, SELECTION);
+});
+BUTTON_HORS_SCENE.on('click', function() {
+    addInter(INPUT_HORS_SCENE, interListHorsScene, SELECTION_HORS_SCENE);
+});
