@@ -58,9 +58,13 @@ function displayInter(SELECTION, list) {
             <div class="name">${list[i].name}</div>
             <div class="delete" data-index="${i}">
                 <i class="fa-solid fa-trash-can"></i>
-            </div>
-            <input name="inter[${i}]" type="hidden" value="${list[i].name}"> 
-        </div>`;
+            </div>`;
+        // si la liste est celle des intervenants hors scene on ajoute une input caché pour le formulaire
+        if (SELECTION === SELECTION_HORS_SCENE) {
+            htmlContent += `<input type="hidden" name="interHorsScene[]" value="${list[i].name}">`;
+        } else {
+            htmlContent += `<input type="hidden" name="inter[]" value="${list[i].name}">`;
+        }
 
         selection.innerHTML += htmlContent;
     }

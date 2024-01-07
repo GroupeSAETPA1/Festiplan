@@ -25,7 +25,6 @@ class CreateSpectacleController
 
     public function __construct(CreateSpectacleService $createSpectacleService, UserService $userService, CreateFestivalService $createFestivalService, PDO $pdo)
     {
-        session_start();
         $this->pdo = $pdo;
         $this->createFestivalService = $createFestivalService;
         $this->createSpectacleService = $createSpectacleService;
@@ -73,6 +72,13 @@ class CreateSpectacleController
             && $this-> categorieOk(HttpHelper::getParam("categorie"))
             && $this-> photoOk(HttpHelper::getParam("fileInput"));
         if($tousOk) {
+            // on écrit les données dans la variable de session
+            $_SESSION['nomSpectacle'] = HttpHelper::getParam("nom");
+            $_SESSION['descriptionSpectacle'] = HttpHelper::getParam("description");
+            $_SESSION['dureeSpectacle'] = HttpHelper::getParam("duree");
+            $_SESSION['tailleSceneSpectacle'] = HttpHelper::getParam("taille");
+            $_SESSION['categorieSpectacle'] = HttpHelper::getParam("categorie");
+            $_SESSION['photoSpectacle'] = HttpHelper::getParam("fileInput");
             $view = new View("views/creationSpectacle/createSpectacle2");
         } else {
             $view = new View("views/creationSpectacle/createSpectacle1");
@@ -85,14 +91,31 @@ class CreateSpectacleController
 
     public function validerPage2(): View
     {
-        $tousOk = true ; // STUB
+        if (isset($_POST['inter'])) {
+            $inter = $_POST['inter'];
+        } else {
+            $inter = array();
+        }
+        if (isset($_POST['interHorsScene'])) {
+            $interHorsScene = $_POST['interHorsScene'];
+        } else {
+            $interHorsScene = array();
+        }
+
+        $tousOk = true; // STUB
         if ($tousOk) {
-            $view = new View("views/creationSpectacle/createSpectacle3");
+            // on ajoute dans la bd le spectacle
+            $this->createSpectacleService->ajouterSpectacle($this->pdo, $_SESSION['nomSpectacle'], $_SESSION['descriptionSpectacle'],
+                                                                                       $_SESSION['dureeSpectacle'], $_SESSION['tailleSceneSpectacle'],
+                                                                                       $_SESSION['categorieSpectacle'], $_SESSION['photoSpectacle'],
+                                                                                       $inter, $interHorsScene);
+            $view = new View("views/dashboard");
         } else {
             $view = new View("views/creationSpectacle/createSpectacle2");
         }
         return $view;
     }
+
 
     private function nomOk($nom): bool
     {
@@ -121,24 +144,8 @@ class CreateSpectacleController
 
     private function photoOk($photo): bool
     {
-        if (isset($_FILES['imageFestival']) && $_FILES['imageFestival']['name'] != '') {
-            $dossier = $_SERVER[ 'DOCUMENT_ROOT' ] . PREFIX_TO_RELATIVE_PATH . '/datas/img';
-            try {
-                $extension = $this->recupererExtension($_FILES['imageFestival']['name']);
-            } catch (Exception) {
-                return false ;
-            }
-            $nouveau_nom = $nomFestival."_image".time().$extension;
-            var_dump($nouveau_nom);
-            if (move_uploaded_file($_FILES['imageFestival']['tmp_name'] , $dossier."/".$nouveau_nom)) {
-                return true ;
-            } else {
-                return false;
-            }
-            // photo non ajouté
-        } else {
-            return true ;
-        }
+        // TODO
+        return true;
     }
 
     /**
