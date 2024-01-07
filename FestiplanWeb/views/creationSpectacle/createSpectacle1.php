@@ -38,102 +38,100 @@
         </a>
     </div>
     <div class="wrapper">
-        <div class="container flex">
-            <form method="post" action="index.php">
-                <div class="title">
-                    <h1>Création d'un spectacle</h1>
-                </div>
+        <form method="post" action="index.php">
+            <div class="container flex">
+                    <div class="title">
+                        <h1>Création d'un spectacle</h1>
+                    </div>
 
-                <!-- Premier paquet pour le premier cube d'information-->
-                <div class="flex-row first-row">
-                    <div class="NDD flex">
-                        <div>
-                            <h3><i class="fa-solid fa-circle-exclamation"></i>Nom :</h3>
-                            <input type="text" name="nom" placeholder="Tapez le nom de votre spectacle"  value = "<?php echo $nomSpectacle ?: "" ?>" />
+                    <!-- Premier paquet pour le premier cube d'information-->
+                    <div class="flex-row first-row">
+                        <div class="NDD flex">
+                            <div>
+                                <h3><i class="fa-solid fa-circle-exclamation"></i>Nom :</h3>
+                                <input type="text" name="nom" placeholder="Tapez le nom de votre spectacle"  value = "<?php echo $nomSpectacle ?: "" ?>" />
+                            </div>
+                            <div>
+                                <h3><i class="fa-solid fa-circle-exclamation"></i>Durée en minute:</h3>
+                                <div class="text">Veuillez entrez la durée en minute du spectacle</div>
+                                <input type="number" name="duree" value = "<?php echo $dureeSpectacle ?: "" ?>" />
+                            </div>
                         </div>
-                        <div>
-                            <h3><i class="fa-solid fa-circle-exclamation"></i>Durée en minute:</h3>
-                            <input type="text" name="nom" placeholder="Entrez la durée en minutes de votre spectacle"  value = "<?php echo $dureeSpectacle ?: "" ?>" />
+
+                        <div class="Description">
+                            <!-- Contient un second bloc avec la description et qui se situe au cote a cote avec le premier bloc -->
+                            <div>
+
+                                <h3><label for="description"><i class="fa-solid fa-circle-exclamation"></i>Description :</label>
+                                </h3>
+                                <textarea id="description" name="description">
+                                     <?php echo $descriptionSpectacle ?: "" ?>
+                                </textarea>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="Description">
-                        <!-- Contient un second bloc avec la description et qui se situe au cote a cote avec le premier bloc -->
-                        <div>
 
-                            <h3><label for="description"><i class="fa-solid fa-circle-exclamation"></i>Description :</label>
-                            </h3>
-                            <textarea id="description" name="description">
-                                 <?php echo $descriptionSpectacle ?: "" ?>
-                            </textarea>
+                    <!-- Second paquet qui va contenir le champ d'entrée d'image-->
+                    <div class="flex-row">
+                        <div class="custom-file-input-wrapper">
+                            <h3 class="custom-file-input-text">Illustration :</h3></br>
+                            <label class="custom-file-input" for="fileInput"><i class="fa-solid fa-image"></i>Parcourir</label>
+                            <input type="file" id="fileInput" name="fileInput"/>
+                        </div>
+                        <div class="format">
+                            <br>Format PNG,JPG,GIF</br>
+                            <br>800x600</br>
                         </div>
                     </div>
-                </div>
 
 
-                <!-- Second paquet qui va contenir le champ d'entrée d'image-->
-                <div class="flex-row">
-                    <div class="custom-file-input-wrapper">
-                        <h3 class="custom-file-input-text">Illustration :</h3></br>
-                        <label class="custom-file-input" for="fileInput"><i class="fa-solid fa-image"></i>Parcourir</label>
-                        <input type="file" id="fileInput" name="fileInput"/>
-                    </div>
-                    <div class="format">
-                        <br>Format PNG,JPG,GIF</br>
-                        <br>800x600</br>
-                    </div>
-                </div>
+                    <div class="flex-column">
+                        <h3><i class="fa-solid fa-circle-exclamation"></i>Catégorie :</h3>
+                        <select name="categorie">
+                            <option value="vide"></option>
+                            <?php
 
-
-                <div class="flex-column">
-                    <h3><i class="fa-solid fa-circle-exclamation"></i>Catégorie :</h3>
-                    <select>
-                        <option value="vide"></option>
-                        <?php
-
-                        foreach ($tableauCategorie as $ligne) {
-                            echo '<option' ;
-                            if (isset($_SESSION['categorieSpectacle']) && $ligne['id_categorie'] == $_SESSION['categorieSpectacle']    ) {
-                                echo ' selected' ;
+                            foreach ($tableauCategorie as $ligne) {
+                                echo '<option' ;
+                                // récupération de la catégorie sélectionnée précédemment
+                                if (isset($categorieSpectacle) && $ligne['id_categorie'] == $categorieSpectacle ) {
+                                    echo ' selected' ;
+                                }
+                                echo  ' value = "' . $ligne['id_categorie'] . '">' . $ligne['nom'] . "</option>";
                             }
-                            echo  ' value = "' . $ligne['id_categorie'] . '">' . $ligne['nom'] . "</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
-                <!-- selection de la taille de la scene-->
-                <div class="flex-column">
-                    <h3><i class="fa-solid fa-circle-exclamation"></i>Taille de la scène :</h3>
-                    <div class="text">Veuillez selectionner la taille de scene nécessaire</div>
-                    <select>
-                        <option value="vide"></option>
-                        <?php
-                        foreach ($tableauTailleScene as $ligne) {
-                            echo '<option' ;
-                            if (isset($_SESSION['tailleSceneSpectacle']) && $ligne['id_taille'] == $_SESSION['tailleSceneSpectacle']    ) {
-                                echo ' selected' ;
-                            }
-                            echo  ' value = "' . $ligne['id_taille'] . '">' . $ligne['taille'] . "</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
-                <input hidden name="action" value="validerPage1">
-                <input hidden name="controller" value="CreateSpectacle">
-            </form>
-        </div>
-        <div class="valid-annul-placement flex-row">
-            <div class="annulChoix lastButton">
-                <i class="fa-regular fa-circle-xmark"></i> Annuler vos choix  <!-- TODO fontawesome -->
-            </div>
-            <div class="page-suivante lastButton">
-                <a href="createSpectacle2.php">
-                    <div>
-                        Page Suivante<i class="fa-solid fa-arrow-right"></i>
+                            ?>
+                        </select>
                     </div>
-                </a>
+                    <!-- selection de la taille de la scene-->
+                    <div class="flex-column">
+                        <h3><i class="fa-solid fa-circle-exclamation"></i>Taille de la scène :</h3>
+                        <div class="text">Veuillez selectionner la taille de scene nécessaire</div>
+                        <select name="taille">
+                            <option value="vide"></option>
+                            <?php
+                            foreach ($tableauTailleScene as $ligne) {
+                                echo '<option' ;
+                                if (isset($tailleSceneSpectacle) && $ligne['id_taille'] == $tailleSceneSpectacle) {
+                                    echo ' selected' ;
+                                }
+                                echo  ' value = "' . $ligne['id_taille'] . '">' . $ligne['taille'] . "</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <input hidden name="action" value="validerPage1">
+                    <input hidden name="controller" value="CreateSpectacle">
             </div>
-        </div>
+            <div class="valid-annul-placement flex-row">
+                <div class="annulChoix lastButton">
+                    <i class="fa-regular fa-circle-xmark"></i> Annuler vos choix
+                </div>
+                <button type="submit" class="valider page-suivante lastButton">
+                    Page Suivante<i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </form>
     </div>
 </div>
 <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/footer.php" ?>

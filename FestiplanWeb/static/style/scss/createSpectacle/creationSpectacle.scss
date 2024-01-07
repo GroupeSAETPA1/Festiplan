@@ -7,7 +7,6 @@
 
 .wrapper {
   padding: 0 10vh;
-  width: 80vw;
   hr {
     margin: 40px 0;
     height: 4px;
@@ -19,6 +18,10 @@
 
 .flex {
   display: flex;
+}
+
+.dureeInput {
+  font-size: 1rem;
 }
 
 .container {
@@ -67,7 +70,6 @@
   align-items: center;
   padding: 0 10vh;
   .lastButton {
-    width: 26vh;
     height: 4.8vh;
     padding: 0 50px;
     font-size: 1rem;

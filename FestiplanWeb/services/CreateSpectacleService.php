@@ -24,4 +24,14 @@ class CreateSpectacleService
         }
     }
 
+    public function recupererCategorie() {
+        try {
+            $sql = $this -> pdoCreationSpectacle->prepare('SELECT * FROM categorie');
+            $sql->execute();
+            return $sql->fetchAll();
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
 }

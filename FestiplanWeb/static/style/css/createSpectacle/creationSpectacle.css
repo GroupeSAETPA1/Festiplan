@@ -15,7 +15,6 @@ body {
 
 .wrapper {
   padding: 0 10vh;
-  width: 80vw;
 }
 .wrapper hr {
   margin: 40px 0;
@@ -27,6 +26,10 @@ body {
 
 .flex {
   display: flex;
+}
+
+.dureeInput {
+  font-size: 1rem;
 }
 
 .container {
@@ -76,7 +79,6 @@ body {
   padding: 0 10vh;
 }
 .valid-annul-placement .lastButton {
-  width: 26vh;
   height: 4.8vh;
   padding: 0 50px;
   font-size: 1rem;
