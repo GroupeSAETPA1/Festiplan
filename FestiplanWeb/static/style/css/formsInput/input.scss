@@ -1,0 +1,38 @@
+@import '../main';
+
+input[type="text"]{
+  height:5vh;
+  width:30vw;
+  border-radius: 1vh;
+  border-style: none;
+}
+
+input[type="number"] {
+  height:5vh;
+  width:30vw;
+  border-radius: 1vh;
+  border-style: none;
+  font-size: 1.2rem;
+}
+
+textarea {
+  resize: none; /* Empêche le redimensionnement de la zone de texte */
+  height:27vh;
+  width:100%;
+  border-radius: 1vh;
+  border-style: none;
+
+}
+
+.format{
+  display: flex;
+  align-items: flex-end;
+  padding: 0 05vh;
+}
+
+select{
+  height:40px;
+  width:250px;
+  border-radius: 1vh;
+  border-style: none;
+}
