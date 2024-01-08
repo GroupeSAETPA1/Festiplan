@@ -133,3 +133,11 @@ CREATE TABLE `liste_inter_scene`
     FOREIGN KEY (id_spectacle) REFERENCES spectacle (id_spectacle),
     FOREIGN KEY (id_inter) REFERENCES utilisateurs (id_utilisateur)
 );
+
+-- Structure de la table `liste_scene`
+CREATE TABLE `liste_scene`
+(
+    `id_festival` int(6) NOT NULL,
+    `id_scene`    int(6) NOT NULL,
+    PRIMARY KEY (id_festival, id_scene)
+);
