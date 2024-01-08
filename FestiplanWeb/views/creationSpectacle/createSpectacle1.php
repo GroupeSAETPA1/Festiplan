@@ -38,7 +38,7 @@
         </a>
     </div>
     <div class="wrapper">
-        <form method="post" action="index.php">
+        <form method="post" action="index.php" enctype="multipart/form-data">
             <div class="container flex">
                     <div class="title">
                         <h1>Création d'un spectacle</h1>
@@ -77,7 +77,7 @@
                         <div class="custom-file-input-wrapper">
                             <h3 class="custom-file-input-text">Illustration :</h3></br>
                             <label class="custom-file-input" for="fileInput"><i class="fa-solid fa-image"></i>Parcourir</label>
-                            <input type="file" id="fileInput" name="photoSPectacle"/>
+                            <input type="file" id="fileInput" name="photoSpectacle" accept=".jpg, .jpeg, .png, .gif"/>
                         </div>
                         <div class="format">
                             <br>Format PNG,JPG,GIF</br>

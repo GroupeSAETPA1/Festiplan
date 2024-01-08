@@ -78,7 +78,6 @@ class CreateSpectacleController
             $_SESSION['dureeSpectacle'] = HttpHelper::getParam("duree");
             $_SESSION['tailleSceneSpectacle'] = HttpHelper::getParam("taille");
             $_SESSION['categorieSpectacle'] = HttpHelper::getParam("categorie");
-            $_SESSION['photoSpectacle'] = HttpHelper::getParam("fileInput");
             $view = new View("views/creationSpectacle/createSpectacle2");
         } else {
             $view = new View("views/creationSpectacle/createSpectacle1");
@@ -101,18 +100,13 @@ class CreateSpectacleController
         } else {
             $interHorsScene = array();
         }
+        // on ajoute dans la bd le spectacle
+        $this->createSpectacleService->ajouterSpectacle($this->pdo, $_SESSION['nomSpectacle'], $_SESSION['descriptionSpectacle'],
+                                                                                   $_SESSION['dureeSpectacle'], $_SESSION['tailleSceneSpectacle'],
+                                                                                   $_SESSION['categorieSpectacle'], $_SESSION['photoSpectacle'],
+                                                                                   $inter, $interHorsScene);
+        $view = new View("views/dashboard");
 
-        $tousOk = true; // STUB
-        if ($tousOk) {
-            // on ajoute dans la bd le spectacle
-            $this->createSpectacleService->ajouterSpectacle($this->pdo, $_SESSION['nomSpectacle'], $_SESSION['descriptionSpectacle'],
-                                                                                       $_SESSION['dureeSpectacle'], $_SESSION['tailleSceneSpectacle'],
-                                                                                       $_SESSION['categorieSpectacle'], $_SESSION['photoSpectacle'],
-                                                                                       $inter, $interHorsScene);
-            $view = new View("views/dashboard");
-        } else {
-            $view = new View("views/creationSpectacle/createSpectacle2");
-        }
         return $view;
     }
 
@@ -144,21 +138,24 @@ class CreateSpectacleController
 
     private function photoOk($nomSpectacle): bool
     {
-        if (isset($_FILES['photoSPectacle']) && $_FILES['photoSPectacle']['name'] != '') {
+        if (isset($_FILES['photoSpectacle']) && $_FILES['photoSpectacle']['name'] != '') {
+            echo "photo ok";
             $dossier = $_SERVER[ 'DOCUMENT_ROOT' ] . PREFIX_TO_RELATIVE_PATH . '/datas/img';
             try {
-                $extension = $this->recupererExtension($_FILES['photoSPectacle']['name']);
+                $extension = $this->recupererExtension($_FILES['photoSpectacle']['name']);
             } catch (Exception) {
                 return false ;
             }
             $nouveau_nom = $nomSpectacle."_image".time().$extension;
-            if (move_uploaded_file($_FILES['photoSPectacle']['tmp_name'] , $dossier."/".$nouveau_nom)) {
+            if (move_uploaded_file($_FILES['photoSpectacle']['tmp_name'] , $dossier."/".$nouveau_nom)) {
+                $_SESSION['photoSpectacle'] = $nouveau_nom;
                 return true ;
             } else {
                 return false;
             }
             // photo non ajouté
         } else {
+            $_SESSION['photoSpectacle'] = "null";
             return true ;
         }
     }
