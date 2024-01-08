@@ -6,10 +6,11 @@ async function addInter() {
     const input = INPUT.val();
     const isMail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-    if (input && isMail.test(input)) {
+    if (input && isMail.test(input) && !interList.find(inter => inter.name === input)) {
         INPUT.css({
             border: "1px solid black",
         });
+
 
         let emailValid;
         try {
@@ -29,6 +30,9 @@ async function addInter() {
         INPUT.val('');
         displayInter();
     } else {
+        if (interList.find(inter => inter.name === input)) {
+            alert("L'adresse mail est déjà présente");
+        }
         INPUT.css({
             border: "1px solid red",
         });
@@ -48,6 +52,7 @@ function displayInter() {
             <div class="delete" data-index="${i}">
                 <i class="fa-solid fa-trash-can"></i>
             </div>
+            <input name="inter[${i}]" type="hidden" value="${interList[i].name}"> 
         </div>`;
 
         selection.innerHTML += htmlContent;

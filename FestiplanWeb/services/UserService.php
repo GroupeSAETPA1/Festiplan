@@ -90,4 +90,23 @@ class UserService
 
         return $requeteEmailExiste->rowCount() > 0;
     }
+
+    /**
+     * retourne l'id de l'utilisateur en fonction de son mail
+     * @param $pdo pdo le pdo de l'application
+     * @param $email string l'email de l'utilisateur a rechercher
+     */
+    public function getIdUtilisateur($pdo, $email): int
+    {
+        $requeteIdUtilisateur = $pdo->prepare("SELECT DISTINCT id_utilisateur FROM utilisateurs WHERE mail = :email");
+        $requeteIdUtilisateur->bindParam(':email', $email);
+        $requeteIdUtilisateur->execute();
+        $requeteIdUtilisateur->setFetchMode(PDO::FETCH_OBJ);
+        $resultat = $requeteIdUtilisateur->fetch();
+        // si l'utilisateur n'existe pas on renvoie -1
+        if ($resultat == null) {
+            return -1;
+        }
+        return $resultat->id_utilisateur;
+    }
 }

@@ -2,13 +2,10 @@
 /* ne codez pas ici, c'est le fichier pour les variables, etc. */
 body {
   min-height: 100vh;
-}
-
-.wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 60vh;
+  background-color: #F0F7F4;
+  color: #363732;
+  font-family: "Rubik", sans-serif;
+  margin: 0;
 }
 
 .button-add-inter {
@@ -108,4 +105,4 @@ body {
   text-align: center;
 }
 
-/*# sourceMappingURL=createSpectacle.css.map */
+/*# sourceMappingURL=customInput.css.map */

@@ -2,6 +2,10 @@
 /* ne codez pas ici, c'est le fichier pour les variables, etc. */
 body {
   min-height: 100vh;
+  background-color: #F0F7F4;
+  color: #363732;
+  font-family: "Rubik", sans-serif;
+  margin: 0;
 }
 
 .Retour {
@@ -13,6 +17,7 @@ body {
   border-style: none;
   background-color: #F7A072;
 }
+
 .Retour:hover {
   background-color: #f6905a;
 }
@@ -28,6 +33,7 @@ body {
   justify-content: center;
   width: 70%;
 }
+
 .ajoutGrij:hover {
   background-color: #85dbd2;
 }
@@ -42,6 +48,7 @@ body {
   border-style: none;
   background-color: #99E1D9;
 }
+
 .page-suivante:hover {
   background-color: #85dbd2;
   scale: 1.05;
@@ -56,6 +63,7 @@ body {
   border-style: none;
   background-color: #F7A072;
 }
+
 .mon-compte:hover {
   background-color: #f6905a;
 }
@@ -134,9 +142,12 @@ body {
   border-style: none;
   background-color: #99E1D9;
 }
+
 .valider:hover {
   background-color: #85dbd2;
   scale: 1.05;
 }
+
+
 
 /*# sourceMappingURL=button.css.map */

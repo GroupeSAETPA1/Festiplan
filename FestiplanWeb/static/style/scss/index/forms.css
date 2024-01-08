@@ -2,6 +2,10 @@
 /* ne codez pas ici, c'est le fichier pour les variables, etc. */
 body {
   min-height: 100vh;
+  background-color: #F0F7F4;
+  color: #363732;
+  font-family: "Rubik", sans-serif;
+  margin: 0;
 }
 
 .formulaire {
@@ -59,6 +63,7 @@ body {
 .colonneCreationCompte {
   display: flex;
   flex-direction: column;
+  margin: 0 10px;
 }
 
 .connexion form {
@@ -87,7 +92,12 @@ body {
   background: #F7A072;
   color: #363732;
 }
-.creationCompte .colonneCreationCompte {
+.creationCompte .Retour .lastSection {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.creationCompte .Retour .colonneCreationCompte {
   width: 100%;
   padding: 10px;
 }

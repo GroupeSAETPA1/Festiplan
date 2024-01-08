@@ -1,4 +1,6 @@
 <?php
+// demarage de la session
+session_start();
 const PREFIX_TO_RELATIVE_PATH = "/Festiplan/FestiplanWeb";
 require $_SERVER[ 'DOCUMENT_ROOT' ] . PREFIX_TO_RELATIVE_PATH . '/lib/vendor/autoload.php';
 

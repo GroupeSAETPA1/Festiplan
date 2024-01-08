@@ -3,13 +3,25 @@
 /* ne codez pas ici, c'est le fichier pour les variables, etc. */
 body {
   min-height: 100vh;
+  background-color: #F0F7F4;
+  color: #363732;
+  font-family: "Rubik", sans-serif;
+  margin: 0;
 }
 
-.text {
+input[type=text] {
   height: 5vh;
   width: 30vw;
   border-radius: 1vh;
   border-style: none;
+}
+
+input[type=number] {
+  height: 5vh;
+  width: 30vw;
+  border-radius: 1vh;
+  border-style: none;
+  font-size: 1.2rem;
 }
 
 textarea {
@@ -32,5 +44,7 @@ select {
   border-radius: 1vh;
   border-style: none;
 }
+
+
 
 /*# sourceMappingURL=input.css.map */

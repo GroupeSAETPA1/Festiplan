@@ -2,6 +2,10 @@
 /* ne codez pas ici, c'est le fichier pour les variables, etc. */
 body {
   min-height: 100vh;
+  background-color: #F0F7F4;
+  color: #363732;
+  font-family: "Rubik", sans-serif;
+  margin: 0;
 }
 
 .formulaire {
@@ -11,18 +15,22 @@ body {
   box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
   color: white;
 }
+
 .formulaire label {
   margin-bottom: 5px;
 }
+
 .formulaire input {
   font-size: 20px;
   padding: 10px;
   border: none;
   border-radius: 10px;
 }
+
 .formulaire input:hover {
   cursor: pointer;
 }
+
 .formulaire button {
   text-align: center;
   color: #F7A072;
@@ -31,13 +39,16 @@ body {
   border: none;
   font-size: 20px;
 }
+
 .formulaire button:hover {
   cursor: pointer;
 }
+
 .formulaire .boutonConnexion {
   background: #99E1D9;
   color: #363732;
 }
+
 .formulaire form {
   display: flex;
   flex-direction: column;
@@ -51,6 +62,7 @@ body {
   font-size: 20px;
   color: #F7A072;
 }
+
 .switchForm:hover {
   cursor: pointer;
   text-decoration: underline #F7A072;
@@ -59,6 +71,7 @@ body {
 .colonneCreationCompte {
   display: flex;
   flex-direction: column;
+  margin: 0 10px;
 }
 
 .connexion form {
@@ -69,32 +82,40 @@ body {
   opacity: 0;
   display: none;
 }
+
 .creationCompte .form-duo {
   display: flex;
   justify-content: space-between;
 }
+
 .creationCompte button {
   padding: 10px;
   border: none;
   border-radius: 10px;
   font-size: 20px;
 }
+
 .creationCompte .boutonCreation {
   background: #99E1D9;
   color: #363732;
 }
+
 .creationCompte .Retour {
   background: #F7A072;
   color: #363732;
 }
+
 .creationCompte .Retour .lastSection {
   display: flex;
   flex-direction: column;
   row-gap: 20px;
 }
+
 .creationCompte .Retour .colonneCreationCompte {
   width: 100%;
   padding: 10px;
 }
+
+
 
 /*# sourceMappingURL=forms.css.map */

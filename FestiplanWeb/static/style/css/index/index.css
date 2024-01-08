@@ -2,6 +2,10 @@
 /* ne codez pas ici, c'est le fichier pour les variables, etc. */
 body {
   min-height: 100vh;
+  background-color: #F0F7F4;
+  color: #363732;
+  font-family: "Rubik", sans-serif;
+  margin: 0;
 }
 
 * {
@@ -36,18 +40,23 @@ body {
   margin: 0;
   line-height: 1;
 }
+
 .presentation i {
   color: #F7A072;
   font-size: 15vh;
 }
+
 .presentation .titre {
   font-size: 75px;
   font-weight: 400;
   padding: 20px 0 20px 0;
 }
+
 .presentation p {
   font-size: 3vh;
   font-weight: 300;
 }
+
+
 
 /*# sourceMappingURL=index.css.map */
