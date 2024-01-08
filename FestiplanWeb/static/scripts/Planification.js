@@ -1,6 +1,5 @@
 let festival;
 let spectacles;
-
 function getDataFestival() {
     return new Promise((resolve, reject) => {
         const xmlhttp = new XMLHttpRequest();
@@ -41,7 +40,6 @@ async function getAllData() {
     try {
         festival = JSON.parse(await getDataFestival());
         spectacles = JSON.parse(await getDataSpectacle());
-        console.log( spectacles)
     } catch (error) {
         console.error("Erreur lors de la récupération des données du festival", error);
     }
@@ -99,15 +97,12 @@ async function construireCalendrier() {
             start: new Date(festival.debut), // Date de début et de fin du spéctacle
             end: new Date(festival.fin)
         },
-        startTime: festival.heure_debut_spectacles,
-        endTime: festival.heure_fin_spectacles,
         // Pour les Events
         slotEventOverlap:false,
         editable: true,
         eventDurationEditable: false,
         events: await displayEvents()
     });
-    console.log(calendar);
     calendar.render();
 }
 async function displayEvents(){
@@ -118,15 +113,17 @@ async function displayEvents(){
         endTime: festival.heure_fin_spectacles,
         display: 'none'
     }];
-
+    let finDernierSpectacle = new Date(festival.debut.toString() + "T" + festival.heure_debut_spectacles); // Au départ, il n'y a pas de dernier spectacle, c'est pour cela que l'on met au début du spectacle
     for (let i = 0; i < spectacles.length; i++) {
         let nomSpectacle = spectacles[i].nom;
-        let horairesSpectacles = await planifieSpectacle(festival.debut,
-                                                                        festival.fin,
-                                                                        festival.heure_debut_spectacles,
-                                                                        festival.heure_fin_spectacles,
-                                                                        festival.duree_entre_spectacle,
-                                                                        spectacles, i);
+        let donneesRetour =  await planifieSpectacle(festival.debut,
+                                                                festival.fin,
+                                                                finDernierSpectacle,
+                                                                festival.heure_fin_spectacles,
+                                                                festival.duree_entre_spectacle,
+                                                                spectacles, i);
+        let horairesSpectacles = donneesRetour[0];
+        finDernierSpectacle = donneesRetour[1];
         let dateDebutSpectacle = horairesSpectacles[0]
         let dateFinSpectacle =  horairesSpectacles[1]
 
@@ -140,23 +137,28 @@ async function displayEvents(){
     return events;
 }
 
-async function planifieSpectacle(debutFestival, finFestival, heureDebutSpectacle, heureFinSpectacle, dureeEntreSpectacles, spectacles, i){
-    let sceneSpectacle = spectacles[i].taille_scene;
-    let finDernierSpectacle = heureDebutSpectacle; // Au départ, il n'y a pas de dernier spectacle, c'est pour cela que l'on met au début du spectacle
+async function planifieSpectacle(debutFestival, finFestival, dateFinDernierSpectacle, heureFinSpectacle, dureeEntreSpectacles, spectacles, i){
+    let donneesRetour = [];
+    let sceneSpectacle = spectacles[i].id_scene;
     let horairesSpectacles = [];
+    let plusieursSpectacleMemeScene = false
+
+    finDernierSpectacle = dateFinDernierSpectacle;
+    console.log("data fin dernier spectacle " + finDernierSpectacle); 
 
     // On parcours la liste des spectacles a l'envers pour voir s'il y a un spectacle qui est sur la meme scene auparavant FIXME
-    // for (let j = i ; j >= 0 ; j--) {
-    //     if (spectacles[j].taille_scene == sceneSpectacle) { // S'il y a déja eu un spectacle sur la même scene avant
-    //         console.log("Le spectacle " + spectacles[j].nom + " est sur la meme scene que le spectacle " + spectacles[i].nom)
-    //         return; // TODO
-    //     }
-    // }
+    for (let j = i + 1 ; j < spectacles.length ; j++) {
+        if (spectacles[j].id_scene === sceneSpectacle) { // S'il y a déja eu un spectacle sur la même scene avant
+            console.log("Le spectacle " + spectacles[j].nom + " est sur la meme scene que le spectacle " + spectacles[i].nom);
+            plusieursSpectacleMemeScene = true;
+            break;
+        }
+    }
+    console.log(plusieursSpectacleMemeScene);
 
     // Séparer les heures et les minutes de la string
-    let tempsArray = finDernierSpectacle.split(":");
-    let heures = parseInt(tempsArray[0]);
-    let minutes = parseInt(tempsArray[1]);
+    let heures = finDernierSpectacle.getHours();
+    let minutes = finDernierSpectacle.getMinutes();
 
     // Les heures et minutes à rajouter
     let nbHeureDureeSpectacle = Math.floor(spectacles[i].duree / 60);
@@ -171,25 +173,30 @@ async function planifieSpectacle(debutFestival, finFestival, heureDebutSpectacle
         minutes = minutes % 60;
     }
 
-    // Formattage des nouvelles heures et minutes
-    let heuresStr = heures.toString().padStart(2, "0");
-    let minutesStr = minutes.toString().padStart(2, "0");
-
     // Construction la nouvelle chaîne au format HH:MM:SS
-    let heureTheoriqueFinSpectacle = `${heuresStr}:${minutesStr}:${tempsArray[2]}`;
+    let heureTheoriqueFinSpectacle = new Date(finDernierSpectacle);
+    heureTheoriqueFinSpectacle.setHours(heures, minutes)
 
     // Si le spectacle est trop long pour le mettre dans le festival, on renverra null
-    if (heureTheoriqueFinSpectacle > heureFinSpectacle) { //
-        alert("Le spectacle " + spectacles[i].nom + " à une durée trop longue ("
+    if (heureTheoriqueFinSpectacle.getHours() > heureFinSpectacle) { //
+        alert("Le spectacle " + spectacles[i].nom + " à une durée trop longue ou invalide ("
               + spectacles[i].duree + ") pour le festival, il a été ignoré")
         return new Date('0000-00-00T00:00:00'); // une date invalide pour que le spectacle ne soit pas affiché
     // Sinon lancer le spectacle au début du festival
     } else {
-        horairesSpectacles[0] = new Date(festival.debut);
-        horairesSpectacles[0].setHours(heureDebutSpectacle.split(':')[0], heureDebutSpectacle.split(':')[1]);
+        horairesSpectacles[0] = new Date(finDernierSpectacle);
         horairesSpectacles[1] = new Date(horairesSpectacles[0]);
         horairesSpectacles[1].setMinutes(horairesSpectacles[0].getMinutes() + spectacles[i].duree);
-        return horairesSpectacles;
+        donneesRetour[0] = horairesSpectacles
+
+        if (plusieursSpectacleMemeScene) {
+            finDernierSpectacle.setMinutes(finDernierSpectacle.getMinutes() + dureeEntreSpectacles + spectacles[i].duree);
+            console.log(finDernierSpectacle + "ligne 200");
+        }
+
+        donneesRetour[1] = finDernierSpectacle;
+
+        return donneesRetour;
     }
 }
 async function getFestivalDuration() {
