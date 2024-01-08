@@ -37,7 +37,18 @@ INSERT INTO `scene` (`nom`, `nb_spectateurs`, `id_taille`) VALUES
 -- Insertion dans la table `spectacle`
 INSERT INTO `spectacle` (`nom`, `description`, `illustration`, `duree`, `id_categorie`, `taille_scene`, `responsable_spectacle`) VALUES
 ('Festiplan', 'ouverture du site web', '', 50, 5, 1, 2),
-('Marathon hunger game', 'regardez la trilogie en une journée', '', 600, 5, 2, 6);
+('Marathon hunger game', 'regardez la trilogie en une journée', '', 600, 5, 2, 6),
+('Rock Fest', 'Un concert de rock avec des groupes locaux talentueux', 'rock_fest.jpg', 120, 1, 2, 3),
+('Démonstration de Robotique', 'Une démonstration de robots innovants et leurs fonctionnalités', 'robot_demo.jpg', 90, 2, 1, 4),
+('Expériences Scientifiques en Direct', 'Un spectacle interactif de démonstration d\'expériences scientifiques', 'experiences_sciences.jpg', 75, 3, 1, 5),
+('Jazz Night', 'Une soirée de jazz avec des artistes renommés', 'jazz_night.jpg', 150, 1, 3, 2),
+('Show de Magie Moderne', 'Une démonstration de magie moderne et d\'illusions étonnantes', 'modern_magic_show.jpg', 60, 2, 2, 6),
+('Atelier de Cuisine en Direct', 'Une démonstration culinaire avec un chef étoilé', 'live_cooking.jpg', 120, 3, 2, 1),
+('Projection de Film Classique', 'Une soirée de projection de films classiques du cinéma', 'classic_film_projection.jpg', 180, 4, 3, 1),
+('Concert Acoustique Intime', 'Un concert acoustique avec des artistes en petit comité', 'acoustic_concert.jpg', 90, 1, 1, 3),
+('Défilé de Mode Innovant', 'Un spectacle de défilé de mode mettant en avant des créations innovantes', 'innovative_fashion_show.jpg', 120, 2, 3, 4),
+('Expérience VR Interactive', 'Une démonstration immersive en réalité virtuelle', 'vr_experience.jpg', 60, 3, 1, 5);
+
 
 -- Insertion dans les tables de liaison
 INSERT INTO `spectacle_festival_scene` (`id_festival`, `id_spectacle`, `id_scene`) VALUES
@@ -46,3 +57,7 @@ INSERT INTO `spectacle_festival_scene` (`id_festival`, `id_spectacle`, `id_scene
 
 INSERT INTO `liste_organisateur` (`id_festival`, `id_organisateur`) VALUES
 (1,1);
+
+INSERT INTO liste_scene (id_scene, id_festival) VALUES
+(1, 1),
+(1, 2);
