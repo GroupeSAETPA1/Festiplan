@@ -192,6 +192,8 @@ async function planifieSpectacle(debutFestival, finFestival, dateFinDernierSpect
         if (plusieursSpectacleMemeScene) {
             finDernierSpectacle.setMinutes(finDernierSpectacle.getMinutes() + dureeEntreSpectacles + spectacles[i].duree);
             console.log(finDernierSpectacle + "ligne 200");
+        } else {
+            finDernierSpectacle = new Date(festival.debut.toString() + "T" + festival.heure_debut_spectacles);
         }
 
         donneesRetour[1] = finDernierSpectacle;
