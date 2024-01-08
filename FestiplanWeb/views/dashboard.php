@@ -29,12 +29,19 @@ function afficher_festival(int $id_festival, string $nom_festival, string $date_
     echo '            <span class="categorie">' . $categorie . '</span>';
     echo '        </div>';
     echo '        <div class="group-boutons">';
+    echo '            <form method="post" action="/Festiplan/FestiplanWeb/index.php">';
+    echo '                <input hidden name="controller" value="AccesListeSpectacles">';
+    echo '                <input hidden name="id_festival" value="' . $id_festival . '">';
+    echo '                <input hidden name="nom_festival" value="' . $nom_festival . '">';
+    echo '                <input hidden name="categorie" value="' . $categorie . '">';
+    echo '                <div class="btn-acces-spectacles rounded"><button type="submit">Spectacles ...</button></div>';
+    echo '            </form>';
     echo '            <form method="post" action=""> <!-- TODO : mettre le lien pour éditer le festival -->';
-    echo '                <input hidden name="id-festival" value="' . $id_festival . '">';
+    echo '                <input hidden name="id_festival" value="' . $id_festival . '">';
     echo '                <div><button type="submit"><i class="fa-solid fa-pen-to-square"></i></button></div>';
     echo '            </form>';
     echo '            <form method="post" action=""> <!-- TODO : mettre le lien pour supprimer le festival -->';
-    echo '                <input hidden name="id-festival" value="' . $id_festival . '">';
+    echo '                <input hidden name="id_festival" value="' . $id_festival . '">';
     echo '                <div><button type="submit"><i class="fa-solid fa-trash-can"></i></button></div>';
     echo '            </form>';
     echo '        </div>';
@@ -138,14 +145,15 @@ function minutesToHHMM(int $minutes): string
             <!-- Liste des festivals -->
             <div class="container entete-section">
                 <h1>Mes festivals</h1>
-                <a href="/Festiplan/FestiplanWeb/?controller=CreateFestival">
-                    <!-- TODO : Lien vers la page de création de festival -->
+                <a href="/Festiplan/FestiplanWeb/?controller=Planification">TEST DEBUG</a>
+                <a href="/Festiplan/FestiplanWeb/?controller=CreateFestival"> <!-- TODO : Lien vers la page de création de festival -->
                     <div class="rounded">
                         <i class="fa-regular fa-calendar-plus"></i>
                         <p>Cr&eacute;er un festival</p>
                     </div>
                 </a>
             </div>
+
             <?php
             if (!empty($festivals)) {
                 ?>
@@ -195,6 +203,7 @@ function minutesToHHMM(int $minutes): string
                 ?>
             </div>
         </div>
-        <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/footer.php" ?>
+    </div>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/footer.php" ?>
     </body>
 </html>

@@ -45,34 +45,22 @@ header .logo i {
   flex-direction: column;
 }
 
-.Description {
-  width: 55vw;
-  padding: 0 13px;
+.Descr {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 10vh;
 }
 
-.flex-row {
+.proot {
   display: flex;
   flex-direction: row;
 }
 
-.first-row {
-  justify-content: space-between;
-}
-
-.end-row {
-  align-items: flex-end;
-}
-
-.flex-column {
-  display: flex;
-  flex-direction: column;
-}
-
-.valid-annul-placement {
+.babou {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 10vh;
+  margin-top: 5vh;
 }
 
 hr {
@@ -86,33 +74,6 @@ hr {
   width: 100vh;
 }
 
-.fa-circle-exclamation {
-  color: red;
-  margin: 0.5vh;
-}
 
-.fa-image {
-  margin: 0.5vh;
-}
-
-.fa-circle-xmark {
-  margin: 0.5vh;
-}
-
-.fa-arrow-right {
-  margin: 0.5vh;
-}
-
-.fa-check {
-  margin: 0.5vh;
-}
-
-.fa-plus {
-  margin: 0.5vh;
-}
-
-.fa-trash-can {
-  margin: 0.5vh;
-}
 
 /*# sourceMappingURL=createFestiplan.css.map */

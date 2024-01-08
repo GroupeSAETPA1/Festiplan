@@ -11,21 +11,24 @@ header {
   justify-content: space-between;
   color: #F0F7F4;
 }
+
 header .logo {
   margin: 1rem;
   display: flex;
   align-items: center;
 }
-header .logo i {
+header .logo i, header .logo svg {
   color: #F7A072;
   font-size: 2.5rem;
   padding-right: 10%;
 }
+
 header .logo span {
   color: #F0F7F4;
   font-size: 25px;
   font-weight: lighter;
 }
+
 header .mon-compte div {
   background-color: #F7A072;
   color: #363732;
@@ -37,5 +40,7 @@ header .mon-compte span {
   font-size: 1.3rem;
   padding: 1vh;
 }
+
+
 
 /*# sourceMappingURL=header.css.map */

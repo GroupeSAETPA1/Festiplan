@@ -13,12 +13,42 @@ body {
   border-style: none;
   background-color: #F7A072;
 }
-.Retour:hover {
-  background-color: #f6905a;
+
+.retour:hover {
+  background-color: #c54b0b;
+}
+
+.ajoutS {
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #99E1D9;
+}
+
+.ajoutS:hover {
+  background-color: #33aea0;
+}
+
+.supp {
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #F7A072;
+}
+
+.supp:hover {
+  background-color: #c54b0b;
 }
 
 .ajoutGrij {
   line-height: 2.5;
+  padding: 0 500px;
   font-size: 1rem;
   text-align: center;
   border-radius: 30px;
@@ -26,25 +56,38 @@ body {
   background-color: #99E1D9;
   display: flex;
   justify-content: center;
-  width: 70%;
-}
-.ajoutGrij:hover {
-  background-color: #85dbd2;
 }
 
-.page-suivante {
-  width: 26vh;
-  height: 4.8vh;
-  padding: 0 50px;
+.ajoutGrij:hover {
+  background-color: #33aea0;
+}
+
+.annul {
+  line-height: 2.5;
+  padding: 0 150px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #F7A072;
+}
+
+.annul:hover {
+  background-color: #c54b0b;
+}
+
+.valid {
+  line-height: 2.5;
+  padding: 0 150px;
   font-size: 1rem;
   text-align: center;
   border-radius: 30px;
   border-style: none;
   background-color: #99E1D9;
 }
-.page-suivante:hover {
-  background-color: #85dbd2;
-  scale: 1.05;
+
+.valid:hover {
+  background-color: #33aea0;
 }
 
 .mon-compte {
@@ -56,17 +99,18 @@ body {
   border-style: none;
   background-color: #F7A072;
 }
+
 .mon-compte:hover {
-  background-color: #f6905a;
+  background-color: #c54b0b;
 }
 
-.button-flex-end {
+.butSpec {
   display: flex;
   align-items: flex-end;
   padding: 0 5vh;
 }
 
-.retour {
+.ret {
   padding: 2vh;
 }
 
