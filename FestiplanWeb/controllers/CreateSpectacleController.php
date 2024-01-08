@@ -70,7 +70,7 @@ class CreateSpectacleController
             && $this-> dureeOk(HttpHelper::getParam("duree"))
             && $this-> tailleOk(HttpHelper::getParam("taille"))
             && $this-> categorieOk(HttpHelper::getParam("categorie"))
-            && $this-> photoOk(HttpHelper::getParam("fileInput"));
+            && $this-> photoOk(HttpHelper::getParam("nom"));
         if($tousOk) {
             // on écrit les données dans la variable de session
             $_SESSION['nomSpectacle'] = HttpHelper::getParam("nom");
@@ -142,10 +142,25 @@ class CreateSpectacleController
         return $categorie != "vide";
     }
 
-    private function photoOk($photo): bool
+    private function photoOk($nomSpectacle): bool
     {
-        // TODO
-        return true;
+        if (isset($_FILES['photoSPectacle']) && $_FILES['photoSPectacle']['name'] != '') {
+            $dossier = $_SERVER[ 'DOCUMENT_ROOT' ] . PREFIX_TO_RELATIVE_PATH . '/datas/img';
+            try {
+                $extension = $this->recupererExtension($_FILES['photoSPectacle']['name']);
+            } catch (Exception) {
+                return false ;
+            }
+            $nouveau_nom = $nomSpectacle."_image".time().$extension;
+            if (move_uploaded_file($_FILES['photoSPectacle']['tmp_name'] , $dossier."/".$nouveau_nom)) {
+                return true ;
+            } else {
+                return false;
+            }
+            // photo non ajouté
+        } else {
+            return true ;
+        }
     }
 
     /**
