@@ -41,9 +41,9 @@ async function getAllData() {
     try {
         festival = JSON.parse(await getDataFestival());
         spectacles = JSON.parse(await getDataSpectacle());
-        console.log(festival)
+        console.log( spectacles)
     } catch (error) {
-        console.error("Erreur lors de la récupération des données du festival", error.stack);
+        console.error("Erreur lors de la récupération des données du festival", error);
     }
 }
 construireCalendrier();

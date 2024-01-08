@@ -43,3 +43,6 @@ INSERT INTO `spectacle` (`nom`, `description`, `illustration`, `duree`, `id_cate
 INSERT INTO `spectacle_festival_scene` (`id_festival`, `id_spectacle`, `id_scene`) VALUES
 (1, 1, 1),
 (1, 2, 2);
+
+INSERT INTO `liste_organisateur` (`id_festival`, `id_organisateur`) VALUES
+(1,1);
