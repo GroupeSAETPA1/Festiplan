@@ -66,8 +66,8 @@ CREATE TABLE `scene`
     `nom`            varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'nom de la scene',
     `id_taille`      int(11)                      NOT NULL COMMENT 'id taille depuis taille scene',
     `nb_spectateurs` int(11)                      NOT NULL COMMENT 'nombre de spectateurs maximum',
-    `logitude`       NUMERIC(10, 7)                   NOT NULL COMMENT 'longitude de la scence',
-    `latitude`       NUMERIC(10, 7)                   NOT NULL COMMENT 'latitude de la scence',
+    `longitude`       NUMERIC(10, 7)                   NOT NULL COMMENT 'longitude de la scence' DEFAULT 0.0000000,
+    `latitude`       NUMERIC(10, 7)                   NOT NULL COMMENT 'latitude de la scence' DEFAULT 0.0000000,
     PRIMARY KEY (id_scene),
     FOREIGN KEY (id_taille) REFERENCES `taille_scene` (id_taille)
 );
@@ -87,16 +87,6 @@ CREATE TABLE `spectacle`
     FOREIGN KEY (id_categorie) REFERENCES categorie (id_categorie),
     FOREIGN KEY (taille_scene) REFERENCES taille_scene (id_taille),
     FOREIGN KEY (responsable_spectacle) REFERENCES utilisateurs (id_utilisateur)
-);
-
--- Structure de la table `liste_spectacle`
-CREATE TABLE `liste_spectacle`
-(
-    `id_festival`  int(6) NOT NULL,
-    `id_spectacle` int(6) NOT NULL,
-    PRIMARY KEY (id_festival, id_spectacle),
-    FOREIGN KEY (id_festival) REFERENCES festival (id_festival),
-    FOREIGN KEY (id_spectacle) REFERENCES spectacle (id_spectacle)
 );
 
 -- Structure de la table `spectacle_festival_scene`

@@ -40,10 +40,6 @@ INSERT INTO `spectacle` (`nom`, `description`, `illustration`, `duree`, `id_cate
 ('Marathon hunger game', 'regardez la trilogie en une journée', '', 600, 5, 2, 6);
 
 -- Insertion dans les tables de liaison
-INSERT INTO `liste_scene` (`id_festival`, `id_scene`) VALUES
-(1, 1),
-(2, 1);
-
-INSERT INTO `liste_spectacle` (`id_festival`, `id_spectacle`) VALUES
-(1, 1),
-(1, 2);
+INSERT INTO `spectacle_festival_scene` (`id_festival`, `id_spectacle`, `id_scene`) VALUES
+(1, 1, 1),
+(1, 2, 2);
