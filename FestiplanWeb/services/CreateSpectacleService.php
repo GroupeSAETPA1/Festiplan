@@ -62,11 +62,17 @@ class CreateSpectacleService
     {
         try {
             foreach ($listeInter as $inter) {
+
                 $idInter = $this->userService->getIdUtilisateur($pdo, $inter);
-                $sql = $pdo->prepare('INSERT INTO liste_inter_scene (id_spectacle, id_inter) VALUES (:id_spectacle, :id_inter)');
-                $sql->bindParam(':id_spectacle', $idSpectacle);
-                $sql->bindParam(':id_inter', $idInter);
-                $sql->execute();
+                if ($idInter == -1) {
+                    return false;
+                } else {
+                    $sql = $pdo->prepare('INSERT INTO liste_inter_scene (id_spectacle, id_inter) VALUES (:id_spectacle, :id_inter)');
+                    $sql->bindParam(':id_spectacle', $idSpectacle);
+                    $sql->bindParam(':id_inter', $idInter);
+                    $sql->execute();
+                }
+
             }
             return true;
         } catch (PDOException $e) {
@@ -79,10 +85,15 @@ class CreateSpectacleService
         try {
             foreach ($listInterHorsScene as $inter) {
                 $idInter = $this->userService->getIdUtilisateur($pdo, $inter);
-                $sql = $pdo->prepare('INSERT INTO liste_inter_hors_scene (id_spectacle, id_inter) VALUES (:id_spectacle, :id_inter)');
-                $sql->bindParam(':id_spectacle', $idSpectacle);
-                $sql->bindParam(':id_inter', $idInter);
-                $sql->execute();
+                if ($idInter == -1) {
+                    return false;
+                } else {
+                    $sql = $pdo->prepare('INSERT INTO liste_inter_hors_scene (id_spectacle, id_inter) VALUES (:id_spectacle, :id_inter)');
+                    $sql->bindParam(':id_spectacle', $idSpectacle);
+                    $sql->bindParam(':id_inter', $idInter);
+                    $sql->execute();
+                }
+
             }
             return true;
         } catch (PDOException $e) {

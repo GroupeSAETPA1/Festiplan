@@ -103,6 +103,10 @@ class UserService
         $requeteIdUtilisateur->execute();
         $requeteIdUtilisateur->setFetchMode(PDO::FETCH_OBJ);
         $resultat = $requeteIdUtilisateur->fetch();
+        // si l'utilisateur n'existe pas on renvoie -1
+        if ($resultat == null) {
+            return -1;
+        }
         return $resultat->id_utilisateur;
     }
 }
