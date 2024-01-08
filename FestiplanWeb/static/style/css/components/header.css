@@ -20,7 +20,7 @@ header .logo {
   display: flex;
   align-items: center;
 }
-header .logo i {
+header .logo i, header .logo svg {
   color: #F7A072;
   font-size: 2.5rem;
   padding-right: 10%;
