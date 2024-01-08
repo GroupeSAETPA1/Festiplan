@@ -30,6 +30,7 @@
     <!-- custom js -->
     <script src="/Festiplan/FestiplanWeb/static/scripts/responsive/footerResponsive.js" defer></script>
     <script src="/Festiplan/FestiplanWeb/static/scripts/creationSpectacle/inputIntervenantsScene.js" defer></script>
+    <script src="/Festiplan/FestiplanWeb/static/scripts/creationSpectacle/creerCompte.js" defer></script>
 </head>
 <body>
 <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/header.php" ?>
@@ -91,7 +92,7 @@
                 </button>
             </div>
         </form>
-        <div class="formulaire creationCompte" >
+        <div class="formulaire creationCompte" hidden>
             <div class="form-duo">
                 <div class="colonneCreationCompte">
                     <label for="nom">
