@@ -14,7 +14,6 @@ class PlanificationController
 
     public function __construct(PlanificationService $planificationService)
     {
-        session_start();
         $this->planificationService = $planificationService;
     }
 

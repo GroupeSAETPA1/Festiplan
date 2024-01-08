@@ -36,12 +36,8 @@ use services\CreateSpectacleService;
 use services\DashboardService;
 use services\SessionService;
 use services\UserService;
-use controllers\DashboardController;
-use services\DashboardService;
 use controllers\PlanificationController;
 use services\PlanificationService;
-use controllers\CreateSpectacleController;
-use services\CreateSpectacleService;
 
 use yasmf\ComponentFactory;
 use yasmf\NoControllerAvailableForNameException;
