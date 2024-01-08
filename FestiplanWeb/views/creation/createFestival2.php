@@ -35,17 +35,17 @@
                         <div>
 
                             <h3><i class="fa-solid fa-circle-exclamation"></i>Heure de début des spactacles de la journée : </h3>
-                            <input class="text" type="time" id="HDS" name="HDS" min="09:00" max="18:00"/>
+                            <input class="text" type="time" id="HDS" name="HDS" min="09:00" max="18:00" value="<?php echo $debutSpectacle ?: "" ?>"/>
                         </div>
                         <div>
 
                             <h3><i class="fa-solid fa-circle-exclamation"></i>Heure de fin des spactacles de la journée : </h3>
-                            <input class="text" type="time" id="HFS" name="HFS" min="09:00" max="18:00"/>
+                            <input class="text" type="time" id="HFS" name="HFS" min="09:00" max="18:00" value="<?php echo $finSpectacle ?: "" ?>"/>
                         </div>
                         <div>
 
                             <h3><i class="fa-solid fa-circle-exclamation"></i>Temps de pause entre les spactcales : </h3>
-                            <input class="text" type="time" id="TPS" name="TPS" min="09:00" max="18:00"/>
+                            <input class="text" type="time" id="TPS" name="TPS" min="09:00" max="18:00" value="<?php echo $tempPause ?: "" ?>"/>
                         </div>
                     </div>
                 </div>
