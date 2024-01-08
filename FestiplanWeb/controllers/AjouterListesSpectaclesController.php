@@ -47,6 +47,7 @@ class AjouterListesSpectaclesController
     {
         $spectacleDisponible = $this->ajouterListesSpectaclesServices->getSpectaclesDisponible($id_festival_actif);
         $spectacleSelectionne = $this->ajouterListesSpectaclesServices->getSpectaclesTemporaire();
+        $sceneFestival = $this->ajouterListesSpectaclesServices->getScene($id_festival_actif);
 
         foreach ($spectacleDisponible as &$spectacle) {
             foreach ($spectacleSelectionne as $id) {
@@ -110,7 +111,7 @@ class AjouterListesSpectaclesController
         //TODO enregistrer les spectacle ajouté dans `liste_spectacle`
         //TODO Rediriger vers la page AccesListeSpectacle
         $tab_spectacle_valider = $this->ajouterListesSpectaclesServices->getSpectaclesTemporaire();
-
+        var_dump($tab_spectacle_valider);
         $this->ajouterListesSpectaclesServices->viderTableTemporaire();
 
         foreach ($tab_spectacle_valider as $item) {
