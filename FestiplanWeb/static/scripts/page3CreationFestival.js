@@ -95,18 +95,30 @@ async function addSpectacle() {
     } else {
         SPECTACLE.css({border: "1px solid red"});
     }
-    console.log("ici");
 }
 
 function displaySpectacle() {
+    let selection = $('.spectacleSelect')[0];
+    selection.innerHTML = '';
     for (let i = 0 ; i < spectacleList.length ; i++ ) {
-        console.log(spectacleList[i]);
+        let htmlContent = `<div class="selection">
+            <div class="left">
+                <i class="fa-${spectacleList[i].valid ? 'solid fa-check ok' : 'regular fa-plus add'}"></i>
+            </div>
+            <div class="name">${spectacleList[i].name}</div>
+            <div class="delete" data-index="${i}">
+                <i class="fa-solid fa-trash-can"></i>
+            </div>
+        </div>`;
+
+        selection.innerHTML += htmlContent;
     }
 }
 
 function displayInter() {
     let selection = $('.selections')[0];
     selection.innerHTML = '';
+
 
     for (let i = 0; i < interList.length; i++) {
         let htmlContent = `<div class="selection">
@@ -134,8 +146,10 @@ function displayScene() {
             <div class="name">${sceneList[i].name}</div>
             <div class="delete" data-index="${i}">
                 <i class="fa-solid fa-trash-can"></i>
-            </div>
-        </div>`;
+            </div>`;
+            if (sceneList[i].valid) {
+                htmlContent +=  `<input type="hidden" name="scene[]" value="${sceneList[i].name}">\`;
+            }
 
         selection.innerHTML += htmlContent;
     }

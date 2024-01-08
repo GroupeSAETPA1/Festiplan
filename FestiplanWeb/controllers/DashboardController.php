@@ -14,7 +14,7 @@ class DashboardController
 
     public function __construct(DashboardService $dashboardService)
     {
-        session_start();
+
         $this->dashboardService = $dashboardService;
     }
 

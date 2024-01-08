@@ -24,7 +24,6 @@ class CreateFestivalController {
 
     public function __construct(CreateFestivalService $createFestivalService )
     {
-        session_start();
         $this->createFestivalService = $createFestivalService;
         $this->categorieBD = $this -> createFestivalService->recupererCategorie();
         $this->spectacleBD = $this -> createFestivalService->recupererSpectacle();
@@ -140,10 +139,11 @@ class CreateFestivalController {
                 return false ;
             }
             $nouveau_nom = $nomFestival."_image".time().$extension;
-            if (move_uploaded_file($_FILES['imageFestival']['tmp_name'] , $dossier."/".$nouveau_nom)) { 
+            if (move_uploaded_file($_FILES['imageFestival']['tmp_name'] , $dossier."/".$nouveau_nom)) {
                 $_SESSION['photoFestival'] = $nouveau_nom;
                 return true ;
-            } else { 
+            } else {
+                //echo 'non2';
                 return false; 
             }
         // photo non ajouté
