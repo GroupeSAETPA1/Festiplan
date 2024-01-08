@@ -17,7 +17,7 @@ class AccesListeSpectaclesService
         $requete = "SELECT spectacle.id_spectacle, spectacle.nom, description, illustration, duree, c.nom as categorie 
                     FROM spectacle 
                     JOIN categorie c on c.id_categorie = spectacle.id_categorie
-                    JOIN liste_spectacle ls on spectacle.id_spectacle = ls.id_spectacle
+                    JOIN spectacle_festival_scene ls on spectacle.id_spectacle = ls.id_spectacle
                     WHERE ls.id_festival = :id_festival";
 
         $stmt = $this->pdoLectureSpectacle->prepare($requete);
@@ -47,7 +47,7 @@ class AccesListeSpectaclesService
      */
     public function retirerSpectacle(string $id_spectacle, string $id_festival_actif)
     {
-        $requete = "DELETE FROM liste_spectacle WHERE id_spectacle = :id_spectacle AND id_festival = :id_festival";
+        $requete = "DELETE FROM spectacle_festival_scene WHERE id_spectacle = :id_spectacle AND id_festival = :id_festival";
 
         $stmt = $this->pdoLectureSpectacle->prepare($requete);
         $stmt->bindParam(":id_spectacle", $id_spectacle);

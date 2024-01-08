@@ -16,7 +16,7 @@ class AjouterListesSpectaclesServices
         $requete = "SELECT spectacle.id_spectacle, spectacle.nom, description, illustration, duree, c.nom as categorie, 'ajouterSpectacle' as action
                     FROM spectacle 
                     JOIN categorie c on c.id_categorie = spectacle.id_categorie
-                    WHERE spectacle.id_spectacle NOT IN (SELECT id_spectacle FROM liste_spectacle WHERE id_festival = :id_festival)";
+                    WHERE spectacle.id_spectacle NOT IN (SELECT id_spectacle FROM spectacle_festival_scene WHERE id_festival = :id_festival)";
 
         $stmt = $this->pdoAjouterSpectacle->prepare($requete);
         $stmt->bindParam("id_festival", $id_festival);
@@ -70,7 +70,7 @@ class AjouterListesSpectaclesServices
 
     public function ajouterSpectacleAuFestival(int $id_festival, int $id_spectacle)
     {
-        $requete = "INSERT INTO liste_spectacle (id_festival, id_spectacle) VALUES (:id_festival, :id_spectacle);";
+        $requete = "INSERT INTO spectacle_festival_scene (id_festival, id_spectacle) VALUES (:id_festival, :id_spectacle);";
         $stmt = $this->pdoAjouterSpectacle->prepare($requete);
         $stmt->bindParam("id_festival", $id_festival);
         $stmt->bindParam("id_spectacle", $id_spectacle);
