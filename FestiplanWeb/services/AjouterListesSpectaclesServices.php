@@ -68,13 +68,24 @@ class AjouterListesSpectaclesServices
         $this->pdoAjouterSpectacle->exec($requete);
     }
 
-    public function ajouterSpectacleAuFestival(int $id_festival, int $id_spectacle)
+    public function ajouterSpectacleAuFestival(int $id_festival, int $id_spectacle): void
     {
         $requete = "INSERT INTO spectacle_festival_scene (id_festival, id_spectacle) VALUES (:id_festival, :id_spectacle);";
         $stmt = $this->pdoAjouterSpectacle->prepare($requete);
         $stmt->bindParam("id_festival", $id_festival);
         $stmt->bindParam("id_spectacle", $id_spectacle);
         $stmt->execute();
+    }
+
+    function getScene(int $id_festival): array
+    {
+        $requete = "SELECT id_scene, nom FROM festiplan.liste_scene WHERE id_festival = :id_festival";
+
+        $stmt = $this->pdoAjouterSpectacle->prepare($requete);
+        $stmt->bindParam("id_festival", $id_festival);
+        $stmt->execute();
+
+        return $stmt->fetchAll();
     }
 
 }
