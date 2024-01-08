@@ -56,7 +56,6 @@ form {
   margin: 0;
   padding: 1rem;
 }
-
 .entete-section a div {
   background-color: #F7A072;
   padding: 1rem;
@@ -67,12 +66,10 @@ form {
   font-size: 2.5vh;
   color: #363732;
 }
-
 .entete-section a div i {
   font-size: 3vh;
   margin: 1vh;
 }
-
 .entete-section a div p {
   margin: 0;
 }
@@ -94,18 +91,15 @@ form {
   padding: 2vh;
   margin: 2vh;
 }
-
 .card-festival .haut-card {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
 }
-
 .card-festival .haut-card .description-festival {
   margin: 3vh;
   font-size: 2vh;
 }
-
 .card-festival .bas-card {
   display: flex;
   flex-direction: row;
@@ -113,9 +107,15 @@ form {
   align-items: flex-end;
   margin: 1vh;
 }
-
 .card-festival .bas-card .group-boutons {
   flex-direction: row;
+}
+.card-festival .bas-card .group-boutons .btn-acces-spectacles {
+  background-color: #cccccc;
+  margin: 0 1vh;
+}
+.card-festival .bas-card .group-boutons .btn-acces-spectacles:hover {
+  background-color: #999999;
 }
 
 .img-spectacle, .img-festival {
@@ -143,24 +143,19 @@ form {
 .group-boutons {
   display: flex;
 }
-
 .group-boutons i {
   font-size: 4vh;
   margin: 1vh;
 }
-
 .group-boutons .fa-trash-can {
   color: red;
 }
-
 .group-boutons div {
   border-radius: 1vh;
 }
-
 .group-boutons div:hover {
   background-color: #cccccc;
 }
-
 .group-boutons div button {
   background-color: transparent;
   border: 1px solid transparent;
@@ -175,11 +170,9 @@ form {
   background-color: #F0F7F4;
   width: 100%;
 }
-
 .card-spectacles img {
   margin: 1vh;
 }
-
 .card-spectacles .description-spectacle {
   display: flex;
   flex-direction: row;
@@ -188,21 +181,17 @@ form {
   width: inherit;
   font-size: 120%;
 }
-
 .card-spectacles .description-spectacle p, .card-spectacles .description-spectacle div {
   margin: 0 1vh;
 }
-
 .card-spectacles .description-spectacle .group-categories {
   max-width: 40vh;
 }
-
 .card-spectacles .description-spectacle .duree {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-
 .card-spectacles .description-spectacle .group-boutons {
   flex-direction: column;
   justify-content: center;
@@ -243,6 +232,5 @@ form {
     width: 100%;
   }
 }
-
 
 /*# sourceMappingURL=dashboard.css.map */
