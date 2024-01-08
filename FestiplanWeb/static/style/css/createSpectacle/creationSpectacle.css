@@ -15,7 +15,9 @@ body {
 
 .wrapper {
   padding: 0 10vh;
+  width: 80vw;
 }
+
 .wrapper hr {
   margin: 40px 0;
   height: 4px;
@@ -28,20 +30,19 @@ body {
   display: flex;
 }
 
-.dureeInput {
-  font-size: 1rem;
-}
-
 .container {
   justify-content: center;
   flex-direction: column;
+  align-items: center;
 }
+
 .container .title {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 50px;
 }
+
 .container .title h1 {
   font-size: 2.5rem;
   font-weight: 700;
@@ -78,9 +79,11 @@ body {
   align-items: center;
   padding: 0 10vh;
 }
+
 .valid-annul-placement .lastButton {
+  width: 26vh;
   height: 4.8vh;
-  padding: 0 30px;
+  padding: 0 50px;
   font-size: 1rem;
   text-align: center;
   border-radius: 30px;
@@ -88,22 +91,27 @@ body {
   cursor: pointer;
   line-height: 2.7;
 }
+
 .valid-annul-placement .annulChoix {
   background-color: #F7A072;
   transition: 0.3s ease;
 }
+
 .valid-annul-placement .annulChoix:hover {
   background-color: #f6905a;
   scale: 1.05;
 }
+
 .valid-annul-placement .page-suivante {
   background-color: #99E1D9;
   transition: 0.3s ease;
 }
+
 .valid-annul-placement .page-suivante:hover {
   background-color: #85dbd2;
   scale: 1.05;
 }
+
 .valid-annul-placement .page-suivante a {
   text-decoration: none;
   color: black;
@@ -120,6 +128,7 @@ body {
 .retour {
   padding: 10px 25px;
 }
+
 .retour .Retour {
   line-height: 2;
   padding: 0 20px;
@@ -129,18 +138,11 @@ body {
   border-style: none;
   background-color: #F7A072;
 }
+
 .retour .Retour:hover {
   background-color: #f6905a;
 }
 
-.creationCompte {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50%;
-  height: 50%;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-}
+
 
 /*# sourceMappingURL=creationSpectacle.css.map */
