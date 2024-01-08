@@ -1,12 +1,12 @@
 -- Insertion dans la table `utilisateurs`
 INSERT INTO `utilisateurs` (`nom`, `prenom`, `mail`, `mdp`, `login`) VALUES
-('Delaclasse', 'Hubert', 'hubert.delaclasse@gmail.com', 'hubert12$', 'hubert'),
-('de Lande d\'Aussac de Saint Palais', 'François', 'francois.desaintpalais@iut-rodez.fr', 'mf>N=tyS$9){', 'francois_SP'),
-('Costes', 'Quentin', 'quentin.costes@iut-rodez.fr', 'mf>N=tyS$9){', 'quentinformatique'),
-('Descriaud', 'Lucas', 'lucas.descriaud@iut-rodez.fr', 'luc@$123', 'lucas'),
-('Bécogné', 'Néo', 'neo.becogne@iut-rodez.fr', 'sxdefrcvtgb$=$é222', 'neo'),
-('Douaud', 'Tom', 'tom.douaud@iut-rodez.fr', 'T0mD1234', 'tom'),
-('Silvestre', 'Franck', 'franck.silvestre@iut-rodez.fr', 'abcdef123@', 'franck');
+('Delaclasse', 'Hubert', 'hubert.delaclasse@gmail.com', 'eccb683f08f51a94814a065de13cd9167e6e2e0462f89ca73281830d61710c23', 'hubert'), -- mdp: hubert12$
+('de Lande d\'Aussac de Saint Palais', 'François', 'francois.desaintpalais@iut-rodez.fr', '088026d94b02b0f2c315f8a4068306231d11c4fe55a181fee58878b350d513d1', 'francois_SP'), -- mdp : mf>N=tyS$9){
+('Costes', 'Quentin', 'quentin.costes@iut-rodez.fr', '088026d94b02b0f2c315f8a4068306231d11c4fe55a181fee58878b350d513d1', 'quentinformatique'), -- mdp : mf>N=tyS$9){
+('Descriaud', 'Lucas', 'lucas.descriaud@iut-rodez.fr', '2d9c5a065cecb1782b97249d81ee5e02d622feb4f38d7ba6d82f915cb3d1c286', 'lucas'), -- mdp : luc@$123
+('Bécogné', 'Néo', 'neo.becogne@iut-rodez.fr', '4a6bde82f1ca76f860f78430e232094003768ac7e64498aefbf6a732c10f6d6f', 'neo'), -- mdp : sxdefrcvtgb$=$é222
+('Douaud', 'Tom', 'tom.douaud@iut-rodez.fr', '5f15de5595a55a3232a413c944771b04aba0167418d9006bdc5bc12aa48146ca', 'tom'), -- mdp : T0mD1234
+('Silvestre', 'Franck', 'franck.silvestre@iut-rodez.fr', 'b2b51495ee1dc27b26413ef3b1498c2eaad13de5c3ed3bd3954647670b126393', 'franck'); -- mdp : abcdef123@
 
 -- Insertion dans la table `categorie`
 INSERT INTO categorie (id_categorie, nom) VALUES
