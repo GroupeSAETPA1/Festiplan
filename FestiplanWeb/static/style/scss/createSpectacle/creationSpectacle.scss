@@ -127,3 +127,19 @@
     }
   }
 }
+
+.creationCompte {
+  // on affiche le formulaire de création de compte au milieu de la page, au dessus de la page
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    // on le centre
+    width: 50%;
+    height: 50%;
+    // on fais en sorte que le formulaire ressorte du fond avec un peu d'ombre
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+
+
+
+}
