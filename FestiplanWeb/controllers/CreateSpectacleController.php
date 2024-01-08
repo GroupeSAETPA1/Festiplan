@@ -106,7 +106,6 @@ class CreateSpectacleController
                                                                                    $_SESSION['categorieSpectacle'], $_SESSION['photoSpectacle'],
                                                                                    $inter, $interHorsScene);
         $view = new View("views/dashboard");
-
         return $view;
     }
 
@@ -139,7 +138,6 @@ class CreateSpectacleController
     private function photoOk($nomSpectacle): bool
     {
         if (isset($_FILES['photoSpectacle']) && $_FILES['photoSpectacle']['name'] != '') {
-            echo "photo ok";
             $dossier = $_SERVER[ 'DOCUMENT_ROOT' ] . PREFIX_TO_RELATIVE_PATH . '/datas/img';
             try {
                 $extension = $this->recupererExtension($_FILES['photoSpectacle']['name']);
