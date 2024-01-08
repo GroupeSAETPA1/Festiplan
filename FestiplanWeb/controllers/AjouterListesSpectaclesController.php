@@ -13,7 +13,6 @@ class AjouterListesSpectaclesController
 
     public function __construct(AjouterListesSpectaclesServices $ajouterLIstesSpectaclesServices)
     {
-        session_start();
         $this->ajouterListesSpectaclesServices = $ajouterLIstesSpectaclesServices;
     }
 

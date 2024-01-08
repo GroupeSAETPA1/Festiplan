@@ -13,7 +13,6 @@ class AccesListeSpectaclesController
 
     public function __construct(AccesListeSpectaclesService $accesListeSpectaclesService )
     {
-        session_start();
         $this->accesListeSpectaclesService = $accesListeSpectaclesService;
     }
 

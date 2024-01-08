@@ -17,7 +17,6 @@ class UserController
 
     public function __construct(UserService $userService)
     {
-        session_start();
         $this->userService = $userService;
     }
 
