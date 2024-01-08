@@ -28,8 +28,6 @@ use services\UsersService;
 use controllers\DashboardController;
 use controllers\UserController;
 use controllers\CreateSpectacleController;
-use controllers\DashboardController;
-use controllers\UserController;
 use PDO;
 use services\CreateSpectacleService;
 use services\DashboardService;
@@ -39,7 +37,6 @@ use yasmf\ComponentFactory;
 use yasmf\NoControllerAvailableForNameException;
 use yasmf\NoServiceAvailableForNameException;
 
-use PDO;
 /**
  *  The controller factory
  */
