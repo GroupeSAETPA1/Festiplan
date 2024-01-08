@@ -60,11 +60,14 @@ function displayInter(SELECTION, list) {
                 <i class="fa-solid fa-trash-can"></i>
             </div>`;
         // si la liste est celle des intervenants hors scene on ajoute une input caché pour le formulaire
-        if (SELECTION === SELECTION_HORS_SCENE) {
-            htmlContent += `<input type="hidden" name="interHorsScene[]" value="${list[i].name}">`;
-        } else {
-            htmlContent += `<input type="hidden" name="inter[]" value="${list[i].name}">`;
+        if (list[i].valid) {
+            if (SELECTION === SELECTION_HORS_SCENE) {
+                htmlContent += `<input type="hidden" name="interHorsScene[]" value="${list[i].name}">`;
+            } else {
+                htmlContent += `<input type="hidden" name="inter[]" value="${list[i].name}">`;
+            }
         }
+
 
         selection.innerHTML += htmlContent;
     }
