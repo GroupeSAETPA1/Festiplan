@@ -1,0 +1,145 @@
+@import '../main';
+
+.app {
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+  padding: 0 10vh;
+  hr {
+    margin: 40px 0;
+    height: 4px;
+    background-color: $dark-grey;
+    border: none;
+    width: 100%;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.dureeInput {
+  font-size: 1rem;
+}
+
+.container {
+  justify-content: center;
+  flex-direction: column;
+  // align-items: center;
+  .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+  }
+}
+
+.NDD { //abrevation de Nom - Date Début - Date Fin
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.Description {
+  padding: 0 13px ;
+  width: 80vw;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+.first-row {
+  justify-content: space-between;
+}
+
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+
+.valid-annul-placement{  //contient les boutons page suivant ou valider et annuler choix
+  margin-top: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10vh;
+  .lastButton {
+    height: 4.8vh;
+    padding: 0 30px;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 30px;
+    border-style: none;
+    cursor: pointer;
+    line-height: 2.7;
+  }
+  .annulChoix{
+    background-color: $orange;
+    transition:  0.3s ease;
+    &:hover {
+      background-color: darken($orange, 5);
+      scale: 1.05;
+    }
+  }
+
+  .page-suivante{
+    background-color: $light-blue;
+    transition:  0.3s ease;
+    &:hover {
+      background-color: darken($light-blue,5);
+      scale: 1.05;
+    }
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+}
+
+
+.fa-circle-exclamation {
+  color: red;
+
+}
+.fa-solid {
+  margin: 5px;
+}
+
+.retour {
+  padding: 10px 25px;
+  .Retour {
+    line-height: 2;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 30px;
+    border-style: none;
+    background-color: $orange;
+
+    &:hover {
+      background-color: darken($orange, 5);
+    }
+  }
+}
+
+.creationCompte {
+  // on affiche le formulaire de création de compte au milieu de la page, au dessus de la page
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    // on le centre
+    width: 50%;
+    height: 50%;
+    // on fais en sorte que le formulaire ressorte du fond avec un peu d'ombre
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+
+
+
+}

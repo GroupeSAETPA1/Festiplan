@@ -1,0 +1,46 @@
+@import '../main';
+
+@media screen and (max-width: 1000px) {
+
+  .form-duo {
+    flex-direction: column;
+  }
+  .creationCompte {
+    width: 100%;
+    form {
+      width: 100%;
+      row-gap: 0;
+    }
+  }
+  .boutonCreation {
+    width: 100%;
+  }
+  .colonneCreationCompte {
+    width: 100%;
+    padding: 10px;
+  }
+  .mail {
+    padding: 0 10px !important;
+  }
+  .wrapper {
+    width: 100%;
+    padding: 0 !important;
+  }
+  .container {
+    margin: 30px;
+
+    .title {
+      width: 80vw;
+    }
+  }
+  .valid-annul-placement {
+    margin-top: 50px ;
+    padding: 0 10px ;
+    .lastButton {
+      line-height: 1.5rem ;
+      height: 3.5rem ;
+    }
+  }
+
+}
+
