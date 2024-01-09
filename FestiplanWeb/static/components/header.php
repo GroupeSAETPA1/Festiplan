@@ -1,6 +1,6 @@
 <header>
     <!-- on importe le script -->
-    <script src="/Festiplan/FestiplanWeb/static/scripts/header/userSettings.js" defer></script>
+    <script src="/Festiplan/FestiplanWeb/static/scripts/header/userSettingsRedirection.js" defer></script>
     <!-- La redirection est géré par scripts/redirection_logo.js -->
     <div class="logo" id="logo">
         <i class="fa-solid fa-calendar-days"></i>
