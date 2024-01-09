@@ -15,14 +15,21 @@ body {
   align-items: stretch;
   margin-bottom: 1rem;
 }
-.information-row.deleteAccount {
-  justify-content: center;
-}
 .information-row .block {
   background: #363732;
   border-radius: 20px;
   padding: 2rem;
   width: 35vw;
+}
+.information-row .block .successMessage {
+  color: green;
+  font-size: 1.2rem;
+  text-align: center;
+}
+.information-row .errorMessage {
+  color: red;
+  font-size: 1.2rem;
+  text-align: center;
 }
 .information-row .informations {
   display: flex;
@@ -66,7 +73,15 @@ body {
   background: #99E1D9;
 }
 .information-row .informations .buttons .annuler {
+  background: #F7A072;
+}
+.information-row .informations .buttons .supprimerCompte {
+  width: 100%;
   background: #db6969;
+}
+.information-row .informations .buttons .decconnecter {
+  width: 100%;
+  background: #99E1D9;
 }
 
 hr {
