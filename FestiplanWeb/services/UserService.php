@@ -109,4 +109,22 @@ class UserService
         }
         return $resultat->id_utilisateur;
     }
+
+    /**
+     * supprime un utilisateur de la base de donnée
+     * renvoie vrai si l'utilisateur a été supprimé, faux sinon
+     * @param PDO $pdo
+     * @param mixed $login
+     * @param string $mdp
+     * @return void
+     */
+    public function supprimerCompte(PDO $pdo, mixed $login, string $mdp): bool
+    {
+        $mdp = hash("sha256", $mdp);
+
+        $requeteSupprimerCompte = $pdo->prepare("DELETE FROM utilisateurs WHERE login = :login AND mdp = :mdp");
+        $requeteSupprimerCompte->bindParam(':login', $login);
+        $requeteSupprimerCompte->bindParam(':mdp', $mdp);
+        return $requeteSupprimerCompte->execute();
+    }
 }

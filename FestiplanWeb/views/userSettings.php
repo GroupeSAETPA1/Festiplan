@@ -66,7 +66,7 @@
                         </div>
                         <div class="buttons">
                             <input hidden name="action" value="changerInfo">
-                            <input hidden name="controller" value="Home">
+                            <input hidden name="controller" value="Settings">
                             <a href="/Festiplan/FestiplanWeb/index.php?controller=Home&action=settings">
                                 <button type="button" class="annuler"><i class="fa-solid fa-xmark"></i>Annuler</button>
                             </a>
@@ -95,7 +95,7 @@
 
                             <div class="buttons">
                                 <input hidden name="action" value="changerMdp">
-                                <input hidden name="controller" value="Home">
+                                <input hidden name="controller" value="Settings">
                                 <a href="/Festiplan/FestiplanWeb/index.php?controller=Home&action=settings">
                                     <button type="button" class="annuler"><i class="fa-solid fa-xmark"></i> Annuler</button>
                                 </a>
@@ -117,6 +117,7 @@
                         <div class="inputs">
                             <div>
                                 <h3>Confirmer mot de passe :</h3>
+                                <?= $test ?>
                                 <?php if (isset($displaySuppressionError) && $displaySuppressionError) { ?>
                                     <p class="errorMessage"><?php echo $errorMessage ?></p>
                                 <?php } ?>
@@ -125,8 +126,8 @@
                         </div>
                         <div class="buttons">
                             <input hidden name="action" value="supprimerCompte">
-                            <input hidden name="controller" value="Home">
-                            <button type="submit" name="action" class="supprimerCompte"><i class="fa-solid fa-trash"></i> Supprimer le compte</button>
+                            <input hidden name="controller" value="Settings">
+                            <button type="submit" class="supprimerCompte"><i class="fa-solid fa-trash"></i> Supprimer le compte</button>
                         </div>
                     </form>
                 </div>
