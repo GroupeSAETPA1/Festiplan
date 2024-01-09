@@ -60,4 +60,10 @@ class SettingsController
             return $view;
         }
     }
+
+    public function deconnexion(): View
+    {
+        session_destroy();
+        return new View("/views/index");
+    }
 }

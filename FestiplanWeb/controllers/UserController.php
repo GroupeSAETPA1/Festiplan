@@ -22,7 +22,7 @@ class UserController
 
     public function index($pdo): View
     {
-        $this->userService->deconnexion();
+        session_destroy();
 
         $nom = htmlspecialchars(HttpHelper::getParam('nom') ?: "");
         $prenom = htmlspecialchars(HttpHelper::getParam('prenom') ?: "");

@@ -69,15 +69,6 @@ class UserService
     }
 
     /**
-     * Déconnecte l'utilisateur en réinitialisant les variables liées a l'utisateur
-     * @return void
-     */
-    public function deconnexion(): void
-    {
-        session_destroy();
-    }
-
-    /**
      * verifie si un utilisateur existe avec l'email
      * @param $pdo pdo le pdo de l'application
      * @param $email string l'email de l'utilisateur a rechercher

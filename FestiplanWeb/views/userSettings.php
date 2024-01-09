@@ -145,7 +145,7 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
                         <h3>En se déconnectant, vous serrez redirigé vers la page de connexion.</h3>
                         <form method="post" action="index.php">
                             <div class="buttons">
-                                <input hidden name="action" value="supprimerCompte">
+                                <input hidden name="action" value="deconnexion">
                                 <input hidden name="controller" value="Settings">
                                 <button type="submit" class="decconnecter"><i class="fa-solid fa-right-from-bracket"></i> Deconnexion</button>
                             </div>
