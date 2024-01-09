@@ -37,15 +37,11 @@ class UserController
 
     public function settings(): View
     {
-        $view = new View("views/settings");
-        // Si l'utilisateur est connecté, on affiche ses informations
-        if (isset($_SESSION['connecte']) && $_SESSION['connecte']) {
-            $view->setVar('nom', $_SESSION['nom']);
-            $view->setVar('prenom', $_SESSION['prenom']);
-            $view->setVar('email', $_SESSION['email']);
-            $view->setVar('mdp', $_SESSION['mdp']);
-            $view->setVar('login', $_SESSION['login']);
-        }
+        $view = new View("views/userSettings");
+        $this->buildView($view, $_SESSION['nom'], $_SESSION['prenom'], $_SESSION['email'], $_SESSION['mdp']
+                              , $_SESSION['login'], false, false
+                              , false, "");
+
         return $view;
     }
 
