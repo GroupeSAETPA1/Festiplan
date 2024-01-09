@@ -120,7 +120,7 @@ class UserService
         return $requeteSupprimerCompte->rowCount() > 0;
     }
 
-    public function changerInfo(PDO $pdo, string $newNom, string $newPrenom, string $newEmail, string $newLogin)
+    public function changerInfo(PDO $pdo, string $newNom, string $newPrenom, string $newEmail, string $newLogin): bool
     {
         $requeteChangerInfo = $pdo->prepare("UPDATE utilisateurs SET nom = :nom, prenom = :prenom, mail = :email, login = :login WHERE id_utilisateur = :id_utilisateur");
         $requeteChangerInfo->bindParam(':nom', $newNom);
@@ -129,5 +129,19 @@ class UserService
         $requeteChangerInfo->bindParam(':login', $newLogin);
         $requeteChangerInfo->bindParam(':id_utilisateur', $_SESSION['id_utilisateur']);
         $requeteChangerInfo->execute();
+        return $requeteChangerInfo->rowCount() > 0;
+    }
+
+    public function changerMdp(PDO $pdo, string $oldMdp, string $newMdp): bool
+    {
+        $oldMdp = hash("sha256", $oldMdp);
+        $newMdp = hash("sha256", $newMdp);
+
+        $requeteChangerMdp = $pdo->prepare("UPDATE utilisateurs SET mdp = :mdp WHERE id_utilisateur = :id_utilisateur AND mdp = :oldMdp");
+        $requeteChangerMdp->bindParam(':mdp', $newMdp);
+        $requeteChangerMdp->bindParam(':id_utilisateur', $_SESSION['id_utilisateur']);
+        $requeteChangerMdp->bindParam(':oldMdp', $oldMdp);
+        $requeteChangerMdp->execute();
+        return $requeteChangerMdp->rowCount() > 0;
     }
 }

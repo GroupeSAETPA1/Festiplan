@@ -91,6 +91,12 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
                 <div class="block">
                     <div class="informations">
                         <h2>Changer le mot de passe :</h2>
+                        <?php if (isset($changerMdp) && $changerMdp) { ?>
+                            <p class="successMessage">Votre mot de passe a bien été modifié</p>
+                        <?php } ?>
+                        <?php if (isset($displayChangerMdpError) && $displayChangerMdpError) { ?>
+                            <p class="errorMessage"><?php echo $errorMessage ?></p>
+                        <?php } ?>
                         <form method="post" action="index.php">
                             <div class="inputs">
                                 <div>

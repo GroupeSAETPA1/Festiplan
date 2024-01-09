@@ -71,18 +71,64 @@ class SettingsController
         if ($newNom == "" || $newPrenom == "" || $newEmail == "" || $newLogin == "") {
             $view = new View("/views/userSettings");
             $view->setVar('displayChangerInfoError', true);
-            $view->setVar('errorMessage', "Erreur de modification : Un des champs est vide");
+            $view->setVar('errorMessage', "Erreur de modification : Un ou plusieurs des champs est vide");
             return $view;
         }
-        $this->userService->changerInfo($pdo, $newNom, $newPrenom, $newEmail, $newLogin);
+        if ($this->userService->changerInfo($pdo, $newNom, $newPrenom, $newEmail, $newLogin)) {
+            $view = new View("/views/userSettings");
+            $view->setVar('changerInfo', true);
+            $_SESSION['nom'] = $newNom;
+            $_SESSION['prenom'] = $newPrenom;
+            $_SESSION['email'] = $newEmail;
+            $_SESSION['login'] = $newLogin;
+            return $view;
+        } else {
+            $view = new View("/views/userSettings");
+            $view->setVar('displayChangerInfoError', true);
+            $view->setVar('errorMessage', "Erreur de modification : veuillez réessayer");
+            return $view;
+        }
+    }
 
-        $_SESSION['nom'] = $newNom;
-        $_SESSION['prenom'] = $newPrenom;
-        $_SESSION['email'] = $newEmail;
-        $_SESSION['login'] = $newLogin;
+    public function changerMdp(Pdo $pdo)
+    {
+        $oldMdp = htmlspecialchars(HttpHelper::getParam('oldMdp') ?: "");
+        $newMdp = htmlspecialchars(HttpHelper::getParam('newMdp') ?: "");
+        $confirmMdp = htmlspecialchars(HttpHelper::getParam('confirmMdp') ?: "");
 
-        $view = new View("/views/userSettings");
-        $view->setVar('changerInfo', true);
-        return $view;
+        $pattern = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/";
+        $mdpValide = preg_match($pattern,$newMdp);
+
+        if ($oldMdp == "" || $newMdp == "" || $confirmMdp == "") {
+            $view = new View("/views/userSettings");
+            $view->setVar('displayChangerMdpError', true);
+            $view->setVar('errorMessage', "Erreur de modification : Un ou plusieurs des champs est vide");
+            return $view;
+        }
+
+        if (!$mdpValide) {
+            $view = new View("/views/userSettings");
+            $view->setVar('displayChangerMdpError', true);
+            $view->setVar('errorMessage', "Erreur de modification : Le nouveau mot de passe n'est pas valide, il doit contenir au moins 8 caractères dont une majuscule, une minuscule, un chiffre et un caractère spécial");
+            return $view;
+        }
+
+        if ($newMdp != $confirmMdp) {
+            $view = new View("/views/userSettings");
+            $view->setVar('displayChangerMdpError', true);
+            $view->setVar('errorMessage', "Erreur de modification : Les mots de passe ne correspondent pas");
+            return $view;
+        }
+
+        if ($this->userService->changerMdp($pdo, $oldMdp, $newMdp)) {
+            $view = new View("/views/userSettings");
+            $view->setVar('changerMdp', true);
+            return $view;
+        } else {
+            $view = new View("/views/userSettings");
+            $view->setVar('displayChangerMdpError', true);
+            $view->setVar('errorMessage', "Erreur de modification : veuillez réessayer");
+            return $view;
+        }
     }
 }
