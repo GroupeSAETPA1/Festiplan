@@ -22,7 +22,7 @@ class PlanificationService
                     JOIN liste_organisateur
                     ON festival.id_festival = liste_organisateur.id_festival
                     WHERE liste_organisateur.id_organisateur = :id_organisateur
-                    AND liste_organisateur.id_festival = :id_festival";
+                    AND liste_organisateur.id_festival = :id_festival;";
 
         $requete = $this->pdoLecture->prepare($requete);
         $requete->bindParam("id_organisateur", $id_organisateur);
@@ -41,7 +41,8 @@ class PlanificationService
                     ON spectacle_festival_scene.id_festival = festival.id_festival
                     JOIN scene
                     ON spectacle_festival_scene.id_scene = scene.id_scene
-                    WHERE festival.id_festival = :id_festival";
+                    WHERE festival.id_festival = :id_festival
+                    ORDER BY scene.id_scene ASC;";
 
         $requete = $this->pdoLecture->prepare($requete);
         $requete->bindParam("id_festival", $id_festival);
