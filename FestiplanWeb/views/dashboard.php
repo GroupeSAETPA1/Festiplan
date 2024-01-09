@@ -60,7 +60,7 @@ function afficher_spectacle(int $id_spectacle, string $nom_spectacle, string $li
 {
     echo '<div class="card-spectacles rounded">';
     echo '    <div class="img-spectacle">';
-    echo '        <img src="' . $lien_image . '" alt="L\'image du spectacle ' . $nom_spectacle . '">';
+    echo '        <img src="' . $lien_image . '" alt="L\'image du spectacle ' . $nom_spectacle . '" >';
     echo '    </div>';
     echo '    <div class="description-spectacle">';
     echo '        <p class="nom-spectacle">' . $nom_spectacle . '</p>';
@@ -165,8 +165,10 @@ function minutesToHHMM(int $minutes): string
                         $nom_festival = $festival['nom'];
                         $date_debut = $festival['debut'];
                         $date_fin = $festival['fin'];
-                        $lien_image = $festival['illustration'];
+                        $image = $festival['illustration'];
                         $categorie = $festival['categorie'];
+                        // cosntruction du lien de l'image
+                        $lien_image = "/Festiplan/FestiplanWeb/datas/img/" . $image;
                         afficher_festival($id_festival, $nom_festival, $date_debut, $date_fin, $lien_image, $categorie);
                     }
                     ?>
@@ -193,9 +195,11 @@ function minutesToHHMM(int $minutes): string
                 foreach ($spectacles as $spectacle) {
                     $id_spectacle = $spectacle['id_spectacle'];
                     $nom_spectacle = $spectacle['nom'];
-                    $lien_image = $spectacle['illustration'];
+                    $image = $spectacle['illustration'];
                     $categorie = $spectacle['categorie'];
                     $duree = $spectacle['duree'];
+                    // cosntruction du lien de l'image
+                    $lien_image = "/Festiplan/FestiplanWeb/datas/img/" . $image;
                     afficher_spectacle($id_spectacle, $nom_spectacle, $lien_image, $categorie, $duree);
                 }
                 }
