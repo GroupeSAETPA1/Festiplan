@@ -83,6 +83,9 @@ class CreateSpectacleController
             $view = new View("views/creationSpectacle/createSpectacle1");
             $view -> setVar('tableauCategorie' , $this->categorieBD);
             $view -> setVar('tableauTailleScene' , $this->tailleSceneBD);
+            if (!$this-> photoOk(HttpHelper::getParam("nom"))) {
+                $view->setVar('erreur', "l'image n'est pas valide");
+            }
             $this->reAfficherElementsPage1($view);
         }
         return $view;
@@ -155,6 +158,15 @@ class CreateSpectacleController
             } catch (Exception) {
                 return false ;
             }
+
+            // Get the image dimensions
+            list($width, $height) = getimagesize($_FILES['photoSpectacle']['tmp_name']);
+
+            // Check if the image dimensions are 800x600
+            if ($width != 800 || $height != 600) {
+                return false;
+            }
+
             $nouveau_nom = $nomSpectacle."_image".time().$extension;
             if (move_uploaded_file($_FILES['photoSpectacle']['tmp_name'] , $dossier."/".$nouveau_nom)) {
                 $_SESSION['photoSpectacle'] = $nouveau_nom;
