@@ -102,7 +102,7 @@ class AjouterListesSpectaclesController
     {
         $id_festival = $_SESSION['ajouterListesSpectacles']['id_festival'] ?? null;
         $nom_festival = $_SESSION['ajouterListesSpectacles']['nom_festival'] ?? null;
-        $scene = HttpHelper::getParam("scene") ?? null;
+        $scene = HttpHelper::getParam("id_scene") ?? null;
         $id_spectacle = HttpHelper::getParam("id_spectacle") ?? null;
 
         if ($id_festival == null || $id_spectacle == null || $scene == null) {

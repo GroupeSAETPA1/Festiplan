@@ -25,7 +25,7 @@ function afficherSpectacle($nom_spectacle, $categorie, $duree, $illustration, $i
     echo '   </div>';
     echo '   <div class="duree">';
     echo '       <span class="label-duree">Dur&eacute;e :</span>';
-    echo '       <span class="duree">' . $duree . '</span>';
+    echo '       <span class="duree">' . minutesToHHMM($duree) . '</span>';
     echo '   </div>';
     echo '   <div class="group-bouton-ajouter-spectacle rounded">';
     echo '       <form action="/Festiplan/FestiplanWeb/index.php" method="post">';
@@ -71,6 +71,16 @@ function afficher_liste_scene(array $liste_scene, int $id_spectacle): void
         echo '<option value="' . $id_scene . '">' . $nom_scene . '</option>';
     }
     echo '</select>';
+}
+
+/**
+ * Convertit un nombre de minutes en heures et minutes
+ * @param int $minutes Le nombre de minutes
+ * @return string L'heure au format HH:MM
+ */
+function minutesToHHMM(int $minutes): string
+{
+    return sprintf('%02d:%02d', $minutes / 60, $minutes % 60);
 }
 
 ?>
@@ -196,6 +206,8 @@ function afficher_liste_scene(array $liste_scene, int $id_spectacle): void
 
                     if ($id_spectacle % 2 == 0) {
                         $illustration = "/festiplan/FestiplanWeb/static/assets/img/deScenePalais.jpg";
+                    } else if ($id_spectacle % 3 == 0){
+                        $illustration = "/festiplan/FestiplanWeb/static/assets/img/NeoQuentin.jpg";
                     }
 
                     afficherSpectacle($nom_spectacle, $categorie, $duree, $illustration, $id_festival, $id_spectacle, $action, $nom_scene, $id_scene, $sceneFestival);
