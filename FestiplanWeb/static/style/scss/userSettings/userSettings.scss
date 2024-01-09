@@ -6,9 +6,7 @@
     justify-content: space-between;
     align-items: stretch;
     margin-bottom: 1rem;
-    &.deleteAccount {
-        justify-content: center;
-    }
+
 
     .block {
         background: $dark-grey;
@@ -78,6 +76,10 @@
             .supprimerCompte {
                 width: 100%;
                 background: #db6969;
+            }
+            .decconnecter {
+                width: 100%;
+                background: $light-blue;
             }
         }
     }

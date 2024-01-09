@@ -117,14 +117,14 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
             <div class="title">
                 <h1>Parametres</h1>
             </div>
-            <div class="information-row deleteAccount">
+            <div class="information-row">
                 <!-- suppression du compte -->
                 <div class="informations block">
                     <h2>Supprimer le compte :</h2>
                     <form method="post" action="index.php">
                         <div class="inputs">
                             <div>
-                                <h3>Confirmer mot de passe :</h3>d
+                                <h3>Confirmer mot de passe :</h3>
                                 <?php if (isset($displaySuppressionError) && $displaySuppressionError) { ?>
                                     <p class="errorMessage"><?php echo $errorMessage ?></p>
                                 <?php } ?>
@@ -137,6 +137,21 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
                             <button type="submit" class="supprimerCompte"><i class="fa-solid fa-trash"></i> Supprimer le compte</button>
                         </div>
                     </form>
+                </div>
+                <!-- se déconnecter -->
+                <div class="block">
+                    <div class="informations">
+                        <h2>Se deconnecter :</h2>
+                        <h3>En se déconnectant, vous serrez redirigé vers la page de connexion.</h3>
+                        <form method="post" action="index.php">
+                            <div class="buttons">
+                                <input hidden name="action" value="supprimerCompte">
+                                <input hidden name="controller" value="Settings">
+                                <button type="submit" class="decconnecter"><i class="fa-solid fa-right-from-bracket"></i> Deconnexion</button>
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </div>

@@ -15,9 +15,6 @@ body {
   align-items: stretch;
   margin-bottom: 1rem;
 }
-.information-row.deleteAccount {
-  justify-content: center;
-}
 .information-row .block {
   background: #363732;
   border-radius: 20px;
@@ -76,6 +73,10 @@ body {
 .information-row .informations .buttons .supprimerCompte {
   width: 100%;
   background: #db6969;
+}
+.information-row .informations .buttons .decconnecter {
+  width: 100%;
+  background: #99E1D9;
 }
 
 hr {
