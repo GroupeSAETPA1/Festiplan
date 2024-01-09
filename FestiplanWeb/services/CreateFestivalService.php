@@ -69,4 +69,16 @@ class createFestivalService
     public  function insertionFestival() {
 
     }
+
+    public function dureeSpectacle($spectacle)
+    {
+        $total = 0;
+        $requeteDureeSpectacle = $this -> pdoCreationFestival -> prepare("SELECT duree FROM spectacle WHERE nom = :spectacle");
+        foreach ($spectacle as $ligne) {
+           $requeteDureeSpectacle->bindParam(':spectacle' , $ligne);
+              $requeteDureeSpectacle->execute();
+              $total += $requeteDureeSpectacle->fetch()['duree'];
+        }
+        return $total;
+    }
 }

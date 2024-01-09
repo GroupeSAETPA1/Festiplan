@@ -94,6 +94,8 @@
             <div class="button-flex-end">
                 <button type="submit" class="valider">Page Suivante<i class="fa-solid fa-arrow-right"></i></button>
             </div>
+            <input hidden name="action" value="validerPage2">
+            <input hidden name="controller" value="CreateFestival">
     </form>
     </div>
          <?php include_once $_SERVER['DOCUMENT_ROOT']. "/Festiplan/FestiplanWeb/static/components/footer.php" ?>

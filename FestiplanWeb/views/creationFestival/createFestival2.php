@@ -19,7 +19,7 @@
     <body>
     <?php
      include_once $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/header.php" ?>
-
+    <form>
         <div class="retour">
             <a href="createFestival3.php"><button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button></a>
         </div>
@@ -44,8 +44,8 @@
                         </div>
                         <div>
 
-                            <h3><i class="fa-solid fa-circle-exclamation"></i>Temps de pause entre les spactcales : </h3>
-                            <input class="text" type="time" id="TPS" name="TPS" min="09:00" max="18:00" value="<?php echo $tempPause ?: "" ?>"/>
+                            <h3><i class="fa-solid fa-circle-exclamation"></i>Temps de pause entre les spectacles : </h3>
+                            <input class="text" min="0" id="TPS" name="TPS" type="number" step="1" value="<?php echo $tempPause ?: "" ?>"/>
                         </div>
                     </div>
                 </div>
@@ -57,8 +57,11 @@
                 <i class="fa-regular fa-circle-xmark"></i>Annuler vos choix  <!-- TODO fontawesome -->
             </div>
             <div class="button-flex-end">
-                <button class="valider">Valider <i class="fa-solid fa-check"></i></button>
+                <button type="submit" class="valider">Valider <i class="fa-solid fa-check"></i></button>
             </div>
+            <input hidden name="action" value="validerPage3">
+            <input hidden name="controller" value="CreateFestival">
+        </form>
         </div>
     <?php
     include_once $_SERVER['DOCUMENT_ROOT']. "/Festiplan/FestiplanWeb/static/components/footer.php" ?>

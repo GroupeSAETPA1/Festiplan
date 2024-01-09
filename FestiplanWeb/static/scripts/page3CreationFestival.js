@@ -111,7 +111,7 @@ function displaySpectacle() {
             </div>
         </div>`;
         if (spectacleList[i].valid) {
-            htmlContent += `<input type="hidden" name="organisateur[]" value="${spectacleList[i].name}"></div>`;
+            htmlContent += `<input type="hidden" name="spectacle[]" value="${spectacleList[i].name}"></div>`;
         }
 
         selection.innerHTML += htmlContent;
