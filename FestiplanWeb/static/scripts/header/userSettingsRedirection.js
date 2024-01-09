@@ -1,3 +1,3 @@
 $('.mon-compte').on('click', function() {
-    window.location.href = "/index.php?controller=User&action=settings";
+    window.location.href = "/Festiplan/FestiplanWeb/index.php?controller=Home&action=settings";
 });
