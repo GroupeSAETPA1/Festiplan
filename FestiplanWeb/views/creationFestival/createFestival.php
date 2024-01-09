@@ -30,17 +30,7 @@
 </head>
 
 <body>
-    <header>
-        <div class="logo">
-            <i class="fa-solid fa-calendar-days"></i>
-            <span>Festiplan</span>
-        </div>
-        <div>
-            <div>
-                <button class="mon-compte"><i class="fa-solid fa-user"></i> Mon Compte</button>
-            </div>
-        </div>
-    </header>
+    <?php include_once $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/header.php" ?>
 
     <div class="retour">
         <a href="/Festiplan/FestiplanWeb/?controller=Dashboard">

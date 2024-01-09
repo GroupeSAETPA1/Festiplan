@@ -26,17 +26,8 @@
         <script src="/Festiplan/FestiplanWeb/static/scripts/page3CreationFestival.js" defer></script>
     </head>
     <body>
-        <header>
-            <div class="logo">
-                <i class="fa-solid fa-calendar-days"></i>
-                <span>Festiplan</span>
-            </div>
-            <div>
-                <div>
-                    <button class="mon-compte"><i class="fa-solid fa-user"></i> Mon Compte</button>
-                </div>
-            </div>
-        </header>
+    <div class="app">
+    <?php include_once $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/header.php" ?>
 
         <div class="retour">
             <a href=/Festiplan/FestiplanWeb/?controller=CreateFestival&action=validerPage2>
@@ -96,6 +87,7 @@
                 </div>
             </div>
         </div>
+    </div>
          <?php include_once $_SERVER['DOCUMENT_ROOT']. "/Festiplan/FestiplanWeb/static/components/footer.php" ?>
     </body>
 </html>
