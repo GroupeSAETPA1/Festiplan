@@ -4,18 +4,50 @@
 
   .flex-row{
     display: flex;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
   }
 
   .flex-column{
     align-items: center;
   }
 
+  .end-row {
+    display: flex;
+    align-items: flex-end;
+  }
+
   .text{
     width: 50vw;
+    height: 4vh;
   }
-  .align{
-    padding: 0 150px
+  .container{
+    display: flex;
+    align-items: center;
   }
+
+
+}
+
+@media  (max-width: 650px){
+
+  .valid-annul-placement {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .annulChoix {
+    width: 200px;
+    height: 25px;
+    margin: 0 0 15px 0 ;
+  }
+
+  .page-suivante {
+    width: 250px !important;
+  }
+  .valider {
+    width: 250px !important;
+  }
+
+
 }

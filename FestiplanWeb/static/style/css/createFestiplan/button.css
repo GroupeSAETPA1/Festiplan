@@ -13,25 +13,9 @@
   background-color: #f6905a;
 }
 
-.ajoutGrij {
-  line-height: 2.5;
-  font-size: 1rem;
-  text-align: center;
-  border-radius: 30px;
-  border-style: none;
-  background-color: #99E1D9;
-  display: flex;
-  justify-content: center;
-  width: 70%;
-}
-.ajoutGrij:hover {
-  background-color: #85dbd2;
-}
-
 .page-suivante {
-  width: 26vh;
-  height: 4.8vh;
-  padding: 0 50px;
+  width: fit-content;
+  padding: 10px 50px;
   font-size: 1rem;
   text-align: center;
   border-radius: 30px;
@@ -43,27 +27,8 @@
   scale: 1.05;
 }
 
-.mon-compte {
-  line-height: 2.5;
-  padding: 0 20px;
-  font-size: 1rem;
-  text-align: center;
-  border-radius: 30px;
-  border-style: none;
-  background-color: #F7A072;
-}
-.mon-compte:hover {
-  background-color: #f6905a;
-}
-
-.button-flex-end {
-  display: flex;
-  align-items: flex-end;
-  padding: 0 5vh;
-}
-
 .retour {
-  padding: 2vh;
+  padding: 15px;
 }
 
 .ajouter {
@@ -76,7 +41,7 @@
   width: 22vh;
   height: fit-content;
   border-radius: 30px;
-  margin-left: 3vh;
+  margin-left: 30px;
 }
 
 .ajouter:hover {
@@ -94,7 +59,7 @@
   width: fit-content;
   height: fit-content;
   border-radius: 30px;
-  margin-left: 4.5vh;
+  margin-left: 30px;
 }
 
 .suppOrga:hover {
@@ -109,10 +74,10 @@
   cursor: pointer;
   background-color: #F7A072;
   transition: background-color 0.3s ease;
-  width: 22vh;
+  width: fit-content;
   height: fit-content;
   border-radius: 30px;
-  margin-left: 3vh;
+  margin-left: 30px;
 }
 
 .annulChoix:hover {
@@ -121,9 +86,8 @@
 }
 
 .valider {
-  width: 26vh;
-  height: 4.8vh;
-  padding: 0 50px;
+  width: fit-content;
+  padding: 10px 50px;
   font-size: 1rem;
   text-align: center;
   border-radius: 30px;
