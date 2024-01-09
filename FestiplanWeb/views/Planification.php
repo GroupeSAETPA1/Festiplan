@@ -43,11 +43,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-3">
-                    <a href="" class="retourBouton"><i class="fa-solid fa-arrow-left"></i> Retour</a>
+                    <a href="/Festiplan/FestiplanWeb/?controller=dashboard" class="retourBouton"><i class="fa-solid fa-arrow-left"></i> Retour</a>
                 </div>
                 <div class="col-12">
                     <h1>Planification du festival <?php echo $festival["nom"] ?></h1>
-                    <div class="col-12 text-right"><button class="genererPlanificationBouton">Planification par défaut</button></div>
                     <div class="Planification">
                         <div class="scrollDIV">
                             <div id="calendar" class="caldendar">
