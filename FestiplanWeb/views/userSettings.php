@@ -65,12 +65,12 @@
                             <input type="text" name="login" placeholder="Tapez votre login" value="<?php echo $login ?: "" ?>"/>
                         </div>
                         <div class="buttons">
-                            <input hidden name="action" value="chnagerInfo">
+                            <input hidden name="action" value="changerInfo">
                             <input hidden name="controller" value="Home">
                             <a href="/Festiplan/FestiplanWeb/index.php?controller=Home&action=settings">
-                                <button type="button" class="annuler">Annuler</button>
+                                <button type="button" class="annuler"><i class="fa-solid fa-xmark"></i>Annuler</button>
                             </a>
-                            <button type="submit" name="action" class="valider">Valider modfifications</button>
+                            <button type="submit" name="action" class="valider"><i class="fa-solid fa-check"></i> Valider modfifications</button>
                         </div>
                     </form>
                 </div>
@@ -97,9 +97,9 @@
                                 <input hidden name="action" value="changerMdp">
                                 <input hidden name="controller" value="Home">
                                 <a href="/Festiplan/FestiplanWeb/index.php?controller=Home&action=settings">
-                                    <button type="button" class="annuler">Annuler</button>
+                                    <button type="button" class="annuler"><i class="fa-solid fa-xmark"></i> Annuler</button>
                                 </a>
-                                <button type="submit" name="action" class="valider">Valider modfifications</button>
+                                <button type="submit" name="action" class="valider"><i class="fa-solid fa-check"></i> Valider modfifications</button>
                             </div>
                         </form>
                     </div>
@@ -117,16 +117,16 @@
                         <div class="inputs">
                             <div>
                                 <h3>Confirmer mot de passe :</h3>
+                                <?php if (isset($displaySuppressionError) && $displaySuppressionError) { ?>
+                                    <p class="errorMessage"><?php echo $errorMessage ?></p>
+                                <?php } ?>
                                 <input type="password" name="confirmMdp"/>
                             </div>
                         </div>
                         <div class="buttons">
                             <input hidden name="action" value="supprimerCompte">
                             <input hidden name="controller" value="Home">
-                            <a href="/Festiplan/FestiplanWeb/index.php?controller=Home&action=settings">
-                                <button type="button" class="annuler">Annuler</button>
-                            </a>
-                            <button type="submit" name="action" class="valider">Supprimer le compte</button>
+                            <button type="submit" name="action" class="supprimerCompte"><i class="fa-solid fa-trash"></i> Supprimer le compte</button>
                         </div>
                     </form>
                 </div>

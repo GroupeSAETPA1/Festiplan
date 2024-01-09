@@ -17,6 +17,11 @@
         width: 35vw;
 
     }
+    .errorMessage {
+        color: red;
+        font-size: 1.2rem;
+        text-align: center;
+    }
 
 
     .informations {
@@ -68,6 +73,10 @@
                 background: $light-blue;
             }
             .annuler {
+                background: #db6969;
+            }
+            .supprimerCompte {
+                width: 100%;
                 background: #db6969;
             }
         }

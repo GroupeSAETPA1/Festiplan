@@ -24,6 +24,11 @@ body {
   padding: 2rem;
   width: 35vw;
 }
+.information-row .errorMessage {
+  color: red;
+  font-size: 1.2rem;
+  text-align: center;
+}
 .information-row .informations {
   display: flex;
   flex-direction: column;
@@ -66,6 +71,10 @@ body {
   background: #99E1D9;
 }
 .information-row .informations .buttons .annuler {
+  background: #db6969;
+}
+.information-row .informations .buttons .supprimerCompte {
+  width: 100%;
   background: #db6969;
 }
 
