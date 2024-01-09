@@ -121,7 +121,6 @@ class UserController
         $mdp = htmlspecialchars(HttpHelper::getParam('mdp') ?: "");
         $login = htmlspecialchars(HttpHelper::getParam('login') ?: "");
 
-//        $view = null;
         $view = new View("/views/index");
         try {
             if ($login != "" || $mdp != "") {
@@ -134,7 +133,7 @@ class UserController
                         $_SESSION['id_utilisateur'] = $ligne->id_utilisateur;
                         $_SESSION['nom'] = $ligne->nom;
                         $_SESSION['prenom'] = $ligne->prenom;
-                        $_SESSION['email'] = $ligne->email;
+                        $_SESSION['email'] = $ligne->mail;
                         $_SESSION['login'] = $ligne->login;
                     }
                     $messageErreur = "";

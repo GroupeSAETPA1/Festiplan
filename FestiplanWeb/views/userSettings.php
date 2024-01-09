@@ -116,8 +116,7 @@
                     <form method="post" action="index.php">
                         <div class="inputs">
                             <div>
-                                <h3>Confirmer mot de passe :</h3>
-                                <?= $test ?>
+                                <h3>Confirmer mot de passe :</h3>d
                                 <?php if (isset($displaySuppressionError) && $displaySuppressionError) { ?>
                                     <p class="errorMessage"><?php echo $errorMessage ?></p>
                                 <?php } ?>

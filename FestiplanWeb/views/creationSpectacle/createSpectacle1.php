@@ -49,12 +49,12 @@
                         <div class="NDD flex">
                             <div>
                                 <h3><i class="fa-solid fa-circle-exclamation"></i>Nom :</h3>
-                                <input type="text" name="nom" placeholder="Tapez le nom de votre spectacle"  value = "<?php echo $nomSpectacle ?: "" ?>" />
+                                <input type="text" name="nom" placeholder="Tapez le nom de votre spectacle"  value = "<?php echo $nomSpectacle ?? "" ?>" />
                             </div>
                             <div>
                                 <h3><i class="fa-solid fa-circle-exclamation"></i>Durée en minute:</h3>
                                 <div class="text">Veuillez entrez la durée en minute du spectacle</div>
-                                <input type="number" name="duree" value = "<?php echo $dureeSpectacle ?: "" ?>" />
+                                <input type="number" name="duree" value = "<?php echo $dureeSpectacle ?? "" ?>" />
                             </div>
                         </div>
 
@@ -65,7 +65,7 @@
                                 <h3><label for="description"><i class="fa-solid fa-circle-exclamation"></i>Description :</label>
                                 </h3>
                                 <textarea id="description" name="description">
-                                     <?php echo $descriptionSpectacle ?: "" ?>
+                                     <?php echo $descriptionSpectacle ?? "" ?>
                                 </textarea>
                             </div>
                         </div>

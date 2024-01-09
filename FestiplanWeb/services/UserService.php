@@ -59,7 +59,7 @@ class UserService
 
         // Vérifie si l'utilisateur existe
         // Renvoie vrai ou faux en fonction si l'utilisateur a été trouvé.
-        $requeteConnexionUtilisateur = $pdo->prepare("SELECT DISTINCT id_utilisateur, nom, prenom FROM utilisateurs WHERE login = :login AND mdp = :mdp");
+        $requeteConnexionUtilisateur = $pdo->prepare("SELECT DISTINCT id_utilisateur, nom, prenom, login, mail FROM utilisateurs WHERE login = :login AND mdp = :mdp");
         $requeteConnexionUtilisateur->bindParam(':login', $login);
         $requeteConnexionUtilisateur->bindParam(':mdp', $mdp);
 
@@ -118,13 +118,15 @@ class UserService
      * @param string $mdp
      * @return void
      */
-    public function supprimerCompte(PDO $pdo, mixed $login, string $mdp): bool
+    public function supprimerCompte(PDO $pdo, string $mdp): bool
     {
-        $mdp = hash("sha256", $mdp);
+        $mdpEncript = hash("sha256", $mdp);
 
         $requeteSupprimerCompte = $pdo->prepare("DELETE FROM utilisateurs WHERE login = :login AND mdp = :mdp");
-        $requeteSupprimerCompte->bindParam(':login', $login);
-        $requeteSupprimerCompte->bindParam(':mdp', $mdp);
-        return $requeteSupprimerCompte->execute();
+        $requeteSupprimerCompte->bindParam(':login', $_SESSION['login']);
+        $requeteSupprimerCompte->bindParam(':mdp', $mdpEncript);
+        $requeteSupprimerCompte->execute();
+        var_dump($_SESSION['login']);
+        die();
     }
 }

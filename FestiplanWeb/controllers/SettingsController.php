@@ -49,8 +49,8 @@ class SettingsController
     public function supprimerCompte(PDO $pdo): View
     {
         $mdp = htmlspecialchars(HttpHelper::getParam('confirmMdp') ?: "");
-        $login = $_SESSION['login'];
-        if ($this->userService->supprimerCompte($pdo, $login, $mdp)) {
+
+        if ($this->userService->supprimerCompte($pdo, $mdp)) {
             $this->userService->deconnexion();
             return new View("/views/index");
         } else {
