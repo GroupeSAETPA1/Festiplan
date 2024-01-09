@@ -18,7 +18,7 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/image.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/input.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/footer.css">
-    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svg.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svgInFolder.css">
     
 
     <link rel="stylesheet" href="/Festiplan/framework/fontawesome-free-6.2.1-web/css/all.css">
