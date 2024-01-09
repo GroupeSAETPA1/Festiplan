@@ -47,7 +47,7 @@ CREATE TABLE `festival`
     `heure_fin_spectacles`   time                           NOT NULL COMMENT 'heure à laquelle fini le dernier spectacle',
     PRIMARY KEY (id_festival),
     FOREIGN KEY (id_categorie) REFERENCES categorie (id_categorie),
-    FOREIGN KEY (id_responsable) REFERENCES utilisateurs (id_utilisateur)
+    FOREIGN KEY (id_responsable) REFERENCES utilisateurs (id_utilisateur) ON UPDATE cascade ON DELETE cascade
 );
 -- Structure de la table `liste_organisateur`
 CREATE TABLE `liste_organisateur`
@@ -56,7 +56,7 @@ CREATE TABLE `liste_organisateur`
     `id_organisateur` int(6) NOT NULL,
     PRIMARY KEY (id_festival, id_organisateur),
     FOREIGN KEY (id_festival) REFERENCES festival (id_festival),
-    FOREIGN KEY (id_organisateur) REFERENCES utilisateurs (id_utilisateur)
+    FOREIGN KEY (id_organisateur) REFERENCES utilisateurs (id_utilisateur) ON UPDATE cascade ON DELETE cascade
 );
 
 -- Structure de la table `scene`
@@ -86,7 +86,7 @@ CREATE TABLE `spectacle`
     PRIMARY KEY (id_spectacle),
     FOREIGN KEY (id_categorie) REFERENCES categorie (id_categorie),
     FOREIGN KEY (taille_scene) REFERENCES taille_scene (id_taille),
-    FOREIGN KEY (responsable_spectacle) REFERENCES utilisateurs (id_utilisateur)
+    FOREIGN KEY (responsable_spectacle) REFERENCES utilisateurs (id_utilisateur)  ON UPDATE cascade ON DELETE cascade
 );
 
 -- Structure de la table `spectacle_festival_scene`
@@ -120,7 +120,7 @@ CREATE TABLE `liste_inter_hors_scene`
     `id_inter`     int(6) NOT NULL,
     PRIMARY KEY (id_spectacle, id_inter),
     FOREIGN KEY (id_spectacle) REFERENCES spectacle (id_spectacle),
-    FOREIGN KEY (id_inter) REFERENCES utilisateurs (id_utilisateur)
+    FOREIGN KEY (id_inter) REFERENCES utilisateurs (id_utilisateur) ON UPDATE cascade ON DELETE cascade
 );
 
 -- Structure de la table `liste_inter_scene`
@@ -131,7 +131,7 @@ CREATE TABLE `liste_inter_scene`
     `id_inter`     int(6) NOT NULL,
     PRIMARY KEY (id_spectacle, id_inter),
     FOREIGN KEY (id_spectacle) REFERENCES spectacle (id_spectacle),
-    FOREIGN KEY (id_inter) REFERENCES utilisateurs (id_utilisateur)
+    FOREIGN KEY (id_inter) REFERENCES utilisateurs (id_utilisateur) ON UPDATE cascade ON DELETE cascade
 );
 
 -- Structure de la table `liste_scene`
