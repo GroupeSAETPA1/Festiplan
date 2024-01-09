@@ -110,6 +110,9 @@ function displaySpectacle() {
                 <i class="fa-solid fa-trash-can"></i>
             </div>
         </div>`;
+        if (spectacleList[i].valid) {
+            htmlContent += `<input type="hidden" name="organisateur[]" value="${spectacleList[i].name}"></div>`;
+        }
 
         selection.innerHTML += htmlContent;
     }
@@ -130,7 +133,9 @@ function displayInter() {
                 <i class="fa-solid fa-trash-can"></i>
             </div>
         </div>`;
-
+        if (interList[i].valid) {
+            htmlContent += `<input type="hidden" name="organisateur[]" value="${interList[i].name}"></div>`;
+        }
         selection.innerHTML += htmlContent;
     }
 }
@@ -148,7 +153,7 @@ function displayScene() {
                 <i class="fa-solid fa-trash-can"></i>
             </div>`;
             if (sceneList[i].valid) {
-                htmlContent +=  `<input type="hidden" name="scene[]" value="${sceneList[i].name}">\`;
+                htmlContent +=  `<input type="hidden" name="scene[]" value="${sceneList[i].name}"></div>`;
             }
 
         selection.innerHTML += htmlContent;
