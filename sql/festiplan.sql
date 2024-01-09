@@ -47,7 +47,7 @@ CREATE TABLE `festival`
     `heure_fin_spectacles`   time                           NOT NULL COMMENT 'heure à laquelle fini le dernier spectacle',
     PRIMARY KEY (id_festival),
     FOREIGN KEY (id_categorie) REFERENCES categorie (id_categorie),
-    FOREIGN KEY (id_responsable) REFERENCES utilisateurs (id_utilisateur)
+    FOREIGN KEY (id_responsable) REFERENCES utilisateurs (id_utilisateur) ON UPDATE cascade ON DELETE cascade
 );
 -- Structure de la table `liste_organisateur`
 CREATE TABLE `liste_organisateur`
@@ -56,14 +56,14 @@ CREATE TABLE `liste_organisateur`
     `id_organisateur` int(6) NOT NULL,
     PRIMARY KEY (id_festival, id_organisateur),
     FOREIGN KEY (id_festival) REFERENCES festival (id_festival),
-    FOREIGN KEY (id_organisateur) REFERENCES utilisateurs (id_utilisateur)
+    FOREIGN KEY (id_organisateur) REFERENCES utilisateurs (id_utilisateur) ON UPDATE cascade ON DELETE cascade
 );
 
 -- Structure de la table `scene`
 CREATE TABLE `scene`
 (
     `id_scene`       int(6)                       NOT NULL AUTO_INCREMENT COMMENT 'id scene',
-    `nom`            varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'nom de la scene',
+    `nomScene`            varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'nom de la scene',
     `id_taille`      int(11)                      NOT NULL COMMENT 'id taille depuis taille scene',
     `nb_spectateurs` int(11)                      NOT NULL COMMENT 'nombre de spectateurs maximum',
     `longitude`       NUMERIC(10, 7)                   NOT NULL COMMENT 'longitude de la scence' DEFAULT 0.0000000,
@@ -87,6 +87,15 @@ CREATE TABLE `spectacle`
     FOREIGN KEY (id_categorie) REFERENCES categorie (id_categorie),
     FOREIGN KEY (taille_scene) REFERENCES taille_scene (id_taille),
     FOREIGN KEY (responsable_spectacle) REFERENCES utilisateurs (id_utilisateur)
+);
+
+-- Structure de la table `liste_scene`
+-- La table liste_scene est une table qui permet de stocker les scenes dans un festival.
+CREATE TABLE `liste_scene`
+(
+    `id_festival` int(6) NOT NULL,
+    `id_scene`    int(6) NOT NULL,
+    PRIMARY KEY (id_festival, id_scene)
 );
 
 -- Structure de la table `spectacle_festival_scene`
@@ -121,7 +130,7 @@ CREATE TABLE `liste_inter_hors_scene`
     `id_inter`     int(6) NOT NULL,
     PRIMARY KEY (id_spectacle, id_inter),
     FOREIGN KEY (id_spectacle) REFERENCES spectacle (id_spectacle),
-    FOREIGN KEY (id_inter) REFERENCES utilisateurs (id_utilisateur)
+    FOREIGN KEY (id_inter) REFERENCES utilisateurs (id_utilisateur) ON UPDATE cascade ON DELETE cascade
 );
 
 -- Structure de la table `liste_inter_scene`
@@ -141,4 +150,5 @@ CREATE TABLE `liste_scene`
     `id_festival` int(6) NOT NULL,
     `id_scene`    int(6) NOT NULL,
     PRIMARY KEY (id_festival, id_scene)
+    FOREIGN KEY (id_inter) REFERENCES utilisateurs (id_utilisateur) ON UPDATE cascade ON DELETE cascade
 );
