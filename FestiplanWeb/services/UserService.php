@@ -119,4 +119,15 @@ class UserService
         $requeteSupprimerCompte->execute();
         return $requeteSupprimerCompte->rowCount() > 0;
     }
+
+    public function changerInfo(PDO $pdo, string $newNom, string $newPrenom, string $newEmail, string $newLogin)
+    {
+        $requeteChangerInfo = $pdo->prepare("UPDATE utilisateurs SET nom = :nom, prenom = :prenom, mail = :email, login = :login WHERE id_utilisateur = :id_utilisateur");
+        $requeteChangerInfo->bindParam(':nom', $newNom);
+        $requeteChangerInfo->bindParam(':prenom', $newPrenom);
+        $requeteChangerInfo->bindParam(':email', $newEmail);
+        $requeteChangerInfo->bindParam(':login', $newLogin);
+        $requeteChangerInfo->bindParam(':id_utilisateur', $_SESSION['id_utilisateur']);
+        $requeteChangerInfo->execute();
+    }
 }

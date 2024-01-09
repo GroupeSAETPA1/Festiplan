@@ -54,23 +54,29 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
                 <div class="informations block">
 
                     <h2>Changer les informations personnelles:</h2>
+                    <?php if (isset($changerInfo) && $changerInfo) { ?>
+                        <p class="successMessage">Vos informations ont bien été modifiées</p>
+                    <?php } ?>
+                    <?php if (isset($displayChangerInfoError) && $displayChangerInfoError) { ?>
+                        <p class="errorMessage"><?php echo $errorMessage ?></p>
+                    <?php } ?>
                     <form method="post" action="index.php">
                         <div>
                             <h3>Nom :</h3>
-                            <input type="text" name="nom" placeholder="Tapez votre nom" value="<?php echo $nom ?: "" ?>"/>
+                            <input type="text" name="nom" placeholder="Tapez votre nom" value="<?= $_SESSION['nom'] ?>"/>
                         </div>
                         <div>
                             <h3>Prenom :</h3>
-                            <input type="text" name="prenom" placeholder="Tapez votre prenom" value="<?php echo $prenom ?: "" ?>"/>
+                            <input type="text" name="prenom" placeholder="Tapez votre prenom" value="<?= $_SESSION['prenom'] ?>"/>
                         </div>
 
                         <div>
                             <h3>Email :</h3>
-                            <input type="email" name="email" placeholder="Tapez votre email" value="<?php echo $email ?: "" ?>"/>
+                            <input type="email" name="email" placeholder="Tapez votre email" value="<?= $_SESSION['email'] ?>"/>
                         </div>
                         <div>
                             <h3>Identifiant :</h3>
-                            <input type="text" name="login" placeholder="Tapez votre login" value="<?php echo $login ?: "" ?>"/>
+                            <input type="text" name="login" placeholder="Tapez votre login" value="<?= $_SESSION['login'] ?>"/>
                         </div>
                         <div class="buttons">
                             <input hidden name="action" value="changerInfo">
@@ -78,7 +84,7 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
                             <a href="/Festiplan/FestiplanWeb/index.php?controller=Home&action=settings">
                                 <button type="button" class="annuler"><i class="fa-solid fa-xmark"></i>Annuler</button>
                             </a>
-                            <button type="submit" name="action" class="valider"><i class="fa-solid fa-check"></i> Valider modfifications</button>
+                            <button type="submit" class="valider"><i class="fa-solid fa-check"></i> Valider modfifications</button>
                         </div>
                     </form>
                 </div>
@@ -107,7 +113,7 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
                                 <a href="/Festiplan/FestiplanWeb/index.php?controller=Home&action=settings">
                                     <button type="button" class="annuler"><i class="fa-solid fa-xmark"></i> Annuler</button>
                                 </a>
-                                <button type="submit" name="action" class="valider"><i class="fa-solid fa-check"></i> Valider modfifications</button>
+                                <button type="submit" class="valider"><i class="fa-solid fa-check"></i> Valider modfifications</button>
                             </div>
                         </form>
                     </div>

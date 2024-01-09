@@ -26,13 +26,7 @@ class SettingsController
      */
     public function index(): View
     {
-        $view = new View("views/userSettings");
-        $view->setVar('nom', $_SESSION['nom']);
-        $view->setVar('prenom', $_SESSION['prenom']);
-        $view->setVar('email', $_SESSION['email']);
-        $view->setVar('login', $_SESSION['login']);
-
-        return $view;
+        return new View("views/userSettings");
     }
 
     function PDONotFound()
@@ -65,5 +59,30 @@ class SettingsController
     {
         session_destroy();
         return new View("/views/index");
+    }
+
+    public function changerInfo(Pdo $pdo)
+    {
+        $newNom = htmlspecialchars(HttpHelper::getParam('nom') ?: "");
+        $newPrenom = htmlspecialchars(HttpHelper::getParam('prenom') ?: "");
+        $newEmail = htmlspecialchars(HttpHelper::getParam('email') ?: "");
+        $newLogin = htmlspecialchars(HttpHelper::getParam('login') ?: "");
+
+        if ($newNom == "" || $newPrenom == "" || $newEmail == "" || $newLogin == "") {
+            $view = new View("/views/userSettings");
+            $view->setVar('displayChangerInfoError', true);
+            $view->setVar('errorMessage', "Erreur de modification : Un des champs est vide");
+            return $view;
+        }
+        $this->userService->changerInfo($pdo, $newNom, $newPrenom, $newEmail, $newLogin);
+
+        $_SESSION['nom'] = $newNom;
+        $_SESSION['prenom'] = $newPrenom;
+        $_SESSION['email'] = $newEmail;
+        $_SESSION['login'] = $newLogin;
+
+        $view = new View("/views/userSettings");
+        $view->setVar('changerInfo', true);
+        return $view;
     }
 }

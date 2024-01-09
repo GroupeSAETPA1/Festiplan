@@ -21,6 +21,11 @@ body {
   padding: 2rem;
   width: 35vw;
 }
+.information-row .block .successMessage {
+  color: green;
+  font-size: 1.2rem;
+  text-align: center;
+}
 .information-row .errorMessage {
   color: red;
   font-size: 1.2rem;
