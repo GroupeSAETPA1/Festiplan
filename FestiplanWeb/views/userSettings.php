@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svg.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createSpectacle/creationSpectacle.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/userSettings/userSettings.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/userSettings/responsive.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet"
