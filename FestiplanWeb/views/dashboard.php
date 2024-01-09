@@ -1,5 +1,11 @@
 <?php
 
+// vérification de la connexion
+if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
+    header('Location: /Festiplan/FestiplanWeb/?controller=Home');
+    exit();
+}
+
 /**
  * Affiche un festival
  * @param int $id_festival L'identifiant du festival

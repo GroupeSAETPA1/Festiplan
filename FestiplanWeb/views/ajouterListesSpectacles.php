@@ -1,5 +1,11 @@
 <?php
 
+// vérification de la connexion
+if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
+    header('Location: /Festiplan/FestiplanWeb/?controller=Home');
+    exit();
+}
+
 function afficherSpectacle($nom_spectacle, $categorie, $duree, $illustration, $id_festival, $nom_festival, $id_spectacle, $action)
 {
     echo '<div class="card-spectacle-dispo rounded">';
