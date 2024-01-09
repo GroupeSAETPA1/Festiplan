@@ -20,6 +20,9 @@ body {
   .page-suivante {
     margin-top: 5vh;
   }
+  .container {
+    align-items: center;
+  }
   input[type=text] {
     width: 70vw;
   }
@@ -35,27 +38,10 @@ body {
   .Description {
     width: 70vw;
   }
-  .form-duo {
-    flex-direction: column;
-  }
-  .creationCompte {
-    width: 75%;
-  }
-  .creationCompte form {
+  .wrapper {
     width: 100%;
-    row-gap: 0;
-  }
-  .boutonCreation {
-    width: 100%;
-  }
-  .colonneCreationCompte {
-    width: 100%;
-    padding: 10px;
-  }
-  .mail {
-    padding: 0 10px !important;
+    padding: 0;
   }
 }
-
 
 /*# sourceMappingURL=responsivePage1.css.map */

@@ -27,7 +27,7 @@ use Exception;
 use services\AccesListeSpectaclesService;
 use services\AjouterListesSpectaclesServices;
 use services\createFestivalService;
-use services\UsersService;
+use services\UserService;
 use controllers\DashboardController;
 use controllers\UserController;
 use controllers\CreateSpectacleController;
@@ -35,7 +35,6 @@ use PDO;
 use services\CreateSpectacleService;
 use services\DashboardService;
 use services\SessionService;
-use services\UserService;
 use controllers\PlanificationController;
 use services\PlanificationService;
 

@@ -36,6 +36,21 @@ class UserController
     }
 
     /**
+     * genere la vue de la page de parametres utilisateur
+     * @return View
+     */
+    public function settings(): View
+    {
+        $view = new View("views/userSettings");
+        $view->setVar('nom', $_SESSION['nom']);
+        $view->setVar('prenom', $_SESSION['prenom']);
+        $view->setVar('email', $_SESSION['email']);
+        $view->setVar('login', $_SESSION['login']);
+
+        return $view;
+    }
+
+    /**
      * @param View $view
      * @param string $nom
      * @param string $prenom
@@ -133,6 +148,8 @@ class UserController
                         $_SESSION['id_utilisateur'] = $ligne->id_utilisateur;
                         $_SESSION['nom'] = $ligne->nom;
                         $_SESSION['prenom'] = $ligne->prenom;
+                        $_SESSION['email'] = $ligne->email;
+                        $_SESSION['login'] = $ligne->login;
                     }
                     $messageErreur = "";
                     $displayLoginError = false;
