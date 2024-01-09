@@ -46,8 +46,8 @@ class CreateFestivalController {
         $descriptionOk = $this-> descriptionOk(HttpHelper::getParam("description"));
         $dateOk =  $this-> dateOk(HttpHelper::getParam("ddd"), HttpHelper::getParam("ddf"));
         $categorieOk =  $this-> categorieOk(HttpHelper::getParam("categorie"));
-        $photoOk =  !$this-> photoOk(HttpHelper::getParam("nom"));
-        $tousOk = $nomOk && $descriptionOk && $dateOk && $categorieOk && !$photoOk ;
+        $photoOk =  $this-> photoOk(HttpHelper::getParam("nom"));
+        $tousOk = $nomOk && $descriptionOk && $dateOk && $categorieOk && $photoOk ;
 
        if($tousOk) {
            $_SESSION['nomFestival'] = HttpHelper::getParam('nom');
@@ -56,7 +56,9 @@ class CreateFestivalController {
            $_SESSION['ddf'] = HttpHelper::getParam('ddf');
            $_SESSION['photoFestival'] = $this->photoOk(HttpHelper::getParam("nom"));
            $_SESSION['categorie'] = HttpHelper::getParam('categorie');
-           $view = new View("views/creationFestival/createFestival2");
+           $view = new View("views/creationFestival/createFestival3");
+           $view -> setVar('tableauSpectacle' , $this->spectacleBD);
+           $view -> setVar('tableauScene' , $this->sceneBD);
        } else {
            $view = new View("views/creationFestival/createFestival");
            $view -> setVar('tableauCategorie' , $this->categorieBD);
@@ -72,8 +74,7 @@ class CreateFestivalController {
         $tousOk = true ; // STUB
         if ($tousOk) {
             $view = new View("/views/creationFestival/CreateFestival3");
-            $view -> setVar('tableauSpectacle' , $this->spectacleBD);
-            $view -> setVar('tableauScene' , $this->sceneBD);
+
         } else {
             $view = new View("/views/creationFestival/CreateFestival2");
         }
@@ -141,9 +142,10 @@ class CreateFestivalController {
             $nouveau_nom = $nomFestival."_image".time().$extension;
             if (move_uploaded_file($_FILES['imageFestival']['tmp_name'] , $dossier."/".$nouveau_nom)) {
                 $_SESSION['photoFestival'] = $nouveau_nom;
+                echo "oui";
                 return true ;
             } else {
-                //echo 'non2';
+                echo 'non2';
                 return false; 
             }
         // photo non ajouté

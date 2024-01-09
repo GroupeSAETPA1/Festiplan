@@ -28,7 +28,7 @@
     <body>
     <div class="app">
     <?php include_once $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/header.php" ?>
-
+    <form>
         <div class="retour">
             <a href=/Festiplan/FestiplanWeb/?controller=CreateFestival&action=validerPage2>
                 <button class="Retour">
@@ -87,6 +87,14 @@
                 </div>
             </div>
         </div>
+        <div class="valid-annul-placement">
+            <div class="annulChoix">
+                <i class="fa-regular fa-circle-xmark"></i>Annuler vos choix <!-- TODO fontawesome -->
+            </div>
+            <div class="button-flex-end">
+                <button type="submit" class="valider">Page Suivante<i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+    </form>
     </div>
          <?php include_once $_SERVER['DOCUMENT_ROOT']. "/Festiplan/FestiplanWeb/static/components/footer.php" ?>
     </body>
