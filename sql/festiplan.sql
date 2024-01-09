@@ -109,7 +109,8 @@ CREATE TABLE `liste_spectacle_temporaire`
 (
     `id_festival`  int(6) NOT NULL,
     `id_spectacle` int(6) NOT NULL,
-    PRIMARY KEY (id_festival, id_spectacle)
+    `id_scene`     int(6) NOT NULL,
+    PRIMARY KEY (id_festival, id_spectacle, id_scene)
 );
 
 -- Structure de la table `liste_inter_hors_scene`
