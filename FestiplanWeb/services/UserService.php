@@ -126,7 +126,6 @@ class UserService
         $requeteSupprimerCompte->bindParam(':login', $_SESSION['login']);
         $requeteSupprimerCompte->bindParam(':mdp', $mdpEncript);
         $requeteSupprimerCompte->execute();
-        var_dump($_SESSION['login']);
-        die();
+        return $requeteSupprimerCompte->rowCount() > 0;
     }
 }
