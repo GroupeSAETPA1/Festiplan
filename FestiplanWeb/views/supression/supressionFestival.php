@@ -38,23 +38,27 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
                     <button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button>
                 </a>
             </div>
-            <div>
-                <h1>Souhaitez vous supprimer ce festival ? </h1>
-            </div>
-            <div>
-                <div>
-                    photo, nom, date debut, date fin, catégorie
+            <div class="wrapper">
+                <div class="container">
+                    <div class="title">
+                        <h1>Souhaitez vous supprimer ce festival ? </h1>
+                    </div>
+                    <div class="recap entete-section">
+                        <div>
+                            photo, nom, date debut, date fin, catégorie
+                        </div>
+                        <div>
+                            description
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    description
-                </div>
-            </div>
-            <div>
-                <div>
-                    garder
-                </div>
-                <div>
-                    supprimer
+                <div class="valid-annul-placement flex-row">
+                    <div class="annulChoix lastButton">
+                         Garder
+                    </div>
+                    <button type="submit" class="valider page-suivante lastButton">
+                        Supprimer
+                    </button>
                 </div>
             </div>
         </div>

@@ -21,3 +21,74 @@
     }
   }
 }
+
+.container {
+  justify-content: center;
+  flex-direction: column;
+  // align-items: center;
+  .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+  }
+}
+
+.wrapper {
+  padding: 0 10vh;
+  hr {
+    margin: 40px 0;
+    height: 4px;
+    background-color: $dark-grey;
+    border: none;
+    width: 100%;
+  }
+}
+
+.valid-annul-placement{  //contient les boutons page suivant ou valider et annuler choix
+  margin-top: 250px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10vh;
+  .lastButton {
+    height: 4.8vh;
+    padding: 0 30px;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 30px;
+    border-style: none;
+    cursor: pointer;
+    line-height: 2.7;
+  }
+  .annulChoix{
+    background-color: $light-blue;
+    transition:  0.3s ease;
+    &:hover {
+      background-color: darken($light-blue, 5);
+      scale: 1.05;
+    }
+  }
+
+  .page-suivante{
+    background-color: $orange;
+    transition:  0.3s ease;
+    &:hover {
+      background-color: darken($orange,5);
+      scale: 1.05;
+    }
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+}
+
+.recap{
+  box-shadow: 1vh 1vh 1vh grey;
+  background-color: #363732;
+}
