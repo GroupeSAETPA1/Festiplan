@@ -19,15 +19,21 @@
 
 namespace application;
 
+use controllers\AccesListeSceneController;
 use controllers\AccesListeSpectaclesController;
+use controllers\AjouterListesSceneController;
 use controllers\AjouterListesSpectaclesController;
 use controllers\CreateFestivalController;
 use controllers\ErrorController;
+use controllers\SceneController;
 use controllers\UserController;
 use Exception;
+use services\AccesListeSceneService;
 use services\AccesListeSpectaclesService;
+use services\AjouterListesSceneServices;
 use services\AjouterListesSpectaclesServices;
 use services\createFestivalService;
+use services\SceneService;
 use services\UserService;
 use controllers\DashboardController;
 use controllers\SettingsController;
@@ -57,6 +63,8 @@ class DefaultComponentFactory implements ComponentFactory
     private ?CreateFestivalService $createFestivalService = null;	
     private ?AccesListeSpectaclesService $accesListeSpectaclesService = null;
     private ?AjouterListesSpectaclesServices $ajouterListesSpectaclesServices = null;
+    private ?AccesListeSceneService $accesListeSceneService = null;
+    private ?AjouterListesSceneServices $ajouterListesSceneServices = null;
 
     /**
      * @param string $controller_name the name of the controller to instanciate
@@ -75,6 +83,8 @@ class DefaultComponentFactory implements ComponentFactory
             "Error" => new ErrorController(),
             "AccesListeSpectacles" => $this->buildAccesListeSpectaclesController(),
             "AjouterListesSpectacles" => $this->buildAjouterListesSpectaclesController(),
+            "AccesListeScene" => $this->buildAccesListeSceneController(),
+            "AjouterListesScene" => $this->buildAjouterListesSceneController(),
             "CreateSpectacle" => $this->buildCreateSpectacleController(),
             "Settings" => $this->buildSettingsController(),
             default => throw new NoControllerAvailableForNameException($controller_name)
@@ -96,6 +106,8 @@ class DefaultComponentFactory implements ComponentFactory
             "Planification" => $this->buildPlanificationService(), 
             "AccesListeSpectacles" => $this->buildAccesListeSpectaclesService(),
             "AjouterListesSpectacles" => $this->buildAjouterListesSpectaclesService(),
+            "AccesListeScene" => $this->buildAccesListeSceneService(),
+            "AjouterListesScene" => $this->buildAjouterListesSceneService(),
             "CreateSpectacle" => $this->buildCreateSpectacleService(),
             default => throw new NoServiceAvailableForNameException($service_name)
         };
@@ -236,7 +248,7 @@ class DefaultComponentFactory implements ComponentFactory
      */
     private function buildAjouterListesSpectaclesController() : AjouterListesSpectaclesController
     {
-        return new AjouterListesSpectaclesController($this->buildServiceByName("AjouterListesSpectacles"));
+        return new AjouterListesSpectaclesController($this->buildServiceByName("AjouterListesSpectacles"), $this->buildServiceByName("User"));
     }
 
     /**
@@ -264,4 +276,33 @@ class DefaultComponentFactory implements ComponentFactory
     {
         return new SettingsController($this->buildUserService());
     }
+
+    private function buildAccesListeSceneController(): AccesListeSceneController
+    {
+        return new AccesListeSceneController($this->buildAccesListeSceneService(), $this->buildCreateSpectacleService());
+    }
+
+    private function buildAccesListeSceneService(): AccesListeSceneService|AccesListeSpectaclesService|null
+    {
+        if ($this->accesListeSceneService == null) {
+            $pdo = $this->getPDO("root");
+            $this->accesListeSceneService = new AccesListeSceneService($pdo);
+        }
+        return $this->accesListeSceneService;
+    }
+
+    private function buildAjouterListesSceneController(): AjouterListesSceneController
+    {
+        return new AjouterListesSceneController($this->buildAjouterListesSceneService(), $this->buildCreateSpectacleService());
+    }
+
+    private function buildAjouterListesSceneService(): ?AjouterListesSceneServices
+    {
+        if ($this->ajouterListesSceneServices == null) {
+            $pdo = $this->getPDO("root");
+            $this->ajouterListesSceneServices = new AjouterListesSceneServices($pdo);
+        }
+        return $this->ajouterListesSceneServices;
+    }
+
 }
