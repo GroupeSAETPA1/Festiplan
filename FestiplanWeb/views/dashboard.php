@@ -40,7 +40,13 @@ function afficher_festival(int $id_festival, string $nom_festival, string $date_
     echo '                <input hidden name="id_festival" value="' . $id_festival . '">';
     echo '                <input hidden name="nom_festival" value="' . $nom_festival . '">';
     echo '                <input hidden name="categorie" value="' . $categorie . '">';
-    echo '                <div class="btn-acces-spectacles rounded"><button type="submit">Spectacles ...</button></div>';
+    echo '                <div class="btn-acces-spectacles rounded"><button type="submit">Spectacles <i class="fa-solid fa-pen-to-square"></i></button></div>';
+    echo '            </form>';
+    echo '            <form method="post" action="/Festiplan/FestiplanWeb/index.php">';
+    echo '                <input hidden name="controller" value="AccesListeScene">';
+    echo '                <input hidden name="id_festival" value="' . $id_festival . '">';
+    echo '                <input hidden name="nom_festival" value="' . $nom_festival . '">';
+    echo '                <div class="btn-acces-spectacles rounded"><button type="submit">Scenes <i class="fa-solid fa-pen-to-square"></i></button></div>';
     echo '            </form>';
     echo '            <form method="post" action=""> <!-- TODO : mettre le lien pour éditer le festival -->';
     echo '                <input hidden name="id_festival" value="' . $id_festival . '">';
@@ -151,8 +157,7 @@ function minutesToHHMM(int $minutes): string
             <!-- Liste des festivals -->
             <div class="container entete-section">
                 <h1>Mes festivals</h1>
-                <a href="/Festiplan/FestiplanWeb/?controller=Planification">TEST DEBUG</a>
-                <a href="/Festiplan/FestiplanWeb/?controller=CreateFestival"> <!-- TODO : Lien vers la page de création de festival -->
+                <a href="/Festiplan/FestiplanWeb/?controller=CreateFestival">
                     <div class="rounded">
                         <i class="fa-regular fa-calendar-plus"></i>
                         <p>Cr&eacute;er un festival</p>
