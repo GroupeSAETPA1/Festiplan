@@ -16,4 +16,21 @@ class SupressionFestivalServices
         $this->pdoSupressionFestival = $pdo;
         $this->userService = $userService;
     }
+
+    public function recupFestival(int $id_festival) : array
+    {
+        $requete = "SELECT *
+                    FROM festival
+                    WHERE id_festival = :id_festival;";
+        $stmt = $this->pdoSupressionFestival->prepare($requete);
+        $stmt->bindParam("id_festival", $id_festival);
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    public function supression()
+    {
+
+    }
 }

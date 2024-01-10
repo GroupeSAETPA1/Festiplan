@@ -29,6 +29,7 @@ use Exception;
 use services\AccesListeSpectaclesService;
 use services\AjouterListesSpectaclesServices;
 use services\createFestivalService;
+use services\SupressionFestivalServices;
 use services\UserService;
 use controllers\DashboardController;
 use controllers\SettingsController;
@@ -58,6 +59,7 @@ class DefaultComponentFactory implements ComponentFactory
     private ?CreateFestivalService $createFestivalService = null;	
     private ?AccesListeSpectaclesService $accesListeSpectaclesService = null;
     private ?AjouterListesSpectaclesServices $ajouterListesSpectaclesServices = null;
+    private $createFestivalServices;
 
     /**
      * @param string $controller_name the name of the controller to instanciate
@@ -270,6 +272,15 @@ class DefaultComponentFactory implements ComponentFactory
 
     private function buildSupressionFestivalController(): SupressionFestivalController
     {
-        return new SupressionFestivalController();
+        return new SupressionFestivalController($this->buildSupressionFestivalService());
+    }
+
+    private function buildSupressionFestivalService(): SupressionFestivalServices
+    {
+        if ($this->createFestivalServices == null) {
+            $pdo = $this->getPDO("root");
+            $this->createFestivalServices = new SupressionFestivalServices($pdo, $this->buildUserService());
+        }
+        return $this->createFestivalServices;
     }
 }
