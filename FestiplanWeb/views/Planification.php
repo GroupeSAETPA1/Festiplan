@@ -38,9 +38,9 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
 
         <!-- Fullcalendar -->
         <script src="/Festiplan/node_modules/fullcalendar/index.global.min.js" defer></script>
-
         <script src="/Festiplan/FestiplanWeb/static/scripts/Planification.js" defer></script>
-
+                
+        <!-- Autres scripts -->
         <script src="/Festiplan/FestiplanWeb/static/scripts/redirection_logo.js" defer></script>
         <script src="/Festiplan/FestiplanWeb/static/scripts/responsive/footerResponsive.js" defer></script>
     </head>

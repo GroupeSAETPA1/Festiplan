@@ -60,8 +60,8 @@ async function construireCalendrier() {
             }
         },
         contentHeight: 800, // TODO définir une bonne hauteur et trouver comment fixer une largeur
-        // slotMinTime: festival.heure_debut_spectacles,
-        // slotMaxTime: festival.heure_fin_spectacles, TODO voir si c'est bon a garder avec les heures de fin qui sont > a 24h
+        slotMinTime: festival.heure_debut_spectacles < festival.heure_fin_spectacles ? festival.heure_debut_spectacles : "00:00",
+        slotMaxTime: festival.heure_fin_spectacles > festival.heure_debut_spectacles ? festival.heure_fin_spectacles : "23:59", 
         titleFormat: {
             year: 'numeric',
             month: 'long',
@@ -83,7 +83,6 @@ async function construireCalendrier() {
         locale: 'fr',
         allDaySlot: false,
         slotDuration: '01:00:00', // la durée des intervalles affichés
-        snapDuration: '00:15:00',
 
         slotLabelFormat: {
             hour: 'numeric',
@@ -107,7 +106,7 @@ async function construireCalendrier() {
     });
     calendar.render();
 }
-async function displayEvents(){
+async function displayEvents() {
     // Pour restreindre le placement de spectacles à la durée du festival
     let events = [{
         groupId: 'heureValideFestival',
@@ -117,23 +116,31 @@ async function displayEvents(){
     }];
 
     // Dans le cas ou l'heure dee fin de festival est apres 23h, il faut le savoir pour ajuster la duree max spectacle
-    let heure_fin_apres23H = parseInt(festival.heure_fin_spectacles.split(":")[0]) < parseInt(festival.heure_debut_spectacles.split(":")[0]);
+    let heure_fin_apres24H = parseInt(festival.heure_fin_spectacles.split(":")[0]) < parseInt(festival.heure_debut_spectacles.split(":")[0]);
     let dureeMaxSpectacle = (parseInt(festival.heure_fin_spectacles.split(":")[0]) * 60 + parseInt(festival.heure_fin_spectacles.split(":")[1]))
                           - (parseInt(festival.heure_debut_spectacles.split(":")[0]) * 60 + parseInt(festival.heure_debut_spectacles.split(":")[1]));
 
-    dureeMaxSpectacle = heure_fin_apres23H ? dureeMaxSpectacle + 1440 : dureeMaxSpectacle; // on rajoute 24h en minutes si c'est le cas
+    dureeMaxSpectacle = heure_fin_apres24H ? dureeMaxSpectacle + 1440 : dureeMaxSpectacle; // on rajoute 24h en minutes si c'est le cas
     let finDernierSpectacle = new Date(festival.debut.toString() + "T" + festival.heure_debut_spectacles); // Au départ, il n'y a pas de dernier spectacle, c'est pour cela que l'on met au début du spectacle
+    
+    dateHeureFinFestival = new Date(festival.debut.toString() + "T" + festival.heure_fin_spectacles);
+    if (heure_fin_apres24H) {
+        dateHeureFinFestival.setDate(dateHeureFinFestival.getDate() + 1);
+    } 
+
+    // for (let i = 0; i < spectacles.length; i++) {
+
+    //     if (spectacles[i].duree > dureeMaxSpectacle) {
+    //         alert("Le spectacle \"" + spectacles[i].nom + "\" a une durée trop grande pour le festival \"" + festival.nom + "\". Il sera donc ignoré")
+    //         spectacles.splice(i,i);
+    //     }
+    // }
     
     for (let i = 0; i < spectacles.length; i++) {
 
-        if (spectacles[i].duree > dureeMaxSpectacle) {
-            alert("Le spectacle \"" + spectacles[i].nom + "\" a une durée trop grande pour le festival \"" + festival.nom + "\". Il sera donc ignoré")
-            continue;
-        }
-
         let donneesRetour =  await planifieSpectacle(finDernierSpectacle,
                                                      festival.duree_entre_spectacle,
-                                                     spectacles, i);
+                                                     spectacles, i, dateHeureFinFestival);
         let horairesSpectacles = donneesRetour[0];
         finDernierSpectacle = donneesRetour[1];
         let dateDebutSpectacle = horairesSpectacles[0]
@@ -151,8 +158,7 @@ async function displayEvents(){
     return events;
 }
 
-async function planifieSpectacle(dateFinDernierSpectacle, dureeEntreSpectacles, spectacles, i) {
-    
+async function planifieSpectacle(dateFinDernierSpectacle, dureeEntreSpectacles, spectacles, i, dateHeureFinFestival) {
     let donneesRetour = [];
     let horairesSpectacles = [];
     let plusieursSpectacleMemeScene = false
@@ -177,26 +183,25 @@ async function planifieSpectacle(dateFinDernierSpectacle, dureeEntreSpectacles, 
         finTheoriqueProchainSpectacle = new Date(finDernierSpectacle);
         finTheoriqueProchainSpectacle.setMinutes(finTheoriqueProchainSpectacle.getMinutes() + dureeEntreSpectacles + spectacleApres.duree);
 
-        finTheoriqueProchainSpectacleString = (finTheoriqueProchainSpectacle.getHours() < 10 ? "0" + finTheoriqueProchainSpectacle.getHours() : finTheoriqueProchainSpectacle.getHours()) + ":"
-                                            + (finTheoriqueProchainSpectacle.getMinutes() < 10 ? "0" + finTheoriqueProchainSpectacle.getMinutes() : finTheoriqueProchainSpectacle.getMinutes())  + ":00";
-        console.log(finTheoriqueProchainSpectacleString + " OUA VS " + festival.heure_fin_spectacles)
-        finApres24H = festival.heure_fin_spectacles < festival.heure_debut_spectacles;
+        console.log(finTheoriqueProchainSpectacle + spectacles[i+1].nom + " OUA VS " + dateHeureFinFestival)
+        console.log(finTheoriqueProchainSpectacle > dateHeureFinFestival)
 
-         if (((finTheoriqueProchainSpectacleString > festival.heure_fin_spectacles && !finApres24H)
-          && !(finTheoriqueProchainSpectacle < finDernierSpectacle && finTheoriqueProchainSpectacleString > festival.heure_fin_spectacles)) // FIXME CONDITION DE MERDE INTESTABLE C4EST L4ENFER QUAND UN FESTIVAL A UNE HEURE DE FIN > 24H
-          || (!(finTheoriqueProchainSpectacleString > festival.heure_fin_spectacles && !finApres24H)
-          && (finTheoriqueProchainSpectacle < finDernierSpectacle && finTheoriqueProchainSpectacleString > festival.heure_fin_spectacles))) {
-            if (festival.heure_fin_spectacles < "23:59:59" && festival.heure_fin_spectacles > festival.heure_debut_spectacles) {
+        // Si le spectacle dépasse l'heure max du festival, on le mets au lendemain si heurefin < 23H59, sinon on le mets a l'heure de debut de festival 
+        if (finTheoriqueProchainSpectacle > dateHeureFinFestival) {
+            if (festival.heure_fin_spectacles > festival.heure_debut_spectacles) {
+                console.log("LA CALOTTE DE SES MORT")
                 finDernierSpectacle.setDate(finDernierSpectacle.getDate() + 1);
             }
+            dateHeureFinFestival.setDate(dateHeureFinFestival.getDate() + 1);
             finDernierSpectacle.setHours(festival.heure_debut_spectacles.split(":")[0], festival.heure_debut_spectacles.split(":")[1]);
         }
 
         if (finDernierSpectacle.getDay()   > festival.fin.split("-")[2]
          || finDernierSpectacle.getMonth() > festival.fin.split("-")[1]
          || finDernierSpectacle.getYear()  > festival.fin.split("-")[0]) {
-            alert("Il y a trop de spectacles sur la scene \"" + spectacles[i].nomScene + "\". Le spectacle " + spectacles[i].nom
-                + " et tout les spectacles suivants sur la même scène seront ignorés");
+             alert("Il y a trop de spectacles sur la scene \"" + spectacles[i].nomScene + "\". Le spectacle " + spectacles[i].nom
+             + " et tout les spectacles suivants sur la même scène seront ignorés");
+             finDernierSpectacle.setDate(9999) // TODO
         }
 
     } else {

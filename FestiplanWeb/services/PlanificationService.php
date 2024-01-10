@@ -43,11 +43,10 @@ class PlanificationService
                     ON spectacle_festival_scene.id_scene = scene.id_scene
                     WHERE festival.id_festival = :id_festival
                     ORDER BY scene.id_scene ASC;";
-
+        
         $requete = $this->pdoLecture->prepare($requete);
         $requete->bindParam("id_festival", $id_festival);
         $requete->execute();
-
         return $requete->fetchAll();
     }
 }
