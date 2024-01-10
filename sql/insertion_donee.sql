@@ -118,7 +118,11 @@ INSERT INTO `spectacle_festival_scene` (`id_festival`, `id_spectacle`, `id_scene
 (6, 9, 1),
 (6, 10, 2),
 (6, 11, 3),
-(6, 12, 1);
+(6, 12, 1),
+(6, 13, 3),
+(6, 14, 1),
+(6, 15, 3),
+(6, 16, 1);
 
 INSERT INTO `liste_organisateur` (`id_festival`, `id_organisateur`) VALUES
 (1,1);
