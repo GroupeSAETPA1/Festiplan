@@ -122,6 +122,16 @@ CREATE  TABLE IF NOT EXISTS `liste_spectacle_temporaire`
     PRIMARY KEY (id_festival, id_spectacle, id_scene)
 );
 
+-- Structure de la table `liste_scene_temporaire`
+-- La table liste_scene_temporaire est une table temporaire qui permet de stocker les scenes qui seront ajoutés au festival
+-- dans le formulaire d'ajout de scene.
+CREATE  TABLE IF NOT EXISTS `liste_scene_temporaire`
+(
+    `id_festival` int(6) NOT NULL,
+    `id_scene`    int(6) NOT NULL,
+    PRIMARY KEY (id_festival, id_scene)
+);
+
 -- Structure de la table `liste_inter_hors_scene`
 -- La table liste_inter_hors_scene est une table qui permet de stocker les intervenants qui sont hors de la scene d'un spectacle.
 CREATE  TABLE IF NOT EXISTS `liste_inter_hors_scene`
