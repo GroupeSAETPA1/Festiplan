@@ -21,7 +21,7 @@ class PlanificationController
     public function index(PDO $pdo): View {
         // On récupère l'id de l'utilisateur et le festival sélectionné
         $id_organisateur = 1; // $_SESSION['id_utilisateur'] ?? null;
-        $id_festival = 1; // $_SESSION['id_festival'] ?? null;
+        $id_festival = 6; // $_SESSION['id_festival'] ?? null;
         // Si on tente d'accéder a la page de planification sans être connecté ou sans avoir séléctionné un festival,
         // on renvoie sur la page de connexion
 //        if ($id_organisateur == null || $id_festival == null) {
@@ -50,7 +50,7 @@ class PlanificationController
     public function getDataFestival() { // TODO bloquer si ya erreur pdo, a moins que ca se fasse avant
         // On récupère l'id de l'utilisateur et le festival sélectionné
         $id_organisateur = 1; // $_SESSION['id_utilisateur'] ?? null;
-        $id_festival = 1; // $_SESSION['id_festival'] ?? null;
+        $id_festival = 6; // $_SESSION['id_festival'] ?? null;
 
         $dataFestival = $this->planificationService->getFestival($id_festival, $id_organisateur);
 
@@ -62,7 +62,7 @@ class PlanificationController
 
     public function getDataSpectacle() {
         // On récupère l'id du festival sélectionné
-        $id_festival = 1; // $_SESSION['id_festival'] ?? null;
+        $id_festival = 6; // $_SESSION['id_festival'] ?? null;
         $dataSpectacle = $this->planificationService->getSpectaclesFestival($id_festival);
 
         $view = new View("views/PlanificationDataSpectacles");
