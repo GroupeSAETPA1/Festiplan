@@ -100,5 +100,4 @@ class CreateSpectacleService
             return false;
         }
     }
-
 }

@@ -52,7 +52,7 @@ class AjouterListesSpectaclesServices
 
     public function getSpectaclesTemporaire () : array
     {
-        $requete = "SELECT id_spectacle, s.id_scene, s.nom as nom_scene
+        $requete = "SELECT id_spectacle, s.id_scene, s.nomScene as nom_scene
                     FROM liste_spectacle_temporaire
                     JOIN scene s on liste_spectacle_temporaire.id_scene = s.id_scene";
 
@@ -82,7 +82,7 @@ class AjouterListesSpectaclesServices
 
     function getScene(int $id_festival): array
     {
-        $requete = "SELECT scene.id_scene, nom
+        $requete = "SELECT scene.id_scene, nomScene
                     FROM scene
                     JOIN liste_scene s on scene.id_scene = s.id_scene
                     WHERE id_festival = :id_festival;";

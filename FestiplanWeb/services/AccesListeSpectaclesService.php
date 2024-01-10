@@ -14,7 +14,7 @@ class AccesListeSpectaclesService
 
     public function getSpectacles (int $id_festival) : array
     {
-        $requete = "SELECT spectacle.id_spectacle, spectacle.nom as nom_spectacle, description, illustration, duree, cat.nom as categorie, scene.nom as nom_scene, scene.id_scene as id_scene
+        $requete = "SELECT spectacle.id_spectacle, spectacle.nom as nom_spectacle, description, illustration, duree, cat.nom as categorie, scene.nomScene as nom_scene, scene.id_scene as id_scene
                     FROM spectacle
                     JOIN categorie cat on cat.id_categorie = spectacle.id_categorie
                     JOIN spectacle_festival_scene sfs on spectacle.id_spectacle = sfs.id_spectacle

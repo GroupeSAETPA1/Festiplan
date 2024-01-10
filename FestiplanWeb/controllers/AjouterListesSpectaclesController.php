@@ -3,6 +3,9 @@
 namespace controllers;
 
 use services\AjouterListesSpectaclesServices;
+use services\createFestivalService;
+use services\CreateSpectacleService;
+use services\UserService;
 use yasmf\HttpHelper;
 use yasmf\View;
 
@@ -11,7 +14,8 @@ class AjouterListesSpectaclesController
 
     private AjouterListesSpectaclesServices $ajouterListesSpectaclesServices;
 
-    public function __construct(AjouterListesSpectaclesServices $ajouterLIstesSpectaclesServices)
+
+    public function __construct(AjouterListesSpectaclesServices $ajouterLIstesSpectaclesServices,CreateSpectacleService $createSpectacleService)
     {
         $this->ajouterListesSpectaclesServices = $ajouterLIstesSpectaclesServices;
     }
@@ -55,6 +59,7 @@ class AjouterListesSpectaclesController
 
         foreach ($lesSpectaclesDisponible as &$spectacleDispo) {
             foreach ($lesSpectaclesSelectionne as $spectacleSelection) {
+                // on remplace l'id de la taille par le nom de la taille
                 if ($spectacleDispo['id_spectacle'] == $spectacleSelection['id_spectacle']) {
                     //Si le spectacle est sélectionné, l'action sera de le retirer (l'action par défaut est d'ajouter)
                     $spectacleDispo["action"] = "retirerSpectacle";
@@ -123,7 +128,6 @@ class AjouterListesSpectaclesController
         //TODO enregistrer les spectacle ajouté dans `liste_spectacle`
         //TODO Rediriger vers la page AccesListeSpectacle
         $tab_spectacle_valider = $this->ajouterListesSpectaclesServices->getSpectaclesTemporaire();
-        var_dump($tab_spectacle_valider);
         $this->ajouterListesSpectaclesServices->viderTableTemporaire();
 
         foreach ($tab_spectacle_valider as $spectacle) {
