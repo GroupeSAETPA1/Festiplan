@@ -115,7 +115,7 @@ function minutesToHHMM(int $minutes): string
 
             <div class="entete-section rounded">
                 <span class="titre-section titre">Les spectacles du festivals</span>
-                <form action="" method="post">
+                <form action="/Festiplan/FestiplanWeb/index.php" method="post">
                     <input type="hidden" name="controller" value="AjouterListesSpectacles">
                     <input type="hidden" name="id_festival" value="<?php echo $id_festival; ?>">
                     <input type="hidden" name="nom_festival" value="<?php echo $nom_festival; ?>">

@@ -87,7 +87,7 @@ function afficher_liste_scene(array $liste_scene, int $id_spectacle, int $id_tai
         if ($scene['id_taille'] == $id_taille_scene_necessaire) {
             $nom_scene = $scene['nom'];
             $id_scene = $scene['id_scene'];
-            echo '<option value="' . $id_scene . '">' . $nom_scene .' )</span></option>';
+            echo '<option value="' . $id_scene . '">' . $nom_scene .'</span></option>';
         }
     }
     echo '</select>';

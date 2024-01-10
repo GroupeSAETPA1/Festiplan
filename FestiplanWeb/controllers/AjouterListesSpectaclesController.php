@@ -133,30 +133,31 @@ class AjouterListesSpectaclesController
             }
         }
 
-        //return $this->construireVue($id_festival, $nom_festival);
         header("Location: /Festiplan/FestiplanWeb/?controller=AccesListeSpectacles&action=index&id_festival=$id_festival");
         exit();
     }
 
     /**
      * Cette fonction permet de vérifier si le temps disponible est suffisant pour accueillir les spectacles
-     * @param $pause int La pause entre les spectacles
-     * @param $debut string L'heure de début du spectacle
-     * @param $fin string L'heure de fin du spectacle
+     * @param $id_festival_actif int L'id du festival actif
      * @return bool true si le temps est suffisant, false sinon
      */
-    public function verifierTempsSuffisant($pause , $debut , $fin): bool
+    public function verifierTempsSuffisant(int $id_festival_actif): bool
     {
-        $duree_journee = (strtotime($fin) - strtotime($debut))/60;
-        //echo 'duree jour'.$duree_journee;
-        $debut_festival = strtotime($_SESSION['ddd']);
-        $fin_festival = strtotime($_SESSION['ddf']);
+        $pause = $this->ajouterListesSpectaclesServices->getPause($id_festival_actif);
+        //$duree_journee = (strtotime($fin) - strtotime($debut))/60;
+        $duree_journee = $this->ajouterListesSpectaclesServices->getDureeJournee($id_festival_actif);
 
-        $dureeDisponible = ($fin_festival - $debut_festival)/60;
+        $dureeDisponible = $this->ajouterListesSpectaclesServices->getDureeDisponibleFestival($id_festival_actif);
+        //echo 'duree jour'.$duree_journee;
+        //$debut_festival = strtotime($_SESSION['ddd']);
+        //$fin_festival = strtotime($_SESSION['ddf']);
+
+        //$dureeDisponible = ($fin_festival - $debut_festival)/60;
         if ($dureeDisponible == 0) $dureeDisponible = $duree_journee;
 
         //echo 'dureDispo'.$dureeDisponible;
-        $duree_totale_spectacle  = $this->calculerDureeTotaleSpectacle($pause);
+        $duree_totale_spectacle  = $this->calculerDureeTotaleSpectacle($pause, $id_festival_actif);
 
         $nombre_jours_necessaires = ceil($duree_totale_spectacle /($duree_journee));
         //echo '<br>jour necessaire'.$nombre_jours_necessaires;
@@ -169,7 +170,7 @@ class AjouterListesSpectaclesController
         }
     }
 
-    public function calculerDureeTotaleSpectacle($pause): int
+    public function calculerDureeTotaleSpectacle($pause, int $id_festival_actif): int
     {
         $result = $this->ajouterListesSpectaclesServices->dureesSpectacles($id_festival_actif);
         $result +=  (count($_SESSION['spectacle']) - 1) * strtotime($pause);
