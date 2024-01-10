@@ -28,8 +28,6 @@ header {
   .mon-compte {
     &:hover {
       cursor: pointer;
-      scale: 1.05;
-      transition: 0.5s;
     }
     div {
       background-color: $orange;

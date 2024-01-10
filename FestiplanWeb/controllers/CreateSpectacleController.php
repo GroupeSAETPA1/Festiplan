@@ -163,7 +163,7 @@ class CreateSpectacleController
             list($width, $height) = getimagesize($_FILES['photoSpectacle']['tmp_name']);
 
             // Check if the image dimensions are 800x600
-            if ($width != 800 || $height != 600) {
+            if ($width > 800 || $height > 600) {
                 return false;
             }
 

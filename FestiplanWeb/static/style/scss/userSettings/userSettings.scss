@@ -6,16 +6,23 @@
     justify-content: space-between;
     align-items: stretch;
     margin-bottom: 1rem;
-    &.deleteAccount {
-        justify-content: center;
-    }
+
 
     .block {
         background: $dark-grey;
         border-radius: 20px;
         padding: 2rem;
         width: 35vw;
-
+        .successMessage {
+            color: #60f160;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+    }
+    .errorMessage {
+        color: red;
+        font-size: 1.2rem;
+        text-align: center;
     }
 
 
@@ -68,7 +75,15 @@
                 background: $light-blue;
             }
             .annuler {
+                background: $orange;
+            }
+            .supprimerCompte {
+                width: 100%;
                 background: #db6969;
+            }
+            .decconnecter {
+                width: 100%;
+                background: $light-blue;
             }
         }
     }

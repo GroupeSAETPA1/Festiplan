@@ -1,3 +1,11 @@
+<?php
+
+// vérification de la connexion
+if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
+    header('Location: /Festiplan/FestiplanWeb/?controller=Home');
+    exit();
+}
+?>
 <!doctype html>
 <html lang="fr" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -9,7 +17,7 @@
 
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/footer.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/header.css">
-    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svg.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svgInFolder.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/formsInput/customInput.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createSpectacle/creationSpectacle.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createSpectacle/createSpectaclePage2.css">
