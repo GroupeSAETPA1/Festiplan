@@ -149,6 +149,8 @@ CREATE  TABLE IF NOT EXISTS `liste_scene`
 (
     `id_festival` int(6) NOT NULL,
     `id_scene`    int(6) NOT NULL,
-    PRIMARY KEY (id_festival, id_scene)
+    PRIMARY KEY (id_festival, id_scene),
+    FOREIGN KEY (id_festival) REFERENCES festival (id_festival) ON UPDATE cascade ON DELETE cascade,
+    FOREIGN KEY (id_scene) REFERENCES scene (id_scene) ON UPDATE cascade ON DELETE cascade
     FOREIGN KEY (id_inter) REFERENCES utilisateurs (id_utilisateur) ON UPDATE cascade ON DELETE cascade
 );
