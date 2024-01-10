@@ -1,6 +1,5 @@
 <?php
 
-
 // vérification de la connexion
 if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
     header('Location: /Festiplan/FestiplanWeb/?controller=Home');
@@ -11,7 +10,7 @@ function afficher_spectacle(string $id_spectacle, string $nom_spectacle, string 
 {
     echo '<div class="card-spectacles rounded">';
     echo '    <div class="img-spectacle rounded">';
-    echo '        <img src="' . $illustration . '" alt="L\'image du spectacle '.$nom_spectacle.'">';
+    echo '        <img src="' . $illustration . '" alt="L\'image du spectacle ' . $nom_spectacle . '">';
     echo '    </div>';
     echo '    <div class="nom-spectacle">';
     echo '        <span>' . $nom_spectacle . '</span>';
@@ -24,7 +23,7 @@ function afficher_spectacle(string $id_spectacle, string $nom_spectacle, string 
     echo '        <span class="label-duree">Dur&eacute;e :</span>';
     echo '        <span>' . minutesToHHMM($duree) . '</span>';
     echo '    </div>';
-    echo '    <form method="post" action="">';
+    echo '    <form method="post" action="/Festiplan/FestiplanWeb/">';
     echo '        <!-- TODO : mettre le lien pour retirer le spectacles du festival -->';
     echo '        <input hidden name="controller" value="AccesListeSpectacles">';
     echo '        <input hidden name="action" value="retirerSpectacle">';
@@ -129,13 +128,14 @@ function minutesToHHMM(int $minutes): string
                 </form>
             </div>
 
-            <div class="accordeon rounded">
-                <div class="bouton-drop-down rounded" id="bouton-drop-down">
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
 
-                <div class="container-card-spectacles rounded" id="container-card-spectacles">
-                    <?php
+            <div class="container-card-spectacles rounded" id="container-card-spectacles">
+                <?php
+                if (sizeof($spectacles) == 0) {
+                    echo '<div class="aucun-spectacle">';
+                    echo '    <div>Aucun spectacle n\'est pr&eacute;sent dans ce festival</div>';
+                    echo '</div>';
+                } else {
                     foreach ($spectacles as $spectacle) {
                         $id_spectacle = $spectacle['id_spectacle'];
                         $nom_spectacle = $spectacle['nom_spectacle'];
@@ -146,8 +146,8 @@ function minutesToHHMM(int $minutes): string
 
                         afficher_spectacle($id_spectacle, $nom_spectacle, $illustration, $duree, $categorie, $id_festival, $id_scene);
                     }
-                    ?>
-                </div>
+                }
+                ?>
             </div>
         </div>
     </div>

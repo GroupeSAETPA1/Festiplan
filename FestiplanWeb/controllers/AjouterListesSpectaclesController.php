@@ -116,7 +116,7 @@ class AjouterListesSpectaclesController
         return $this->construireVue($id_festival, $nom_festival);
     }
 
-    public function validerSpectaclesSelectionne(): View
+    public function validerSpectaclesSelectionne(): void
     {
         $id_festival = $_SESSION['ajouterListesSpectacles']['id_festival'] ?? null;
         $nom_festival = $_SESSION['ajouterListesSpectacles']['nom_festival'] ?? null;
@@ -133,6 +133,47 @@ class AjouterListesSpectaclesController
             }
         }
 
-        return $this->construireVue($id_festival, $nom_festival);
+        //return $this->construireVue($id_festival, $nom_festival);
+        header("Location: /Festiplan/FestiplanWeb/?controller=AccesListeSpectacles&action=index&id_festival=$id_festival");
+        exit();
+    }
+
+    /**
+     * Cette fonction permet de vérifier si le temps disponible est suffisant pour accueillir les spectacles
+     * @param $pause int La pause entre les spectacles
+     * @param $debut string L'heure de début du spectacle
+     * @param $fin string L'heure de fin du spectacle
+     * @return bool true si le temps est suffisant, false sinon
+     */
+    public function verifierTempsSuffisant($pause , $debut , $fin): bool
+    {
+        $duree_journee = (strtotime($fin) - strtotime($debut))/60;
+        //echo 'duree jour'.$duree_journee;
+        $debut_festival = strtotime($_SESSION['ddd']);
+        $fin_festival = strtotime($_SESSION['ddf']);
+
+        $dureeDisponible = ($fin_festival - $debut_festival)/60;
+        if ($dureeDisponible == 0) $dureeDisponible = $duree_journee;
+
+        //echo 'dureDispo'.$dureeDisponible;
+        $duree_totale_spectacle  = $this->calculerDureeTotaleSpectacle($pause);
+
+        $nombre_jours_necessaires = ceil($duree_totale_spectacle /($duree_journee));
+        //echo '<br>jour necessaire'.$nombre_jours_necessaires;
+        if ($nombre_jours_necessaires > (($dureeDisponible) / $duree_journee)) {
+            //echo 'non';
+            return false; // Nombre de jours insuffisants pour accueillir les spectacles
+        } else {
+            //echo 'oui';
+            return true; // Assez de jours pour les spectacles
+        }
+    }
+
+    public function calculerDureeTotaleSpectacle($pause): int
+    {
+        $result = $this->ajouterListesSpectaclesServices->dureesSpectacles($id_festival_actif);
+        $result +=  (count($_SESSION['spectacle']) - 1) * strtotime($pause);
+        //echo 'durée totale'.$result ;
+        return $result ;
     }
 }

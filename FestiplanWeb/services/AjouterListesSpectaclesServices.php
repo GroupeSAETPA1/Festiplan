@@ -13,7 +13,7 @@ class AjouterListesSpectaclesServices
 
     public function getSpectaclesDisponible (int $id_festival) : array
     {
-        $requete = "SELECT spectacle.id_spectacle, spectacle.nom, description, illustration, duree, c.nom AS categorie, 'ajouterSpectacle' AS action
+        $requete = "SELECT spectacle.id_spectacle, spectacle.nom, description, illustration, duree, c.nom AS categorie, 'ajouterSpectacle' AS action, taille_scene
                     FROM spectacle
                     JOIN categorie c ON c.id_categorie = spectacle.id_categorie
                     WHERE spectacle.id_spectacle NOT IN (SELECT id_spectacle
@@ -92,9 +92,10 @@ class AjouterListesSpectaclesServices
 
     function getScene(int $id_festival): array
     {
-        $requete = "SELECT scene.id_scene, nom
+        $requete = "SELECT scene.id_scene, nom, ts.id_taille, taille
                     FROM scene
                     JOIN liste_scene s on scene.id_scene = s.id_scene
+                    JOIN festiplan.taille_scene ts on ts.id_taille = scene.id_taille
                     WHERE id_festival = :id_festival;";
 
         $stmt = $this->pdoAjouterSpectacle->prepare($requete);
@@ -102,6 +103,11 @@ class AjouterListesSpectaclesServices
         $stmt->execute();
 
         return $stmt->fetchAll();
+    }
+
+    public function dureesSpectacles(int $id_festival_actif) : int
+    {
+
     }
 
 }
