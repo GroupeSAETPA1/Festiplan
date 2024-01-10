@@ -22,7 +22,7 @@ class UserController
 
     public function index($pdo): View
     {
-        $this->userService->deconnexion();
+        session_destroy();
 
         $nom = htmlspecialchars(HttpHelper::getParam('nom') ?: "");
         $prenom = htmlspecialchars(HttpHelper::getParam('prenom') ?: "");
@@ -35,20 +35,6 @@ class UserController
         return $view;
     }
 
-    /**
-     * genere la vue de la page de parametres utilisateur
-     * @return View
-     */
-    public function settings(): View
-    {
-        $view = new View("views/userSettings");
-        $view->setVar('nom', $_SESSION['nom']);
-        $view->setVar('prenom', $_SESSION['prenom']);
-        $view->setVar('email', $_SESSION['email']);
-        $view->setVar('login', $_SESSION['login']);
-
-        return $view;
-    }
 
     /**
      * @param View $view
@@ -135,7 +121,6 @@ class UserController
         $mdp = htmlspecialchars(HttpHelper::getParam('mdp') ?: "");
         $login = htmlspecialchars(HttpHelper::getParam('login') ?: "");
 
-//        $view = null;
         $view = new View("/views/index");
         try {
             if ($login != "" || $mdp != "") {
@@ -148,7 +133,7 @@ class UserController
                         $_SESSION['id_utilisateur'] = $ligne->id_utilisateur;
                         $_SESSION['nom'] = $ligne->nom;
                         $_SESSION['prenom'] = $ligne->prenom;
-                        $_SESSION['email'] = $ligne->email;
+                        $_SESSION['email'] = $ligne->mail;
                         $_SESSION['login'] = $ligne->login;
                     }
                     $messageErreur = "";

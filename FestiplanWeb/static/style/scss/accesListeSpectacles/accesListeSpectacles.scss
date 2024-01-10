@@ -148,6 +148,10 @@ $taille_div: 90%;
             margin: 0 1vh;
         }
 
+        .nom-spectacle {
+            font-weight: bold;
+        }
+
         .group-categories {
             max-width: 40vh;
         }
@@ -156,7 +160,6 @@ $taille_div: 90%;
             display: flex;
             flex-direction: column;
             justify-content: center;
-
         }
     }
 }

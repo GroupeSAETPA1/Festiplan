@@ -27,8 +27,9 @@ class AccesListeSpectaclesController
         $id_festival_actif = $this->verifierConnecte();
 
         $id_spectacle = HttpHelper::getParam("id_spectacle") ?? null;
+        $id_scene = HttpHelper::getParam("id_scene") ?? null;
 
-        $this->accesListeSpectaclesService->retirerSpectacle($id_spectacle, $id_festival_actif);
+        $this->accesListeSpectaclesService->retirerSpectacle($id_spectacle, $id_festival_actif, $id_scene);
 
         return $this->construireVue($id_festival_actif);
     }
@@ -39,7 +40,7 @@ class AccesListeSpectaclesController
      */
     public function construireVue(?string $id_festival_actif): View
     {
-        $spctacles = $this->accesListeSpectaclesService->getSpectacles($id_festival_actif);
+        $spectacles = $this->accesListeSpectaclesService->getSpectacles($id_festival_actif);
         $info_festival = $this->accesListeSpectaclesService->getInfoFestival($id_festival_actif);
 
         $nom_festival = $info_festival['nom'];
@@ -47,7 +48,7 @@ class AccesListeSpectaclesController
 
         $view = new View("views/accesListeSpectacles");
 
-        $view->setVar("spectacles", $spctacles);
+        $view->setVar("spectacles", $spectacles);
         $view->setVar("id_festival", $id_festival_actif);
         $view->setVar("nom_festival", $nom_festival);
         $view->setVar("categorie", $categorie);

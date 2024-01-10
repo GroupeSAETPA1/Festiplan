@@ -1,6 +1,13 @@
 <?php
 
-function afficher_spectacle(string $id_spectacle, string $nom_spectacle, string $illustration, string $duree, string $categorie, int $id_festival): void
+
+// vérification de la connexion
+if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
+    header('Location: /Festiplan/FestiplanWeb/?controller=Home');
+    exit();
+}
+
+function afficher_spectacle(string $id_spectacle, string $nom_spectacle, string $illustration, string $duree, string $categorie, int $id_festival, int $id_scene): void
 {
     echo '<div class="card-spectacles rounded">';
     echo '    <div class="img-spectacle rounded">';
@@ -23,6 +30,7 @@ function afficher_spectacle(string $id_spectacle, string $nom_spectacle, string 
     echo '        <input hidden name="action" value="retirerSpectacle">';
     echo '        <input hidden name="id_festival" value="' . $id_festival . '">';
     echo '        <input hidden name="id_spectacle" value="' . $id_spectacle . '">';
+    echo '        <input hidden name="id_scene" value="' . $id_scene . '">';
     echo '        <div class="btn-retirer-spectacle">';
     echo '            <button type="submit" title="Retirer le spectacle"><i class="fa-solid fa-times"></i></button>';
     echo '        </div>';
@@ -109,7 +117,6 @@ function minutesToHHMM(int $minutes): string
             <div class="entete-section rounded">
                 <span class="titre-section titre">Les spectacles du festivals</span>
                 <form action="" method="post">
-
                     <input type="hidden" name="controller" value="AjouterListesSpectacles">
                     <input type="hidden" name="id_festival" value="<?php echo $id_festival; ?>">
                     <input type="hidden" name="nom_festival" value="<?php echo $nom_festival; ?>">
@@ -131,12 +138,13 @@ function minutesToHHMM(int $minutes): string
                     <?php
                     foreach ($spectacles as $spectacle) {
                         $id_spectacle = $spectacle['id_spectacle'];
-                        //$id_festival = $spectacle['id_festival'];
-                        $nom_spectacle = $spectacle['nom'];
+                        $nom_spectacle = $spectacle['nom_spectacle'];
                         $illustration = $spectacle['illustration'];
                         $duree = $spectacle['duree'];
                         $categorie = $spectacle['categorie'];
-                        afficher_spectacle($id_spectacle, $nom_spectacle, $illustration, $duree, $categorie, $id_festival);
+                        $id_scene = $spectacle['id_scene'];
+
+                        afficher_spectacle($id_spectacle, $nom_spectacle, $illustration, $duree, $categorie, $id_festival, $id_scene);
                     }
                     ?>
                 </div>

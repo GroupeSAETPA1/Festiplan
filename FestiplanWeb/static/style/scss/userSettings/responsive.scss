@@ -1,0 +1,29 @@
+@media screen and (max-width: 1350px) {
+  .information-row {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .informations {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .block {
+      width: 80vw;
+
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .buttons {
+    flex-direction: column !important;
+    justify-content: center;
+    align-items: center;
+    button {
+      margin-top: 20px;
+    }
+  }
+  .container {
+    margin: 20px;
+  }
+}

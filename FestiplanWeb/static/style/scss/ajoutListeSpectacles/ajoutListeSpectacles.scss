@@ -52,6 +52,10 @@ $taille_div: 90%;
     .btn-valider-spectacles-selectionne {
         background-color: $orange;
 
+        form {
+            margin: 0;
+        }
+
         button {
             display: flex;
             align-items: center;
@@ -90,7 +94,7 @@ $taille_div: 90%;
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        padding: 2vh 0;
+        padding: 2vh 1vh;
         margin: 1vh 0;
         font-size: 1.5rem;
 
@@ -109,6 +113,10 @@ $taille_div: 90%;
 
         p, div {
             margin: 0 1vh;
+        }
+
+        .nom-spectacle {
+            font-weight: bold;
         }
 
         .group-responsive {
@@ -144,6 +152,12 @@ $taille_div: 90%;
         .group-bouton-ajouter-spectacle {
             svg, i {
                 font-size: 3rem;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
 
             button {

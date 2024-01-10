@@ -1,5 +1,11 @@
 <?php
 
+// vérification de la connexion
+if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
+    header('Location: /Festiplan/FestiplanWeb/?controller=Home');
+    exit();
+}
+
 /**
  * Affiche un festival
  * @param int $id_festival L'identifiant du festival
@@ -178,9 +184,7 @@ function minutesToHHMM(int $minutes): string
             ?>
 
             <!-- Liste des spectacles -->
-            <?php
-            if (!empty($spectacles)) {
-            ?>
+
             <div class="container entete-section">
                 <h1>Mes Spectacles</h1>
                 <a href="/Festiplan/FestiplanWeb/?controller=CreateSpectacle">
@@ -190,6 +194,9 @@ function minutesToHHMM(int $minutes): string
                     </div>
                 </a>
             </div>
+            <?php
+            if (!empty($spectacles)) {
+            ?>
             <div class="container container-card-spectacles">
                 <?php
                 foreach ($spectacles as $spectacle) {

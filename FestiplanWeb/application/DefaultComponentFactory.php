@@ -23,13 +23,14 @@ use controllers\AccesListeSpectaclesController;
 use controllers\AjouterListesSpectaclesController;
 use controllers\CreateFestivalController;
 use controllers\ErrorController;
+use controllers\UserController;
 use Exception;
 use services\AccesListeSpectaclesService;
 use services\AjouterListesSpectaclesServices;
 use services\createFestivalService;
 use services\UserService;
 use controllers\DashboardController;
-use controllers\UserController;
+use controllers\SettingsController;
 use controllers\CreateSpectacleController;
 use PDO;
 use services\CreateSpectacleService;
@@ -39,6 +40,7 @@ use controllers\PlanificationController;
 use services\PlanificationService;
 
 use yasmf\ComponentFactory;
+use yasmf\HttpHelper;
 use yasmf\NoControllerAvailableForNameException;
 use yasmf\NoServiceAvailableForNameException;
 
@@ -74,6 +76,7 @@ class DefaultComponentFactory implements ComponentFactory
             "AccesListeSpectacles" => $this->buildAccesListeSpectaclesController(),
             "AjouterListesSpectacles" => $this->buildAjouterListesSpectaclesController(),
             "CreateSpectacle" => $this->buildCreateSpectacleController(),
+            "Settings" => $this->buildSettingsController(),
             default => throw new NoControllerAvailableForNameException($controller_name)
         };
     }
@@ -256,5 +259,10 @@ class DefaultComponentFactory implements ComponentFactory
             $this->createSpectacleService = new CreateSpectacleService($pdo, $this->buildUserService());
         }
         return $this->createSpectacleService;
+    }
+
+    private function buildSettingsController(): SettingsController
+    {
+        return new SettingsController($this->buildUserService());
     }
 }
