@@ -15,9 +15,9 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
  * @param string $categorie La catégorie du festival
  * @return void
  */
-function afficher_festival(int $id_festival, string $nom_festival, string $date_debut, string $date_fin, string $lien_image, string $categorie): void
+function afficher_festival(int $id_festival, string $nom_festival, string $date_debut, string $date_fin, string $lien_image, string $categorie, string $description): void
 {
-    echo '<div class="card-festival rounded">';
+    echo '<div class="container container-card-festivals">';
     echo '    <div class="haut-card">';
     echo '        <div class="img-festival">';
     echo '           <img src="' . $lien_image . '" alt="Image du festival ' . $nom_festival . '">';
@@ -35,6 +35,9 @@ function afficher_festival(int $id_festival, string $nom_festival, string $date_
     echo '        </div>';
     echo '   </div>';
     echo '</div>';
+    echo '<div>';
+    echo '    <span class="label-categorie">D&eacute;scription :</span>';
+    echo '    <span class="categorie">' . $description . '</span>';
 }
 ?>
 <!doctype html>
@@ -80,12 +83,9 @@ function afficher_festival(int $id_festival, string $nom_festival, string $date_
                         <div class="container container-card-festivals">
                             <?php
                             $id_festival = $festival[0]['id_festival'];
-                                afficher_festival($id_festival, $festival[0]['nom'], $festival[0]['debut'], $festival[0]['fin'], $festival[0]['illustration'], $festival[0]['id_categorie']);
+                                afficher_festival($id_festival, $festival[0]['nom'], $festival[0]['debut'], $festival[0]['fin'], $festival[0]['illustration'], $festival[0]['id_categorie'], $festival[0]['description']);
 
                             ?>
-                        </div>
-                        <div>
-                            description
                         </div>
                     </div>
                 </div>
