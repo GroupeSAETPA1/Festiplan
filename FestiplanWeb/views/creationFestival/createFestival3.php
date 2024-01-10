@@ -71,7 +71,7 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
                         <option value="vide"></option>
                         <?php
                             foreach ($tableauScene as $ligne) {
-                                echo '<option value="'.$ligne['nom'].'">'.$ligne['nom'].' - ' .$ligne['nb_spectateurs'].'</option>';
+                                echo '<option value="'.$ligne['nomScene'].'">'.$ligne['nomScene'].' - ' .$ligne['nb_spectateurs'].'</option>';
                             }
                         ?>
                     </select>
