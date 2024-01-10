@@ -3,6 +3,7 @@
 namespace services;
 
 use PDO;
+use PDOException;
 use PDOStatement;
 
 class UserService
@@ -128,7 +129,11 @@ class UserService
         $requeteChangerInfo->bindParam(':email', $newEmail);
         $requeteChangerInfo->bindParam(':login', $newLogin);
         $requeteChangerInfo->bindParam(':id_utilisateur', $_SESSION['id_utilisateur']);
-        $requeteChangerInfo->execute();
+        try {
+            $requeteChangerInfo->execute();
+        } catch (PDOException) {
+            return false;
+        }
         return $requeteChangerInfo->rowCount() > 0;
     }
 
