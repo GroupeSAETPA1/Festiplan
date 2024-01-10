@@ -1,0 +1,23 @@
+@import '../main';
+
+.app {
+  justify-content: center;
+  align-items: center;
+}
+
+.retour {
+  padding: 10px 25px;
+  .Retour {
+    line-height: 2;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 30px;
+    border-style: none;
+    background-color: $orange;
+
+    &:hover {
+      background-color: darken($orange, 5);
+    }
+  }
+}
