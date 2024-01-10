@@ -3,7 +3,7 @@ CREATE DATABASE IF NOT EXISTS `festiplan` DEFAULT CHARACTER SET utf8mb4 COLLATE 
 USE `festiplan`;
 -- --------------------------------------------------------
 -- Structure de la table `categorie`
-CREATE TABLE `categorie`
+CREATE  TABLE IF NOT EXISTS `categorie`
 (
     `id_categorie` int(6)                       NOT NULL AUTO_INCREMENT COMMENT 'id de la categorie',
     `nom`          varchar(70) COLLATE utf8_bin NOT NULL COMMENT 'nom de la categorie',
@@ -11,7 +11,7 @@ CREATE TABLE `categorie`
 );
 
 -- Structure de la table `utilisateurs`
-CREATE TABLE `utilisateurs`
+CREATE   TABLE IF NOT EXISTS `utilisateurs`
 (
     `id_utilisateur` int(6)                       NOT NULL AUTO_INCREMENT,
     `nom`            varchar(50) COLLATE utf8_bin NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE `utilisateurs`
 );
 
 -- Structure de la table `taille scene`
-CREATE TABLE `taille_scene`
+CREATE  TABLE IF NOT EXISTS `taille_scene`
 (
     `id_taille` int(2)                       NOT NULL AUTO_INCREMENT,
     `taille`    varchar(30) COLLATE utf8_bin NOT NULL UNIQUE,
@@ -32,7 +32,7 @@ CREATE TABLE `taille_scene`
 
 
 -- Structure de la table `festival`
-CREATE TABLE `festival`
+CREATE  TABLE IF NOT EXISTS `festival`
 (
     `id_festival`            int(6)                         NOT NULL AUTO_INCREMENT COMMENT 'id du festival',
     `nom`                    varchar(150) COLLATE utf8_bin  NOT NULL COMMENT 'nom du festival',
@@ -50,7 +50,7 @@ CREATE TABLE `festival`
     FOREIGN KEY (id_responsable) REFERENCES utilisateurs (id_utilisateur) ON UPDATE cascade ON DELETE cascade
 );
 -- Structure de la table `liste_organisateur`
-CREATE TABLE `liste_organisateur`
+CREATE  TABLE IF NOT EXISTS `liste_organisateur`
 (
     `id_festival`     int(6) NOT NULL,
     `id_organisateur` int(6) NOT NULL,
@@ -60,7 +60,7 @@ CREATE TABLE `liste_organisateur`
 );
 
 -- Structure de la table `scene`
-CREATE TABLE `scene`
+CREATE  TABLE IF NOT EXISTS `scene`
 (
     `id_scene`       int(6)                       NOT NULL AUTO_INCREMENT COMMENT 'id scene',
     `nomScene`            varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'nom de la scene',
@@ -73,7 +73,7 @@ CREATE TABLE `scene`
 );
 
 -- Structure de la table `spectacle`
-CREATE TABLE `spectacle`
+CREATE  TABLE IF NOT EXISTS `spectacle`
 (
     `id_spectacle`          int(6)                         NOT NULL AUTO_INCREMENT COMMENT 'id du spectacle',
     `nom`                   varchar(150) COLLATE utf8_bin  NOT NULL COMMENT 'le nom du spectacle',
@@ -100,7 +100,7 @@ CREATE TABLE `liste_scene`
 
 -- Structure de la table `spectacle_festival_scene`
 -- La table spectacle_festival_scene est une table qui permet de stocker les spectacles qui sont dans un festival et dans une scene.
-CREATE TABLE `spectacle_festival_scene`
+CREATE  TABLE IF NOT EXISTS `spectacle_festival_scene`
 (
     `id_festival`  int(6) NOT NULL,
     `id_spectacle` int(6) NOT NULL,
@@ -114,7 +114,7 @@ CREATE TABLE `spectacle_festival_scene`
 -- Structure de la table `liste_spectacle_temporaire`
 -- La table liste_spectacle_temporaire est une table temporaire qui permet de stocker les spectacles qui seront ajoutés au festival
 -- dans le formulaire d'ajout de spectacle.
-CREATE TABLE `liste_spectacle_temporaire`
+CREATE  TABLE IF NOT EXISTS `liste_spectacle_temporaire`
 (
     `id_festival`  int(6) NOT NULL,
     `id_spectacle` int(6) NOT NULL,
@@ -124,7 +124,7 @@ CREATE TABLE `liste_spectacle_temporaire`
 
 -- Structure de la table `liste_inter_hors_scene`
 -- La table liste_inter_hors_scene est une table qui permet de stocker les intervenants qui sont hors de la scene d'un spectacle.
-CREATE TABLE `liste_inter_hors_scene`
+CREATE  TABLE IF NOT EXISTS `liste_inter_hors_scene`
 (
     `id_spectacle` int(6) NOT NULL,
     `id_inter`     int(6) NOT NULL,
@@ -135,7 +135,7 @@ CREATE TABLE `liste_inter_hors_scene`
 
 -- Structure de la table `liste_inter_scene`
 -- La table liste_inter_scene est une table qui permet de stocker les intervenants qui sont dans la scene d'un spectacle.
-CREATE TABLE `liste_inter_scene`
+CREATE  TABLE IF NOT EXISTS `liste_inter_scene`
 (
     `id_spectacle` int(6) NOT NULL,
     `id_inter`     int(6) NOT NULL,
@@ -145,7 +145,7 @@ CREATE TABLE `liste_inter_scene`
 );
 
 -- Structure de la table `liste_scene`
-CREATE TABLE `liste_scene`
+CREATE  TABLE IF NOT EXISTS `liste_scene`
 (
     `id_festival` int(6) NOT NULL,
     `id_scene`    int(6) NOT NULL,

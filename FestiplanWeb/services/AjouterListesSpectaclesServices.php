@@ -54,7 +54,7 @@ class AjouterListesSpectaclesServices
     {
         $requete = "SELECT id_spectacle, s.id_scene, s.nom as nom_scene
                     FROM liste_spectacle_temporaire
-                    JOIN festiplan.scene s on liste_spectacle_temporaire.id_scene = s.id_scene";
+                    JOIN scene s on liste_spectacle_temporaire.id_scene = s.id_scene";
 
         $stmt = $this->pdoAjouterSpectacle->prepare($requete);
         $stmt->execute();
@@ -64,7 +64,7 @@ class AjouterListesSpectaclesServices
 
     public function viderTableTemporaire(): void
     {
-        $requete = "DELETE FROM festiplan.liste_spectacle_temporaire";
+        $requete = "DELETE FROM liste_spectacle_temporaire";
         $this->pdoAjouterSpectacle->exec($requete);
     }
 
@@ -83,8 +83,8 @@ class AjouterListesSpectaclesServices
     function getScene(int $id_festival): array
     {
         $requete = "SELECT scene.id_scene, nom
-                    FROM festiplan.scene
-                    JOIN festiplan.liste_scene s on scene.id_scene = s.id_scene
+                    FROM scene
+                    JOIN liste_scene s on scene.id_scene = s.id_scene
                     WHERE id_festival = :id_festival;";
 
         $stmt = $this->pdoAjouterSpectacle->prepare($requete);
