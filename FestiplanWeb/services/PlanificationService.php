@@ -42,7 +42,7 @@ class PlanificationService
                     JOIN scene
                     ON spectacle_festival_scene.id_scene = scene.id_scene
                     WHERE festival.id_festival = :id_festival
-                    ORDER BY scene.id_scene ASC;";
+                    ORDER BY scene.id_scene ASC, spectacle.duree ASC;";
         
         $requete = $this->pdoLecture->prepare($requete);
         $requete->bindParam("id_festival", $id_festival);
