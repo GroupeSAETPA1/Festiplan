@@ -1,9 +1,7 @@
 const interList = [];
 const sceneList = [];
-const spectacleList = [] ;
 const BUTTON = $(".button-add-orga");
 const SCENE = $("#listeScene");
-const SPECTACLE = $("#listeSpectacle");
 const INPUT = $('#orga');
 
 async function addOrga() {
@@ -69,54 +67,7 @@ async function addScene() {
     }
 }
 
-async function addSpectacle() {
-    input = SPECTACLE.val();
-    const isDuplicate = spectacleList.some(spectacle => spectacle.name === input);
-    if (input && input != 'vide' && !isDuplicate) {
-        SPECTACLE.css({border: "1px solid black"});
 
-        let choixValide;
-        try {
-            choixValide = await checkSpectacleValide(input);
-        } catch (error) {
-            console.log("erreur lors de la verification du spectacle");
-        }
-
-        console.log(choixValide);
-        let spectacle = {
-            id: spectacleList.length ,
-            name : input ,
-            valid: choixValide === "1" ,
-        };
-
-        spectacleList.push(spectacle);
-        INPUT.val('');
-        displaySpectacle();
-    } else {
-        SPECTACLE.css({border: "1px solid red"});
-    }
-}
-
-function displaySpectacle() {
-    let selection = $('.spectacleSelect')[0];
-    selection.innerHTML = '';
-    for (let i = 0 ; i < spectacleList.length ; i++ ) {
-        let htmlContent = `<div class="selection">
-            <div class="left">
-                <i class="fa-${spectacleList[i].valid ? 'solid fa-check ok' : 'regular fa-plus add'}"></i>
-            </div>
-            <div class="name">${spectacleList[i].name}</div>
-            <div class="delete" data-index="${i}">
-                <i class="fa-solid fa-trash-can"></i>
-            </div>
-        </div>`;
-        if (spectacleList[i].valid) {
-            htmlContent += `<input type="hidden" name="spectacle[]" value="${spectacleList[i].name}"></div>`;
-        }
-
-        selection.innerHTML += htmlContent;
-    }
-}
 
 function displayInter() {
     let selection = $('.selections')[0];
@@ -196,23 +147,6 @@ function checkChoixValide(scene) {
     });
 }
 
-function checkSpectacleValide(spectacle) {
-    return new Promise((resolve, reject) => {
-        const xmlhttp = new XMLHttpRequest();
-
-        xmlhttp.onload = function () {
-            resolve(this.responseText);
-        };
-
-        xmlhttp.onerror = function () {
-            reject(new Error("Erreur lors de la requete ajax"));
-        };
-
-        let controllerActionUrl = "/Festiplan/FestiplanWeb/index.php?controller=CreateFestival&action=verifierSpectacle";
-        xmlhttp.open("GET", controllerActionUrl +"&spectacle=" + encodeURIComponent(spectacle));
-        xmlhttp.send();
-    });
-}
 
 $('.selections').on('click', '.delete', function() {
     let index = $(this).data('index');
@@ -235,4 +169,3 @@ $('.sceneSelect').on('click', '.delete', function() {
 
 BUTTON.on('click', addOrga);
 SCENE.on('change' , addScene);
-SPECTACLE.on('change' , addSpectacle);

@@ -14,12 +14,13 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
 
         <!-- Lien vers mon CSS -->
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/createFestiplan.css">
-        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/button.css">
-        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/image.css">
-        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/input.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/page3CreationFestival.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/footer.css">
-        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/responsive.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/header.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/button.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/formsInput/image.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/formsInput/input.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svgInFolder.css">
 
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/framework/fontawesome-free-6.2.1-web/css/all.css">
 
@@ -27,10 +28,10 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
     <body>
     <?php
      include_once $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/header.php" ?>
+    <div class="retour">
+        <a href=/Festiplan/FestiplanWeb/?controller=CreateFestival&action=page2><button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button></a>
+    </div>
     <form>
-        <div class="retour">
-            <a href="createFestival3.php"><button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button></a>
-        </div>
         <div class="wrapper">
             <div class="container">
                 <div>

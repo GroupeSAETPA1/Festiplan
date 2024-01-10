@@ -167,6 +167,7 @@ function minutesToHHMM(int $minutes): string
                 <div class="container container-card-festivals">
                     <?php
                     foreach ($festivals as $festival) {
+                        var_dump($festival);
                         $id_festival = $festival['id_festival'];
                         $nom_festival = $festival['nom'];
                         $date_debut = $festival['debut'];

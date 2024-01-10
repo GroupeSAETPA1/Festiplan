@@ -18,8 +18,8 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/footer.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/header.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/button.css">
-        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/image.css">
-        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/input.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/formsInput/image.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/formsInput/input.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svgInFolder.css">
 
         <!-- Font Awesome -->
@@ -39,14 +39,14 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
     <body>
     <div class="app">
     <?php include_once $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/header.php" ?>
-    <form>
         <div class="retour">
-            <a href=/Festiplan/FestiplanWeb/?controller=CreateFestival&action=validerPage2>
+            <a href=/Festiplan/FestiplanWeb/?controller=CreateFestival&action=page1>
                 <button class="Retour">
                     <i class="fa-solid fa-arrow-left"></i> Retour
                 </button>
             </a>
         </div>
+    <form>
         <div class="wrapperCustomInput">
             <div class="custom-select">
                 <label for="inter">Organisateur :</label>
@@ -77,23 +77,6 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
                     </select>
                 </div>
                 <div class="sceneSelect">
-                    <!-- rempli avec le js -->
-                </div>
-            </div>
-            <div class="custom-select">
-                <label for="spectacle"> Spectacle : </label>
-                <div class="text">Veuillez selectioner les spectacles que vous souhaitez integrer a votre festival</div>
-                <div class="rowCustomInput">
-                    <select id="listeSpectacle">
-                        <option value = "vide"></option>
-                        <?php
-                            foreach($tableauSpectacle as $ligne) {
-                                echo '<option value="'.$ligne['nom'].'">'.$ligne['nom'].'</option>';
-                            }
-                        ?>
-                    </select>
-                </div>
-                <div class="spectacleSelect">
                     <!-- rempli avec le js -->
                 </div>
             </div>

@@ -55,7 +55,6 @@ class CreateFestivalController {
            $_SESSION['descriptionFestival'] = HttpHelper::getParam('description');
            $_SESSION['ddd'] = HttpHelper::getParam('ddd');
            $_SESSION['ddf'] = HttpHelper::getParam('ddf');
-           $_SESSION['photoFestival'] = $this->photoOk(HttpHelper::getParam("nom"));
            $_SESSION['categorie'] = HttpHelper::getParam('categorie');
            $view = new View("views/creationFestival/createFestival3");
            $view -> setVar('tableauSpectacle' , $this->spectacleBD);
@@ -68,15 +67,28 @@ class CreateFestivalController {
        return $view;
     }
 
+    public function page1() {
+        $view = new View("views/creationFestival/createFestival");
+        $this -> reAfficherElementPage1($view);
+        $view -> setVar('tableauCategorie' , $this->categorieBD);
+        return $view;
+    }
+
+
+    public function page2() {
+        $view = new View("views/creationFestival/createFestival3");
+        $view -> setVar('tableauSpectacle' , $this->spectacleBD);
+        $view -> setVar('tableauScene' , $this->sceneBD);
+        return $view;
+    }
     public  function validerPage2 () {
         $this->connectionOk();
-        $tousOk =  $this->organisateurOk()  && $this->sceneOk()  && $this->spectacleOk() ;
+        $tousOk =  $this->organisateurOk()  && $this->sceneOk() ; ;
         if ($tousOk) {
             $view = new View("/views/creationFestival/CreateFestival2");
 
         } else {
             $view = new View("/views/creationFestival/CreateFestival3");
-            $view -> setVar('tableauSpectacle' , $this->spectacleBD);
             $view -> setVar('tableauScene' , $this->sceneBD);
         }
         return $view;
@@ -85,9 +97,31 @@ class CreateFestivalController {
     public function validerPage3 () {
         $this->connectionOk();
         $champOk = $this->champsValides(HttpHelper::getParam('HDS') , HttpHelper::getParam('HFS'), HttpHelper::getParam('TPS'));
-        $tempOk = $this->verifierTempsSuffisant(HttpHelper::getParam('TPS') , HttpHelper::getParam('HDS') , HttpHelper::getParam('HFS'));
-        if($champOk && $tempOk) {
-            echo 'oui';
+        if($champOk) {
+            $tableauIdScene = $this -> createFestivalService -> recupererIdScene($_SESSION['scene']);
+            $tableauIdOrga = $this -> createFestivalService -> recupererIdOrga($_SESSION['organisateur']);
+            $this -> createFestivalService -> insertionFestival(
+                $_SESSION['nomFestival'] ,
+                $_SESSION['descriptionFestival'] ,
+                $_SESSION['photoFestival'] ,
+                $_SESSION['ddd'] ,
+                $_SESSION['ddf'] ,
+                $_SESSION['categorie'] ,
+                $_SESSION['id_utilisateur'] ,
+                HttpHelper::getParam('TPS') ,
+                HttpHelper::getParam('HDS') ,
+                HttpHelper::getParam('HFS'),
+                $tableauIdOrga ,
+                $tableauIdScene);
+            header("Location: index.php?controller=Dashboard");
+            $_SESSION['nomFestival'] = '' ;
+                $_SESSION['descriptionFestival'] = '' ;
+                $_SESSION['photoFestival'] = '' ;
+                $_SESSION['ddd']  = '' ;
+                $_SESSION['ddf'] = '' ;
+                $_SESSION['categorie'] = '' ;
+            exit();
+
         } else {
             $view = new View("/views/creationFestival/CreateFestival2");
         }
@@ -147,21 +181,6 @@ class CreateFestivalController {
         }
     }
 
-    public  function spectacleOk() {
-        if (!isset($_GET['spectacle'])) {
-            return false ;
-        }
-        $spectacle = array();
-        foreach($_GET['spectacle'] as $ligne) {
-            if($this->createFestivalService->spectacleExiste($ligne)) {
-                $spectacle[] = $ligne;
-            } else {
-                return false ;
-            }
-        }
-        $_SESSION['spectacle'] = $spectacle;
-        return true;
-    }
     public function recupererExtension($nomFichier) {
         $extensionsPossibles = array(
             strtoupper('.jpg') , 
@@ -259,36 +278,6 @@ class CreateFestivalController {
 
     }
 
-    public function verifierTempsSuffisant($pause , $debut , $fin)
-    {
-        $duree_journee = (strtotime($fin) - strtotime($debut))/60;
-        //echo 'duree jour'.$duree_journee;
-        $debut_festival = strtotime($_SESSION['ddd']);
-        $fin_festival = strtotime($_SESSION['ddf']);
-
-        $dureeDisponible = ($fin_festival - $debut_festival)/60;
-        $dureeDisponible == 0 ? $dureeDisponible = $duree_journee :$dureeDisponible = $dureeDisponible;
-        //echo 'dureDispo'.$dureeDisponible;
-        $duree_totale_spectacle  = $this->calculerDureeTotaleSpectacle($pause);
-
-        $nombre_jours_necessaires = ceil($duree_totale_spectacle /($duree_journee));
-        //echo '<br>jour necessaire'.$nombre_jours_necessaires;
-        if ($nombre_jours_necessaires > (($dureeDisponible) / $duree_journee)) {
-            //echo 'non';
-            return false; // Nombre de jours insuffisants pour accueillir les spectacles
-        } else {
-            //echo 'oui';
-            return true; // Assez de jours pour les spectacles
-        }
-    }
-
-    public function calculerDureeTotaleSpectacle($pause)
-    {
-        $result = $this->createFestivalService -> dureeSpectacle($_SESSION['spectacle']);
-        $result +=  (count($_SESSION['spectacle']) - 1) * strtotime($pause);
-        echo 'duree total'.$result;
-        return $result ;
-    }
 
     public function organisateurOk()
     {

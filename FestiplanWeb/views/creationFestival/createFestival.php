@@ -16,11 +16,14 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
 
     <!-- Lien vers mon CSS -->
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/createFestiplan.css">
-    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/button.css">
-    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/image.css">
-    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/input.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/page3CreationFestival.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/footer.css">
-    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svg.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/header.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/button.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/formsInput/image.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/formsInput/input.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svgInFolder.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svgInFolder.css">
 
 
     <link rel="stylesheet"
