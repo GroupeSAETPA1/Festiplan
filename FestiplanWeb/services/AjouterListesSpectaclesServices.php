@@ -13,13 +13,21 @@ class AjouterListesSpectaclesServices
 
     public function getSpectaclesDisponible (int $id_festival) : array
     {
-        $requete = "SELECT spectacle.id_spectacle, spectacle.nom, description, illustration, duree, c.nom as categorie, 'ajouterSpectacle' as action
-                    FROM spectacle 
-                    JOIN categorie c on c.id_categorie = spectacle.id_categorie
-                    WHERE spectacle.id_spectacle NOT IN (SELECT id_spectacle FROM spectacle_festival_scene WHERE id_festival = :id_festival)";
+        $requete = "SELECT spectacle.id_spectacle, spectacle.nom, description, illustration, duree, c.nom AS categorie, 'ajouterSpectacle' AS action
+                    FROM spectacle
+                    JOIN categorie c ON c.id_categorie = spectacle.id_categorie
+                    WHERE spectacle.id_spectacle NOT IN (SELECT id_spectacle
+                                                         FROM spectacle_festival_scene
+                                                         WHERE id_festival = :id_festival)
+                      AND taille_scene IN (SELECT ts.id_taille
+                                           FROM scene
+                                           JOIN festiplan.taille_scene ts ON ts.id_taille = scene.id_taille
+                                           JOIN festiplan.liste_scene ls ON scene.id_scene = ls.id_scene
+                                           WHERE id_festival = :id_festival1);";
 
         $stmt = $this->pdoAjouterSpectacle->prepare($requete);
         $stmt->bindParam("id_festival", $id_festival);
+        $stmt->bindParam("id_festival1", $id_festival);
         $stmt->execute();
         return $stmt->fetchAll();
     }
@@ -62,10 +70,12 @@ class AjouterListesSpectaclesServices
         return $stmt->fetchAll();
     }
 
-    public function viderTableTemporaire(): void
+    public function viderTableTemporaire(int $id_festival): void
     {
-        $requete = "DELETE FROM liste_spectacle_temporaire";
-        $this->pdoAjouterSpectacle->exec($requete);
+        $requete = "DELETE FROM liste_spectacle_temporaire WHERE id_festival = :id_festival;";
+        $stmt = $this->pdoAjouterSpectacle->prepare($requete);
+        $stmt->bindParam("id_festival", $id_festival);
+        $stmt->execute();
     }
 
     public function ajouterSpectacleAuFestival(int $id_festival, int $id_spectacle, int $id_scene): void
