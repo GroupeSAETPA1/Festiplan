@@ -8,8 +8,8 @@
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/createFestiplan.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/page3CreationFestival.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svg.css">
-        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components\footer.css">
-        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components\header.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/footer.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/header.css">
 
         <!-- Font Awesome -->
         <link rel="stylesheet"
