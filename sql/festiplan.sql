@@ -119,7 +119,10 @@ CREATE  TABLE IF NOT EXISTS `liste_spectacle_temporaire`
     `id_festival`  int(6) NOT NULL,
     `id_spectacle` int(6) NOT NULL,
     `id_scene`     int(6) NOT NULL,
-    PRIMARY KEY (id_festival, id_spectacle, id_scene)
+    PRIMARY KEY (id_festival, id_spectacle, id_scene),
+    FOREIGN KEY (id_festival) REFERENCES festival (id_festival) ON UPDATE cascade ON DELETE cascade,
+    FOREIGN KEY (id_spectacle) REFERENCES spectacle (id_spectacle) ON UPDATE cascade ON DELETE cascade,
+    FOREIGN KEY (id_scene) REFERENCES scene (id_scene) ON UPDATE cascade ON DELETE cascade
 );
 
 -- Structure de la table `liste_inter_hors_scene`
