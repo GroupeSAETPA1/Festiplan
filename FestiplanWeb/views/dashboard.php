@@ -46,8 +46,9 @@ function afficher_festival(int $id_festival, string $nom_festival, string $date_
     echo '                <input hidden name="id_festival" value="' . $id_festival . '">';
     echo '                <div><button type="submit"><i class="fa-solid fa-pen-to-square"></i></button></div>';
     echo '            </form>';
-    echo '            <form method="post" action=""> <!-- TODO : mettre le lien pour supprimer le festival -->';
+    echo '            <form method="post" action="/Festiplan/FestiplanWeb/index.php">';
     echo '                <input hidden name="id_festival" value="' . $id_festival . '">';
+    echo '                <input hidden name="controller" value="SupressionFestival">';
     echo '                <div><button type="submit"><i class="fa-solid fa-trash-can"></i></button></div>';
     echo '            </form>';
     echo '        </div>';

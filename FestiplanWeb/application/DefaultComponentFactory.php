@@ -23,6 +23,7 @@ use controllers\AccesListeSpectaclesController;
 use controllers\AjouterListesSpectaclesController;
 use controllers\CreateFestivalController;
 use controllers\ErrorController;
+use controllers\SupressionFestivalController;
 use controllers\UserController;
 use Exception;
 use services\AccesListeSpectaclesService;
@@ -77,7 +78,9 @@ class DefaultComponentFactory implements ComponentFactory
             "AjouterListesSpectacles" => $this->buildAjouterListesSpectaclesController(),
             "CreateSpectacle" => $this->buildCreateSpectacleController(),
             "Settings" => $this->buildSettingsController(),
-            default => throw new NoControllerAvailableForNameException($controller_name)
+            "SupressionFestival" =>$this->buildSupressionFestivalController(),
+            default => throw new NoControllerAvailableForNameException($controller_name),
+
         };
     }
 
@@ -263,5 +266,10 @@ class DefaultComponentFactory implements ComponentFactory
     private function buildSettingsController(): SettingsController
     {
         return new SettingsController($this->buildUserService());
+    }
+
+    private function buildSupressionFestivalController(): SupressionFestivalController
+    {
+        return new SupressionFestivalController();
     }
 }
