@@ -30,9 +30,11 @@ class SupressionFestivalController
     public function construireVue( int $id_festival_actif ) : View
     {
         $festival = $this->SupressionFestivalServices->recupFestival($id_festival_actif);
+        $supprimer = $this->SupressionFestivalServices->supression($id_festival_actif);
         $view = new View("views/supression/supressionFestival");
 
         $view->setVar("festival", $festival);
+        view->setVAr("supprimer",$supprimer);
 
         return $view;
     }

@@ -29,8 +29,14 @@ class SupressionFestivalServices
         return $stmt->fetchAll();
     }
 
-    public function supression()
+    public function supression(int $id_festival) : array
     {
+        $requete = "DELETE FROM festival 
+                    WHERE id_festival = :id_festival;";
+        $stmt = $this->pdoSupressionFestival->prepare($requete);
+        $stmt->bindParam("id_festival", $id_festival);
+        $stmt->execute();
 
+        return $stmt->fetchAll();
     }
 }
