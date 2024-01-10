@@ -33,12 +33,12 @@ VALUES
 ('Fête de la Musique', 'Célébration de la musique', '2024-06-21', '2024-06-25', 5, 1, 15, '12:00:00', '23:00:00', 'Rien'),
 ('Festival de la Mode', 'Défilés et tendances', '2024-09-05', '2024-09-10', 1, 6, 25, '11:00:00', '21:00:00', 'Rien'),
 ('Carnaval Coloré', 'Joie, couleurs et déguisements', '2024-02-25', '2024-02-26', 2, 7, 10, '14:00:00', '23:00:00', 'Rien'),
-('Festival de l\'Automne', 'Adieu à l\'été, bienvenue à l\'automne', '2024-10-15', '2024-10-20', 3, 8, 20, '09:00:00', '20:00:00', 'Rien'),
-('Festival des Étoiles', 'Observation du ciel nocturne', '2024-08-10', '2024-08-11', 4, 9, 15, '20:00:00', '04:00:00', 'Rien');
+('Festival de l\'Automne', 'Adieu à l\'été, bienvenue à l\'automne', '2024-10-15', '2024-10-20', 3, 1, 20, '09:00:00', '20:00:00', 'Rien'),
+('Festival des Étoiles', 'Observation du ciel nocturne', '2024-08-10', '2024-08-11', 4, 2, 15, '20:00:00', '04:00:00', 'Rien');
 
 
 -- Insertion dans la table `scene`
-INSERT INTO `scene` (`nom`, `nb_spectateurs`, `id_taille`) VALUES
+INSERT INTO `scene` (`nomScene`, `nb_spectateurs`, `id_taille`) VALUES
 ('Amphi IUT', 500, 3),
 ('Salle B301', 70, 2),
 ('Fillmore East', 2500, 1),
