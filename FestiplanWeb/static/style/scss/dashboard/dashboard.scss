@@ -49,6 +49,11 @@ form {
         margin: 0;
         padding: 1rem;
     }
+    .buttons {
+        display: flex;
+        flex-direction: row;
+
+    }
 
     a {
 
@@ -114,12 +119,14 @@ form {
 
         .group-boutons {
             flex-direction: row;
-
             .btn-acces-spectacles {
                 background-color: $gris;
                 margin: 0 1vh;
                 &:hover {
                     background-color: darken($gris, 20);
+                }
+                .fa-pen-to-square {
+                    font-size: 2vh;
                 }
             }
         }

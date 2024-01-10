@@ -56,6 +56,10 @@ form {
   margin: 0;
   padding: 1rem;
 }
+.entete-section .buttons {
+  display: flex;
+  flex-direction: row;
+}
 .entete-section a div {
   background-color: #F7A072;
   padding: 1rem;
@@ -116,6 +120,9 @@ form {
 }
 .card-festival .bas-card .group-boutons .btn-acces-spectacles:hover {
   background-color: #999999;
+}
+.card-festival .bas-card .group-boutons .btn-acces-spectacles .fa-pen-to-square {
+  font-size: 2vh;
 }
 
 .img-spectacle, .img-festival {
