@@ -37,7 +37,7 @@ function afficherSpectacle($nom_spectacle, $categorie, $duree, $illustration, $i
     echo '   </div>';
     echo '   <div class="group-bouton-ajouter-spectacle rounded">';
     echo '       <form action="/Festiplan/FestiplanWeb/index.php" method="post">';
-    echo '           <input type="hidden" name="controller" value="AjouterListesSpectacles">';
+    echo '           <input type="hidden" name="controller" value="AjouterListesSpectacle">';
     echo '           <input type="hidden" name="action" value="' . $action . '">';
     echo '           <input type="hidden" name="id_festival" value="' . $id_festival . '">';
     echo '           <input type="hidden" name="id_scene" value="' . $id_scene . '">';
@@ -169,7 +169,7 @@ function minutesToHHMM(int $minutes): string
                 </div>
                 <div class="btn-valider-spectacles-selectionne rounded">
                     <form action="/Festiplan/FestiplanWeb/index.php" method="post">
-                        <input type="hidden" name="controller" value="AjouterListesSpectacles">
+                        <input type="hidden" name="controller" value="AjouterListesSpectacle">
                         <input type="hidden" name="action" value="validerSpectaclesSelectionne">
                         <!--                        <input type="hidden" name="id_festival" value="<?php //echo $id_festival ?>">
                         <input type="hidden" name="nom_festival" value="<?php //echo $nom_festival ?>">-->
@@ -200,7 +200,6 @@ function minutesToHHMM(int $minutes): string
                     </form>
                     <?php
                 }
-
                 foreach ($spectaclesDisponible as $spectacle) {
 
                     $nom_spectacle = $spectacle['nom'];
@@ -210,13 +209,8 @@ function minutesToHHMM(int $minutes): string
                     $id_spectacle = $spectacle['id_spectacle'];
                     $action = $spectacle['action'];
                     $nom_scene = $spectacle['nom_scene'] ?? "";
-                    $id_scene = $spectacle['id_scene'] ?? 1;//TODO remove STUB
+                    $id_scene = $spectacle['id_scene'] ?? "";
 
-                    if ($id_spectacle % 2 == 0) {
-                        $illustration = "/festiplan/FestiplanWeb/static/assets/img/deScenePalais.jpg";
-                    } else if ($id_spectacle % 3 == 0){
-                        $illustration = "/festiplan/FestiplanWeb/static/assets/img/NeoQuentin.jpg";
-                    }
 
                     afficherSpectacle($nom_spectacle, $categorie, $duree, $illustration, $id_festival, $id_spectacle, $action, $nom_scene, $id_scene, $sceneFestival);
                 }

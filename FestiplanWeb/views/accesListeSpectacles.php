@@ -96,6 +96,7 @@ function minutesToHHMM(int $minutes): string
 
         <div class="wrapper">
 
+
             <div class="titre">Les spectacles du festival <?php echo $nom_festival; ?></div>
 
             <div class="card-festival-ligne rounded">
