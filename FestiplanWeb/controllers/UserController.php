@@ -17,7 +17,6 @@ class UserController
 
     public function __construct(UserService $userService)
     {
-
         $this->userService = $userService;
     }
 
@@ -33,6 +32,21 @@ class UserController
 
         $view = new View("views/index");
         $this->buildView($view, $nom, $prenom, $email, $mdp, $login, false, false, false, "");
+        return $view;
+    }
+
+    /**
+     * genere la vue de la page de parametres utilisateur
+     * @return View
+     */
+    public function settings(): View
+    {
+        $view = new View("views/userSettings");
+        $view->setVar('nom', $_SESSION['nom']);
+        $view->setVar('prenom', $_SESSION['prenom']);
+        $view->setVar('email', $_SESSION['email']);
+        $view->setVar('login', $_SESSION['login']);
+
         return $view;
     }
 
@@ -90,7 +104,6 @@ class UserController
                     } else {
                         $messageErreur = "Erreur d'inscription : Un utilisateur existe déja avec ce login";
                         $this->buildView($view, $nom, $prenom, $email, $mdp, $login, true, false, true, $messageErreur);
-
                     }
                 } else {
                     $messageErreur = "Erreur d'inscription : Un des champs requis n'est pas rempli";
@@ -135,6 +148,8 @@ class UserController
                         $_SESSION['id_utilisateur'] = $ligne->id_utilisateur;
                         $_SESSION['nom'] = $ligne->nom;
                         $_SESSION['prenom'] = $ligne->prenom;
+                        $_SESSION['email'] = $ligne->email;
+                        $_SESSION['login'] = $ligne->login;
                     }
                     $messageErreur = "";
                     $displayLoginError = false;

@@ -14,7 +14,6 @@ class DashboardController
 
     public function __construct(DashboardService $dashboardService)
     {
-
         $this->dashboardService = $dashboardService;
     }
 

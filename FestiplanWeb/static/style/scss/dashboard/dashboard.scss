@@ -5,7 +5,6 @@ body {
     color: $dark-grey;
     font-family: $font-family;
     margin: 0;
-
 }
 
 a {
@@ -115,6 +114,14 @@ form {
 
         .group-boutons {
             flex-direction: row;
+
+            .btn-acces-spectacles {
+                background-color: $gris;
+                margin: 0 1vh;
+                &:hover {
+                    background-color: darken($gris, 20);
+                }
+            }
         }
     }
 }
@@ -123,6 +130,7 @@ form {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 20%;
 
 }
 

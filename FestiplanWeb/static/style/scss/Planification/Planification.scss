@@ -1,0 +1,43 @@
+@import '../main';
+
+body {
+    background-color: $white;
+    color: $dark-grey;
+    font-family: $font-family;
+}
+
+.retourBouton {
+    background-color: $orange;
+    color: $dark-grey;
+    padding: 30px;
+    padding: 1vh;
+    border-radius: 2vh;
+    text-decoration: none;
+} 
+
+.genererPlanificationBouton {
+    background-color: $light-blue;
+    color: $dark-grey;
+    padding: 1vh;
+    margin-bottom: 2vh;
+    border-radius: 2vh;
+    border: none;
+}
+.Planification {
+    padding: 5vh;
+    background-color: $dark-grey;
+    color: $white;
+    border-radius: 2vh;
+    
+    a {
+        text-decoration: none;
+        color: $white;
+    }
+    
+    .fc tr {
+        height: 10vh;
+    }
+}
+.scrollDIV {
+    width: 100%;
+}

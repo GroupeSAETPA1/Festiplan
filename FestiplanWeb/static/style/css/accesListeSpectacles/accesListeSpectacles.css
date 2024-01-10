@@ -1,0 +1,222 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"); /* declaration des variables */
+/* ne codez pas ici, c'est le fichier pour les variables, etc. */
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+body {
+  min-height: 100vh;
+  background-color: #F0F7F4;
+  color: #363732;
+  font-family: "Rubik", sans-serif;
+  margin: 0;
+}
+
+/* declaration des variables */
+/* ne codez pas ici, c'est le fichier pour les variables, etc. */
+body {
+  min-height: 100vh;
+  background-color: #F0F7F4;
+  color: #363732;
+  font-family: "Rubik", sans-serif;
+  margin: 0;
+}
+
+body {
+  background-color: #F0F7F4;
+  color: #363732;
+  font-family: "Rubik", sans-serif;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #363732;
+}
+
+.rounded {
+  border-radius: 2vh !important;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.retour {
+  background-color: #F7A072;
+  width: fit-content;
+  height: fit-content;
+  margin: 1.5vh;
+  padding: 1.5vh;
+}
+.titre {
+  font-size: 30px;
+  width: 90%;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper > div {
+  margin: 1vh 0;
+}
+
+.card-festival-ligne {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1vh;
+  width: 90%;
+  height: 10vh;
+  background-color: #363732;
+  color: #F0F7F4;
+}
+.card-festival-ligne .nom-festival {
+  font-size: 30px;
+}
+.card-festival-ligne * {
+  margin: 1vh;
+}
+
+.categorie {
+  max-width: fit-content;
+  flex: 1 1 auto;
+  text-align: center;
+  padding: 0.25vh 0.5vh;
+  margin: 0 0.25vh 0.25vh 0;
+  color: #363732;
+  background-color: #F0F7F4;
+  border-radius: 1vh;
+}
+
+.entete-section {
+  background-color: #363732;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  padding: 1vh;
+}
+.entete-section .titre-section {
+  color: #99E1D9;
+}
+.entete-section .bouton-ajouter-spectacle {
+  background-color: #F7A072;
+}
+.entete-section .bouton-ajouter-spectacle button {
+  padding: 2vh;
+  width: max-content;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 1vh;
+  cursor: pointer;
+}
+.entete-section .bouton-ajouter-spectacle button span, .entete-section .bouton-ajouter-spectacle button i {
+  font-size: 1.2rem;
+}
+
+.accordeon {
+  background-color: #363732;
+  width: 90%;
+  padding: 1.5vh;
+}
+.accordeon .bouton-drop-down {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #F0F7F4;
+  padding: 1vh;
+}
+.accordeon .bouton-drop-down i {
+  font-size: 1.7rem;
+  margin: 0 1vh 0 0;
+}
+.accordeon .bouton-drop-down:hover {
+  background-color: #cccccc;
+}
+.accordeon .card-spectacles {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1vh 2vh;
+  margin: 1vh 0;
+  background-color: #F0F7F4;
+}
+.accordeon .card-spectacles .img-spectacle {
+  min-height: 20vh;
+  display: flex;
+  align-items: center;
+  background-color: #cccccc;
+}
+.accordeon .card-spectacles .img-spectacle img {
+  margin: 1vh;
+}
+.accordeon .card-spectacles p, .accordeon .card-spectacles div {
+  margin: 0 1vh;
+}
+.accordeon .card-spectacles .group-categories {
+  max-width: 40vh;
+}
+.accordeon .card-spectacles .duree {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.btn-retirer-spectacle {
+  border-radius: 1vh;
+}
+.btn-retirer-spectacle i {
+  font-size: 4vh;
+  margin: 0.5vh;
+}
+.btn-retirer-spectacle .fa-times {
+  color: red;
+}
+.btn-retirer-spectacle:hover {
+  background-color: #cccccc;
+}
+.btn-retirer-spectacle button {
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 1vh;
+}
+
+@media screen and (max-width: 700px) {
+  .img-spectacle, .img-festival {
+    display: none !important;
+  }
+  .card-festival-ligne {
+    justify-content: center;
+  }
+  .card-festival-ligne .img-festival, .card-festival-ligne .date {
+    display: none;
+  }
+  .entete-section {
+    justify-content: space-between;
+  }
+  .entete-section a {
+    padding: 0 0 0 1vh;
+  }
+  .entete-section a div > span {
+    display: none;
+  }
+  .card-spectacles .group-categories > .label-categorie {
+    display: none;
+  }
+}
+@media screen and (max-width: 740px) {
+  .label-categorie, .label-duree {
+    display: none;
+  }
+}
+@media screen and (max-width: 430px) {
+  .bouton-ajouter-spectacle > button > span {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=accesListeSpectacles.css.map */
