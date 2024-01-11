@@ -51,5 +51,15 @@ class AccesListeSceneService
         $stmt->bindParam("id_scene", $id_scene);
 
         $stmt->execute();
+
+        // on dé-associe la scene du festival
+        $requete = "DELETE FROM spectacle_festival_scene WHERE id_festival = :id_festival AND id_scene = :id_scene";
+
+        $stmt = $this->pdoLectureScene->prepare($requete);
+
+        $stmt->bindParam(":id_festival", $id_festival);
+        $stmt->bindParam("id_scene", $id_scene);
+
+        $stmt->execute();
     }
 }
