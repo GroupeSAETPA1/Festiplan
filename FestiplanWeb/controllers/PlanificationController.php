@@ -17,12 +17,10 @@ class PlanificationController
         $this->planificationService = $planificationService;
     }
 
-    // GROS TODO changer la méthode pour utiliser que ce qu'on a besoin car on a pas besoin des specacles par exemple
     public function index(PDO $pdo): View {
         // On récupère l'id de l'utilisateur et le festival sélectionné
         $id_organisateur = $_SESSION['id_utilisateur'] ?? null;
         $id_festival =  HttpHelper::getParam("id_festival") ?? null;
-
 
         // Si on tente d'accéder a la page de planification sans être connecté ou sans avoir séléctionné un festival,
         // on renvoie sur la page de connexion
@@ -31,14 +29,14 @@ class PlanificationController
             exit();
         }
 
-        $festival = $this->planificationService->getFestival($id_festival, $id_organisateur);
+        $festival = $this->planificationService->getFestival($id_festival);
 
         if ($festival == null) {
-            header("Location: /Festiplan/FestiplanWeb/"); // TODO renvoyer sur la bonne page avec éventuellement un message d'erreur
+            header("Location: /Festiplan/FestiplanWeb/");
             exit();
         }
 
-        $view = new View("views/planification"); // TODO Si ya un pb de pdo s'arreter la et afficher un message d'erreur
+        $view = new View("views/planification");
         $view->setVar('festival', $festival);
         $view->setVar('nom', $_SESSION['nom'] ?? 'Nom Inconnu');
         $view->setVar('prenom', $_SESSION['prenom'] ?? 'Uknown User'); 
@@ -46,11 +44,10 @@ class PlanificationController
     }
 
     public function getDataFestival() { // TODO bloquer si ya erreur pdo, a moins que ca se fasse avant
-        // On récupère l'id de l'utilisateur et le festival sélectionné
-        $id_organisateur = $_SESSION['id_utilisateur'] ?? null;
+        // On récupère l'id du festival sélectionné
         $id_festival =  HttpHelper::getParam("idFes") ?? null;
 
-        $dataFestival = $this->planificationService->getFestival($id_festival, $id_organisateur);
+        $dataFestival = $this->planificationService->getFestival($id_festival);
 
         $view = new View("views/planificationDataFestival");
         $view->setVar('dataFestival', $dataFestival);

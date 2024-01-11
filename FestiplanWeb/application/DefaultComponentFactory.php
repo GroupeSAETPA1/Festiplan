@@ -178,7 +178,7 @@ class DefaultComponentFactory implements ComponentFactory
     private function buildCreateSpectacleController(): CreateSpectacleController
     {
         return new CreateSpectacleController($this->buildCreateSpectacleService()
-                                           , $this->buildUserService(), $this->getPDO("admin", "admin"));
+                                           , $this->buildUserService(), $this->buildCreateFestivalService(), $this->getPDO("root", "root"));
     }
 
     private function buildDashboardController(): DashboardController
