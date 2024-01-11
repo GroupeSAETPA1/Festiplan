@@ -40,7 +40,7 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
     </header>
 
     <div class="retour">
-        <a href="?controller=CreateFestival"><button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button></a>
+        <a href="?controller=CreateFestival"><button class="btn-retour"><i class="fa-solid fa-arrow-left"></i> Retour</button></a>
     </div>
     <form method = "post" action ="index.php">
         <input hidden name="action" value="validerPage2">

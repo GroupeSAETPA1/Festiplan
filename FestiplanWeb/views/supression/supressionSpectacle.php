@@ -75,7 +75,7 @@ function minutesToHHMM(int $minutes): string
             <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/header.php" ?>
             <div class="retour">
                 <a href="/Festiplan/FestiplanWeb/?controller=Dashboard">
-                    <button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button>
+                    <button class="btn-retour"><i class="fa-solid fa-arrow-left"></i> Retour</button>
                 </a>
             </div>
             <div class="wrapper">

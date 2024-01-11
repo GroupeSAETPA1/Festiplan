@@ -39,7 +39,7 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
     </header>
 
     <div class="retour">
-        <button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button>
+        <button class="btn-retour"><i class="fa-solid fa-arrow-left"></i> Retour</button>
     </div>
     <form method="post" action="index.php" enctype="multipart/form-data">
         <div class="wrapper">
