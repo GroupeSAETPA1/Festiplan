@@ -24,12 +24,14 @@ use controllers\AjouterListesSpectaclesController;
 use controllers\CreateFestivalController;
 use controllers\ErrorController;
 use controllers\SupressionFestivalController;
+use controllers\SupressionSpectacleController;
 use controllers\UserController;
 use Exception;
 use services\AccesListeSpectaclesService;
 use services\AjouterListesSpectaclesServices;
 use services\createFestivalService;
 use services\SupressionFestivalServices;
+use services\SupressionSpectacleService;
 use services\UserService;
 use controllers\DashboardController;
 use controllers\SettingsController;
@@ -56,10 +58,11 @@ class DefaultComponentFactory implements ComponentFactory
     private ?PlanificationService $planificationService = null;
     private ?CreateSpectacleService $createSpectacleService = null;
 
-    private ?CreateFestivalService $createFestivalService = null;	
+    private ?CreateFestivalService $createFestivalService = null;
     private ?AccesListeSpectaclesService $accesListeSpectaclesService = null;
     private ?AjouterListesSpectaclesServices $ajouterListesSpectaclesServices = null;
     private $createFestivalServices;
+    private $createSpectacleServices;
 
     /**
      * @param string $controller_name the name of the controller to instanciate
@@ -80,7 +83,8 @@ class DefaultComponentFactory implements ComponentFactory
             "AjouterListesSpectacles" => $this->buildAjouterListesSpectaclesController(),
             "CreateSpectacle" => $this->buildCreateSpectacleController(),
             "Settings" => $this->buildSettingsController(),
-            "SupressionFestival" =>$this->buildSupressionFestivalController(),
+            "SupressionFestival" => $this->buildSupressionFestivalController(),
+            "SupressionSpectacle" => $this->buildSupressionSpectacleController(),
             default => throw new NoControllerAvailableForNameException($controller_name),
 
         };
@@ -98,7 +102,7 @@ class DefaultComponentFactory implements ComponentFactory
             "User" => $this->buildUserService(),
             "Dashboard" => $this->buildDashboardService(),
             "CreateFestival" => $this->buildCreateFestivalService(),
-            "Planification" => $this->buildPlanificationService(), 
+            "Planification" => $this->buildPlanificationService(),
             "AccesListeSpectacles" => $this->buildAccesListeSpectaclesService(),
             "AjouterListesSpectacles" => $this->buildAjouterListesSpectaclesService(),
             "CreateSpectacle" => $this->buildCreateSpectacleService(),
@@ -140,7 +144,7 @@ class DefaultComponentFactory implements ComponentFactory
      */
     private function buildCreateFestivalService(): createFestivalService
     {
-        if($this->createFestivalService == null) {
+        if ($this->createFestivalService == null) {
             $pdo = $this->getPDO("root");
             $this->createFestivalService = new createFestivalService($pdo);
         }
@@ -165,7 +169,7 @@ class DefaultComponentFactory implements ComponentFactory
     private function buildCreateSpectacleController(): CreateSpectacleController
     {
         return new CreateSpectacleController($this->buildCreateSpectacleService()
-                                           , $this->buildUserService(), $this->buildCreateFestivalService(), $this->getPDO("root", "root"));
+            , $this->buildUserService(), $this->buildCreateFestivalService(), $this->getPDO("root", "root"));
     }
 
     private function buildDashboardController(): DashboardController
@@ -199,7 +203,7 @@ class DefaultComponentFactory implements ComponentFactory
     /**
      * @throws Exception
      */
-    private function buildAccesListeSpectaclesService() : AccesListeSpectaclesService
+    private function buildAccesListeSpectaclesService(): AccesListeSpectaclesService
     {
         if ($this->accesListeSpectaclesService == null) {
             $pdo = $this->getPDO("root");
@@ -239,7 +243,7 @@ class DefaultComponentFactory implements ComponentFactory
     /**
      * @throws NoServiceAvailableForNameException
      */
-    private function buildAjouterListesSpectaclesController() : AjouterListesSpectaclesController
+    private function buildAjouterListesSpectaclesController(): AjouterListesSpectaclesController
     {
         return new AjouterListesSpectaclesController($this->buildServiceByName("AjouterListesSpectacles"));
     }
@@ -247,7 +251,7 @@ class DefaultComponentFactory implements ComponentFactory
     /**
      * @throws Exception
      */
-    private function buildAjouterListesSpectaclesService() : AjouterListesSpectaclesServices
+    private function buildAjouterListesSpectaclesService(): AjouterListesSpectaclesServices
     {
         if ($this->ajouterListesSpectaclesServices == null) {
             $pdo = $this->getPDO("root");
@@ -282,5 +286,19 @@ class DefaultComponentFactory implements ComponentFactory
             $this->createFestivalServices = new SupressionFestivalServices($pdo, $this->buildUserService());
         }
         return $this->createFestivalServices;
+    }
+
+    private function buildSupressionSpectacleController(): SupressionSpectacleController
+    {
+        return new SupressionSpectacleController($this->buildSupressionSpecatcleService());
+    }
+
+    private function buildSupressionSpecatcleService(): SupressionSpectacleService
+    {
+        if ($this->createSpectacleServices == null) {
+            $pdo = $this->getPDO("root");
+            $this->createSpectacleServices = new SupressionSpectacleService($pdo, $this->buildUserService());
+        }
+        return $this->createSpectacleServices;
     }
 }

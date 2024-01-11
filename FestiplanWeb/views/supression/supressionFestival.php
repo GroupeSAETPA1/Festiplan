@@ -39,6 +39,11 @@ function afficher_festival(int $id_festival, string $nom_festival, string $date_
     echo '    <span class="label-categorie">D&eacute;scription :</span>';
     echo '    <span class="categorie">' . $description . '</span>';
 }
+
+function minutesToHHMM(int $minutes): string
+{
+    return sprintf('%02d:%02d', $minutes / 60, $minutes % 60);
+}
 ?>
 <!doctype html>
 <html lang="fr">

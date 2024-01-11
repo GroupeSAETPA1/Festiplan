@@ -81,8 +81,9 @@ function afficher_spectacle(int $id_spectacle, string $nom_spectacle, string $li
     echo '        </div>';
     echo '        <div class="group-boutons">';
     echo '            <div>';
-    echo '                <form method="post" action=""> <!-- TODO : mettre le lien pour supprimer le spectacle -->';
+    echo '                <form method="post" action="/Festiplan/FestiplanWeb/index.php"> <!-- TODO : mettre le lien pour supprimer le spectacle -->';
     echo '                    <input hidden name="id-spectacle" value="' . $id_spectacle . '">';
+    echo '                    <input hidden name="controller" value="SupressionSpectacle">';
     echo '                    <button type="submit">';
     echo '                        <i class="fa-solid fa-trash-can"></i>';
     echo '                    </button>';
