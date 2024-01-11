@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"); /* declaration des variables */
+/* ne codez pas ici, c'est le fichier pour les variables, etc. */
+body {
+  min-height: 100vh;
+  background-color: #F0F7F4;
+  color: #363732;
+  font-family: "Rubik", sans-serif;
+  margin: 0;
+}
+
+.wrapper {
+  margin-top: 50px;
+}
+.wrapper .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wrapper .container .erreur {
+  color: red;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+.wrapper .container .input {
+  margin-bottom: 20px;
+  width: 100%;
+}
+.wrapper .container input[type=text] {
+  padding: 10px;
+  width: 100%;
+}
+.wrapper .container input[type=number] {
+  padding: 10px;
+  width: 100%;
+}
+.wrapper .container select {
+  padding: 10px;
+  width: 100%;
+}
+.wrapper .container .valid-annul-placement {
+  width: 100%;
+  margin-top: 20px;
+}
+.wrapper .container .valid-annul-placement button {
+  width: 100%;
+}
+
+/*# sourceMappingURL=createScene.css.map */
