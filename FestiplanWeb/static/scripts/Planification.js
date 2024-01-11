@@ -2,6 +2,7 @@ let festival;
 let spectacles;
 let couleursEvents = ["#182825", "#016FB9", "#22AED1", "#FF7F11", "#FF1B1C"];
 
+
 function getDataFestival() {
     return new Promise((resolve, reject) => {
         const xmlhttp = new XMLHttpRequest();
@@ -14,7 +15,7 @@ function getDataFestival() {
             reject(new Error("Erreur lors de la requête AJAX"));
         };
 
-        let controllerActionUrl = "/Festiplan/FestiplanWeb/index.php?controller=Planification&action=getDataFestival";
+        let controllerActionUrl = "/Festiplan/FestiplanWeb/index.php?controller=Planification&action=getDataFestival&idFes=" + document.getElementById("renvoiIDFestival").value;
         xmlhttp.open("GET", controllerActionUrl);
         xmlhttp.send();
     });
@@ -31,8 +32,7 @@ function getDataSpectacle() {
         xmlhttp.onerror = function() {
             reject(new Error("Erreur lors de la requête AJAX"));
         };
-
-        let controllerActionUrl = "/Festiplan/FestiplanWeb/index.php?controller=Planification&action=getDataSpectacle";
+        let controllerActionUrl = "/Festiplan/FestiplanWeb/index.php?controller=Planification&action=getDataSpectacle&idFes=" + document.getElementById("renvoiIDFestival").value;
         xmlhttp.open("GET", controllerActionUrl);
         xmlhttp.send();
     });
@@ -50,6 +50,7 @@ construireCalendrier();
 
 async function construireCalendrier() {
     await getAllData();
+    console.log(festival)
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'timeGridCustomDuration',

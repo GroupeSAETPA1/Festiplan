@@ -51,10 +51,11 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
         <div class="container">
             <div class="row">
                 <div class="col-3">
-                    <a href="/Festiplan/FestiplanWeb/?controller=dashboard" class="retourBouton"><i class="fa-solid fa-arrow-left"></i> Retour</a>
+                    <a href="/Festiplan/FestiplanWeb/?controller=Dashboard" class="retourBouton"><i class="fas fa-arrow-left"></i> Retour</a>
                 </div>
                 <div class="col-12">
                     <h1>Planification du festival <?php echo $festival["nom"] ?></h1>
+                    <input hidden id="renvoiIDFestival" value="<?php echo $festival["id_festival"]?>">
                     <div class="Planification">
                         <div class="scrollDIV">
                             <div id="calendar" class="caldendar">
