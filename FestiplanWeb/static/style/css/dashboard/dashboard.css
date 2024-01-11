@@ -124,6 +124,9 @@ form {
 .card-festival .bas-card .group-boutons .btn-acces-spectacles .fa-pen-to-square {
   font-size: 2vh;
 }
+.card-festival .bas-card .group-boutons .btn-acces-spectacles .fa-eye {
+  font-size: 2vh;
+}
 
 .img-spectacle, .img-festival {
   display: flex;
