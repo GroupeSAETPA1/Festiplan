@@ -37,7 +37,7 @@ function afficherSpectacle($nom_spectacle, $categorie, $duree, $illustration, $i
     echo '   </div>';
     echo '   <div class="group-bouton-ajouter-spectacle rounded">';
     echo '       <form action="/Festiplan/FestiplanWeb/index.php" method="post">';
-    echo '           <input type="hidden" name="controller" value="AjouterListesSpectacle">';
+    echo '           <input type="hidden" name="controller" value="AjouterListesSpectacles">';
     echo '           <input type="hidden" name="action" value="' . $action . '">';
     echo '           <input type="hidden" name="id_festival" value="' . $id_festival . '">';
     echo '           <input type="hidden" name="id_scene" value="' . $id_scene . '">';
@@ -74,7 +74,7 @@ function afficher_liste_scene(array $liste_scene, int $id_spectacle): void
     echo '<select name="id_scene" id="'.$id_spectacle.'" class="selection_scene">';
     echo '    <option value="none" disabled selected>S&eacute;lectionner une sc&egrave;ne</option>';
     foreach ($liste_scene as $scene) {
-        $nom_scene = $scene['nom'];
+        $nom_scene = $scene['nomScene'];
         $id_scene = $scene['id_scene'];
         echo '<option value="' . $id_scene . '">' . $nom_scene . '</option>';
     }
@@ -110,12 +110,11 @@ function minutesToHHMM(int $minutes): string
         <!-- Fontawesome --><!-- TODO Custom Kit -->
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/framework/fontawesome-free-6.2.1-web/css/all.css">
         <!-- Font Awesome -->
-        <!--
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
               integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
               crossorigin="anonymous"
-              referrerpolicy="no-referrer"/> -->
+              referrerpolicy="no-referrer"/>
 
         <!-- Scripts -->
         <!-- GSAP -->  <!-- Jquery -->
@@ -169,7 +168,7 @@ function minutesToHHMM(int $minutes): string
                 </div>
                 <div class="btn-valider-spectacles-selectionne rounded">
                     <form action="/Festiplan/FestiplanWeb/index.php" method="post">
-                        <input type="hidden" name="controller" value="AjouterListesSpectacle">
+                        <input type="hidden" name="controller" value="AjouterListesSpectacles">
                         <input type="hidden" name="action" value="validerSpectaclesSelectionne">
                         <!--                        <input type="hidden" name="id_festival" value="<?php //echo $id_festival ?>">
                         <input type="hidden" name="nom_festival" value="<?php //echo $nom_festival ?>">-->

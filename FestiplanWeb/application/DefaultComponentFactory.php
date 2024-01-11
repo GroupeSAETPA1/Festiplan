@@ -249,7 +249,7 @@ class DefaultComponentFactory implements ComponentFactory
      */
     private function buildAjouterListesSpectaclesController() : AjouterListesSpectaclesController
     {
-        return new AjouterListesSpectaclesController($this->buildServiceByName("AjouterListesSpectacles"), $this->buildServiceByName("User"));
+        return new AjouterListesSpectaclesController($this->buildServiceByName("AjouterListesSpectacles"), $this->buildServiceByName("CreateSpectacle"));
     }
 
     /**
