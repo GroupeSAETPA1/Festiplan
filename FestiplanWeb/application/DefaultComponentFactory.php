@@ -24,6 +24,7 @@ use controllers\AccesListeSpectaclesController;
 use controllers\AjouterListesSceneController;
 use controllers\AjouterListesSpectaclesController;
 use controllers\CreateFestivalController;
+use controllers\CreateSceneController;
 use controllers\ErrorController;
 use controllers\SceneController;
 use controllers\UserController;
@@ -33,6 +34,7 @@ use services\AccesListeSpectaclesService;
 use services\AjouterListesSceneServices;
 use services\AjouterListesSpectaclesServices;
 use services\createFestivalService;
+use services\CreateSceneService;
 use services\SceneService;
 use services\UserService;
 use controllers\DashboardController;
@@ -65,6 +67,7 @@ class DefaultComponentFactory implements ComponentFactory
     private ?AjouterListesSpectaclesServices $ajouterListesSpectaclesServices = null;
     private ?AccesListeSceneService $accesListeSceneService = null;
     private ?AjouterListesSceneServices $ajouterListesSceneServices = null;
+    private ?CreateSceneService $createSceneService = null;
 
     /**
      * @param string $controller_name the name of the controller to instanciate
@@ -86,6 +89,7 @@ class DefaultComponentFactory implements ComponentFactory
             "AccesListeScene" => $this->buildAccesListeSceneController(),
             "AjouterListesScene" => $this->buildAjouterListesSceneController(),
             "CreateSpectacle" => $this->buildCreateSpectacleController(),
+            "CreateScene" => $this->buildCreateSceneController(),
             "Settings" => $this->buildSettingsController(),
             default => throw new NoControllerAvailableForNameException($controller_name)
         };
@@ -109,6 +113,7 @@ class DefaultComponentFactory implements ComponentFactory
             "AccesListeScene" => $this->buildAccesListeSceneService(),
             "AjouterListesScene" => $this->buildAjouterListesSceneService(),
             "CreateSpectacle" => $this->buildCreateSpectacleService(),
+            "CreateScene" => $this->buildCreateSceneService(),
             default => throw new NoServiceAvailableForNameException($service_name)
         };
     }
@@ -304,6 +309,20 @@ class DefaultComponentFactory implements ComponentFactory
             $this->ajouterListesSceneServices = new AjouterListesSceneServices($pdo);
         }
         return $this->ajouterListesSceneServices;
+    }
+
+    private function buildCreateSceneController(): CreateSceneController
+    {
+        return new CreateSceneController($this->buildCreateSceneService(), $this->buildCreateSpectacleService());
+    }
+
+    private function buildCreateSceneService(): CreateSceneService
+    {
+        if ($this->createSceneService == null) {
+            $pdo = $this->getPDO("root");
+            $this->createSceneService = new CreateSceneService($pdo);
+        }
+        return $this->createSceneService;
     }
 
 }
