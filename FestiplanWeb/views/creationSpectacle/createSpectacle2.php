@@ -49,70 +49,15 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
 </div>
 <div class="app">
     <div class="wrapper">
-        <form method="post" action="index.php">
-            <div class="container flex">
-                <div class="title">
-                    <h1>Création d'un spectacle</h1>
-                </div>
-                <section>
-                    <div class="custom-select">
-                        <label for="inter">Intervenants sur scene:</label>
-                        <div class="text">Veuillez rentrer l'email du compte, </br>Le compte n'existe pas ? vous pouvez le crer avec le + </br> Si vous ne créer pas le compte il ne sera pas pris en compte </div>
-                        <div class="row">
-                            <input id="inter" type="text" placeholder="exemple@mail.fr">
-                            <div class="button-add-inter add-inter">
-                                <i class="fa-solid fa-plus"></i>
-                                Ajouter l'intervenant
-                            </div>
-                        </div>
-                        <div class="selections">
-                            <!-- rempli avec le js -->
-                        </div>
-                    </div>
-                </section>
-                <hr>
-                <section class="interHorsScene">
-                    <div class="custom-select">
-                        <label for="interHorsScene">Intervenants hors scene:</label>
-                        <div class="text">Veuillez rentrer l'email du compte, </br>Le compte n'existe pas ? vous pouvez le crer avec le + </br> Si vous ne créer pas le compte il ne sera pas pris en compte</div>
-                        <div class="row">
-                            <input id="interHorsScene" type="text" placeholder="exemple@mail.fr">
-                            <div class="button-add-interHorsScene add-inter">
-                                <i class="fa-solid fa-plus"></i>
-                                Ajouter l'intervenant
-                            </div>
-                        </div>
-                        <div class="selectionsHorsScene">
-                            <!-- rempli avec le js -->
-                        </div>
-                    </div>
-                </section>
+        <div class="custom-select">
+            <label for="inter">Intervenants :</label>
+            <div class="text">Veuillez rentrer l'email du compte, </br>le compte n'existe pas, vous pouvez le crer avec le + </div>
+            <div class="row">
+                <input id="inter" type="text" placeholder="exemple@mail.fr">
+                <div class="button-add-inter">
+                    <i class="fa-solid fa-plus"></i>
 
-            </div>
-            <input hidden name="action" value="validerPage2">
-            <input hidden name="controller" value="CreateSpectacle">
-            <div class="valid-annul-placement flex-row">
-                <div class="annulChoix lastButton">
-                    <i class="fa-regular fa-circle-xmark"></i> Annuler vos choix
-                </div>
-                <button type="submit" class="valider page-suivante lastButton">
-                    Page Suivante<i class="fa-solid fa-arrow-right"></i>
-                </button>
-            </div>
-        </form>
-        <div class="formulaire creationCompte" hidden>
-            <div class="form-duo">
-                <div class="colonneCreationCompte">
-                    <label for="nom">
-                        Nom :
-                    </label>
-                    <input type="text" id="nom" name="nom" placeholder="Votre nom :" required>
-                </div>
-                <div class="colonneCreationCompte">
-                    <label for="prenom">
-                        Prénom :
-                    </label>
-                    <input type="text" id="prenom" name="prenom" placeholder="Votre prénom :" required>
+                    Ajouter l'intervenant
                 </div>
             </div>
             <div class="colonneCreationCompte mail">

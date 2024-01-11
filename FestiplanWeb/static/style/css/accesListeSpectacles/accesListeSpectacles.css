@@ -157,6 +157,9 @@ a {
 .accordeon .card-spectacles p, .accordeon .card-spectacles div {
   margin: 0 1vh;
 }
+.accordeon .card-spectacles .nom-spectacle {
+  font-weight: bold;
+}
 .accordeon .card-spectacles .group-categories {
   max-width: 40vh;
 }

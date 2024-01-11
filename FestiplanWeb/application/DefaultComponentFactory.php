@@ -148,7 +148,8 @@ class DefaultComponentFactory implements ComponentFactory
     private function buildCreateFestivalService(): createFestivalService
     {
         if($this->createFestivalService == null) {
-            $pdo = $this->getPDO("root");
+            // TODO recuperer le pdo
+            $pdo = $this->getPDO("root", "admin");
             $this->createFestivalService = new createFestivalService($pdo);
         }
         return $this->createFestivalService;
@@ -160,7 +161,7 @@ class DefaultComponentFactory implements ComponentFactory
     private function buildDashboardService(): DashboardService
     {
         if ($this->dashboardService == null) {
-            $pdo = $this->getPDO("root");
+            $pdo = $this->getPDO("root", "admin");
             $this->dashboardService = new DashboardService($pdo);
         }
         return $this->dashboardService;
@@ -172,7 +173,7 @@ class DefaultComponentFactory implements ComponentFactory
     private function buildCreateSpectacleController(): CreateSpectacleController
     {
         return new CreateSpectacleController($this->buildCreateSpectacleService()
-                                           , $this->buildUserService(), $this->buildCreateFestivalService(), $this->getPDO("root", "root"));
+                                           , $this->buildUserService(), $this->getPDO("admin", "admin"));
     }
 
     private function buildDashboardController(): DashboardController
