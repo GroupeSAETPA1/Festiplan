@@ -2,6 +2,7 @@
 
 namespace controllers;
 
+use PDO;
 use services\SupressionFestivalServices;
 use yasmf\HttpHelper;
 use yasmf\View;
@@ -29,13 +30,21 @@ class SupressionFestivalController
 
     public function construireVue( int $id_festival_actif ) : View
     {
-        $festival = $this->SupressionFestivalServices->recupFestival($id_festival_actif);
-        $supprimer = $this->SupressionFestivalServices->supression($id_festival_actif);
-        $view = new View("views/supression/supressionFestival");
 
+        $_SESSION["id_festival_a_supprimer"] = $id_festival_actif;
+        $festival = $this->SupressionFestivalServices->recupFestival($id_festival_actif);
+
+        $view = new View("views/supression/supressionFestival");
         $view->setVar("festival", $festival);
-        view->setVAr("supprimer",$supprimer);
+
 
         return $view;
+    }
+
+    public function suprimmer(Pdo $pdo)
+    {
+        $this->SupressionFestivalServices->supression($_SESSION['id_festival_a_supprimer']);
+
+        header('Location: /Festiplan/FestiplanWeb/?controller=Dashboard');
     }
 }

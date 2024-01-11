@@ -74,29 +74,33 @@ function afficher_festival(int $id_festival, string $nom_festival, string $date_
                 </a>
             </div>
             <div class="wrapper">
-                <div class="container">
-                    <div class="title">
-                        <h1>Souhaitez vous supprimer ce festival ? </h1>
-                    </div>
-
-
-                        <div class="container container-card-festivals">
-                            <?php
-                            $id_festival = $festival[0]['id_festival'];
-                                afficher_festival($id_festival, $festival[0]['nom'], $festival[0]['debut'], $festival[0]['fin'], $festival[0]['illustration'], $festival[0]['id_categorie'], $festival[0]['description']);
-
-                            ?>
+                <form method="post" action="index.php">
+                    <div class="container">
+                        <div class="title">
+                            <h1>Souhaitez vous supprimer ce festival ? </h1>
                         </div>
+
+
+                            <div class="container container-card-festivals">
+                                <?php
+                                $id_festival = $festival[0]['id_festival'];
+                                    afficher_festival($id_festival, $festival[0]['nom'], $festival[0]['debut'], $festival[0]['fin'], $festival[0]['illustration'], $festival[0]['id_categorie'], $festival[0]['description']);
+
+                                ?>
+                            </div>
                     </div>
-                </div>
-                <div class="valid-annul-placement flex-row">
-                    <div class="annulChoix lastButton">
-                         Garder
+
+                    <div class="valid-annul-placement flex-row">
+                        <div class="annulChoix lastButton">
+                             Garder
+                        </div>
+                        <input hidden name="action" value="suprimmer">
+                        <input hidden name="controller" value="SupressionFestival">
+                        <button type="submit" class="valider page-suivante lastButton">
+                            Supprimer
+                        </button>
                     </div>
-                    <button type="submit" class="valider page-suivante lastButton">
-                        Supprimer
-                    </button>
-                </div>
+                </form>
             </div>
         </div>
         <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/footer.php" ?>
