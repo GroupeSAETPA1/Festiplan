@@ -96,6 +96,7 @@ function minutesToHHMM(int $minutes): string
 
                     <div class="valid-annul-placement flex-row">
                         <div class="annulChoix lastButton">
+                            <a href="/Festiplan/FestiplanWeb/?controller=Dashboard">
                             Garder
                         </div>
                         <input hidden name="action" value="suprimmer">
