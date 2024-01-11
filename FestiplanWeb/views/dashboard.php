@@ -48,7 +48,8 @@ function afficher_festival(int $id_festival, string $nom_festival, string $date_
     echo '                <input hidden name="nom_festival" value="' . $nom_festival . '">';
     echo '                <div class="btn-acces-spectacles rounded"><button type="submit">Scenes <i class="fa-solid fa-pen-to-square"></i></button></div>';
     echo '            </form>';
-    echo '            <form method="post" action=""> <!-- TODO : mettre le lien pour éditer le festival -->';
+    echo '            <form method="post" action="/Festiplan/FestiplanWeb/index.php"> <!-- TODO : mettre le lien pour éditer le festival -->';
+    echo '                <input hidden name="controller" value="EditFestival">';
     echo '                <input hidden name="id_festival" value="' . $id_festival . '">';
     echo '                <div><button type="submit"><i class="fa-solid fa-pen-to-square"></i></button></div>';
     echo '            </form>';
