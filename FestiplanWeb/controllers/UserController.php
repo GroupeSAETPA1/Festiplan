@@ -17,13 +17,12 @@ class UserController
 
     public function __construct(UserService $userService)
     {
-        session_start();
         $this->userService = $userService;
     }
 
     public function index($pdo): View
     {
-        $this->userService->deconnexion();
+        session_destroy();
 
         $nom = htmlspecialchars(HttpHelper::getParam('nom') ?: "");
         $prenom = htmlspecialchars(HttpHelper::getParam('prenom') ?: "");
@@ -35,6 +34,7 @@ class UserController
         $this->buildView($view, $nom, $prenom, $email, $mdp, $login, false, false, false, "");
         return $view;
     }
+
 
     /**
      * @param View $view
@@ -90,7 +90,6 @@ class UserController
                     } else {
                         $messageErreur = "Erreur d'inscription : Un utilisateur existe déja avec ce login";
                         $this->buildView($view, $nom, $prenom, $email, $mdp, $login, true, false, true, $messageErreur);
-
                     }
                 } else {
                     $messageErreur = "Erreur d'inscription : Un des champs requis n'est pas rempli";
@@ -122,7 +121,6 @@ class UserController
         $mdp = htmlspecialchars(HttpHelper::getParam('mdp') ?: "");
         $login = htmlspecialchars(HttpHelper::getParam('login') ?: "");
 
-//        $view = null;
         $view = new View("/views/index");
         try {
             if ($login != "" || $mdp != "") {
@@ -135,6 +133,8 @@ class UserController
                         $_SESSION['id_utilisateur'] = $ligne->id_utilisateur;
                         $_SESSION['nom'] = $ligne->nom;
                         $_SESSION['prenom'] = $ligne->prenom;
+                        $_SESSION['email'] = $ligne->mail;
+                        $_SESSION['login'] = $ligne->login;
                     }
                     $messageErreur = "";
                     $displayLoginError = false;

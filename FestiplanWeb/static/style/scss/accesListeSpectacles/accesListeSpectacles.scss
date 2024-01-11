@@ -1,0 +1,233 @@
+@import '../main';
+@import "../util";
+
+$taille_div: 90%;
+
+.retour {
+    background-color: $orange;
+    width: fit-content;
+    height: fit-content;
+    margin: 1.5vh;
+    padding: 1.5vh;
+
+    a {
+    }
+}
+
+.titre {
+    font-size: 30px;
+    width: $taille_div;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    > div {
+        margin: 1vh 0;
+    }
+}
+
+.card-festival-ligne {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 1vh;
+    width: $taille_div;
+    height: 10vh;
+
+    background-color: $dark-grey;
+    color: $white;
+
+    .nom-festival {
+        font-size: 30px;
+    }
+
+    * {
+        margin: 1vh;
+    }
+
+}
+
+.categorie {
+    max-width: fit-content;
+    flex: 1 1 auto;
+    text-align: center;
+    padding: 0.25vh 0.5vh;
+    margin: 0 0.25vh 0.25vh 0;
+
+    color: $dark-grey;
+    background-color: $white;
+
+    border-radius: 1vh;
+}
+
+.entete-section {
+    background-color: $dark-grey;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width: $taille_div;
+    padding: 1vh;
+
+    .titre-section {
+        color: $light-blue;
+    }
+
+    .bouton-ajouter-spectacle {
+        background-color: $orange;
+
+        button {
+            padding: 2vh;
+            width: max-content;
+            background-color: transparent;
+            border: 1px solid transparent;
+            border-radius: 1vh;
+            cursor: pointer;
+
+            span, i {
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
+
+.accordeon {
+    background-color: $dark-grey;
+    width: $taille_div;
+    padding: 1.5vh;
+
+    .bouton-drop-down {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        background-color: $white;
+
+        padding: 1vh;
+
+        i {
+            font-size: 1.7rem;
+            margin: 0 1vh 0 0;
+        }
+
+        &:hover {
+            background-color: $gris;
+        }
+    }
+
+    .card-spectacles {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 1vh 2vh;
+        margin: 1vh 0;
+        background-color: $white;
+
+        .img-spectacle {
+            min-height: 20vh;
+            display: flex;
+            align-items: center;
+
+            background-color: $gris;
+
+            img {
+                margin: 1vh;
+            }
+        }
+
+        p, div {
+            margin: 0 1vh;
+        }
+
+        .nom-spectacle {
+            font-weight: bold;
+        }
+
+        .group-categories {
+            max-width: 40vh;
+        }
+
+        .duree {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+}
+
+.btn-retirer-spectacle {
+    border-radius: 1vh;
+
+    i {
+        font-size: 4vh;
+        margin: 0.5vh
+    }
+
+    .fa-times {
+        color: red
+    }
+
+    &:hover {
+        background-color: $gris;
+    }
+
+    button {
+        background-color: transparent;
+        border: 1px solid transparent;
+        border-radius: 1vh;
+    }
+}
+
+//Téléphone
+@media screen and (max-width: 700px) {
+    .img-spectacle, .img-festival {
+        display: none !important;
+    }
+
+    .card-festival-ligne {
+        justify-content: center;
+
+        .img-festival, .date {
+            display: none;
+        }
+    }
+
+    .entete-section {
+        justify-content: space-between;
+
+        a {
+            padding: 0 0 0 1vh;
+
+            div > span {
+                display: none;
+            }
+        }
+    }
+
+    .card-spectacles {
+        .group-categories > .label-categorie {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 740px) {
+    .label-categorie, .label-duree {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .bouton-ajouter-spectacle > button > span {
+        display: none;
+    }
+}

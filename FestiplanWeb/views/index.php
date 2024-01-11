@@ -5,7 +5,7 @@
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Festiplan - Page d'Acceuil</title>
+        <title>Festiplan - Page d'Accueil</title>
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/index/index.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/index/forms.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svg.css">
@@ -30,7 +30,7 @@
         <script src="/Festiplan/FestiplanWeb/static/scripts/responsive/footerResponsive.js" defer></script>
     </head>
     <body>
-    <input hidden id="displayInscription" value="<?php echo $displayInscription ?>">
+    <input hidden id="displayInscription" value="<?php echo $displayInscription ?? "" ?>">
     <div class="app">
         <div class="partiePrincipale">
             <div class="formulaire creationCompte">
@@ -40,7 +40,7 @@
                             <label for="nom">
                                 Nom :
                             </label>
-                            <input type="text" id="nom" name="nom" placeholder="Votre nom :" value="<?php echo $nom ?>"
+                            <input type="text" id="nom" name="nom" placeholder="Votre nom :" value="<?php echo $nom ?? "" ?>"
                                    required>
                         </div>
                         <div class="colonneCreationCompte">
@@ -48,7 +48,7 @@
                                 Prénom :
                             </label>
                             <input type="text" id="prenom" name="prenom" placeholder="Votre prénom :"
-                                   value="<?php echo $prenom ?>"
+                                   value="<?php echo $prenom ?? "" ?>"
                                    required>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                             Email :
                         </label>
                         <input type="email" id="mail" name="email" placeholder="Votre email :"
-                               value="<?php echo $email ?>"
+                               value="<?php echo $email ?? "" ?>"
                                required>
                     </div>
                     <div class="form-duo">
@@ -66,7 +66,7 @@
                                 Identifiant :
                             </label>
                             <input type="text" id="identifiantCrea" name="login" placeholder="Votre identifiant :"
-                                   value="<?php echo $login ?>"
+                                   value="<?php echo $login ?? "" ?>"
                                    required>
                         </div>
                         <div class="colonneCreationCompte">
@@ -74,12 +74,12 @@
                                 Mot de passe :
                             </label>
                             <input type="password" id="mdpCrea" name="mdp" placeholder="Votre mot de passe :"
-                                   value="<?php echo $mdp ?>" minlength="8"
+                                   value="<?php echo $mdp ?? "" ?>" minlength="8"
                                    required>
                         </div>
                     </div>
                     <div>
-                        <?php if ($displaySignInError) {
+                        <?php if (isset($displaySignInError) && $displaySignInError) {
                             echo $errorMessage;
                         } else {
                             echo "";
@@ -110,7 +110,7 @@
                         </label>
                         <input type="text" id="identifiant" name="login"
                                placeholder="Entrez votre identifiant :"
-                               value="<?php echo $login ?>"
+                               value="<?php echo $login ?? "" ?>"
                                required>
                     </div>
                     <div class="colonneCreationCompte">
@@ -119,11 +119,11 @@
                         </label>
                         <input type="password" id="mdp" name="mdp" minlength="8"
                                placeholder="Entrez votre mot de passe :"
-                               value="<?php echo $mdp ?>"
+                               value="<?php echo $mdp ?? "" ?>"
                                required>
                     </div>
                     <div>
-                        <?php if ($displayLoginError) {
+                        <?php if (isset($displayLoginError) && $displayLoginError) {
                             echo $errorMessage;
                         } else {
                             echo "";

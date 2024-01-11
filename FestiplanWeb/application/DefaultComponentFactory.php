@@ -19,22 +19,37 @@
 
 namespace application;
 
+use controllers\AccesListeSceneController;
+use controllers\AccesListeSpectaclesController;
+use controllers\AjouterListesSceneController;
+use controllers\AjouterListesSpectaclesController;
 use controllers\CreateFestivalController;
 use controllers\ErrorController;
-use controllers\HomeController;
-use services\createFestivalService;
-use services\UsersService;
-
-use controllers\DashboardController;
+use controllers\SceneController;
 use controllers\UserController;
+use Exception;
+use services\AccesListeSceneService;
+use services\AccesListeSpectaclesService;
+use services\AjouterListesSceneServices;
+use services\AjouterListesSpectaclesServices;
+use services\createFestivalService;
+use services\SceneService;
+use services\UserService;
+use controllers\DashboardController;
+use controllers\SettingsController;
+use controllers\CreateSpectacleController;
+use PDO;
+use services\CreateSpectacleService;
 use services\DashboardService;
 use services\SessionService;
-use services\UserService;
+use controllers\PlanificationController;
+use services\PlanificationService;
+
 use yasmf\ComponentFactory;
+use yasmf\HttpHelper;
 use yasmf\NoControllerAvailableForNameException;
 use yasmf\NoServiceAvailableForNameException;
 
-use PDO;
 /**
  *  The controller factory
  */
@@ -42,13 +57,20 @@ class DefaultComponentFactory implements ComponentFactory
 {
     private ?UserService $userService = null;
     private ?DashboardService $dashboardService = null;
+    private ?PlanificationService $planificationService = null;
+    private ?CreateSpectacleService $createSpectacleService = null;
 
     private ?CreateFestivalService $createFestivalService = null;	
+    private ?AccesListeSpectaclesService $accesListeSpectaclesService = null;
+    private ?AjouterListesSpectaclesServices $ajouterListesSpectaclesServices = null;
+    private ?AccesListeSceneService $accesListeSceneService = null;
+    private ?AjouterListesSceneServices $ajouterListesSceneServices = null;
 
     /**
      * @param string $controller_name the name of the controller to instanciate
      * @return mixed the controller
      * @throws NoControllerAvailableForNameException when controller is not found
+     * @throws Exception
      */
     public function buildControllerByName(string $controller_name): mixed
     {
@@ -57,7 +79,14 @@ class DefaultComponentFactory implements ComponentFactory
             "CreateFestival" => $this->buildCreateFestival(),
             "Home" => $this->buildUserController(),
             "Dashboard" => $this->buildDashboardController(),
+            "Planification" => $this->buildPlanificationController(),
             "Error" => new ErrorController(),
+            "AccesListeSpectacles" => $this->buildAccesListeSpectaclesController(),
+            "AjouterListesSpectacles" => $this->buildAjouterListesSpectaclesController(),
+            "AccesListeScene" => $this->buildAccesListeSceneController(),
+            "AjouterListesScene" => $this->buildAjouterListesSceneController(),
+            "CreateSpectacle" => $this->buildCreateSpectacleController(),
+            "Settings" => $this->buildSettingsController(),
             default => throw new NoControllerAvailableForNameException($controller_name)
         };
     }
@@ -66,13 +95,20 @@ class DefaultComponentFactory implements ComponentFactory
      * @param string $service_name the name of the service
      * @return mixed the created service
      * @throws NoServiceAvailableForNameException when service is not found
+     * @throws Exception
      */
     public function buildServiceByName(string $service_name): mixed
     {
         return match ($service_name) {
             "User" => $this->buildUserService(),
             "Dashboard" => $this->buildDashboardService(),
-            "CreateFestival" => $this->buildCreateFestivalService() , 
+            "CreateFestival" => $this->buildCreateFestivalService(),
+            "Planification" => $this->buildPlanificationService(), 
+            "AccesListeSpectacles" => $this->buildAccesListeSpectaclesService(),
+            "AjouterListesSpectacles" => $this->buildAjouterListesSpectaclesService(),
+            "AccesListeScene" => $this->buildAccesListeSceneService(),
+            "AjouterListesScene" => $this->buildAjouterListesSceneService(),
+            "CreateSpectacle" => $this->buildCreateSpectacleService(),
             default => throw new NoServiceAvailableForNameException($service_name)
         };
     }
@@ -89,7 +125,7 @@ class DefaultComponentFactory implements ComponentFactory
     }
 
     /**
-     * @return HomeController
+     * @return UserController
      */
     private function buildUserController(): UserController
     {
@@ -98,6 +134,7 @@ class DefaultComponentFactory implements ComponentFactory
 
     /**
      * @return CreateFestivalController
+     * @throws Exception
      */
     private function buildCreateFestival(): CreateFestivalController
     {
@@ -106,24 +143,37 @@ class DefaultComponentFactory implements ComponentFactory
 
     /**
      * @return createFestivalService
+     * @throws Exception
      */
     private function buildCreateFestivalService(): createFestivalService
     {
         if($this->createFestivalService == null) {
             // TODO recuperer le pdo
-            $pdo = $this->getPDO("admin", "admin");
+            $pdo = $this->getPDO("root", "admin");
             $this->createFestivalService = new createFestivalService($pdo);
         }
         return $this->createFestivalService;
     }
 
+    /**
+     * @throws Exception
+     */
     private function buildDashboardService(): DashboardService
     {
         if ($this->dashboardService == null) {
-            $pdo = $this->getPDO("admin", "admin");
+            $pdo = $this->getPDO("root", "admin");
             $this->dashboardService = new DashboardService($pdo);
         }
         return $this->dashboardService;
+    }
+
+    /**
+     * @return CreateSpectacleController
+     */
+    private function buildCreateSpectacleController(): CreateSpectacleController
+    {
+        return new CreateSpectacleController($this->buildCreateSpectacleService()
+                                           , $this->buildUserService(), $this->getPDO("admin", "admin"));
     }
 
     private function buildDashboardController(): DashboardController
@@ -131,24 +181,129 @@ class DefaultComponentFactory implements ComponentFactory
         return new DashboardController($this->buildDashboardService());
     }
 
+    private function buildPlanificationService(): PlanificationService
+    {
+        if ($this->planificationService == null) {
+            $pdo = $this->getPDO("root"); // TODO faire un user approprié
+            $this->planificationService = new PlanificationService($pdo);
+        }
+        return $this->planificationService;
+    }
+
+    private function buildPlanificationController(): PlanificationController
+    {
+        return new PlanificationController($this->buildPlanificationService());
+    }
+
 
     /**
-     * À partir d'un nom d'utilisateur et de son mot de passe,
-     * renvoie la PDO associé
-     * @param $user
-     * @param $mdp
-     * @return PDO
+     * @throws Exception
      */
-    public function getPDO($user, $mdp): PDO
+    private function buildAccesListeSpectaclesController(): AccesListeSpectaclesController
     {
-        $ds_name = "mysql:host=localhost;port=0;dbname=festiplan;charset=utf8mb4";
-        $options = [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES => false,
-            PDO::ATTR_PERSISTENT => true
-        ];
-
-        return new PDO($ds_name, $user, $mdp, $options);
+        return new AccesListeSpectaclesController($this->buildAccesListeSpectaclesService());
     }
+
+    /**
+     * @throws Exception
+     */
+    private function buildAccesListeSpectaclesService() : AccesListeSpectaclesService
+    {
+        if ($this->accesListeSpectaclesService == null) {
+            $pdo = $this->getPDO("root");
+            $this->accesListeSpectaclesService = new AccesListeSpectaclesService($pdo);
+        }
+        return $this->accesListeSpectaclesService;
+    }
+
+
+    /**
+     * À partir d'un utilisateur, renvoie un PDO avec les informations de connexion
+     * @param string $utilisateur L'utilisateur pour lequel on veut récupérer les informations de connexion
+     * @return PDO Le PDO avec les informations de connexion
+     * @throws Exception Si l'utilisateur n'existe pas
+     */
+    public function getPDO(string $utilisateur): PDO
+    {
+        $dbConfig = new \DBConfig();
+        $dbConfig = match ($utilisateur) {
+            "root" => $dbConfig->getRoot(),
+            "lectureSpectacles" => $dbConfig->getLectureSpectacle(),
+            "lectureSpectacleFestival" => $dbConfig->getLectureSpectacleFestival(),
+            default => throw new Exception("Utilisateur inconnu")
+        };
+        return new PDO(
+            "mysql:host=" . $dbConfig['db_host'] . ";port=" . $dbConfig['db_port'] . ";dbname=" . $dbConfig['db_name'] . ";charset=" . $dbConfig['db_charset'],
+            $dbConfig['db_user'],
+            $dbConfig['db_pass'],
+            [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_PERSISTENT => true
+            ]
+        );
+    }
+
+    /**
+     * @throws NoServiceAvailableForNameException
+     */
+    private function buildAjouterListesSpectaclesController() : AjouterListesSpectaclesController
+    {
+        return new AjouterListesSpectaclesController($this->buildServiceByName("AjouterListesSpectacles"), $this->buildServiceByName("User"));
+    }
+
+    /**
+     * @throws Exception
+     */
+    private function buildAjouterListesSpectaclesService() : AjouterListesSpectaclesServices
+    {
+        if ($this->ajouterListesSpectaclesServices == null) {
+            $pdo = $this->getPDO("root");
+            $this->ajouterListesSpectaclesServices = new AjouterListesSpectaclesServices($pdo);
+        }
+        return $this->ajouterListesSpectaclesServices;
+    }
+
+    private function buildCreateSpectacleService(): ?CreateSpectacleService
+    {
+        if ($this->createSpectacleService == null) {
+            $pdo = $this->getPDO("root", "root");
+            $this->createSpectacleService = new CreateSpectacleService($pdo, $this->buildUserService());
+        }
+        return $this->createSpectacleService;
+    }
+
+    private function buildSettingsController(): SettingsController
+    {
+        return new SettingsController($this->buildUserService());
+    }
+
+    private function buildAccesListeSceneController(): AccesListeSceneController
+    {
+        return new AccesListeSceneController($this->buildAccesListeSceneService(), $this->buildCreateSpectacleService());
+    }
+
+    private function buildAccesListeSceneService(): AccesListeSceneService|AccesListeSpectaclesService|null
+    {
+        if ($this->accesListeSceneService == null) {
+            $pdo = $this->getPDO("root");
+            $this->accesListeSceneService = new AccesListeSceneService($pdo);
+        }
+        return $this->accesListeSceneService;
+    }
+
+    private function buildAjouterListesSceneController(): AjouterListesSceneController
+    {
+        return new AjouterListesSceneController($this->buildAjouterListesSceneService(), $this->buildCreateSpectacleService());
+    }
+
+    private function buildAjouterListesSceneService(): ?AjouterListesSceneServices
+    {
+        if ($this->ajouterListesSceneServices == null) {
+            $pdo = $this->getPDO("root");
+            $this->ajouterListesSceneServices = new AjouterListesSceneServices($pdo);
+        }
+        return $this->ajouterListesSceneServices;
+    }
+
 }

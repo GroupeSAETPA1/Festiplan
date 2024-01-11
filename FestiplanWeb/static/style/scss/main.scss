@@ -10,3 +10,11 @@ body {
 };
 
 /* ne codez pas ici, c'est le fichier pour les variables, etc. */
+
+body {
+  min-height: 100vh;
+  background-color: $white;
+  color: $dark-grey;
+  font-family: $font-family;
+  margin: 0;
+}

@@ -5,6 +5,14 @@ body {
 
 /* ne codez pas ici, c'est le fichier pour les variables, etc. */
 body {
+  min-height: 100vh;
+  background-color: #F0F7F4;
+  color: #363732;
+  font-family: "Rubik", sans-serif;
+  margin: 0;
+}
+
+body {
   background-color: #F0F7F4;
   color: #363732;
   font-family: "Rubik", sans-serif;
@@ -51,6 +59,10 @@ form {
   font-size: 2rem;
   margin: 0;
   padding: 1rem;
+}
+.entete-section .buttons {
+  display: flex;
+  flex-direction: row;
 }
 .entete-section a div {
   background-color: #F7A072;
@@ -106,11 +118,22 @@ form {
 .card-festival .bas-card .group-boutons {
   flex-direction: row;
 }
+.card-festival .bas-card .group-boutons .btn-acces-spectacles {
+  background-color: #cccccc;
+  margin: 0 1vh;
+}
+.card-festival .bas-card .group-boutons .btn-acces-spectacles:hover {
+  background-color: #999999;
+}
+.card-festival .bas-card .group-boutons .btn-acces-spectacles .fa-pen-to-square {
+  font-size: 2vh;
+}
 
 .img-spectacle, .img-festival {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 20%;
 }
 
 .nom-spectacle, .nom-festival {

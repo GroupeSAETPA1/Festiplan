@@ -5,7 +5,6 @@ body {
     color: $dark-grey;
     font-family: $font-family;
     margin: 0;
-
 }
 
 a {
@@ -49,6 +48,11 @@ form {
         font-size: 2rem;
         margin: 0;
         padding: 1rem;
+    }
+    .buttons {
+        display: flex;
+        flex-direction: row;
+
     }
 
     a {
@@ -115,6 +119,16 @@ form {
 
         .group-boutons {
             flex-direction: row;
+            .btn-acces-spectacles {
+                background-color: $gris;
+                margin: 0 1vh;
+                &:hover {
+                    background-color: darken($gris, 20);
+                }
+                .fa-pen-to-square {
+                    font-size: 2vh;
+                }
+            }
         }
     }
 }
@@ -123,6 +137,7 @@ form {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 20%;
 
 }
 
@@ -238,6 +253,7 @@ form {
     .img-spectacle, .img-festival {
         display: none;
     }
+
 
     .description-festival {
         display: flex;

@@ -4,6 +4,14 @@ body {
 }
 
 /* ne codez pas ici, c'est le fichier pour les variables, etc. */
+body {
+  min-height: 100vh;
+  background-color: #F0F7F4;
+  color: #363732;
+  font-family: "Rubik", sans-serif;
+  margin: 0;
+}
+
 .formulaire {
   border-radius: 20px;
   background: #363732;
@@ -59,6 +67,7 @@ body {
 .colonneCreationCompte {
   display: flex;
   flex-direction: column;
+  margin: 0 10px;
 }
 
 .connexion form {
@@ -66,6 +75,8 @@ body {
 }
 
 .creationCompte {
+  opacity: 0;
+  display: none;
   opacity: 0;
   display: none;
 }
@@ -93,6 +104,29 @@ body {
   row-gap: 20px;
 }
 .creationCompte .Retour .colonneCreationCompte {
+  width: 100%;
+  padding: 10px;
+}
+.creationCompte .form-duo {
+  display: flex;
+  justify-content: space-between;
+}
+.creationCompte button {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+}
+.creationCompte .boutonCreation {
+  background: #99E1D9;
+  color: #363732;
+}
+.creationCompte .lastSection {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.creationCompte .colonneCreationCompte {
   width: 100%;
   padding: 10px;
 }

@@ -1,0 +1,52 @@
+@import '../main';
+
+input[type="text"]{
+  height:5vh;
+  width:30vw;
+  border-radius: 30px;
+  border-style: none;
+  font-size: 1rem;
+}
+
+input[type="date"]{
+  height:5vh;
+  width:30vw;
+  border-radius: 30px;
+  border-style: none;
+  font-size: 1rem;
+}
+
+input[type="number"] {
+  height:5vh;
+  width:30vw;
+  border-radius: 1vh;
+  border-style: none;
+  font-size: 1.2rem;
+}
+
+textarea {
+  resize: none; /* Empêche le redimensionnement de la zone de texte */
+  height:27vh;
+  width:100%;
+  border-radius: 30px;
+  border-style: none;
+
+}
+
+.format{
+  display: flex;
+  align-items: flex-end;
+  padding: 0 30px;
+}
+
+select{
+  height:40px;
+  width:250px;
+  border-radius: 30px;
+  border-style: none;
+}
+h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

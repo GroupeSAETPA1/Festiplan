@@ -5,6 +5,14 @@ body {
 
 /* ne codez pas ici, c'est le fichier pour les variables, etc. */
 body {
+  min-height: 100vh;
+  background-color: #F0F7F4;
+  color: #363732;
+  font-family: "Rubik", sans-serif;
+  margin: 0;
+}
+
+body {
   background-color: #F0F7F4;
   color: #363732;
   font-family: "Rubik", sans-serif;
@@ -56,10 +64,12 @@ header .logo i {
 }
 
 .first-row {
+  display: flex;
   justify-content: space-between;
 }
 
 .end-row {
+  display: flex;
   align-items: flex-end;
 }
 
@@ -71,48 +81,21 @@ header .logo i {
 .valid-annul-placement {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  margin-top: 10vh;
-}
-
-hr {
-  overflow: visible;
-  text-align: center;
-  border: none;
-  height: 0.2vh;
-  background-color: #363732;
-  margin-top: 10vh;
-  margin-bottom: 10vh;
-  width: 100vh;
+  justify-content: space-around;
+  margin-top: 120px;
 }
 
 .fa-circle-exclamation {
   color: red;
-  margin: 0.5vh;
 }
 
-.fa-image {
-  margin: 0.5vh;
+.fa-solid {
+  margin: 5px;
 }
 
-.fa-circle-xmark {
-  margin: 0.5vh;
-}
-
-.fa-arrow-right {
-  margin: 0.5vh;
-}
-
-.fa-check {
-  margin: 0.5vh;
-}
-
-.fa-plus {
-  margin: 0.5vh;
-}
-
-.fa-trash-can {
-  margin: 0.5vh;
+.buttons {
+  display: flex;
+  flex-direction: row;
 }
 
 /*# sourceMappingURL=createFestiplan.css.map */

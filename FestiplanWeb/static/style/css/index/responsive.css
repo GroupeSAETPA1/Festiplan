@@ -4,6 +4,14 @@ body {
 }
 
 /* ne codez pas ici, c'est le fichier pour les variables, etc. */
+body {
+  min-height: 100vh;
+  background-color: #F0F7F4;
+  color: #363732;
+  font-family: "Rubik", sans-serif;
+  margin: 0;
+}
+
 @media screen and (max-width: 1000px) {
   .partiePrincipale {
     flex-direction: column;
