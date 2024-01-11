@@ -98,11 +98,7 @@ function minutesToHHMM(int $minutes): string
 
             <div class="titre">Les spectacles du festival <?php echo $nom_festival; ?></div>
 
-            <div class="card-festival-ligne rounded">
-                <div class="img-festival rounded">
-                    <img src="/estiplan/FestiplanWeb/static/assets/img/deScenePalais.jpg"
-                         alt="Image du festival <?php echo $nom_festival; ?>">
-                </div>
+            <div class="card-festival-ligne rounded">>
                 <p class="nom-festival"><?php echo $nom_festival; ?></p>
                 <div class="group-categories">
                     <span class="label-categorie">Cat&eacute;gories :</span>

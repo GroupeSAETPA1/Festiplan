@@ -91,10 +91,6 @@ function afficher_scene(string $id_scene, string $nom_scene, string $taille, int
         <div class="titre">Les scènes du festival <?php echo $nom_festival; ?></div>
 
         <div class="card-festival-ligne rounded">
-            <div class="img-festival rounded">
-                <img src="/estiplan/FestiplanWeb/static/assets/img/deScenePalais.jpg"
-                     alt="Image du festival <?php echo $nom_festival; ?>">
-            </div>
             <p class="nom-festival"><?php echo $nom_festival; ?></p>
             <div class="group-categories">
                 <span class="label-categorie">Cat&eacute;gories :</span>
@@ -108,7 +104,7 @@ function afficher_scene(string $id_scene, string $nom_scene, string $taille, int
 
         <div class="entete-section rounded">
             <span class="titre-section titre">Les scènes du festival</span>
-            <form action="" method="post">
+            <form action="index.php" method="post">
                 <input type="hidden" name="controller" value="AjouterListesScene">
                 <input type="hidden" name="id_festival" value="<?php echo $id_festival; ?>">
                 <input type="hidden" name="nom_festival" value="<?php echo $nom_festival; ?>">

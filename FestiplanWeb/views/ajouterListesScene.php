@@ -112,7 +112,8 @@ function minutesToHHMM(int $minutes): string
         <!-- Bouton retour -->
         <form action="/Festiplan/FestiplanWeb/index.php" method="post">
             <input type="hidden" name="controller" value="AccesListeScene">
-            <input type="hidden" name="id_festival" value="<?php echo $id_festival ?>">
+            <input type="hidden" name="id_festival" value="<?php echo $id_festival; ?>">
+            <input type="hidden" name="nom_festival" value="<?php echo $nom_festival; ?>">
             <div class="retour rounded">
                 <button type="submit">
                     <i class="fas fa-arrow-left"></i> Retour
@@ -128,6 +129,16 @@ function minutesToHHMM(int $minutes): string
             <div class="section-spectacles-diposnible rounded">
                 <div class="titre-section">
                     Scenes disponibles
+                </div>
+                <div class="btn-valider-spectacles-selectionne rounded">
+                    <form action="/Festiplan/FestiplanWeb/index.php" method="post">
+                        <input type="hidden" name="controller" value="CreateScene">
+                        <input type="hidden" name="id_festival" value="<?php echo $id_festival; ?>">
+                        <input type="hidden" name="nom_festival" value="<?php echo $nom_festival; ?>">
+                        <button type="submit" class="rounded">
+                            <i class="fa-solid fa-plus"></i> Creer une nouvelle scene
+                        </button>
+                    </form>
                 </div>
                 <div class="btn-valider-spectacles-selectionne rounded">
                     <form action="/Festiplan/FestiplanWeb/index.php" method="post">
