@@ -98,7 +98,6 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
                     <select name="categorie">
                         <option value="vide"></option>
                         <?php
-
                         foreach ($tableauCategorie as $ligne) {
                             echo '<option' ;
                             if (isset($_SESSION['categorie']) && $ligne['id_categorie'] == $_SESSION['categorie']    ) {
@@ -113,7 +112,8 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
         </div>
         <div class="valid-annul-placement">
             <div class="annulChoix">
-                <i class="fa-regular fa-circle-xmark"></i>Annuler vos choix <!-- TODO fontawesome -->
+                <a href="/Festiplan/FestiplanWeb/?controller=CreateFestival&action=viderChampPage1"</a>
+                <i class="fa-regular fa-circle-xmark"></i>Vider le formulaire <!-- TODO fontawesome -->
             </div>
             <div class="button-flex-end">
                 <button type="submit" class="valider">Page Suivante<i class="fa-solid fa-arrow-right"></i></button>
