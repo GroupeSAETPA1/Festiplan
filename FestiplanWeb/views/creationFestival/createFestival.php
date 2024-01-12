@@ -46,7 +46,7 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
 
     <div class="retour">
         <a href="/Festiplan/FestiplanWeb/?controller=Dashboard">
-        <button class="btn-retour">
+        <button class="btn-retour ">
             <i class="fa-solid fa-arrow-left"></i> Retour
         </button>
         </a>
@@ -59,22 +59,54 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
                     <!-- Contient un premier bloc avec le nom, les dates de début et de fin -->
                     <div class="NDD">
                         <div>
-                            <h3><i class="fa-solid fa-circle-exclamation"></i>Nom :</h3>
+                            <h3>
+                                <?php
+                                    if ($nomOk) {
+                                        echo '<i class="fa-solid fa-circle-check"></i>' ;
+                                    } else {
+                                        echo '<i class="fa-solid fa-circle-exclamation"></i>';
+                                    }
+                                ?>
+                                Nom :</h3>
                             <input class="text" type="text" name="nom" placeholder="Tapez le nom de votre festival" value = "<?php echo $nomFestival ?: "" ?>" />
                         </div>
                         <div>
-                            <h3><i class="fa-solid fa-circle-exclamation"></i>Date de début :</h3>
+                            <h3>
+                                <?php
+                                if ($dateOk) {
+                                    echo '<i class="fa-solid fa-circle-check"></i>' ;
+                                } else {
+                                    echo '<i class="fa-solid fa-circle-exclamation"></i>';
+                                }
+                                ?>
+                                </i>Date de début :</h3>
                             <input class="text" type="date" name="ddd" value = "<?php echo $ddd ?: "" ?>" />
                         </div>
                         <div>
-                            <h3><i class="fa-solid fa-circle-exclamation"></i>Date de fin :</h3>
+                            <h3>
+                                <?php
+                                if ($dateOk) {
+                                    echo '<i class="fa-solid fa-circle-check"></i>' ;
+                                } else {
+                                    echo '<i class="fa-solid fa-circle-exclamation"></i>';
+                                }
+                                ?>
+                                </i>Date de fin :</h3>
                             <input class="text" type="date" name="ddf" value = "<?php echo $ddf ?: "" ?>" />
                         </div>
                     </div>
                     <div class="Description">
                         <!-- Contient un second bloc avec la description et qui se situe au cote a cote avec le premier bloc -->
                         <div>
-                            <label for="description"><i class="fa-solid fa-circle-exclamation"></i>Description :</label>
+                            <label for="description">
+                                <?php
+                                if ($descriptionOk) {
+                                    echo '<i class="fa-solid fa-circle-check"></i>' ;
+                                } else {
+                                    echo '<i class="fa-solid fa-circle-exclamation"></i>';
+                                }
+                                ?>
+                                </i>Description :</label>
                             <textarea id="description" name="description" > <?php echo $descriptionFestival ?: "" ?></textarea>
                         </div>
                     </div>
@@ -93,7 +125,14 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
                     </div>
                 </div>
                 <div>
-                    <h3> <i class="fa-solid fa-circle-exclamation"></i>Catégorie :</h3>
+                    <h3>
+                        <?php
+                        if ($categorieOk) {
+                            echo '<i class="fa-solid fa-circle-check"></i>' ;
+                        } else {
+                            echo '<i class="fa-solid fa-circle-exclamation"></i>';
+                        }
+                        ?>Catégorie :</h3>
 
                     <select name="categorie">
                         <option value="vide"></option>
