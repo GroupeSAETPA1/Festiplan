@@ -88,4 +88,23 @@ CREATE PROCEDURE vide_table_tempo(
         COMMIT; 
     END //
 
+CREATE PROCEDURE supprimer_festival(IN p_id_festival INT)
+BEGIN
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        ROLLBACK;
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'Erreur lors de la suppression du festival';
+    END;
+
+    START TRANSACTION;
+
+    DELETE FROM spectacle_festival_scene WHERE id_festival = p_id_festival;
+    DELETE FROM liste_scene WHERE id_festival = p_id_festival;
+    DELETE FROM liste_organisateur WHERE id_festival = p_id_festival;
+    DELETE FROM festival WHERE id_festival = p_id_festival;
+
+    COMMIT;
+END //
+
 DELIMITER ;
