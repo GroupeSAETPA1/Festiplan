@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/formsInput/image.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/formsInput/input.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/editionFestival/responsive.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/button.css">
         <!-- Font Awesome -->
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -31,6 +32,13 @@
         <body>
         <div class="app">
             <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/header.php" ?>
+            <div class="retour">
+                <a href="/Festiplan/FestiplanWeb/?controller=Dashboard">
+                    <button class="btn-retour">
+                        <i class="fa-solid fa-arrow-left"></i> Retour
+                    </button>
+                </a>
+            </div>
             <form method="post" action="index.php" enctype="multipart/form-data">
                 <div class="container">
                     <div class=wrapper>
