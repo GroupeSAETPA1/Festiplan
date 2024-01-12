@@ -13,7 +13,7 @@ class CreateSceneService
 
     public function creerScene(string $nom, string $taille, int $nombre_spectateur, float $longitude, float $latitude)
     {
-        $sql = "INSERT INTO scene (nomScene, id_taille, nb_spectateurs, longitude, latitude) VALUES (:nom, :taille, :nombre_spectateur, :longitude, :latitude)";
+        $sql = "INSERT INTO scene (nom, id_taille, nb_spectateurs, longitude, latitude) VALUES (:nom, :taille, :nombre_spectateur, :longitude, :latitude)";
         $stmt = $this->pdoAjouterScene->prepare($sql);
         $stmt->bindParam(':nom', $nom);
         $stmt->bindParam(':taille', $taille);

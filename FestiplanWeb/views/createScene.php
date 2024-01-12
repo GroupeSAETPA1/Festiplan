@@ -82,19 +82,19 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
                     </select>
                 </div>
                 <div class="input">
-                    <h3>Nombre de spectateur :</h3>
+                    <h3>Nombre de spectateurs :</h3>
                     <div class="text">Veuillez entrez le nombre de spectateur maximum</div>
                     <input type="number" name="nombreSpectateur" value = "<?php echo $nombreSpectateur ?? "" ?>" />
                 </div>
                 <div class="input">
                     <h3>Longitude :</h3>
                     <div class="text">Veuillez entrez la longitude de la scene</div>
-                    <input type="number" name="longitude" value = "<?php echo $longitude ?? 0 ?>" />
+                    <input name="longitude" value = "<?php echo $longitude ?? 0 ?>" />
                 </div>
                 <div class="input">
                     <h3>Latitude :</h3>
                     <div class="text">Veuillez entrez la latitude de la scene</div>
-                    <input type="number" name="latitude" value = "<?php echo $latitude ?? 0 ?>" />
+                    <input name="latitude" value = "<?php echo $latitude ?? 0 ?>" />
                 </div>
                 <div class="valid-annul-placement flex-row">
                     <input type="hidden" name="controller" value="CreateScene">
