@@ -167,6 +167,12 @@ class CreateFestivalController {
             } catch (Exception) {
                 return false ;
             }
+            list($width, $height) = getimagesize($_FILES['imageFestival']['tmp_name']);
+
+            // Check if the image dimensions are 800x600
+            if ($width > 800 || $height > 600) {
+                return false;
+            }
             $nouveau_nom = $nomFestival."_image".time().$extension;
             if (move_uploaded_file($_FILES['imageFestival']['tmp_name'] , $dossier."/".$nouveau_nom)) {
                 $_SESSION['photoFestival'] = $nouveau_nom;
