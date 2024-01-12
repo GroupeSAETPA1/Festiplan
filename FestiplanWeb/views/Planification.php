@@ -11,6 +11,7 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport">
+    <link rel="icon" href="/Festiplan/FestiplanWeb/datas/img/logo.ico" />
     <title>Festiplan - Planification</title>
 
     <!-- Bootstrap 5.3 -->

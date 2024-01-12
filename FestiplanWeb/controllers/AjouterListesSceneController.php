@@ -99,7 +99,6 @@ class AjouterListesSceneController
     {
         $id_festival = $_SESSION['ajouterListesScenes']['id_festival'] ?? null;
         $nom_festival = $_SESSION['ajouterListesScenes']['nom_festival'] ?? null;
-        var_dump($id_festival);
         $tab_scene_valider = $this->ajouterListesSceneServices->getScenesTemporaire();
         $this->ajouterListesSceneServices->viderTableTemporaire($id_festival);
         foreach ($tab_scene_valider as $scene) {

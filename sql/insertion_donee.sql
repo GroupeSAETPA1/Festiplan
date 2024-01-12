@@ -38,7 +38,7 @@ VALUES
 
 
 -- Insertion dans la table `scene`
-INSERT INTO `scene` (`nomScene`, `nb_spectateurs`, `id_taille`) VALUES
+INSERT INTO `scene` (`nom`, `nb_spectateurs`, `id_taille`) VALUES
 ('Amphi IUT', 500, 3),
 ('Salle B301', 70, 2),
 ('Fillmore East', 2500, 1),

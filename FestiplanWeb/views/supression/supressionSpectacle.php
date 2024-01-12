@@ -21,6 +21,7 @@ function minutesToHHMM(int $minutes): string
     <head>
         <meta charset="UTF-8">
         <meta name="viewport">
+        <link rel="icon" href="/Festiplan/FestiplanWeb/datas/img/logo.ico" />
         <title>Festiplan - Supression d'un Festival</title>
 
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/footer.css">
