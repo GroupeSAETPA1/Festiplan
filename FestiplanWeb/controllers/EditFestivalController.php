@@ -24,8 +24,6 @@ class EditFestivalController
     }
 
     public function index(PDO $pdo) {
-        //var_dump($_POST);
-        //die();
         $festival = $this -> editFestivalService -> recupererInfoFestival(HttpHelper::getParam('id_festival'));
         $view = new View("views/editionFestival/editionFestival");
         $this->preparerVue($view, $festival);
@@ -37,31 +35,28 @@ class EditFestivalController
     public function preparerVue(View $view , $festival)
     {
         $festival = $festival[0];
-        var_dump($festival['nom']);
         $view -> setVar('nomActuel' , $festival['nom']);
         $view -> setVar('descriptionFestival' , $festival['description']);
         $view -> setVar("debut" , $festival['debut']);
         $view -> setVar("fin" , $festival['fin']);
-        $view -> setVar("image" , $_SESSION['illustration']);
+        $view -> setVar("image" , $festival['illustration']);
         $view -> setVar("heure_debut_spectacle" , $festival['heure_debut_spectacles']);
         $view -> setVar("heure_fin_spectacle" , $festival['heure_fin_spectacles']);
         $view -> setVar("duree_entre_spectacle" , $festival['duree_entre_spectacle']);
-        var_dump($view);
         $_SESSION['id_a_editer'] = $festival['id_festival'];
         $_SESSION['nom_editer'] = $festival['nom'];
         $_SESSION['description_editer'] = $festival['description'];
         $_SESSION['date_debut_editer'] = $festival['debut'];
         $_SESSION['date_fin_editer'] = $festival['fin'];
         $_SESSION['illustration_editer'] = $festival['illustration'];
-        var_dump($_SESSION['illustration_editer']);
         $_SESSION['categorie_editer'] = $festival['id_categorie'];
         $_SESSION['heure_debut_spectacle_editer'] = $festival['heure_debut_spectacles'];
         $_SESSION['heure_fin_spectacle_editer'] = $festival['heure_fin_spectacles'];
         $_SESSION['duree_entre_spectacle'] = $festival['duree_entre_spectacle'];
+        $_SESSION['id_responsable'] = $festival['id_responsable'];
     }
 
     public function editerFestival() {
-        var_dump($_POST);
         $nomOk = $this -> nomOk(HttpHelper::getParam('nom'));
         $decriptionOk = $this -> descriptionOk(HttpHelper::getParam('description'));
         $categorieOk = $this -> categorieOk(HttpHelper::getParam('categorie'));
@@ -70,9 +65,29 @@ class EditFestivalController
             HttpHelper::getParam('heure_fin_spectacle') ,
             HttpHelper::getParam("duree_entre_spectacle"));
         $illustrationOk = $this -> photoOk(HttpHelper::getParam('illustration'));
-        //echo 'grij : ';
-        var_dump($illustrationOk);
-        die();
+        if($nomOk && $decriptionOk && $dateOk && $grijOk && $illustrationOk && $categorieOk) {
+            $this->editFestivalService -> editionFestival(
+                htmlspecialchars(HttpHelper::getParam('nom')) ,
+                htmlspecialchars(HttpHelper::getParam('description')) ,
+                htmlspecialchars($_SESSION['photoFestival'])  ,
+                htmlspecialchars(HttpHelper::getParam('ddd')) ,
+                htmlspecialchars(HttpHelper::getParam('ddf')) ,
+                htmlspecialchars(HttpHelper::getParam('categorie')) ,
+                htmlspecialchars(HttpHelper::getParam('heure_debut_spectacle')) ,
+                htmlspecialchars(HttpHelper::getParam('heure_fin_spectacle')) ,
+                htmlspecialchars(HttpHelper::getParam('duree_entre_spectacle')) ,
+                htmlspecialchars($_SESSION['id_responsable']) ,
+                htmlspecialchars($_SESSION['id_a_editer']));
+            header("Location: index.php?controller=Dashboard");
+            exit();
+        } else {
+            $view = new View("views/editionFestival/editionFestival");
+            $this->reAfficherEdition($view);
+            $tableauCategorie = $this->editFestivalService->recupererCategorie();
+            $view -> setVar('tableauCategorie' , $tableauCategorie);
+
+        }
+        return $view;
     }
 
     public function nomOk($nom) {
@@ -94,7 +109,6 @@ class EditFestivalController
 
     public function dateOk(mixed $ddd, mixed $ddf)
     {
-        var_dump($ddd);
         $debut = DateTime::createFromFormat('Y-m-d' , $ddd);
         $fin = DateTime::createFromFormat('Y-m-d' , $ddf);
         return $debut <= $fin ;
@@ -120,6 +134,12 @@ class EditFestivalController
                 $extension = $this->recupererExtension($_FILES['imageFestival']['name']);
             } catch (Exception) {
                 return false ;
+            }
+            list($width, $height) = getimagesize($_FILES['imageFestival']['tmp_name']);
+
+            // Check if the image dimensions are 800x600
+            if ($width > 800 || $height > 600) {
+                return false;
             }
             $nouveau_nom = $nomFestival."_image".time().$extension;
             if (move_uploaded_file($_FILES['imageFestival']['tmp_name'] , $dossier."/".$nouveau_nom)) {
@@ -149,6 +169,17 @@ class EditFestivalController
         }
     }
 
+    public function reAfficherEdition($view)
+    {
+        $view -> setVar('nomActuel' , $_SESSION['nom_editer']);
+        $view -> setVar('descriptionFestival' ,$_SESSION['description_editer']);
+        $view -> setVar("debut" , $_SESSION['date_debut_editer']);
+        $view -> setVar("fin" , $_SESSION['date_fin_editer']);
+        $view -> setVar("image" , $_SESSION['illustration_editer']);
+        $view -> setVar("heure_debut_spectacle" , $_SESSION['heure_debut_spectacle_editer']);
+        $view -> setVar("heure_fin_spectacle" , $_SESSION['heure_fin_spectacle_editer']);
+        $view -> setVar("duree_entre_spectacle" , $_SESSION['duree_entre_spectacle']);
+    }
 
 
 }
