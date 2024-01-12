@@ -13,7 +13,7 @@ class AjouterListesSceneServices
 
     public function getScenesDisponible (int $id_festival) : array
     {
-        $requete = "SELECT id_scene, nomScene, id_taille, nb_spectateurs, 'ajouterScene' as action FROM festiplan.scene WHERE id_scene NOT IN (SELECT id_scene FROM festiplan.liste_scene WHERE id_festival = :id_festival)";
+        $requete = "SELECT id_scene, nom as nomScene, id_taille, nb_spectateurs, 'ajouterScene' as action FROM festiplan.scene WHERE id_scene NOT IN (SELECT id_scene FROM festiplan.liste_scene WHERE id_festival = :id_festival)";
 
         $stmt = $this->pdoAjouterScene->prepare($requete);
         $stmt->bindParam("id_festival", $id_festival);
@@ -47,9 +47,9 @@ class AjouterListesSceneServices
 
     public function getScenesTemporaire () : array
     {
-        $requete = "SELECT liste_scene_temporaire.id_scene, s.nomScene as nom_scene
+        $requete = "SELECT liste_scene_temporaire.id_scene, s.nom as nom_scene
                     FROM liste_scene_temporaire
-                    JOIN festiplan.scene s on liste_scene_temporaire.id_scene = s.id_scene";
+                    JOIN scene s on liste_scene_temporaire.id_scene = s.id_scene";
 
         $stmt = $this->pdoAjouterScene->prepare($requete);
         $stmt->execute();
@@ -57,10 +57,13 @@ class AjouterListesSceneServices
         return $stmt->fetchAll();
     }
 
-    public function viderTableTemporaire(): void
+    public function viderTableTemporaire(int $id_festival): void
     {
-        $requete = "DELETE FROM festiplan.liste_scene_temporaire";
-        $this->pdoAjouterScene->exec($requete);
+        $requete = "DELETE FROM liste_scene_temporaire WHERE id_festival = :id_festival";
+
+        $stmt = $this->pdoAjouterScene->prepare($requete);
+        $stmt->bindParam("id_festival", $id_festival);
+        $stmt->execute();
     }
 
     public function ajouterSceneAuFestival(int $id_festival, int $id_scene): void
@@ -76,7 +79,7 @@ class AjouterListesSceneServices
 
     function getScene(int $id_festival): array
     {
-        $requete = "SELECT scene.id_scene, nomScene
+        $requete = "SELECT scene.id_scene, nom AS nomScene
                     FROM festiplan.scene
                     JOIN festiplan.liste_scene s on scene.id_scene = s.id_scene
                     WHERE id_festival = :id_festival;";

@@ -35,7 +35,7 @@ class createFestivalService
 
     public function recupererTailleScene() {
         try {
-            $sql = $this -> pdoCreationFestival->prepare('SELECT nomScene  , nb_spectateurs FROM scene');
+            $sql = $this -> pdoCreationFestival->prepare('SELECT nom AS nomScene  , nb_spectateurs FROM scene');
             $sql->execute();
             return $sql -> fetchAll();
         } catch (PDOException $e) {
@@ -53,7 +53,7 @@ class createFestivalService
 
     public function sceneExiste($scene): bool
     {
-        $requeteSceneExiste = $this -> pdoCreationFestival -> prepare( "SELECT * FROM SCENE WHERE nomScene = :nom");
+        $requeteSceneExiste = $this -> pdoCreationFestival -> prepare( "SELECT * FROM SCENE WHERE nom = :nom");
         $requeteSceneExiste->bindParam(':nom' , $scene);
         $requeteSceneExiste->execute();
         return $requeteSceneExiste->rowCount() > 0 ;
@@ -122,7 +122,7 @@ class createFestivalService
     }
 
     public function recupererIdScene($tableauScene) {
-        $requete = $this -> pdoCreationFestival -> prepare("SELECT id_scene FROM scene WHERE nomScene = :nom");
+        $requete = $this -> pdoCreationFestival -> prepare("SELECT id_scene FROM scene WHERE nom = :nom");
         $resultat = array();
         foreach ($tableauScene as $ligne) {
             $requete->bindParam(':nom' , $ligne);

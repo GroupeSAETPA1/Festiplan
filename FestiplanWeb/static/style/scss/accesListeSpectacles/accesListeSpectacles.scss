@@ -95,7 +95,7 @@ $taille_div: 90%;
             border-radius: 1vh;
             cursor: pointer;
 
-            span, i {
+            span, i, svg {
                 font-size: 1.2rem;
             }
         }
@@ -164,12 +164,12 @@ $taille_div: 90%;
 .btn-retirer-spectacle {
     border-radius: 1vh;
 
-    i {
+    i, svg {
         font-size: 4vh;
         margin: 0.5vh
     }
 
-    .fa-times {
+    .fa-times, .fa-xmark {
         color: red
     }
 

@@ -12,7 +12,7 @@ class AjouterListesSceneController
 
     private AjouterListesSceneServices $ajouterListesSceneServices;
     private CreateSpectacleService $createSpectacleService;
-    private $tailleSceneBD;
+    private array|false $tailleSceneBD;
 
     public function __construct(AjouterListesSceneServices $ajouterListesSceneServices, CreateSpectacleService $createSpectacleService)
     {
@@ -101,7 +101,7 @@ class AjouterListesSceneController
         $nom_festival = $_SESSION['ajouterListesScenes']['nom_festival'] ?? null;
         var_dump($id_festival);
         $tab_scene_valider = $this->ajouterListesSceneServices->getScenesTemporaire();
-        $this->ajouterListesSceneServices->viderTableTemporaire();
+        $this->ajouterListesSceneServices->viderTableTemporaire($id_festival);
         foreach ($tab_scene_valider as $scene) {
             try {
                 $this->ajouterListesSceneServices->ajouterSceneAuFestival($id_festival, $scene['id_scene']);

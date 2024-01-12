@@ -24,7 +24,7 @@
             width: 100%;
         }
 
-        input[type="number"] {
+        input[name="longitude"], input[name="latitude"], input[type="number"] {
             padding: 10px;
             width: 100%;
         }
