@@ -20,7 +20,7 @@ class UserController
         $this->userService = $userService;
     }
 
-    public function index($pdo): View
+    public function index(): View
     {
         session_destroy();
 

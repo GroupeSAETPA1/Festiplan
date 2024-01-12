@@ -80,7 +80,7 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
                             <a href="/Festiplan/FestiplanWeb/index.php?controller=Home&action=settings">
                                 <button type="button" class="annuler"><i class="fa-solid fa-xmark"></i>Annuler</button>
                             </a>
-                            <button type="submit" class="valider"><i class="fa-solid fa-check"></i> Valider modfifications</button>
+                            <button type="submit" class="valider"><i class="fa-solid fa-check"></i> Valider modfications</button>
                         </div>
                     </form>
                 </div>
