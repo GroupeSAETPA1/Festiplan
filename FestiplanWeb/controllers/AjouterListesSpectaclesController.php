@@ -32,10 +32,8 @@ class AjouterListesSpectaclesController
         ];
 
         if ($id_gestionnaire == null || $id_festival_actif == null) {
-            //header("Location: /Festiplan/FestiplanWeb/");
-            //exit();
-            if ($id_gestionnaire == null) echo "Erreur : id_gestionnaire est null index()";
-            if ($id_festival_actif == null) echo "Erreur : id_festival_actif est null index()";
+            header("Location: /Festiplan/FestiplanWeb/");
+            exit();
         }
 
         return $this->construireVue($id_festival_actif, $nom_festival);
@@ -88,9 +86,9 @@ class AjouterListesSpectaclesController
         $id_spectacle = HttpHelper::getParam("id_spectacle") ?? null;
 
         if ($id_festival == null || $id_spectacle == null || $scene == null) {
-            //header("Location: /Festiplan/FestiplanWeb/");
-            //exit();
             echo "Erreur : id_festival ou id_spectacle ou scene est null ajouterSpectacle()";
+            header("Location: /Festiplan/FestiplanWeb/");
+            exit();
         }
         try {
             $this->ajouterListesSpectaclesServices->ajouterSpectacle($id_festival, $id_spectacle, $scene);
@@ -111,9 +109,9 @@ class AjouterListesSpectaclesController
         $id_spectacle = HttpHelper::getParam("id_spectacle") ?? null;
 
         if ($id_festival == null || $id_spectacle == null || $scene == null) {
-            //header("Location: /Festiplan/FestiplanWeb/");
-            //exit();
             echo "Erreur : id_festival ou id_spectacle est null retirerSpectacle()";
+            header("Location: /Festiplan/FestiplanWeb/");
+            exit();
         }
         $this->ajouterListesSpectaclesServices->retirerSpectacle($id_festival, $id_spectacle, $scene);
 
@@ -121,7 +119,7 @@ class AjouterListesSpectaclesController
         return $this->construireVue($id_festival, $nom_festival);
     }
 
-    public function validerSpectaclesSelectionne(): View
+    public function validerSpectaclesSelectionne(): void
     {
         $id_festival = $_SESSION['ajouterListesSpectacles']['id_festival'] ?? null;
         $nom_festival = $_SESSION['ajouterListesSpectacles']['nom_festival'] ?? null;
@@ -137,6 +135,48 @@ class AjouterListesSpectaclesController
             }
         }
 
-        return $this->construireVue($id_festival, $nom_festival);
+        header("Location: /Festiplan/FestiplanWeb/?controller=AccesListeSpectacles&action=index&id_festival=$id_festival");
+        exit();
+    }
+
+    /**
+     * Cette fonction permet de vérifier si le temps disponible est suffisant pour accueillir les spectacles
+     * @param $id_festival_actif int L'id du festival actif
+     * @return bool true si le temps est suffisant, false sinon
+     */
+    public function verifierTempsSuffisant(int $id_festival_actif): bool
+    {
+        $pause = $this->ajouterListesSpectaclesServices->getPause($id_festival_actif);
+        //$duree_journee = (strtotime($fin) - strtotime($debut))/60;
+        $duree_journee = $this->ajouterListesSpectaclesServices->getDureeJournee($id_festival_actif);
+
+        $dureeDisponible = $this->ajouterListesSpectaclesServices->getDureeDisponibleFestival($id_festival_actif);
+        //echo 'duree jour'.$duree_journee;
+        //$debut_festival = strtotime($_SESSION['ddd']);
+        //$fin_festival = strtotime($_SESSION['ddf']);
+
+        //$dureeDisponible = ($fin_festival - $debut_festival)/60;
+        if ($dureeDisponible == 0) $dureeDisponible = $duree_journee;
+
+        //echo 'dureDispo'.$dureeDisponible;
+        $duree_totale_spectacle  = $this->calculerDureeTotaleSpectacle($pause, $id_festival_actif);
+
+        $nombre_jours_necessaires = ceil($duree_totale_spectacle /($duree_journee));
+        //echo '<br>jour necessaire'.$nombre_jours_necessaires;
+        if ($nombre_jours_necessaires > (($dureeDisponible) / $duree_journee)) {
+            //echo 'non';
+            return false; // Nombre de jours insuffisants pour accueillir les spectacles
+        } else {
+            //echo 'oui';
+            return true; // Assez de jours pour les spectacles
+        }
+    }
+
+    public function calculerDureeTotaleSpectacle($pause, int $id_festival_actif): int
+    {
+        $result = $this->ajouterListesSpectaclesServices->dureesSpectacles($id_festival_actif);
+        $result +=  (count($_SESSION['spectacle']) - 1) * strtotime($pause);
+        //echo 'durée totale'.$result ;
+        return $result ;
     }
 }

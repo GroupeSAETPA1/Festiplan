@@ -14,6 +14,7 @@ a {
 img {
     border-radius: 2vh;
     max-width: 100%;
+
 }
 
 form {
@@ -68,7 +69,7 @@ form {
             font-size: 2.5vh;
             color: $dark-grey;
 
-            i {
+            i, svg {
                 font-size: 3vh;
                 margin: 1vh;
             }
@@ -128,6 +129,9 @@ form {
                 .fa-pen-to-square {
                     font-size: 2vh;
                 }
+                .fa-eye {
+                    font-size: 2vh;
+                }
             }
         }
     }
@@ -138,6 +142,7 @@ form {
     justify-content: center;
     align-items: center;
     width: 20%;
+    height: 25vh;
 
 }
 
@@ -162,7 +167,7 @@ form {
 .group-boutons {
     display: flex;
 
-    i {
+    i, svg {
         font-size: 4vh;
         margin: 1vh
     }

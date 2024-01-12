@@ -11,7 +11,7 @@ class AccesListeSpectaclesController
 
     private ?AccesListeSpectaclesService $accesListeSpectaclesService = null;
 
-    public function __construct(AccesListeSpectaclesService $accesListeSpectaclesService )
+    public function __construct(AccesListeSpectaclesService $accesListeSpectaclesService)
     {
         $this->accesListeSpectaclesService = $accesListeSpectaclesService;
     }
@@ -22,16 +22,19 @@ class AccesListeSpectaclesController
         return $this->construireVue($id_festival_actif);
     }
 
-    public function retirerSpectacle(): View
+    /**
+     * @return string|null
+     */
+    public function verifierConnecte(): ?string
     {
-        $id_festival_actif = $this->verifierConnecte();
+        $id_gestionnaire = $_SESSION['id_utilisateur'] ?? null;
+        $id_festival_actif = HttpHelper::getParam("id_festival") ?? null;
 
-        $id_spectacle = HttpHelper::getParam("id_spectacle") ?? null;
-        $id_scene = HttpHelper::getParam("id_scene") ?? null;
-
-        $this->accesListeSpectaclesService->retirerSpectacle($id_spectacle, $id_festival_actif, $id_scene);
-
-        return $this->construireVue($id_festival_actif);
+        if ($id_gestionnaire == null || $id_festival_actif == null) {
+            header("Location: /Festiplan/FestiplanWeb/");
+            exit();
+        }
+        return $id_festival_actif;
     }
 
     /**
@@ -57,19 +60,16 @@ class AccesListeSpectaclesController
         return $view;
     }
 
-    /**
-     * @return string|null
-     */
-    public function verifierConnecte(): ?string
+    public function retirerSpectacle(): View
     {
-        $id_gestionnaire = $_SESSION['id_utilisateur'] ?? null;
-        $id_festival_actif = HttpHelper::getParam("id_festival") ?? null;
+        echo "retirerSpectacle";
+        $id_festival_actif = $this->verifierConnecte();
 
-//TODO decomenter pour la version finale
-        //if ($id_gestionnaire == null || $id_festival_actif == null) {
-        //    header("Location: /Festiplan/FestiplanWeb/");
-        //    exit();
-        //}
-        return $id_festival_actif;
+        $id_spectacle = HttpHelper::getParam("id_spectacle") ?? null;
+        $id_scene = HttpHelper::getParam("id_scene") ?? null;
+
+        $this->accesListeSpectaclesService->retirerSpectacle($id_spectacle, $id_festival_actif, $id_scene);
+
+        return $this->construireVue($id_festival_actif);
     }
 }

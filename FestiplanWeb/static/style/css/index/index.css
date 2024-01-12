@@ -44,7 +44,7 @@ body {
   margin: 0;
   line-height: 1;
 }
-.presentation i {
+.presentation i, .presentation svg {
   color: #F7A072;
   font-size: 15vh;
 }

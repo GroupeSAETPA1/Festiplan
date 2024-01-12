@@ -77,51 +77,46 @@ function afficher_scene(string $id_scene, string $nom_scene, string $taille, int
         <script src="/Festiplan/FestiplanWeb/static/scripts/responsive/footerResponsive.js" defer></script>
         <script src="/Festiplan/FestiplanWeb/static/scripts/accesListeScene.js" defer></script>
     </head>
-<body>
-<div class="app">
+    <body>
+    <div class="app">
 
-    <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/header.php" ?>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/header.php" ?>
 
-    <div class="retour rounded">
-        <a href="/Festiplan/FestiplanWeb/?controller=Dashboard"><i class="fas fa-arrow-left"></i> Retour</a>
-    </div>
-
-    <div class="wrapper">
-
-        <div class="titre">Les scènes du festival <?php echo $nom_festival; ?></div>
-
-        <div class="card-festival-ligne rounded">
-            <div class="img-festival rounded">
-                <img src="/estiplan/FestiplanWeb/static/assets/img/deScenePalais.jpg"
-                     alt="Image du festival <?php echo $nom_festival; ?>">
-            </div>
-            <p class="nom-festival"><?php echo $nom_festival; ?></p>
-            <div class="group-categories">
-                <span class="label-categorie">Cat&eacute;gories :</span>
-                <span class="categorie"><?php echo $categorie; ?></span>
-            </div>
-            <div class="date">
-                <p>Du 10/12/2023</p>
-                <p>Au 10/01/2023</p>
-            </div>
+        <div class="retour rounded">
+            <a href="/Festiplan/FestiplanWeb/?controller=Dashboard"><i class="fas fa-arrow-left"></i> Retour</a>
         </div>
 
-        <div class="entete-section rounded">
-            <span class="titre-section titre">Les scènes du festival</span>
-            <form action="" method="post">
-                <input type="hidden" name="controller" value="AjouterListesScene">
-                <input type="hidden" name="id_festival" value="<?php echo $id_festival; ?>">
-                <input type="hidden" name="nom_festival" value="<?php echo $nom_festival; ?>">
-                <div class="bouton-ajouter-spectacle rounded">
-                    <button type="submit" title="Ajouter une scène au festival">
-                        <i class="fa-solid fa-square-plus"></i>
-                        <span>Ajouter une scène</span>
-                    </button>
+        <div class="wrapper">
+
+            <div class="titre">Les scènes du festival <?php echo $nom_festival; ?></div>
+
+            <div class="card-festival-ligne rounded">
+                <p class="nom-festival"><?php echo $nom_festival; ?></p>
+                <div class="group-categories">
+                    <span class="label-categorie">Cat&eacute;gories :</span>
+                    <span class="categorie"><?php echo $categorie; ?></span>
                 </div>
-            </form>
-        </div>
+                <div class="date">
+                    <p>Du 10/12/2023</p>
+                    <p>Au 10/01/2023</p>
+                </div>
+            </div>
 
-        <div class="accordeon rounded">
+            <div class="entete-section rounded">
+                <span class="titre-section titre">Les scènes du festival</span>
+                <form action="index.php" method="post">
+                    <input type="hidden" name="controller" value="AjouterListesScene">
+                    <input type="hidden" name="id_festival" value="<?php echo $id_festival; ?>">
+                    <input type="hidden" name="nom_festival" value="<?php echo $nom_festival; ?>">
+                    <div class="bouton-ajouter-spectacle rounded">
+                        <button type="submit" title="Ajouter une scène au festival">
+                            <i class="fa-solid fa-square-plus"></i>
+                            <span>Ajouter une scène</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
 
             <div class="container-card-spectacles rounded" id="container-card-spectacles">
                 <?php
@@ -139,8 +134,7 @@ function afficher_scene(string $id_scene, string $nom_scene, string $taille, int
             </div>
         </div>
     </div>
-</div>
-<?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/footer.php" ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/footer.php" ?>
 
-</body>
+    </body>
 </html>

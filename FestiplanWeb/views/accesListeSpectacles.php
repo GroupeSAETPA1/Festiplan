@@ -1,6 +1,5 @@
 <?php
 
-
 // vérification de la connexion
 if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
     header('Location: /Festiplan/FestiplanWeb/?controller=Home');
@@ -11,7 +10,7 @@ function afficher_spectacle(string $id_spectacle, string $nom_spectacle, string 
 {
     echo '<div class="card-spectacles rounded">';
     echo '    <div class="img-spectacle rounded">';
-    echo '        <img src="' . $illustration . '" alt="L\'image du spectacle '.$nom_spectacle.'">';
+    echo '        <img src="' . $illustration . '" alt="L\'image du spectacle ' . $nom_spectacle . '">';
     echo '    </div>';
     echo '    <div class="nom-spectacle">';
     echo '        <span>' . $nom_spectacle . '</span>';
@@ -24,7 +23,7 @@ function afficher_spectacle(string $id_spectacle, string $nom_spectacle, string 
     echo '        <span class="label-duree">Dur&eacute;e :</span>';
     echo '        <span>' . minutesToHHMM($duree) . '</span>';
     echo '    </div>';
-    echo '    <form method="post" action="">';
+    echo '    <form method="post" action="/Festiplan/FestiplanWeb/">';
     echo '        <!-- TODO : mettre le lien pour retirer le spectacles du festival -->';
     echo '        <input hidden name="controller" value="AccesListeSpectacles">';
     echo '        <input hidden name="action" value="retirerSpectacle">';
@@ -66,15 +65,8 @@ function minutesToHHMM(int $minutes): string
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/footer.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/header.css">
 
-        <!-- Fontawesome --><!-- TODO Custom Kit -->
-        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/framework/fontawesome-free-6.2.1-web/css/all.css">
-        <!-- Font Awesome -->
-        <!--
-        <link rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-              integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-              crossorigin="anonymous"
-              referrerpolicy="no-referrer"/> -->
+        <!-- Fontawesome -->
+        <script src="https://kit.fontawesome.com/d9b7264c5a.js" crossorigin="anonymous"></script>
 
         <!-- Scripts -->
         <!-- GSAP -->  <!-- Jquery -->
@@ -100,10 +92,6 @@ function minutesToHHMM(int $minutes): string
             <div class="titre">Les spectacles du festival <?php echo $nom_festival; ?></div>
 
             <div class="card-festival-ligne rounded">
-                <div class="img-festival rounded">
-                    <img src="/estiplan/FestiplanWeb/static/assets/img/deScenePalais.jpg"
-                         alt="Image du festival <?php echo $nom_festival; ?>">
-                </div>
                 <p class="nom-festival"><?php echo $nom_festival; ?></p>
                 <div class="group-categories">
                     <span class="label-categorie">Cat&eacute;gories :</span>
@@ -117,7 +105,7 @@ function minutesToHHMM(int $minutes): string
 
             <div class="entete-section rounded">
                 <span class="titre-section titre">Les spectacles du festivals</span>
-                <form action="" method="post">
+                <form action="/Festiplan/FestiplanWeb/index.php" method="post">
                     <input type="hidden" name="controller" value="AjouterListesSpectacles">
                     <input type="hidden" name="id_festival" value="<?php echo $id_festival; ?>">
                     <input type="hidden" name="nom_festival" value="<?php echo $nom_festival; ?>">
@@ -130,13 +118,14 @@ function minutesToHHMM(int $minutes): string
                 </form>
             </div>
 
-            <div class="accordeon rounded">
-                <div class="bouton-drop-down rounded" id="bouton-drop-down">
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
 
-                <div class="container-card-spectacles rounded" id="container-card-spectacles">
-                    <?php
+            <div class="container-card-spectacles rounded" id="container-card-spectacles">
+                <?php
+                if (sizeof($spectacles) == 0) {
+                    echo '<div class="aucun-spectacle">';
+                    echo '    <div>Aucun spectacle n\'est pr&eacute;sent dans ce festival</div>';
+                    echo '</div>';
+                } else {
                     foreach ($spectacles as $spectacle) {
                         $id_spectacle = $spectacle['id_spectacle'];
                         $nom_spectacle = $spectacle['nom_spectacle'];
@@ -147,8 +136,8 @@ function minutesToHHMM(int $minutes): string
 
                         afficher_spectacle($id_spectacle, $nom_spectacle, $illustration, $duree, $categorie, $id_festival, $id_scene);
                     }
-                    ?>
-                </div>
+                }
+                ?>
             </div>
         </div>
     </div>

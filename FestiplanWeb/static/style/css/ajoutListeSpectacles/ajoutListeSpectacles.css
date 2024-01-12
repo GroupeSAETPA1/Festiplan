@@ -114,12 +114,12 @@ a {
   background-color: #363732;
   padding: 2vh;
 }
-.container-card-spectacle .aucun-spectacle {
+.container-card-spectacle .aucun-spectacle, .container-card-spectacle .aucune-scene {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.container-card-spectacle .aucun-spectacle h1, .container-card-spectacle .aucun-spectacle h2 {
+.container-card-spectacle .aucun-spectacle h1, .container-card-spectacle .aucun-spectacle h2, .container-card-spectacle .aucune-scene h1, .container-card-spectacle .aucune-scene h2 {
   color: #F0F7F4;
 }
 .container-card-spectacle .card-spectacle-dispo {
@@ -179,6 +179,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 .container-card-spectacle .card-spectacle-dispo .group-bouton-ajouter-spectacle button {
   background-color: transparent;
@@ -204,13 +205,10 @@ a {
   .section-spectacles-diposnible > .titre-section {
     margin-bottom: 1vh;
   }
-  .img-spectacle {
+  .img-spectacle, .hors-group-responsive, .intitutle-taille {
     display: none !important;
   }
   .card-spectacles .group-categories > .label-categorie {
-    display: none;
-  }
-  .hors-group-responsive {
     display: none;
   }
   .group-responsive {

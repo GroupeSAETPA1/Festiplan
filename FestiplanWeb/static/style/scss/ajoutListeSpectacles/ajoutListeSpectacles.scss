@@ -79,7 +79,7 @@ $taille_div: 90%;
     background-color: $dark-grey;
     padding: 2vh;
 
-    .aucun-spectacle{
+    .aucun-spectacle, .aucune-scene{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -158,6 +158,7 @@ $taille_div: 90%;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                justify-content: center;
             }
 
             button {
@@ -193,7 +194,7 @@ $taille_div: 90%;
         }
     }
 
-    .img-spectacle {
+    .img-spectacle , .hors-group-responsive, .intitutle-taille {
         display: none !important;
     }
 
@@ -201,10 +202,6 @@ $taille_div: 90%;
         .group-categories > .label-categorie {
             display: none;
         }
-    }
-
-    .hors-group-responsive {
-        display: none;
     }
 
     .group-responsive {

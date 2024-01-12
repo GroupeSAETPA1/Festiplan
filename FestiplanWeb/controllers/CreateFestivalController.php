@@ -8,6 +8,7 @@ use services\UserService;
 use yasmf\HttpHelper;
 use yasmf\View;
 use DateTime;
+use function PHPUnit\Framework\isEmpty;
 
 /**
  * Default controller
@@ -108,9 +109,9 @@ class CreateFestivalController {
                 $_SESSION['ddf'] ,
                 $_SESSION['categorie'] ,
                 $_SESSION['id_utilisateur'] ,
-                HttpHelper::getParam('TPS') ,
-                HttpHelper::getParam('HDS') ,
-                HttpHelper::getParam('HFS'),
+                htmlspecialchars(HttpHelper::getParam('TPS') ),
+                htmlspecialchars(HttpHelper::getParam('HDS')) ,
+                htmlspecialchars(HttpHelper::getParam('HFS')),
                 $tableauIdOrga ,
                 $tableauIdScene);
             header("Location: index.php?controller=Dashboard");
@@ -130,22 +131,27 @@ class CreateFestivalController {
     public function nomOk($aVerifier)
     {
         $_SESSION['nomFestival'] = htmlspecialchars($aVerifier);
-        return $aVerifier != '' and strlen($aVerifier) <= longueur_nom_festival;
+        return !ctype_space($aVerifier) and strlen($aVerifier) <= longueur_nom_festival;
     }
 
     public function descriptionOk($description)
     {
         $_SESSION['descriptionFestival'] = $description;
-        return $description  != '' and strlen($description) <= longueur_max_description ;
+        return !ctype_space($description) and strlen($description) <= longueur_max_description ;
     }
 
     public function dateOk(mixed $ddd, mixed $ddf)
     {
-        $debut = DateTime::createFromFormat('Y-m-d' , $ddd);
-        $fin = DateTime::createFromFormat('Y-m-d' , $ddf);
-        $_SESSION['ddd'] = htmlspecialchars($ddd);
-        $_SESSION['ddf'] = htmlspecialchars($ddf);
-        return $debut <= $fin ;
+
+        if (!empty($ddd) && !empty($ddf)) {
+            $debut = DateTime::createFromFormat('Y-m-d', $ddd);
+            $fin = DateTime::createFromFormat('Y-m-d', $ddf);
+            $_SESSION['ddd'] = htmlspecialchars($ddd);
+            $_SESSION['ddf'] = htmlspecialchars($ddf);
+            return $debut <= $fin;
+        } else {
+            return false;
+        }
     }
 
     public function categorieOk($categorie) {

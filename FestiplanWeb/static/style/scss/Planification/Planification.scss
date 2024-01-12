@@ -6,14 +6,18 @@ body {
     font-family: $font-family;
 }
 
-.retourBouton {
-    background-color: $orange;
-    color: $dark-grey;
-    padding: 30px;
-    padding: 1vh;
-    border-radius: 2vh;
-    text-decoration: none;
-} 
+.retour {
+    margin: 20px 0px 20px 0px;
+
+    .retourBouton {
+        background-color: $orange;
+        color: $dark-grey;
+        padding: 30px;
+        padding: 1vh;
+        border-radius: 2vh;
+        text-decoration: none;
+    }
+}
 
 .genererPlanificationBouton {
     background-color: $light-blue;
@@ -23,21 +27,23 @@ body {
     border-radius: 2vh;
     border: none;
 }
+
 .Planification {
     padding: 5vh;
     background-color: $dark-grey;
     color: $white;
     border-radius: 2vh;
-    
+
     a {
         text-decoration: none;
         color: $white;
     }
-    
+
     .fc tr {
         height: 10vh;
     }
 }
+
 .scrollDIV {
     width: 100%;
 }

@@ -19,10 +19,21 @@ class DashboardService
 
     public function getFestivals(int $id_gestionnaire): array
     {
-        $requete = "SELECT festival.id_festival, festival.nom AS nom, festival.description, festival.illustration, festival.debut, festival.fin, c.nom AS categorie
+        $requete = "SELECT festival.id_festival,
+                           festival.nom AS nom,
+                           festival.description,
+                           festival.illustration,
+                           festival.debut,
+                           festival.fin,
+                           c.nom AS categorie,
+                           COUNT(DISTINCT spectacle.id_spectacle) AS nombre_spectacles
                     FROM festival
-                    JOIN categorie c on c.id_categorie = festival.id_categorie
-                    WHERE id_responsable = :id_gestionnaire";
+                    JOIN categorie c 
+                    ON c.id_categorie = festival.id_categorie
+                    LEFT JOIN spectacle_festival_scene sfs ON sfs.id_festival = festival.id_festival
+                    LEFT JOIN spectacle ON spectacle.id_spectacle = sfs.id_spectacle
+                    WHERE festival.id_responsable = :id_gestionnaire
+                    GROUP BY festival.id_festival;";
 
         $requete = $this->pdoLectureFestivalSpectacle->prepare($requete);
         $requete->bindParam("id_gestionnaire", $id_gestionnaire);

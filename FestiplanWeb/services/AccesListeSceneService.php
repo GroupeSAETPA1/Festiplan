@@ -14,7 +14,7 @@ class AccesListeSceneService
 
     public function getScene (int $id_festival) : array
     {
-        $requete = "SELECT scene.id_scene, nomScene, id_taille, nb_spectateurs, longitude, latitude FROM scene INNER JOIN liste_scene ON scene.id_scene = liste_scene.id_scene WHERE id_festival = :id_festival";
+        $requete = "SELECT scene.id_scene, nom AS nomScene, id_taille, nb_spectateurs, longitude, latitude FROM scene INNER JOIN liste_scene ON scene.id_scene = liste_scene.id_scene WHERE id_festival = :id_festival";
 
         $stmt = $this->pdoLectureScene->prepare($requete);
         $stmt->bindParam(":id_festival", $id_festival);
@@ -44,6 +44,16 @@ class AccesListeSceneService
     public function retirerScene(string $id_festival, int $id_scene): void
     {
         $requete = "DELETE FROM liste_scene WHERE id_festival = :id_festival AND id_scene = :id_scene";
+
+        $stmt = $this->pdoLectureScene->prepare($requete);
+
+        $stmt->bindParam(":id_festival", $id_festival);
+        $stmt->bindParam("id_scene", $id_scene);
+
+        $stmt->execute();
+
+        // on dé-associe la scene du festival
+        $requete = "DELETE FROM spectacle_festival_scene WHERE id_festival = :id_festival AND id_scene = :id_scene";
 
         $stmt = $this->pdoLectureScene->prepare($requete);
 

@@ -80,6 +80,10 @@ $taille_div: 90%;
         color: $light-blue;
     }
 
+    form {
+        margin: 0;
+    }
+
     .bouton-ajouter-spectacle {
         background-color: $orange;
 
@@ -91,34 +95,27 @@ $taille_div: 90%;
             border-radius: 1vh;
             cursor: pointer;
 
-            span, i {
+            span, i, svg {
                 font-size: 1.2rem;
             }
         }
     }
 }
 
-.accordeon {
+.container-card-spectacles {
     background-color: $dark-grey;
     width: $taille_div;
     padding: 1.5vh;
 
-    .bouton-drop-down {
+
+    .aucun-spectacle {
+        color: $white;
         display: flex;
-        justify-content: flex-end;
-        align-items: center;
+        justify-content: center;
+        padding: 2rem;
 
-        background-color: $white;
-
-        padding: 1vh;
-
-        i {
-            font-size: 1.7rem;
-            margin: 0 1vh 0 0;
-        }
-
-        &:hover {
-            background-color: $gris;
+        div {
+            font-size: 1.5rem;
         }
     }
 
@@ -167,12 +164,12 @@ $taille_div: 90%;
 .btn-retirer-spectacle {
     border-radius: 1vh;
 
-    i {
+    i, svg {
         font-size: 4vh;
         margin: 0.5vh
     }
 
-    .fa-times {
+    .fa-times, .fa-xmark {
         color: red
     }
 

@@ -11,9 +11,9 @@ class AjouterListesSpectaclesServices
         $this->pdoAjouterSpectacle = $pdoAjouterSpectacle;
     }
 
-    public function getSpectaclesDisponible (int $id_festival) : array
+    public function getSpectaclesDisponible(int $id_festival): array
     {
-        $requete = "SELECT spectacle.id_spectacle, spectacle.nom, description, illustration, duree, c.nom AS categorie, 'ajouterSpectacle' AS action
+        $requete = "SELECT spectacle.id_spectacle, spectacle.nom, description, illustration, duree, c.nom AS categorie, 'ajouterSpectacle' AS action, taille_scene
                     FROM spectacle
                     JOIN categorie c ON c.id_categorie = spectacle.id_categorie
                     WHERE spectacle.id_spectacle NOT IN (SELECT id_spectacle
@@ -58,9 +58,9 @@ class AjouterListesSpectaclesServices
         $stmt->execute();
     }
 
-    public function getSpectaclesTemporaire () : array
+    public function getSpectaclesTemporaire(): array
     {
-        $requete = "SELECT id_spectacle, s.id_scene, s.nomScene as nom_scene
+        $requete = "SELECT id_spectacle, s.id_scene, s.nom as nom_scene
                     FROM liste_spectacle_temporaire
                     JOIN scene s on liste_spectacle_temporaire.id_scene = s.id_scene";
 
@@ -90,11 +90,17 @@ class AjouterListesSpectaclesServices
         $stmt->execute();
     }
 
+    /**
+     * Retourne la liste des scenes du festival
+     * @param int $id_festival L'id du festival
+     * @return array La liste des scenes du festival
+     */
     function getScene(int $id_festival): array
     {
-        $requete = "SELECT scene.id_scene, nomScene
+        $requete = "SELECT scene.id_scene, nom as nom, ts.id_taille, taille
                     FROM scene
                     JOIN liste_scene s on scene.id_scene = s.id_scene
+                    JOIN festiplan.taille_scene ts on ts.id_taille = scene.id_taille
                     WHERE id_festival = :id_festival;";
 
         $stmt = $this->pdoAjouterSpectacle->prepare($requete);
@@ -102,6 +108,82 @@ class AjouterListesSpectaclesServices
         $stmt->execute();
 
         return $stmt->fetchAll();
+    }
+
+    /**
+     * Retourne la durée totale des spectacles du festival
+     * @param int $id_festival_actif L'id du festival actif
+     * @return int La durée totale des spectacles
+     */
+    public function dureesSpectacles(int $id_festival_actif): int
+    {
+        $requete = "SELECT SUM(s.duree) AS duree_totale
+                    FROM festival
+                    JOIN (
+                        SELECT lst.id_festival, lst.id_spectacle
+                        FROM liste_spectacle_temporaire lst
+                        UNION ALL
+                        SELECT sfs.id_festival, sfs.id_spectacle
+                        FROM spectacle_festival_scene sfs
+                    ) AS combined ON festival.id_festival = combined.id_festival
+                    JOIN festiplan.spectacle s ON s.id_spectacle = combined.id_spectacle
+                    WHERE festival.id_festival = :id_festival;";
+
+        $stmt = $this->pdoAjouterSpectacle->prepare($requete);
+        $stmt->bindParam("id_festival", $id_festival_actif);
+        $stmt->execute();
+        return $stmt->fetch()['duree_totale'];
+    }
+
+    /**
+     * Retourne la durée disponible du festival depuis la date de debut jusqu'à la date de fin
+     * @param int $id_festival_actif L'id du festival actif
+     * @return int La durée disponible du festival
+     */
+    public function getDureeDisponibleFestival(int $id_festival_actif) : int
+    {
+        $requete = "SELECT (fin - debut) / 60 AS duree_disponible
+                    FROM festival
+                    WHERE id_festival = :id_festival;";
+
+        $stmt = $this->pdoAjouterSpectacle->prepare($requete);
+        $stmt->bindParam("id_festival", $id_festival_actif);
+        $stmt->execute();
+        return $stmt->fetch()['duree_disponible'];
+    }
+
+    /**
+     * Retourne la durée d'une journée au festival
+     * @param int $id_festival_actif L'id du festival actif
+     * @return int La durée totale des spectacles
+     */
+    public function getDureeJournee(int $id_festival_actif): int
+    {
+        $requete = "SELECT (heure_fin_spectacles - heure_debut_spectacles) / 60 AS duree_journee
+                    FROM festival
+                    WHERE id_festival = :id_festival;";
+
+        $stmt = $this->pdoAjouterSpectacle->prepare($requete);
+        $stmt->bindParam("id_festival", $id_festival_actif);
+        $stmt->execute();
+        return $stmt->fetch()['duree_journee'];
+    }
+
+    /**
+     * Retourne la durée de la pause entre les spectacles
+     * @param int $id_festival_actif
+     * @return int
+     */
+    public function getPause(int $id_festival_actif): int
+    {
+        $requete = "SELECT duree_entre_spectacle
+                    FROM festival
+                    WHERE id_festival = :id_festival;";
+
+        $stmt = $this->pdoAjouterSpectacle->prepare($requete);
+        $stmt->bindParam("id_festival", $id_festival_actif);
+        $stmt->execute();
+        return $stmt->fetch()['duree_entre_spectacle'];
     }
 
 }

@@ -27,7 +27,7 @@ input[type=email] {
   border-style: none;
 }
 
-input[type=number] {
+input[type=number], input[name=longitude], input[name=latitude] {
   height: 5vh;
   width: 30vw;
   border-radius: 1vh;

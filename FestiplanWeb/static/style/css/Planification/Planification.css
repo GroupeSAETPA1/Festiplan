@@ -18,7 +18,10 @@ body {
   font-family: "Rubik", sans-serif;
 }
 
-.retourBouton {
+.retour {
+  margin: 20px 0px 20px 0px;
+}
+.retour .retourBouton {
   background-color: #F7A072;
   color: #363732;
   padding: 30px;
