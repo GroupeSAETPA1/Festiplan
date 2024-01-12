@@ -41,7 +41,7 @@ class SupressionFestivalController
         return $view;
     }
 
-    public function suprimmer(Pdo $pdo): void
+    public function suprimmer(): void
     {
         $this->supressionFestivalServices->supression($_SESSION['id_festival_a_supprimer']);
 

@@ -14,7 +14,7 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
 
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/footer.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/header.css">
-        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/supression/supression-festival.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/supression/supression.css">
 
         <!-- Font Awesome -->
         <link rel="stylesheet"

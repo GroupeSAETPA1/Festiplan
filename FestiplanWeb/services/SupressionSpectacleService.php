@@ -9,29 +9,26 @@ class SupressionSpectacleService
 
     private PDO $pdoSupressionSpectacle;
 
-    private UserService $userService;
-
-    public function __construct(PDO $pdo, UserService $userService)
+    public function __construct(PDO $pdo)
     {
         $this->pdoSupressionSpectacle = $pdo;
-        $this->userService = $userService;
     }
 
     public function recupSpectacle(int $id_spectacle) : array
     {
-        $requete = "SELECT *
+        $requete = "SELECT illustration, spectacle.nom, c.nom AS categorie, duree, description
                     FROM spectacle
+                    JOIN festiplan.categorie c on c.id_categorie = spectacle.id_categorie
                     WHERE id_spectacle = :id_spectacle;";
 
         $stmt = $this->pdoSupressionSpectacle->prepare($requete);
         $stmt->bindParam("id_spectacle", $id_spectacle);
         $stmt->execute();
 
-
         return $stmt->fetchAll();
     }
 
-    public function supression(int $id_spectacle) : array
+    public function supression(int $id_spectacle) : void
     {
         $requete = "DELETE 
                     FROM spectacle
@@ -40,8 +37,7 @@ class SupressionSpectacleService
         $stmt = $this->pdoSupressionSpectacle->prepare($requete);
         $stmt->bindParam("id_spectacle", $id_spectacle);
         $stmt->execute();
-
-
-        return $stmt->fetchAll();
     }
+
+
 }

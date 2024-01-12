@@ -3,21 +3,20 @@
 namespace services;
 
 use PDO;
+use PDOException;
 
 class SupressionFestivalServices
 {
 
     private PDO $pdoSupressionFestival;
 
-    private UserService $userService;
 
-    public function __construct(PDO $pdo, UserService $userService)
+    public function __construct(PDO $pdo)
     {
         $this->pdoSupressionFestival = $pdo;
-        $this->userService = $userService;
     }
 
-    public function recupFestival(int $id_festival) : array
+    public function recupFestival(int $id_festival): array
     {
         $requete = "SELECT id_festival, festival.nom, illustration, debut, fin, description, c.nom as categorie
                     FROM festival
@@ -31,18 +30,15 @@ class SupressionFestivalServices
         return $stmt->fetchAll();
     }
 
-    public function supression(int $id_festival) : array
+    public function supression(int $id_festival): void
     {
-        //TODO Supprimer les donnee ou le festival apparait. Les tables à chercher sont spectacle-festival-scene, liste-scene et liste-organisateur
-        $requete = "DELETE 
-                    FROM festival 
-                    WHERE id_festival = :id_festival;";
-
-        $stmt = $this->pdoSupressionFestival->prepare($requete);
-        $stmt->bindParam("id_festival", $id_festival);
-        $stmt->execute();
-
-        return $stmt->fetchAll();
+        try {
+            $stmt = $this->pdoSupressionFestival->prepare("CALL supprimer_festival(:id_festival)");
+            $stmt->bindParam("id_festival", $id_festival);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo "Erreur : " . $e->getMessage();
+        }
     }
 
 }
