@@ -13,7 +13,6 @@ class ErrorController
 
     public function index(): View
     {
-        $view = new View("views/Error504");
-        return $view;
+        return new View("views/Error504");
     }
 }

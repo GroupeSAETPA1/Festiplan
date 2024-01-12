@@ -30,7 +30,6 @@ class AccesListeSpectaclesController
         $id_gestionnaire = $_SESSION['id_utilisateur'] ?? null;
         $id_festival_actif = HttpHelper::getParam("id_festival") ?? null;
 
-
         if ($id_gestionnaire == null || $id_festival_actif == null) {
             header("Location: /Festiplan/FestiplanWeb/");
             exit();
