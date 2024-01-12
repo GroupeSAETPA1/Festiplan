@@ -108,9 +108,9 @@ class CreateFestivalController {
                 $_SESSION['ddf'] ,
                 $_SESSION['categorie'] ,
                 $_SESSION['id_utilisateur'] ,
-                HttpHelper::getParam('TPS') ,
-                HttpHelper::getParam('HDS') ,
-                HttpHelper::getParam('HFS'),
+                htmlspecialchars(HttpHelper::getParam('TPS') ),
+                htmlspecialchars(HttpHelper::getParam('HDS')) ,
+                htmlspecialchars(HttpHelper::getParam('HFS')),
                 $tableauIdOrga ,
                 $tableauIdScene);
             header("Location: index.php?controller=Dashboard");
