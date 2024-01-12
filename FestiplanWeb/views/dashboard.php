@@ -16,7 +16,7 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
  * @param string $categorie La catégorie du festival
  * @return void
  */
-function afficher_festival(int $id_festival, string $nom_festival, string $date_debut, string $date_fin, string $lien_image, string $categorie): void
+function afficher_festival(int $id_festival, string $nom_festival, string $date_debut, string $date_fin, string $lien_image, string $categorie, int $nbFestival): void
 {
     echo '<div class="card-festival rounded">';
     echo '    <div class="haut-card">';
@@ -27,6 +27,7 @@ function afficher_festival(int $id_festival, string $nom_festival, string $date_
     echo '            <p class="nom-festival">' . $nom_festival . '</p>';
     echo '            <p>Du ' . $date_debut . '</p>';
     echo '            <p>Au ' . $date_fin . '</p>';
+    echo '            <p>Nombre de spectacles : ' . $nbFestival . '</p>';
     echo '        </div>';
     echo '    </div>';
     echo '    <div class="bas-card">';
@@ -186,9 +187,10 @@ function minutesToHHMM(int $minutes): string
                         $date_fin = $festival['fin'];
                         $image = $festival['illustration'];
                         $categorie = $festival['categorie'];
+                        $nbFestival = $festival['nombre_spectacles'];
                         // cosntruction du lien de l'image
                         $lien_image = "/Festiplan/FestiplanWeb/datas/img/" . $image;
-                        afficher_festival($id_festival, $nom_festival, $date_debut, $date_fin, $lien_image, $categorie);
+                        afficher_festival($id_festival, $nom_festival, $date_debut, $date_fin, $lien_image, $categorie, $nbFestival);
                     }
                     ?>
                 </div>

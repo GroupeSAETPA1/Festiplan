@@ -29,7 +29,7 @@ body {
   padding: 10px;
   width: 100%;
 }
-.wrapper .container input[type=number] {
+.wrapper .container input[name=longitude], .wrapper .container input[name=latitude], .wrapper .container input[type=number] {
   padding: 10px;
   width: 100%;
 }

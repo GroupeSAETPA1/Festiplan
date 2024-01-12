@@ -90,16 +90,16 @@ body {
   background: #99E1D9;
   color: #363732;
 }
-.creationCompte .Retour {
+.creationCompte .btn-retour {
   background: #F7A072;
   color: #363732;
 }
-.creationCompte .Retour .lastSection {
+.creationCompte .btn-retour .lastSection {
   display: flex;
   flex-direction: column;
   row-gap: 20px;
 }
-.creationCompte .Retour .colonneCreationCompte {
+.creationCompte .btn-retour .colonneCreationCompte {
   width: 100%;
   padding: 10px;
 }
