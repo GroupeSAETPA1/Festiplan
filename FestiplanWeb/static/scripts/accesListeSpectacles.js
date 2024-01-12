@@ -3,11 +3,9 @@ const boutons_retirer_spectacle = document.getElementsByClassName("btn-retirer-s
 
 for (let bouton of boutons_retirer_spectacle) {
     bouton.addEventListener("click", ()=>{
-        console.log("Parent")
-        console.log(bouton.parentNode.childNodes)
         //Demander confirmation avant de supprimer
         if (!confirm("Supprimer le spectacle ?")) {
-            bouton.preventDefault();
+            e.preventDefault();
         }
     });
 }
