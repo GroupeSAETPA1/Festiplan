@@ -32,10 +32,8 @@ class AjouterListesSpectaclesController
         ];
 
         if ($id_gestionnaire == null || $id_festival_actif == null) {
-            //header("Location: /Festiplan/FestiplanWeb/");
-            //exit();
-            if ($id_gestionnaire == null) echo "Erreur : id_gestionnaire est null index()";
-            if ($id_festival_actif == null) echo "Erreur : id_festival_actif est null index()";
+            header("Location: /Festiplan/FestiplanWeb/");
+            exit();
         }
 
         return $this->construireVue($id_festival_actif, $nom_festival);
@@ -88,9 +86,9 @@ class AjouterListesSpectaclesController
         $id_spectacle = HttpHelper::getParam("id_spectacle") ?? null;
 
         if ($id_festival == null || $id_spectacle == null || $scene == null) {
-            //header("Location: /Festiplan/FestiplanWeb/");
-            //exit();
             echo "Erreur : id_festival ou id_spectacle ou scene est null ajouterSpectacle()";
+            header("Location: /Festiplan/FestiplanWeb/");
+            exit();
         }
         try {
             $this->ajouterListesSpectaclesServices->ajouterSpectacle($id_festival, $id_spectacle, $scene);
@@ -111,9 +109,9 @@ class AjouterListesSpectaclesController
         $id_spectacle = HttpHelper::getParam("id_spectacle") ?? null;
 
         if ($id_festival == null || $id_spectacle == null || $scene == null) {
-            //header("Location: /Festiplan/FestiplanWeb/");
-            //exit();
             echo "Erreur : id_festival ou id_spectacle est null retirerSpectacle()";
+            header("Location: /Festiplan/FestiplanWeb/");
+            exit();
         }
         $this->ajouterListesSpectaclesServices->retirerSpectacle($id_festival, $id_spectacle, $scene);
 
