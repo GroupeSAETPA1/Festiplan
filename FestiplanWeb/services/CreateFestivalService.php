@@ -87,12 +87,12 @@ class createFestivalService
 
         foreach ($liste_scene as $scene) {
             $insertionListeScene->bindParam(':id_festival' , $lastInsertedId);
-            $insertionListeScene->bindParam(':id_scene' , $scene);
+            htmlspecialchars($insertionListeScene->bindParam(':id_scene' , $scene));
             $insertionListeScene->execute();
         }
         foreach ($liste_organisateur as $orga) {
             $insertionListeOrga->bindParam(':id_festival' , $lastInsertedId);
-            $insertionListeOrga->bindParam(':id_organisateur' , $orga);
+            htmlspecialchars($insertionListeOrga->bindParam(':id_organisateur' , $orga));
             $insertionListeOrga->execute();
         }
         $this->pdoCreationFestival->commit();
