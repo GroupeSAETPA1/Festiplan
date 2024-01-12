@@ -13,7 +13,7 @@ class AjouterListesSceneServices
 
     public function getScenesDisponible (int $id_festival) : array
     {
-        $requete = "SELECT id_scene, nom as nomScene, id_taille, nb_spectateurs, 'ajouterScene' as action FROM festiplan.scene WHERE id_scene NOT IN (SELECT id_scene FROM festiplan.liste_scene WHERE id_festival = :id_festival)";
+        $requete = "SELECT id_scene, nom as nomScene, id_taille, nb_spectateurs, 'ajouterScene' as action FROM scene WHERE id_scene NOT IN (SELECT id_scene FROM liste_scene WHERE id_festival = :id_festival)";
 
         $stmt = $this->pdoAjouterScene->prepare($requete);
         $stmt->bindParam("id_festival", $id_festival);
@@ -80,8 +80,8 @@ class AjouterListesSceneServices
     function getScene(int $id_festival): array
     {
         $requete = "SELECT scene.id_scene, nom AS nomScene
-                    FROM festiplan.scene
-                    JOIN festiplan.liste_scene s on scene.id_scene = s.id_scene
+                    FROM scene
+                    JOIN liste_scene s on scene.id_scene = s.id_scene
                     WHERE id_festival = :id_festival;";
 
         $stmt = $this->pdoAjouterScene->prepare($requete);

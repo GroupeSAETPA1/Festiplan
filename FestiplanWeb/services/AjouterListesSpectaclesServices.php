@@ -21,8 +21,8 @@ class AjouterListesSpectaclesServices
                                                          WHERE id_festival = :id_festival)
                       AND taille_scene IN (SELECT ts.id_taille
                                            FROM scene
-                                           JOIN festiplan.taille_scene ts ON ts.id_taille = scene.id_taille
-                                           JOIN festiplan.liste_scene ls ON scene.id_scene = ls.id_scene
+                                           JOIN taille_scene ts ON ts.id_taille = scene.id_taille
+                                           JOIN liste_scene ls ON scene.id_scene = ls.id_scene
                                            WHERE id_festival = :id_festival1);";
 
         $stmt = $this->pdoAjouterSpectacle->prepare($requete);
@@ -100,7 +100,7 @@ class AjouterListesSpectaclesServices
         $requete = "SELECT scene.id_scene, nom as nom, ts.id_taille, taille
                     FROM scene
                     JOIN liste_scene s on scene.id_scene = s.id_scene
-                    JOIN festiplan.taille_scene ts on ts.id_taille = scene.id_taille
+                    JOIN taille_scene ts on ts.id_taille = scene.id_taille
                     WHERE id_festival = :id_festival;";
 
         $stmt = $this->pdoAjouterSpectacle->prepare($requete);
@@ -126,7 +126,7 @@ class AjouterListesSpectaclesServices
                         SELECT sfs.id_festival, sfs.id_spectacle
                         FROM spectacle_festival_scene sfs
                     ) AS combined ON festival.id_festival = combined.id_festival
-                    JOIN festiplan.spectacle s ON s.id_spectacle = combined.id_spectacle
+                    JOIN spectacle s ON s.id_spectacle = combined.id_spectacle
                     WHERE festival.id_festival = :id_festival;";
 
         $stmt = $this->pdoAjouterSpectacle->prepare($requete);

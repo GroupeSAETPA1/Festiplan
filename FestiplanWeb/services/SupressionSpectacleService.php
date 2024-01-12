@@ -18,7 +18,7 @@ class SupressionSpectacleService
     {
         $requete = "SELECT illustration, spectacle.nom, c.nom AS categorie, duree, description
                     FROM spectacle
-                    JOIN festiplan.categorie c on c.id_categorie = spectacle.id_categorie
+                    JOIN categorie c on c.id_categorie = spectacle.id_categorie
                     WHERE id_spectacle = :id_spectacle;";
 
         $stmt = $this->pdoSupressionSpectacle->prepare($requete);

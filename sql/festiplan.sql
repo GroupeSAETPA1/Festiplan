@@ -63,7 +63,7 @@ CREATE  TABLE IF NOT EXISTS `liste_organisateur`
 CREATE  TABLE IF NOT EXISTS `scene`
 (
     `id_scene`       int(6)                       NOT NULL AUTO_INCREMENT COMMENT 'id scene',
-    `nomScene`            varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'nom de la scene',
+    `nom`            varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'nom de la scene',
     `id_taille`      int(11)                      NOT NULL COMMENT 'id taille depuis taille scene',
     `nb_spectateurs` int(11)                      NOT NULL COMMENT 'nombre de spectateurs maximum',
     `longitude`       NUMERIC(10, 7)                   NOT NULL COMMENT 'longitude de la scence' DEFAULT 0.0000000,
