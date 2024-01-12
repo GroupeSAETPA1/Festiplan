@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"); /* declaration des variables */
+/* ne codez pas ici, c'est le fichier pour les variables, etc. */
+body {
+  min-height: 100vh;
+  background-color: #F0F7F4;
+  color: #363732;
+  font-family: "Rubik", sans-serif;
+  margin: 0;
+}
+
+.app {
+  justify-content: center;
+  align-items: center;
+}
+
+.retour {
+  padding: 10px 25px;
+}
+.retour .Retour {
+  line-height: 2;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #F7A072;
+}
+.retour .Retour:hover {
+  background-color: #f6905a;
+}
+
+.container {
+  justify-content: center;
+  flex-direction: column;
+}
+.container .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.container .title h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.wrapper {
+  padding: 0 10vh;
+}
+.wrapper hr {
+  margin: 40px 0;
+  height: 4px;
+  background-color: #363732;
+  border: none;
+  width: 100%;
+}
+
+.valid-annul-placement {
+  margin-top: 250px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10vh;
+}
+.valid-annul-placement .lastButton {
+  height: 4.8vh;
+  padding: 0 30px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  cursor: pointer;
+  line-height: 2.7;
+}
+.valid-annul-placement .annulChoix {
+  background-color: #99E1D9;
+  transition: 0.3s ease;
+}
+.valid-annul-placement .annulChoix:hover {
+  background-color: #85dbd2;
+  scale: 1.05;
+}
+.valid-annul-placement .page-suivante {
+  background-color: #F7A072;
+  transition: 0.3s ease;
+}
+.valid-annul-placement .page-suivante:hover {
+  background-color: #f6905a;
+  scale: 1.05;
+}
+.valid-annul-placement .page-suivante a {
+  text-decoration: none;
+  color: black;
+}
+
+.recap {
+  box-shadow: 1vh 1vh 1vh grey;
+  background-color: #363732;
+}
+
+/*# sourceMappingURL=supression.css.map */
