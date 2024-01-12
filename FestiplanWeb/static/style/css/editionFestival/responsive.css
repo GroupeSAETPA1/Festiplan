@@ -18,6 +18,12 @@ body {
     align-items: center;
     flex-direction: column;
   }
+  .flex-row > div {
+    width: fit-content;
+  }
+  input {
+    width: 80vw !important;
+  }
   .flex-column {
     align-items: center;
   }
@@ -32,6 +38,7 @@ body {
   .container {
     display: flex;
     align-items: center;
+    justify-content: center;
   }
   .illustration {
     display: flex;

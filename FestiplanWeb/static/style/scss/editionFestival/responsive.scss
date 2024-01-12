@@ -6,6 +6,13 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    > div {
+      width: fit-content;
+    }
+  }
+
+  input {
+    width: 80vw !important;
   }
 
   .flex-column{
@@ -24,6 +31,7 @@
   .container{
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 
   .illustration{
