@@ -33,7 +33,7 @@ class DBConfig
             'db_port' => $this->db_port,
             'db_name' => $this->db_name,
             'db_user' => 'root',
-            'db_pass' => '',
+            'db_pass' => 'root',
             'db_charset' => $this->db_charset
         ];
     }
