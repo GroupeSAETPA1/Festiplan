@@ -33,7 +33,7 @@
             <form method="post" action="index.php" enctype="multipart/form-data">
                 <div class="container">
                     <div class=wrapper>
-                        <div class="flex-row first-row">
+                        <div class="flex-row">
                             <div class="flex-column first-column">
                                 <div>
                                     <h3>Nom :</h3>
@@ -112,9 +112,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="button-flex-end">
-                                <button type="submit" class="valider">Editer<i class="fa-solid fa-arrow-right"></i></button>
+                            <div class ="valid-annul-placement">
+                                <div class="annulChoix">
+                                    <i class="fa-regular fa-circle-xmark"></i>Annuler vos modification <!-- TODO fontawesome -->
+                                </div>
+                                <div class="button-flex-end">
+                                    <button type="submit" class="editer">Editer<i class="fa-solid fa-arrow-right"></i></button>
+                                </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
