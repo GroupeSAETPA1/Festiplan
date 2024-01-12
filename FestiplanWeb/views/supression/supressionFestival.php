@@ -48,7 +48,7 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
                 <div class="card-festival rounded">
                     <div class="haut-card">
                         <div class="img-festival">
-                            <img src="<?php echo $festival[0]['illustration'] ?>"
+                            <img src="/Festiplan/FestiplanWeb/datas/img/<?php echo $festival[0]['illustration'] ?>"
                                  alt="Image du festival <?php echo $festival[0]['nom'] ?>'">
                         </div>
                         <p class="nom-festival bold"><?php echo $festival[0]['nom'] ?></p>
@@ -66,22 +66,27 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
                         <span class="description"><?php echo $festival[0]['description'] ?></span>
                     </div>
                 </div>
-            </div>
-            <form method="post" action="/Festiplan/FestiplanWeb/">
                 <div class="valid-annul-placement flex-row">
-                    <a href="/Festiplan/FestiplanWeb/?controller=Dashboard" title="Annuler et garder le festival">
-                        <div class="annulChoix lastButton rounded">
-                            Garder
-                        </div>
-                    </a>
-                    <input hidden name="action" value="suprimmer">
-                    <input hidden name="controller" value="SupressionFestival">
-                    <button type="submit" class="supprimer lastButton rounded"
-                            title="Supprimer définitivement le festival">
-                        Supprimer
-                    </button>
+                    <div class="annuler-wrapper">
+                        <a href="/Festiplan/FestiplanWeb/?controller=Dashboard" title="Annuler et garder le festival">
+                            <div class="annulChoix lastButton rounded">
+                                Garder
+                            </div>
+                        </a>
+                    </div>
+                    <div class="supprimer-wrapper">
+                        <form method="post" action="/Festiplan/FestiplanWeb/">
+                            <input hidden name="action" value="suprimmer">
+                            <input hidden name="controller" value="SupressionFestival">
+                            <button type="submit" class="supprimer lastButton rounded"
+                                    title="Supprimer définitivement le festival">
+                                Supprimer
+                            </button>
+                        </form>
+                    </div>
                 </div>
-            </form>
+            </div>
+
         </div>
     </div>
     <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/footer.php" ?>

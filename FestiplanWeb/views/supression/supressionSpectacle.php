@@ -58,11 +58,11 @@ function minutesToHHMM(int $minutes): string
 
 
                 <div class="card-spectacle rounded">
-                    <div class="img-spectacle">
-                        <img src="<?php echo $spectacle[0]['illustration'] ?>"
-                             alt="L'image du spectacle <?php echo $spectacle[0]['nom'] ?>">
-                    </div>
-                    <div class="description-spectacle">
+                    <div class="haut-card">
+                        <div class="img-spectacle">
+                            <img src="/Festiplan/FestiplanWeb/datas/img/<?php echo $spectacle[0]['illustration'] ?>"
+                                 alt="L'image du spectacle <?php echo $spectacle[0]['nom'] ?>">
+                        </div>
                         <p class="nom-spectacle bold"><?php echo $spectacle[0]['nom'] ?></p>
                         <div class="group-categories">
                             <span class="label-categorie">Cat&eacute;gories :</span>
@@ -72,25 +72,33 @@ function minutesToHHMM(int $minutes): string
                             <span class="label-duree">Dur&eacute;e :</span>
                             <span><?php echo minutesToHHMM($spectacle[0]['duree']) ?></span>
                         </div>
-                        <div>
-                            <span class="label-description">D&eacute;scription :</span>
-                            <span class="description"><?php echo $spectacle[0]['description'] ?></span>
-                        </div>
+                    </div>
+                    <div>
+                        <span class="label-description">D&eacute;scription :</span>
+                        <span class="description"><?php echo $spectacle[0]['description'] ?></span>
+                    </div>
+                </div>
+                <div class="valid-annul-placement">
+                    <div class="annuler-wrapper">
+                        <a href="/Festiplan/FestiplanWeb/?controller=Dashboard" title="Annuler et garder le spectacle">
+                            <div class="annulChoix lastButton rounded">
+                                Garder
+                            </div>
+                        </a>
+                    </div>
+                    <div class="supprimer-wrapper">
+                        <form method="post" action="/Festiplan/FestiplanWeb/">
+                            <input hidden name="action" value="suprimmer">
+                            <input hidden name="controller" value="SupressionSpectacle">
+                            <button type="submit" class="supprimer rounded page-suivante lastButton">
+                                Supprimer
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
-            <form method="post" action="index.php">
-                <div class="valid-annul-placement flex-row">
-                    <div class="annulChoix lastButton rounded">
-                        <a href="/Festiplan/FestiplanWeb/?controller=Dashboard">Garder</a>
-                    </div>
-                    <input hidden name="action" value="suprimmer">
-                    <input hidden name="controller" value="SupressionSpectacle">
-                    <button type="submit" class="supprimer rounded page-suivante lastButton">
-                        Supprimer
-                    </button>
-                </div>
-            </form>
+
+
         </div>
     </div>
     <?php include $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/footer.php" ?>
