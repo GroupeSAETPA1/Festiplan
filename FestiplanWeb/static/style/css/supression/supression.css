@@ -96,7 +96,7 @@ a {
   width: 100%;
 }
 
-.card-festival {
+.card-festival, .card-spectacle {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -106,34 +106,15 @@ a {
   color: #F0F7F4;
   padding: 1vh;
 }
-.card-festival .haut-card {
+.card-festival .haut-card, .card-spectacle .haut-card {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   width: 90%;
 }
-.card-festival .haut-card > div {
+.card-festival .haut-card > div, .card-spectacle .haut-card > div {
   margin: 1vh;
-}
-
-.card-spectacle {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 90%;
-  background-color: #363732;
-  color: #F0F7F4;
-  padding: 1vh;
-}
-.card-spectacle .description-spectacle {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.card-spectacle .description-spectacle > div {
-  margin: 0.5vh;
 }
 
 .categorie {
@@ -152,10 +133,9 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10vh;
+  width: 90%;
 }
 .valid-annul-placement .lastButton {
-  height: 4.8vh;
   padding: 0 30px;
   font-size: 1rem;
   text-align: center;
@@ -181,10 +161,10 @@ a {
 }
 
 @media screen and (max-width: 700px) {
-  .img-festival, .label-categorie, .label-description {
+  .img-festival, .img-spectacle, .label-categorie, .label-description, .label-duree {
     display: none;
   }
-  .card-spectacle {
+  .card-spectacle > .haut-card {
     flex-direction: column;
   }
   .wrapper {
