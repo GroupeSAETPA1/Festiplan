@@ -28,7 +28,7 @@ class PlanificationService
     }
 
     public function getSpectaclesFestival(int $id_festival) {
-        $requete = "SELECT spectacle.nom, spectacle.description, spectacle.illustration, spectacle.duree, spectacle.id_categorie, spectacle.taille_scene, spectacle.responsable_spectacle, scene.id_scene, scene.nomScene
+        $requete = "SELECT spectacle.nom, spectacle.description, spectacle.illustration, spectacle.duree, spectacle.id_categorie, spectacle.taille_scene, spectacle.responsable_spectacle, scene.id_scene, scene.nom as nomScene
                     FROM spectacle
                     JOIN spectacle_festival_scene
                     ON spectacle.id_spectacle = spectacle_festival_scene.id_spectacle
