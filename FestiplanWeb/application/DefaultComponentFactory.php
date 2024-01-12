@@ -29,19 +29,18 @@ use controllers\CreateSceneController;
 use controllers\ErrorController;
 use controllers\SupressionFestivalController;
 use controllers\SupressionSpectacleController;
-use controllers\SceneController;
 use controllers\UserController;
+use DBConfig;
 use Exception;
 use services\AccesListeSceneService;
 use services\AccesListeSpectaclesService;
 use services\AjouterListesSceneServices;
 use services\AjouterListesSpectaclesServices;
-use services\createFestivalService;
+use services\CreateFestivalService;
 use services\EditFestivalService;
 use services\SupressionFestivalServices;
 use services\SupressionSpectacleService;
 use services\CreateSceneService;
-use services\SceneService;
 use services\UserService;
 use controllers\DashboardController;
 use controllers\SettingsController;
@@ -49,7 +48,6 @@ use controllers\CreateSpectacleController;
 use PDO;
 use services\CreateSpectacleService;
 use services\DashboardService;
-use services\SessionService;
 use controllers\PlanificationController;
 use services\PlanificationService;
 
@@ -70,12 +68,12 @@ class DefaultComponentFactory implements ComponentFactory
     private ?CreateFestivalService $createFestivalService = null;
     private ?AccesListeSpectaclesService $accesListeSpectaclesService = null;
     private ?AjouterListesSpectaclesServices $ajouterListesSpectaclesServices = null;
-    private $createFestivalServices;
-    private $createSpectacleServices;
+    private ?CreateFestivalService $createFestivalServices;
     private ?AccesListeSceneService $accesListeSceneService = null;
     private ?AjouterListesSceneServices $ajouterListesSceneServices = null;
     private ?CreateSceneService $createSceneService = null;
-
+    private ?SupressionSpectacleService $supressionSpectacleService = null;
+    private ?SupressionFestivalServices $supressionFestivalServices = null;
     private ?EditFestivalService $editFestivalService = null;
 
     /**
@@ -259,7 +257,7 @@ class DefaultComponentFactory implements ComponentFactory
      */
     public function getPDO(string $utilisateur): PDO
     {
-        $dbConfig = new \DBConfig();
+        $dbConfig = new DBConfig();
         $dbConfig = match ($utilisateur) {
             "root" => $dbConfig->getRoot(),
             "lectureSpectacles" => $dbConfig->getLectureSpectacle(),
@@ -325,13 +323,16 @@ class DefaultComponentFactory implements ComponentFactory
      */
     private function buildSupressionFestivalService(): SupressionFestivalServices
     {
-        if ($this->createFestivalServices == null) {
+        if ($this->supressionFestivalServices == null) {
             $pdo = $this->getPDO("root");
-            $this->createFestivalServices = new SupressionFestivalServices($pdo, $this->buildUserService());
+            $this->supressionFestivalServices = new SupressionFestivalServices($pdo);
         }
-        return $this->createFestivalServices;
+        return $this->supressionFestivalServices;
     }
 
+    /**
+     * @throws Exception
+     */
     private function buildSupressionSpectacleController(): SupressionSpectacleController
     {
         return new SupressionSpectacleController($this->buildSupressionSpecatcleService());
@@ -342,11 +343,11 @@ class DefaultComponentFactory implements ComponentFactory
      */
     private function buildSupressionSpecatcleService(): SupressionSpectacleService
     {
-        if ($this->createSpectacleServices == null) {
+        if ($this->supressionSpectacleService == null) {
             $pdo = $this->getPDO("root");
-            $this->createSpectacleServices = new SupressionSpectacleService($pdo, $this->buildUserService());
+            $this->supressionSpectacleService = new SupressionSpectacleService($pdo);
         }
-        return $this->createSpectacleServices;
+        return $this->supressionSpectacleService;
     }
 
     private function buildAccesListeSceneController(): AccesListeSceneController

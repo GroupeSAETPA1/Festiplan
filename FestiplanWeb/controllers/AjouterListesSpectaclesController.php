@@ -22,7 +22,6 @@ class AjouterListesSpectaclesController
 
     public function index(): View
     {
-//        var_dump($_SESSION);
         $id_gestionnaire = $_SESSION['id_utilisateur'] ?? null;
         $id_festival_actif = HttpHelper::getParam("id_festival") ?? null;
         $nom_festival = HttpHelper::getParam("nom_festival") ?? null;

@@ -25,11 +25,11 @@ INSERT INTO `taille_scene` (`taille`) VALUES
 -- Insertion dans la table `festival`
 INSERT INTO festival (nom, description, debut, fin, id_categorie, id_responsable, `duree_entre_spectacle`, heure_debut_spectacles, heure_fin_spectacles, illustration)
 VALUES
-('Bonne année', 'premier festival de l\'année', '2024-01-01', '2024-01-07', 1, 1, 10, '12:00:00', '23:59:59', 'BonneAnnee.jpg'),
-('festival de quentin', 'premier festival pour quentin', '2024-01-10', '2024-01-11', 1, 1, 10, '12:00:00', '23:59:59', 'FestivalQuentin.jpg'),
+('Bonne année', 'premier festival de l\'année', '2024-01-01', '2024-01-07', 1, 1, 10, '12:00:00', '23:59:00', 'BonneAnnee.jpg'),
+('festival de quentin', 'premier festival pour quentin', '2024-01-10', '2024-01-11', 1, 1, 10, '12:00:00', '23:59:00', 'FestivalQuentin.jpg'),
 ('Festival de Printemps', 'Célébration du renouveau printanier', '2024-03-20', '2024-03-25', 2, 2, 15, '10:00:00', '22:00:00', 'FestivalPrintemps.jpg'),
 ('Nuit des Arts', 'Exploration artistique nocturne', '2024-04-15', '2024-04-16', 3, 3, 20, '18:00:00', '04:00:00', 'NuitArt.jpg'),
-('Festival du Cinéma', 'Hommage au septième art', '2024-05-10', '2024-05-15', 4, 4, 30, '02:00:00', '23:59:59', 'FestivalCinema.jpg'),
+('Festival du Cinéma', 'Hommage au septième art', '2024-05-10', '2024-05-15', 4, 4, 30, '02:00:00', '23:59:00', 'FestivalCinema.jpg'),
 ('Fête de la Musique', 'Célébration de la musique', '2024-06-21', '2024-06-25', 5, 1, 15, '12:00:00', '23:00:00', 'FeteMusique.jpg'),
 ('Festival de la Mode', 'Défilés et tendances', '2024-09-05', '2024-09-10', 1, 6, 25, '11:00:00', '21:00:00', 'FestivalMode.jpg'),
 ('Carnaval Coloré', 'Joie, couleurs et déguisements', '2024-02-25', '2024-02-26', 2, 7, 10, '14:00:00', '23:00:00', 'CarnavalCouleur.jpg'),
