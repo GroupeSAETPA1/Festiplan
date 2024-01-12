@@ -9,7 +9,7 @@ $dbName = 'festiplan';
 // Informations de connexion FTP
 $ftpHost = 'node178-eu.n0c.com';
 $ftpUser = 'ftp@festiplan.go.yo.fr';
-$ftpPass = 'DNG50jG0:GejN:0rl2';
+$ftpPass = '*bN.t*IbNN*f**.6a.';
 $ftpDir = '/home/vhjxwkvz/backupDB';
 
 // Chemin de sauvegarde local
