@@ -102,6 +102,9 @@ a {
 .entete-section .titre-section {
   color: #99E1D9;
 }
+.entete-section form {
+  margin: 0;
+}
 .entete-section .bouton-ajouter-spectacle {
   background-color: #F7A072;
 }
@@ -113,30 +116,25 @@ a {
   border-radius: 1vh;
   cursor: pointer;
 }
-.entete-section .bouton-ajouter-spectacle button span, .entete-section .bouton-ajouter-spectacle button i {
+.entete-section .bouton-ajouter-spectacle button span, .entete-section .bouton-ajouter-spectacle button i, .entete-section .bouton-ajouter-spectacle button svg {
   font-size: 1.2rem;
 }
 
-.accordeon {
+.container-card-spectacles {
   background-color: #363732;
   width: 90%;
   padding: 1.5vh;
 }
-.accordeon .bouton-drop-down {
+.container-card-spectacles .aucun-spectacle {
+  color: #F0F7F4;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  background-color: #F0F7F4;
-  padding: 1vh;
+  justify-content: center;
+  padding: 2rem;
 }
-.accordeon .bouton-drop-down i {
-  font-size: 1.7rem;
-  margin: 0 1vh 0 0;
+.container-card-spectacles .aucun-spectacle div {
+  font-size: 1.5rem;
 }
-.accordeon .bouton-drop-down:hover {
-  background-color: #cccccc;
-}
-.accordeon .card-spectacles {
+.container-card-spectacles .card-spectacles {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -145,25 +143,25 @@ a {
   margin: 1vh 0;
   background-color: #F0F7F4;
 }
-.accordeon .card-spectacles .img-spectacle {
+.container-card-spectacles .card-spectacles .img-spectacle {
   min-height: 20vh;
   display: flex;
   align-items: center;
   background-color: #cccccc;
 }
-.accordeon .card-spectacles .img-spectacle img {
+.container-card-spectacles .card-spectacles .img-spectacle img {
   margin: 1vh;
 }
-.accordeon .card-spectacles p, .accordeon .card-spectacles div {
+.container-card-spectacles .card-spectacles p, .container-card-spectacles .card-spectacles div {
   margin: 0 1vh;
 }
-.accordeon .card-spectacles .nom-spectacle {
+.container-card-spectacles .card-spectacles .nom-spectacle {
   font-weight: bold;
 }
-.accordeon .card-spectacles .group-categories {
+.container-card-spectacles .card-spectacles .group-categories {
   max-width: 40vh;
 }
-.accordeon .card-spectacles .duree {
+.container-card-spectacles .card-spectacles .duree {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -172,11 +170,11 @@ a {
 .btn-retirer-spectacle {
   border-radius: 1vh;
 }
-.btn-retirer-spectacle i {
+.btn-retirer-spectacle i, .btn-retirer-spectacle svg {
   font-size: 4vh;
   margin: 0.5vh;
 }
-.btn-retirer-spectacle .fa-times {
+.btn-retirer-spectacle .fa-times, .btn-retirer-spectacle .fa-xmark {
   color: red;
 }
 .btn-retirer-spectacle:hover {

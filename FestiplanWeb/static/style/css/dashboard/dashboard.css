@@ -70,7 +70,7 @@ form {
   font-size: 2.5vh;
   color: #363732;
 }
-.entete-section a div i {
+.entete-section a div i, .entete-section a div svg {
   font-size: 3vh;
   margin: 1vh;
 }
@@ -133,6 +133,7 @@ form {
   justify-content: center;
   align-items: center;
   width: 20%;
+  height: 25vh;
 }
 
 .nom-spectacle, .nom-festival {
@@ -154,7 +155,7 @@ form {
 .group-boutons {
   display: flex;
 }
-.group-boutons i {
+.group-boutons i, .group-boutons svg {
   font-size: 4vh;
   margin: 1vh;
 }

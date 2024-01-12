@@ -8,7 +8,7 @@ body {
   margin: 0;
 }
 
-.Retour {
+.btn-retour {
   line-height: 2;
   padding: 0 20px;
   font-size: 1rem;
@@ -17,7 +17,7 @@ body {
   border-style: none;
   background-color: #F7A072;
 }
-.Retour:hover {
+.btn-retour:hover {
   background-color: #f6905a;
 }
 
