@@ -90,7 +90,6 @@ class DefaultComponentFactory implements ComponentFactory
             "Home" => $this->buildUserController(),
             "Dashboard" => $this->buildDashboardController(),
             "Planification" => $this->buildPlanificationController(),
-            "Error" => $this->buildError504Controller(),
             "AccesListeSpectacles" => $this->buildAccesListeSpectaclesController(),
             "AjouterListesSpectacles" => $this->buildAjouterListesSpectaclesController(),
             "AccesListeScene" => $this->buildAccesListeSceneController(),
@@ -101,7 +100,7 @@ class DefaultComponentFactory implements ComponentFactory
             "SupressionFestival" => $this->buildSupressionFestivalController(),
             "SupressionSpectacle" => $this->buildSupressionSpectacleController(),
             "EditFestival" => $this->buildEditFestival(),
-            default => throw new NoControllerAvailableForNameException($controller_name)
+            default => $this->buildError504Controller()
         };
     }
 
