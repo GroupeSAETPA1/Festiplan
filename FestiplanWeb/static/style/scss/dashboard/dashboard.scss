@@ -68,7 +68,7 @@ form {
             font-size: 2.5vh;
             color: $dark-grey;
 
-            i {
+            i, svg {
                 font-size: 3vh;
                 margin: 1vh;
             }
@@ -165,7 +165,7 @@ form {
 .group-boutons {
     display: flex;
 
-    i {
+    i, svg {
         font-size: 4vh;
         margin: 1vh
     }
