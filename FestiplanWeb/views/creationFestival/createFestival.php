@@ -46,9 +46,7 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
 
     <div class="retour">
         <a href="/Festiplan/FestiplanWeb/?controller=Dashboard">
-        <button class="Retour">
-            <i class="fa-solid fa-arrow-left"></i> Retour
-        </button>
+            <button class="btn-retour"><i class="fa-solid fa-arrow-left"></i> Retour</button>
         </a>
     </div>
     <form method="post" action="index.php" enctype="multipart/form-data">
