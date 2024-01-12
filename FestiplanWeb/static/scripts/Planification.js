@@ -1,6 +1,6 @@
 let festival;
 let spectacles;
-let couleursEvents = ["#182825", "#016FB9", "#22AED1", "#FF7F11", "#FF1B1C"];
+let couleursEvents = ["#FF7F11",  "#016FB9", "#22AED1", "#182825", "#FF1B1C"];
 
 
 function getDataFestival() {
@@ -50,7 +50,6 @@ construireCalendrier();
 
 async function construireCalendrier() {
     await getAllData();
-    console.log(festival)
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'timeGridCustomDuration',
@@ -106,6 +105,17 @@ async function construireCalendrier() {
         events: await displayEvents()
     });
     calendar.render();
+    let couleurScenes = document.getElementById("couleurScenes")
+    let listeScene = [];
+    for (let i in spectacles) {
+        if (!listeScene.includes(spectacles[i].nomScene)) {
+            listeScene.push(spectacles[i].nomScene)
+        }
+    }
+
+    for (let j = 0; j < listeScene.length; j++) {
+        couleurScenes.innerHTML += listeScene[j] + " : <input type=\"color\" id=\"favcolor\" name=\"favcolor\" value=\"" + couleursEvents[j] + "\" disabled> | "
+    }
 }
 async function displayEvents() {
     // Pour restreindre le placement de spectacles à la durée du festival
@@ -129,13 +139,13 @@ async function displayEvents() {
         dateHeureFinFestival.setDate(dateHeureFinFestival.getDate() + 1);
     } 
 
-    // for (let i = 0; i < spectacles.length; i++) {
+    for (let i = 0; i < spectacles.length; i++) {
 
-    //     if (spectacles[i].duree > dureeMaxSpectacle) {
-    //         alert("Le spectacle \"" + spectacles[i].nom + "\" a une durée trop grande pour le festival \"" + festival.nom + "\". Il sera donc ignoré")
-    //         spectacles.splice(i,i);
-    //     }
-    // }
+        if (spectacles[i].duree > dureeMaxSpectacle) {
+            alert("Le spectacle \"" + spectacles[i].nom + "\" a une durée trop grande pour le festival \"" + festival.nom + "\". Il sera donc ignoré")
+            spectacles.splice(i,i);
+        }
+    }
     
     for (let i = 0; i < spectacles.length; i++) {
 
@@ -153,7 +163,7 @@ async function displayEvents() {
             end: dateFinSpectacle,
             constraint: 'heureValideFestival',
             overlap: 'none',
-            backgroundColor: couleursEvents[spectacles[i].id_scene % 5], // Pour avoir une couleur de fond parmis les 5 proposées en fonction de la scène
+            backgroundColor: couleursEvents[(spectacles[i].id_scene % 5) - 1], // Pour avoir une couleur de fond parmis les 5 proposées en fonction de la scène
         });
     }
     return events;
@@ -184,25 +194,13 @@ async function planifieSpectacle(dateFinDernierSpectacle, dureeEntreSpectacles, 
         finTheoriqueProchainSpectacle = new Date(finDernierSpectacle);
         finTheoriqueProchainSpectacle.setMinutes(finTheoriqueProchainSpectacle.getMinutes() + dureeEntreSpectacles + spectacleApres.duree);
 
-        console.log(finTheoriqueProchainSpectacle + spectacles[i+1].nom + " OUA VS " + dateHeureFinFestival)
-        console.log(finTheoriqueProchainSpectacle > dateHeureFinFestival)
-
         // Si le spectacle dépasse l'heure max du festival, on le mets au lendemain si heurefin < 23H59, sinon on le mets a l'heure de debut de festival 
         if (finTheoriqueProchainSpectacle > dateHeureFinFestival) {
             if (festival.heure_fin_spectacles > festival.heure_debut_spectacles) {
-                console.log("LA CALOTTE DE SES MORT")
                 finDernierSpectacle.setDate(finDernierSpectacle.getDate() + 1);
             }
             dateHeureFinFestival.setDate(dateHeureFinFestival.getDate() + 1);
             finDernierSpectacle.setHours(festival.heure_debut_spectacles.split(":")[0], festival.heure_debut_spectacles.split(":")[1]);
-        }
-
-        if (finDernierSpectacle.getDay()   > festival.fin.split("-")[2]
-         || finDernierSpectacle.getMonth() > festival.fin.split("-")[1]
-         || finDernierSpectacle.getYear()  > festival.fin.split("-")[0]) {
-             alert("Il y a trop de spectacles sur la scene \"" + spectacles[i].nomScene + "\". Le spectacle " + spectacles[i].nom
-             + " et tout les spectacles suivants sur la même scène seront ignorés");
-             finDernierSpectacle.setDate(9999) // TODO
         }
 
     } else {

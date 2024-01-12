@@ -63,6 +63,9 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
                             <!-- DIV complétée par la librairie fullcalendar -->
                         </div>
                     </div>
+                    <br>
+                    <div id="couleurScenes">
+                    </div>
                 </div>
             </div>
         </div>
