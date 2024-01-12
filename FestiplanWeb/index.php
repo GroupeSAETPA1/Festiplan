@@ -23,6 +23,7 @@ $data_source = new DataSource(
 );
 $router = new Router(new DefaultComponentFactory());
 try {
+
     $router->route(PREFIX_TO_RELATIVE_PATH,$data_source);
 } catch (PDOException $e) {
     throw $e;

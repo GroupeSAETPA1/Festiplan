@@ -1,0 +1,177 @@
+@import '../main';
+@import "../util";
+
+.app {
+    justify-content: center;
+    align-items: center;
+}
+
+.retour {
+    padding: 10px 25px;
+
+    .btn-retour {
+        line-height: 2;
+        padding: 0 20px;
+        font-size: 1rem;
+        text-align: center;
+        border-radius: 30px;
+        border-style: none;
+        background-color: $orange;
+
+        &:hover {
+            background-color: darken($orange, 5);
+        }
+    }
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    .title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 50px;
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+    }
+}
+
+.wrapper {
+    padding: 0 10vh;
+
+    hr {
+        margin: 40px 0;
+        height: 4px;
+        background-color: $dark-grey;
+        border: none;
+        width: 100%;
+    }
+}
+
+.card-festival {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    background-color: $dark-grey;
+    color: $white;
+    padding: 1vh;
+
+    .haut-card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 90%;
+
+        > div {
+            margin: 1vh;
+        }
+
+
+    }
+}
+
+.card-spectacle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    background-color: $dark-grey;
+    color: $white;
+    padding: 1vh;
+
+    .description-spectacle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        > div {
+            margin: 0.5vh;
+        }
+    }
+}
+
+.categorie {
+    max-width: fit-content;
+    flex: 1 1 auto;
+    text-align: center;
+    padding: 0.25vh 0.5vh;
+    margin: 0 0.25vh 0.25vh 0;
+
+    background-color: $white;
+    color: $dark-grey;
+
+    border-radius: 1vh;
+}
+
+.valid-annul-placement { //contient les boutons page suivant ou valider et annuler choix
+    margin-top: 250px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10vh;
+
+    .lastButton {
+        height: 4.8vh;
+        padding: 0 30px;
+        font-size: 1rem;
+        text-align: center;
+        border-style: none;
+        cursor: pointer;
+        line-height: 2.7;
+    }
+
+    .annulChoix {
+        background-color: $light-blue;
+        transition: 0.3s ease;
+
+        &:hover {
+            background-color: darken($light-blue, 5);
+            scale: 1.05;
+        }
+    }
+
+    .supprimer {
+        background-color: $orange;
+        transition: 0.3s ease;
+
+        &:hover {
+            background-color: darken($orange, 5);
+            scale: 1.05;
+        }
+    }
+}
+
+//Téléphone
+@media screen and (max-width: 700px) {
+    .img-festival, .label-categorie, .label-description {
+        display: none;
+    }
+
+    .card-spectacle {
+        flex-direction: column;
+    }
+
+    .wrapper {
+        padding: 0 2vh;
+    }
+
+    .description-festival {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        p {
+            padding: 0 1vh;
+        }
+    }
+}
