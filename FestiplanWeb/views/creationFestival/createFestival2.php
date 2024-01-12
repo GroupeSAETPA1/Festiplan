@@ -44,12 +44,12 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
                         <div>
 
                             <h3><i class="fa-solid fa-circle-exclamation"></i>Heure de début des spactacles de la journée : </h3>
-                            <input class="text" type="time" id="HDS" name="HDS" min="09:00" max="18:00" value="<?php echo $debutSpectacle ?: "" ?>"/>
+                            <input class="text" type="time" id="HDS" name="HDS"  value="<?php echo $debutSpectacle ?: "" ?>"/>
                         </div>
                         <div>
 
                             <h3><i class="fa-solid fa-circle-exclamation"></i>Heure de fin des spactacles de la journée : </h3>
-                            <input class="text" type="time" id="HFS" name="HFS" min="09:00" max="18:00" value="<?php echo $finSpectacle ?: "" ?>"/>
+                            <input class="text" type="time" id="HFS" name="HFS" value="<?php echo $finSpectacle ?: "" ?>"/>
                         </div>
                         <div>
 

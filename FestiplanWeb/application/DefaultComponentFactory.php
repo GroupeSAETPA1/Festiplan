@@ -24,6 +24,7 @@ use controllers\AccesListeSpectaclesController;
 use controllers\AjouterListesSceneController;
 use controllers\AjouterListesSpectaclesController;
 use controllers\CreateFestivalController;
+use controllers\EditFestivalController;
 use controllers\CreateSceneController;
 use controllers\ErrorController;
 use controllers\SupressionFestivalController;
@@ -36,6 +37,7 @@ use services\AccesListeSpectaclesService;
 use services\AjouterListesSceneServices;
 use services\AjouterListesSpectaclesServices;
 use services\createFestivalService;
+use services\EditFestivalService;
 use services\SupressionFestivalServices;
 use services\SupressionSpectacleService;
 use services\CreateSceneService;
@@ -74,6 +76,8 @@ class DefaultComponentFactory implements ComponentFactory
     private ?AjouterListesSceneServices $ajouterListesSceneServices = null;
     private ?CreateSceneService $createSceneService = null;
 
+    private ?EditFestivalService $editFestivalService = null;
+
     /**
      * @param string $controller_name the name of the controller to instanciate
      * @return mixed the controller
@@ -98,8 +102,8 @@ class DefaultComponentFactory implements ComponentFactory
             "Settings" => $this->buildSettingsController(),
             "SupressionFestival" => $this->buildSupressionFestivalController(),
             "SupressionSpectacle" => $this->buildSupressionSpectacleController(),
-            default => throw new NoControllerAvailableForNameException($controller_name),
-
+            "EditFestival" => $this->buildEditFestival(),
+            default => throw new NoControllerAvailableForNameException($controller_name)
         };
     }
 
@@ -121,6 +125,7 @@ class DefaultComponentFactory implements ComponentFactory
             "AccesListeScene" => $this->buildAccesListeSceneService(),
             "AjouterListesScene" => $this->buildAjouterListesSceneService(),
             "CreateSpectacle" => $this->buildCreateSpectacleService(),
+            "EditFestival" => $this->buildEditFestivalService(),
             "CreateScene" => $this->buildCreateSceneService(),
             default => throw new NoServiceAvailableForNameException($service_name)
         };
@@ -165,6 +170,20 @@ class DefaultComponentFactory implements ComponentFactory
             $this->createFestivalService = new createFestivalService($pdo);
         }
         return $this->createFestivalService;
+    }
+
+    private function buildEditFestival(): EditFestivalController
+    {
+        return new EditFestivalController($this->buildEditFestivalService());
+    }
+
+    private function buildEditFestivalService(): EditFestivalService
+    {
+        if($this->createFestivalService == null) {
+            $pdo = $this->getPDO("root", "admin");
+            $this->editFestivalService = new EditFestivalService($pdo);
+        }
+        return $this->editFestivalService;
     }
 
     /**
