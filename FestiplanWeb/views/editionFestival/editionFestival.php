@@ -45,7 +45,6 @@
                                     <select name="categorie">
                                         <?php
                                         foreach ($tableauCategorie as $ligne) {
-                                            //var_dump($tableauCategorie);
                                             echo '<option';
                                             if ($_SESSION['categorie_editer'] == $ligne['id_categorie']) {
                                                 echo 'selected';
