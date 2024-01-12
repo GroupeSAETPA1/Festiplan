@@ -1,6 +1,4 @@
 <!doctype html>
-</body>
-</html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -14,6 +12,8 @@
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/footer.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/header.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createSpectacle/createSpectacle.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/formsInput/image.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/formsInput/input.css">
     <!-- Font Awesome -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -78,46 +78,50 @@
             </div>
             <div>
                 <div class="custom-file-input-wrapper"
-                    <h3 class="custom-file-input-text">Illustration :</h3></br>
+                <h3 class="custom-file-input-text">Illustration :</h3></br>
                 <?php
                 if ($_SESSION['illustration_editer'] != 'null') {
                     echo '<img src="/Festiplan/FestiplanWeb/datas/img/' . $_SESSION['illustration_editer'] . '" alt="Illustration du festival" class="illustration">';
                 }
                 ?>
-                    <label class="custom-file-input" for="fileInput"><i
-                                class="fa-solid fa-image"></i>Parcourir</label>
-                    <input type="file" id="fileInput" name="imageFestival" accept=".jpg, .jpeg, .png, .gif"/>
+                <label class="custom-file-input" for="fileInput"><i
+                            class="fa-solid fa-image"></i>Parcourir</label>
+                <input type="file" id="fileInput" name="imageFestival" accept=".jpg, .jpeg, .png, .gif"/>
+            </div>
+            <div class="format">
+                <br>Format PNG,JPG,GIF</br>
+                <br>800x600</br>
+            </div>
+        </div>
+        <div>
+            <div class="flex-row">
+                <div class="flex-column">
+                    <div>
+                        <h3><i class="fa-solid fa-circle-exclamation"></i>Heure de début des spectacles :</h3>
+                        <input class="text" type="time" name="heure_debut_spectacle"
+                               value="<?php echo $heure_debut_spectacle ?>"/>
+                    </div>
+                    <div>
+                        <h3><i class="fa-solid fa-circle-exclamation"></i>Heure de fin des spectacles :</h3>
+                        <input class="text" type="time" name="heure_fin_spectacle"
+                               value="<?php echo $heure_fin_spectacle ?>"/>
+                    </div>
                 </div>
-                <div class="format">
-                    <br>Format PNG,JPG,GIF</br>
-                    <br>800x600</br>
+                <div class="flex-column">
+                    <div>
+                        <h3><i class="fa-solid fa-circle-exclamation"></i>Durée entre les spectacles :</h3>
+                        <input class="text" type="text" name="duree_entre_spectacle"
+                               value="<?php echo $duree_entre_spectacle ?>"/>
+                    </div>
                 </div>
             </div>
-            <div>
-                <div class="flex-row">
-                    <div class="flex-column">
-                        <div>
-                            <h3><i class="fa-solid fa-circle-exclamation"></i>Heure de début des spectacles :</h3>
-                            <input class="text" type="time" name="heure_debut_spectacle"
-                                   value="<?php echo $heure_debut_spectacle ?>"/>
-                        </div>
-                        <div>
-                            <h3><i class="fa-solid fa-circle-exclamation"></i>Heure de fin des spectacles :</h3>
-                            <input class="text" type="time" name="heure_fin_spectacle"
-                                   value="<?php echo $heure_fin_spectacle ?>"/>
-                        </div>
-                    </div>
-                    <div class="flex-column">
-                        <div>
-                            <h3><i class="fa-solid fa-circle-exclamation"></i>Durée entre les spectacles :</h3>
-                            <input class="text" type="text" name="duree_entre_spectacle"
-                                   value="<?php echo $duree_entre_spectacle ?>"/>
-                        </div>
-                    </div>
-                </div>
+            <div class="button-flex-end">
+                <button type="submit" class="valider">Editer<i class="fa-solid fa-arrow-right"></i></button>
             </div>
         </div>
 </div>
+<input hidden name="action" value="editerFestival">
+<input hidden name="controller" value="EditFestival">
 </form>
 </div>
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/footer.php" ?>
