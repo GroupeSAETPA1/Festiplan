@@ -1,0 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"); /* declaration des variables */
+body {
+  margin: 0;
+}
+
+/* ne codez pas ici, c'est le fichier pour les variables, etc. */
+body {
+  min-height: 100vh;
+  background-color: #F0F7F4;
+  color: #363732;
+  font-family: "Rubik", sans-serif;
+  margin: 0;
+}
+
+.app {
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  padding: 0 10vh;
+}
+.wrapper hr {
+  margin: 40px 0;
+  height: 4px;
+  background-color: #363732;
+  border: none;
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.dureeInput {
+  font-size: 1rem;
+}
+
+.container {
+  justify-content: center;
+  flex-direction: column;
+}
+.container .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.container .title h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.NDD {
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.Description {
+  padding: 0 13px;
+  width: 80vw;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.first-row {
+  justify-content: space-between;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.valid-annul-placement {
+  margin-top: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10vh;
+}
+.valid-annul-placement .lastButton {
+  height: 4.8vh;
+  padding: 0 30px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  cursor: pointer;
+  line-height: 2.7;
+}
+.valid-annul-placement .annulChoix {
+  background-color: #F7A072;
+  transition: 0.3s ease;
+}
+.valid-annul-placement .annulChoix:hover {
+  background-color: #f6905a;
+  scale: 1.05;
+}
+.valid-annul-placement .page-suivante {
+  background-color: #99E1D9;
+  transition: 0.3s ease;
+}
+.valid-annul-placement .page-suivante:hover {
+  background-color: #85dbd2;
+  scale: 1.05;
+}
+.valid-annul-placement .page-suivante a {
+  text-decoration: none;
+  color: black;
+}
+
+.fa-circle-exclamation {
+  color: red;
+}
+
+.fa-solid {
+  margin: 5px;
+}
+
+.retour {
+  padding: 10px 25px;
+}
+.retour .btn-retour {
+  line-height: 2;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #F7A072;
+}
+.retour .btn-retour:hover {
+  background-color: #f6905a;
+}
+
+.creationCompte {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 50%;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+/*# sourceMappingURL=creationSpectacle.css.map */

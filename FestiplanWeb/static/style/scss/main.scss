@@ -5,5 +5,16 @@ $light-blue: #99E1D9;
 $white: #F0F7F4;
 $orange: #F7A072;
 $gris : darken(#FFF, 20);
+body {
+  margin : 0;
+};
 
 /* ne codez pas ici, c'est le fichier pour les variables, etc. */
+
+body {
+  min-height: 100vh;
+  background-color: $white;
+  color: $dark-grey;
+  font-family: $font-family;
+  margin: 0;
+}

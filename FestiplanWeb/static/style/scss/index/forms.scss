@@ -64,6 +64,7 @@
 .colonneCreationCompte {
     display: flex;
     flex-direction: column;
+    margin: 0 10px;
 }
 
 .connexion {
@@ -93,7 +94,7 @@
         color: $dark-grey;
     }
 
-    .Retour {
+    .btn-retour {
         background: $orange;
         color: $dark-grey;
 
@@ -108,4 +109,29 @@
             padding: 10px;
         }
     }
+  opacity: 0;
+  display: none;
+  .form-duo {
+    display: flex;
+    justify-content: space-between;
+  }
+  button {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+  }
+  .boutonCreation {
+    background: $light-blue;
+    color: $dark-grey;
+  }
+  .lastSection {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+  .colonneCreationCompte {
+    width: 100%;
+    padding: 10px;
+  }
 }

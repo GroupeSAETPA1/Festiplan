@@ -1,0 +1,116 @@
+@import "../main";
+
+.information-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-bottom: 1rem;
+
+
+    .block {
+        background: $dark-grey;
+        border-radius: 20px;
+        padding: 2rem;
+        width: 35vw;
+        .successMessage {
+            color: #60f160;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+    }
+    .errorMessage {
+        color: red;
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+
+    .informations {
+        display: flex;
+        flex-direction: column;
+
+        height: 100%;
+
+        h3 {
+            color: white;
+        }
+
+        h2 {
+            color: white;
+
+            flex: none;
+        }
+
+        > form {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            flex: 1;
+
+            > .inputs {
+                flex: none;
+            }
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin: 1rem;
+
+            a {
+                text-decoration: none;
+            }
+            button {
+                border-radius: 20px;
+                border-style: none;
+                padding: 0.5rem;
+                width: 15rem;
+                font-size: 1.2rem;
+            }
+            .valider {
+                background: $light-blue;
+            }
+            .annuler {
+                background: $orange;
+            }
+            .supprimerCompte {
+                width: 100%;
+                background: #db6969;
+            }
+            .decconnecter {
+                width: 100%;
+                background: $light-blue;
+            }
+        }
+    }
+
+}
+hr {
+    height: 2px !important
+}
+
+
+input[type="text"]{
+    height:5vh;
+    width:100%;
+    border-radius: 1vh;
+    border-style: none;
+}
+
+input[type="email"]{
+    height:5vh;
+    width:100%;
+    border-radius: 1vh;
+    border-style: none;
+}
+
+input[type="password"]{
+    height:5vh;
+    width:100%;
+    border-radius: 1vh;
+    border-style: none;
+}

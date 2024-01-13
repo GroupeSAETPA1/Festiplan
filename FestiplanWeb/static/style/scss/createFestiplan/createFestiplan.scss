@@ -19,7 +19,7 @@ header {
     display: flex;
     align-items: center;
 
-    i {
+    i, svg {
       color: $orange;
       font-size: 2rem;
       padding-right: 10%;
@@ -31,13 +31,14 @@ header {
   padding: 0 10vh;
 }
 
+
 .container{
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
 
-.NDD{
+.NDD{ //abrevation de Nom - Date Début - Date Fin
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -53,9 +54,11 @@ header {
   flex-direction: row;
 }
 .first-row{
+  display: flex;
   justify-content: space-between;
 }
 .end-row{
+  display : flex;
   align-items: flex-end;
 }
 
@@ -64,51 +67,26 @@ header {
   flex-direction: column;
 }
 
-.valid-annul-placement{
+.valid-annul-placement{  //contient les boutons page suivant ou valider et annuler choix
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  margin-top: 10vh;
+  justify-content: space-around;
+  margin-top: 120px;
 }
 
-hr {
-  overflow: visible;
-  text-align: center;
-  border: none;
-  height: 0.2vh;
-  background-color: $dark-grey;
-  margin-top: 10vh;
-  margin-bottom: 10vh;
-  width: 100vh;
-}
 
 .fa-circle-exclamation {
   color: red;
-  margin: 0.5vh;
+
+}
+.fa-solid {
+  margin: 5px;
 }
 
-.fa-image{
-  margin: 0.5vh;
+.buttons {
+  display: flex;
+  flex-direction: row;
 }
-
-.fa-circle-xmark{
-  margin: 0.5vh;
-}
-.fa-arrow-right{
-  margin: 0.5vh;
-}
-.fa-check{
-  margin: 0.5vh;
-}
-
-.fa-plus{
-  margin: 0.5vh;
-}
-
-.fa-trash-can{
-  margin: 0.5vh;
-}
-
 
 
 

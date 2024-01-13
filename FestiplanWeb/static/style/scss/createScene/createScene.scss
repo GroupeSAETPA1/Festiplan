@@ -1,0 +1,45 @@
+@import '../main';
+
+.wrapper {
+    margin-top: 50px;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .erreur {
+            color: red;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .input {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 100%;
+        }
+
+        input[name="longitude"], input[name="latitude"], input[type="number"] {
+            padding: 10px;
+            width: 100%;
+        }
+
+        select {
+            padding: 10px;
+            width: 100%;
+        }
+
+        .valid-annul-placement {
+            width: 100%;
+            margin-top: 20px;
+            button {
+                width: 100%;
+            }
+        }
+    }
+}

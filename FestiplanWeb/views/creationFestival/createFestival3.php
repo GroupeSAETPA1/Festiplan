@@ -1,3 +1,11 @@
+<?php
+
+// vérification de la connexion
+if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
+    header('Location: /Festiplan/FestiplanWeb/?controller=Home');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -6,90 +14,84 @@
 
         <!-- Lien vers mon CSS -->
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/createFestiplan.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/page3CreationFestival.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/footer.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/header.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/button.css">
-        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/image.css">
-        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/input.css">
-        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/footer.css">
-        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svg.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/formsInput/image.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/formsInput/input.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svgInFolder.css">
 
+        <!-- Font Awesome -->
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+              integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+              crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        <link rel="stylesheet" href="/Festiplan/framework/fontawesome-free-6.2.1-web/css/all.css">
-
+        <!-- Scripts -->
+        <!-- GSAP -->  <!-- Jquery -->
+        <script src="/Festiplan/node_modules/gsap/dist/gsap.min.js"></script>
+        <script src="/Festiplan/node_modules/jquery/dist/jquery.min.js"></script>
+        <!-- custom js -->
+        <script src="/Festiplan/FestiplanWeb/static/scripts/responsive/footerResponsive.js" defer></script>
+        <script src="/Festiplan/FestiplanWeb/static/scripts/page3CreationFestival.js" defer></script>
     </head>
     <body>
-        <header>
-            <div class="logo">
-                <i class="fa-solid fa-calendar-days"></i>
-                <span>Festiplan</span>
-            </div>
-            <div>
-                <div>
-                    <button class="mon-compte"><i class="fa-solid fa-user"></i> Mon Compte</button>
-                </div>
-            </div>
-        </header>
-
+    <div class="app">
+    <?php include_once $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/header.php" ?>
         <div class="retour">
-            <a href="createFestival2.php"><button class="Retour"><i class="fa-solid fa-arrow-left"></i> Retour</button></a>
+            <a href=/Festiplan/FestiplanWeb/?controller=CreateFestival&action=page1>
+                <button class="Retour">
+                    <i class="fa-solid fa-arrow-left"></i> Retour
+                </button>
+            </a>
         </div>
-        <form action="index.php" method ="post">
-            <input hidden name="action" value="validerPage3">
-            <input hidden name="controller" value="CreateFestival">
-        <div class="wrapper">
-            <div class="container">
+    <form>
+        <div class="wrapperCustomInput">
+            <div class="custom-select">
+                <label for="inter">Organisateur :</label>
+                <div class="text">Veuillez rentrer l'email du compte, </br>le compte n'existe pas, vous pouvez le crer avec le + </div>
+                <div class="rowCustomInput">
+                    <input id="orga" type="text" placeholder="exemple@mail.fr">
+                    <div class="button-add-orga">
+                        <i class="fa-solid fa-plus"></i>
 
-            <div class="flex-row end-row">
-                <div>
-                    <h3><i class="fa-solid fa-circle-exclamation"></i>Spectacle :</h3>
-
-                    <select name ='spectacle'>
-                        <option value="vide"></option>
-                        <?php
-                        foreach ($tableauSpectacle as $ligne) {
-                            echo "<option value ='".$ligne['nom']."'>".$ligne['nom']."</option>";
-                        }
-                        ?>
-                    </select>
-
-
+                        Ajouter l'organisateur
+                    </div>
                 </div>
-                <div class="ajouter">
-                    Ajouter un Spectacle  <i class="fa-solid fa-plus"></i> <!-- TODO fontawesome -->
+                <div class="selections">
+                    <!-- rempli avec le js -->
                 </div>
             </div>
-
-            <div class="flex-row end-row">
-                <div>
-                    <h3><i class="fa-solid fa-circle-exclamation"></i>Scène :</h3>
-                    <select name="scene">
+            <div class="custom-select">
+                <label for="scene">Scene :</label>
+                <div class="text">Veuillez selectioner les scenes que vous souhaitez utilisez</div>
+                <div class="rowCustomInput">
+                    <select id="listeScene">
                         <option value="vide"></option>
                         <?php
                             foreach ($tableauScene as $ligne) {
-                                echo "<option value='".$ligne['taille']."'>".$ligne['taille']."</option>" ;
+                                echo '<option value="'.$ligne['nomScene'].'">'.$ligne['nomScene'].' - ' .$ligne['nb_spectateurs'].'</option>';
                             }
                         ?>
                     </select>
                 </div>
-                <div class="ajouter">
-                    Ajouter une Scène<i class="fa-solid fa-plus"></i>  <!-- TODO fontawesome -->
+                <div class="sceneSelect">
+                    <!-- rempli avec le js -->
                 </div>
             </div>
-            </div>
-            </div>
-
-            <div class="valid-annul-placement">
-                <button class="ajoutGrij">Générer une GRIJ</button>
-            </div>
-
+        </div>
         <div class="valid-annul-placement">
             <div class="annulChoix">
-                <i class="fa-regular fa-circle-xmark"></i>Annuler vos choix  <!-- TODO fontawesome -->
+                <i class="fa-regular fa-circle-xmark"></i>Annuler vos choix <!-- TODO fontawesome -->
             </div>
             <div class="button-flex-end">
-                <button class="valider">Valider <i class="fa-solid fa-check"></i></button>
+                <button type="submit" class="valider">Page Suivante<i class="fa-solid fa-arrow-right"></i></button>
             </div>
-        </div>
-        </form>
-         <?php include_once $_SERVER['DOCUMENT_ROOT']. "/Festiplan/FestiplanWeb/static/components/footer/footer.php" ?>
+            <input hidden name="action" value="validerPage2">
+            <input hidden name="controller" value="CreateFestival">
+    </form>
+    </div>
+         <?php include_once $_SERVER['DOCUMENT_ROOT']. "/Festiplan/FestiplanWeb/static/components/footer.php" ?>
     </body>
 </html>

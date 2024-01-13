@@ -5,7 +5,6 @@ body {
     color: $dark-grey;
     font-family: $font-family;
     margin: 0;
-
 }
 
 a {
@@ -15,6 +14,8 @@ a {
 img {
     border-radius: 2vh;
     max-width: 100%;
+    max-height: 18vh;
+
 }
 
 form {
@@ -50,6 +51,11 @@ form {
         margin: 0;
         padding: 1rem;
     }
+    .buttons {
+        display: flex;
+        flex-direction: row;
+
+    }
 
     a {
 
@@ -64,7 +70,7 @@ form {
             font-size: 2.5vh;
             color: $dark-grey;
 
-            i {
+            i, svg {
                 font-size: 3vh;
                 margin: 1vh;
             }
@@ -115,6 +121,19 @@ form {
 
         .group-boutons {
             flex-direction: row;
+            .btn-acces-spectacles {
+                background-color: $gris;
+                margin: 0 1vh;
+                &:hover {
+                    background-color: darken($gris, 20);
+                }
+                .fa-pen-to-square {
+                    font-size: 2vh;
+                }
+                .fa-eye {
+                    font-size: 2vh;
+                }
+            }
         }
     }
 }
@@ -123,6 +142,8 @@ form {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 20%;
+    height: 18vh;
 
 }
 
@@ -147,7 +168,7 @@ form {
 .group-boutons {
     display: flex;
 
-    i {
+    i, svg {
         font-size: 4vh;
         margin: 1vh
     }
@@ -222,7 +243,7 @@ form {
     }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1550px) {
 
     .container-card-festivals {
         grid-template-columns: repeat(1, 1fr);
@@ -238,6 +259,7 @@ form {
     .img-spectacle, .img-festival {
         display: none;
     }
+
 
     .description-festival {
         display: flex;

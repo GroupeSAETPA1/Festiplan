@@ -12,22 +12,35 @@ header {
     display: flex;
     align-items: center;
 
-    i {
+    i, svg {
       color: $orange;
-      font-size: 2rem;
+      font-size: 2.5rem;
       padding-right: 10%;
     }
 
     span {
       color: $white;
+      font-size: 25px;
+      font-weight: lighter;
     }
   }
 
-  .mon-compte div {
-    background-color: $orange;
-    color: $dark-grey;
-    padding: 1vh;
-    margin: 1vh;
-    border-radius: 2vh;
+  .mon-compte {
+    &:hover {
+      cursor: pointer;
+    }
+    div {
+      background-color: $orange;
+      color: $dark-grey;
+      padding: 1vh;
+      margin: 1vh;
+      border-radius: 2vh;
+    }
+
+    span {
+      font-size: 1.3rem;
+      padding: 1vh;
+    }
+
   }
 }

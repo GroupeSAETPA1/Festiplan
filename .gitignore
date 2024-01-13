@@ -58,3 +58,5 @@ Thumbs.db
 *.key
 *.pem
 FestiplanWeb/lib/*
+*.JPG
+*.PNG

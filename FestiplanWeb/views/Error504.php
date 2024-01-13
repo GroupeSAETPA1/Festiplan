@@ -5,6 +5,7 @@
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="icon" href="/Festiplan/FestiplanWeb/datas/img/logo.ico" />
         <title>Festiplan - Erreur 504</title>
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/index/index.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/index/forms.css">
@@ -13,11 +14,7 @@
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/index/responsive.css">
 
         <!-- Font Awesome -->
-        <link rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-              integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-              crossorigin="anonymous"
-              referrerpolicy="no-referrer"/>
+        <script src="https://kit.fontawesome.com/d9b7264c5a.js" crossorigin="anonymous"></script>
 
         <!-- Scripts -->
         <!-- GSAP -->  <!-- Jquery -->
@@ -34,9 +31,10 @@
             <div class="presentation">
                 <i class="fa-regular fa-face-frown"></i>
                 <div class="titre">Error 504 : La base de donnée à eu un problème, veuillez réessayer plus tard</div>
-                <h2><a href="../index.php">Recharger la page</a></h2>
+
             </div>
         </div>
+        <div class="partiePrincipale"><h2><a href="../index.php">Recharger la page</a></h2></div>
     </div>
     <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/footer.php" ?>
     </body>
