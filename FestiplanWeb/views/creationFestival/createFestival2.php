@@ -23,6 +23,7 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svgInFolder.css">
 
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/framework/fontawesome-free-6.2.1-web/css/all.css">
+        <link rel="icon" href="/Festiplan/FestiplanWeb/datas/img/logo.ico" />
 
     </head>
     <body>
