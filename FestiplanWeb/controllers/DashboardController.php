@@ -34,6 +34,12 @@ class DashboardController
         $view->setVar('spectacles',$spectacles);
         $view->setVar('nom', $_SESSION['nom'] ?? '');
         $view->setVar('prenom', $_SESSION['prenom'] ?? '');
+        $_SESSION['nomFestival'] = '' ;
+        $_SESSION['descriptionFestival'] = '' ;
+        $_SESSION['photoFestival'] = '' ;
+        $_SESSION['ddd']  = '' ;
+        $_SESSION['ddf'] = '' ;
+        $_SESSION['categorie'] = '' ;
         return $view;
     }
 }

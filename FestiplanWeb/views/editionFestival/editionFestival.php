@@ -1,3 +1,11 @@
+<?php
+
+// vérification de la connexion
+if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
+    header('Location: /Festiplan/FestiplanWeb/?controller=Home');
+    exit();
+}
+?>
 <!doctype html>
 <html lang="fr">
     <head>
@@ -15,6 +23,8 @@
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createSpectacle/createSpectacle.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/formsInput/image.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/formsInput/input.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/editionFestival/responsive.css">
+        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/button.css">
         <!-- Font Awesome -->
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -31,6 +41,13 @@
         <body>
         <div class="app">
             <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/header.php" ?>
+            <div class="retour">
+                <a href="/Festiplan/FestiplanWeb/?controller=Dashboard">
+                    <button class="btn-retour">
+                        <i class="fa-solid fa-arrow-left"></i> Retour
+                    </button>
+                </a>
+            </div>
             <form method="post" action="index.php" enctype="multipart/form-data">
                 <div class="container">
                     <div class=wrapper>
@@ -69,27 +86,27 @@
                         </div>
                         <div class="Description">
                             <!-- Contient un second bloc avec la description et qui se situe au cote a cote avec le premier bloc -->
-                            <div>
                                 <h3><label for="description">Description :</label>
                                 </h3>
                                 <textarea id="description" name="description"><?php echo $descriptionFestival ?></textarea>
+                        </div>
+                        <div class="illustration">
+                            <div class="custom-file-input-wrapper"
+                                <h3 class="custom-file-input-text">Illustration :</h3></br>
+                                <?php
+                                if ($_SESSION['illustration_editer'] != 'null') {
+                                    echo '<img src="/Festiplan/FestiplanWeb/datas/img/' . $_SESSION['illustration_editer'] . '" alt="Illustration du festival" class="illustration">';
+                                }
+                                ?>
+                                <label class="custom-file-input" for="fileInput">Parcourir</label>
+                                <input type="file" id="fileInput" name="imageFestival" accept=".jpg, .jpeg, .png, .gif"/>
+                            </div>
+                            <div class="format">
+                                <br>Format PNG,JPG,GIF</br>
+                                <br>800x600</br>
                             </div>
                         </div>
-                        <div>
-                            <div class="custom-file-input-wrapper"
-                            <h3 class="custom-file-input-text">Illustration :</h3></br>
-                            <?php
-                            if ($_SESSION['illustration_editer'] != 'null') {
-                                echo '<img src="/Festiplan/FestiplanWeb/datas/img/' . $_SESSION['illustration_editer'] . '" alt="Illustration du festival" class="illustration">';
-                            }
-                            ?>
-                            <label class="custom-file-input" for="fileInput">Parcourir</label>
-                            <input type="file" id="fileInput" name="imageFestival" accept=".jpg, .jpeg, .png, .gif"/>
-                        </div>
-                        <div class="format">
-                            <br>Format PNG,JPG,GIF</br>
-                            <br>800x600</br>
-                        </div>
+
                         <div>
                             <div class="flex-row">
                                 <div class="flex-column">

@@ -31,9 +31,10 @@
             <div class="presentation">
                 <i class="fa-regular fa-face-frown"></i>
                 <div class="titre">Error 504 : La base de donnée à eu un problème, veuillez réessayer plus tard</div>
-                <h2><a href="../index.php">Recharger la page</a></h2>
+
             </div>
         </div>
+        <div class="partiePrincipale"><h2><a href="../index.php">Recharger la page</a></h2></div>
     </div>
     <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/Festiplan/FestiplanWeb/static/components/footer.php" ?>
     </body>

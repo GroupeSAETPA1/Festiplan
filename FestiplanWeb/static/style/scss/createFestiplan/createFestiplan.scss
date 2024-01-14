@@ -27,6 +27,10 @@ header {
   }
 }
 
+a {
+  color: $dark-grey;
+  text-decoration: none;
+}
 .wrapper {
   padding: 0 10vh;
 }

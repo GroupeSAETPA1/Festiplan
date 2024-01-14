@@ -37,6 +37,11 @@ header .logo i, header .logo svg {
   padding-right: 10%;
 }
 
+a {
+  color: #363732;
+  text-decoration: none;
+}
+
 .wrapper {
   padding: 0 10vh;
 }

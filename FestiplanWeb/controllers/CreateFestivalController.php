@@ -8,6 +8,7 @@ use services\UserService;
 use yasmf\HttpHelper;
 use yasmf\View;
 use DateTime;
+use function PHPUnit\Framework\isEmpty;
 
 /**
  * Default controller
@@ -32,9 +33,12 @@ class CreateFestivalController {
     }
 
     public function index(PDO $pdo): View{
-        //$this -> connectionOk();
+        $this -> connectionOk();
         $view = new View("views/creationFestival/createFestival");
-        $view = new View("views/creationFestival/createFestival");
+        $view -> setVar('nomOk' , false);
+        $view -> setVar('dateOk' , false);
+        $view -> setVar('descriptionOk' , false);
+        $view ->setVar('categorieOk' , false);
         $view -> setVar('tableauCategorie' , $this->categorieBD);
         $this->reAfficherElementPage1($view);
         return $view;
@@ -62,6 +66,10 @@ class CreateFestivalController {
        } else {
            $view = new View("views/creationFestival/createFestival");
            $view -> setVar('tableauCategorie' , $this->categorieBD);
+           $view -> setVar('nomOk' , $nomOk);
+           $view -> setVar('dateOk' , $dateOk);
+           $view -> setVar('descriptionOk' , $descriptionOk);
+           $view -> setVar('categorieOk' , $categorieOk);
            $this -> reAfficherElementPage1($view);
        }
        return $view;
@@ -69,6 +77,11 @@ class CreateFestivalController {
 
     public function page1() {
         $view = new View("views/creationFestival/createFestival");
+        $view -> setVar('nomOk' , true);
+        $view -> setVar('dateOk' , true);
+        $view -> setVar('descriptionOk' , true);
+        $view ->setVar('categorieOk' , true);
+        $view -> setVar('tableauCategorie' , $this->categorieBD);
         $this -> reAfficherElementPage1($view);
         $view -> setVar('tableauCategorie' , $this->categorieBD);
         return $view;
@@ -130,22 +143,27 @@ class CreateFestivalController {
     public function nomOk($aVerifier)
     {
         $_SESSION['nomFestival'] = htmlspecialchars($aVerifier);
-        return $aVerifier != '' and strlen($aVerifier) <= longueur_nom_festival;
+        return !ctype_space($aVerifier) and strlen($aVerifier) <= longueur_nom_festival && $aVerifier != "";
     }
 
     public function descriptionOk($description)
     {
         $_SESSION['descriptionFestival'] = $description;
-        return $description  != '' and strlen($description) <= longueur_max_description ;
+        return !ctype_space($description) and strlen($description) <= longueur_max_description && $description != "" ;
     }
 
     public function dateOk(mixed $ddd, mixed $ddf)
     {
-        $debut = DateTime::createFromFormat('Y-m-d' , $ddd);
-        $fin = DateTime::createFromFormat('Y-m-d' , $ddf);
-        $_SESSION['ddd'] = htmlspecialchars($ddd);
-        $_SESSION['ddf'] = htmlspecialchars($ddf);
-        return $debut <= $fin ;
+
+        if (!empty($ddd) && !empty($ddf)) {
+            $debut = DateTime::createFromFormat('Y-m-d', $ddd);
+            $fin = DateTime::createFromFormat('Y-m-d', $ddf);
+            $_SESSION['ddd'] = htmlspecialchars($ddd);
+            $_SESSION['ddf'] = htmlspecialchars($ddf);
+            return $debut <= $fin;
+        } else {
+            return false;
+        }
     }
 
     public function categorieOk($categorie) {
@@ -301,6 +319,24 @@ class CreateFestivalController {
         $_SESSION['organisateur'] = $organisateur;
         return true;
     }
+
+    public function viderChampPage1()
+    {
+
+        $view = new View("views/creationFestival/createFestival");
+        $view -> setVar('tableauCategorie' , $this->categorieBD);
+        $view ->setVar('nomFestival' , '');
+        $view ->setVar('descriptionFestival' , '');
+        $view ->setVar('ddd' , '');
+        $view ->setVar('ddf' , '');
+        $view -> setVar('nomOk' , false);
+        $view -> setVar('dateOk' , false);
+        $view -> setVar('descriptionOk' , false);
+        $view ->setVar('categorieOk' , false);
+        $_SESSION['categorie'] = '';
+        return $view;
+    }
+
 
 }
 
