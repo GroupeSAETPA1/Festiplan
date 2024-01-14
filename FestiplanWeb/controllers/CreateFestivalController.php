@@ -33,9 +33,12 @@ class CreateFestivalController {
     }
 
     public function index(PDO $pdo): View{
-        //$this -> connectionOk();
+        $this -> connectionOk();
         $view = new View("views/creationFestival/createFestival");
-        $view = new View("views/creationFestival/createFestival");
+        $view -> setVar('nomOk' , false);
+        $view -> setVar('dateOk' , false);
+        $view -> setVar('descriptionOk' , false);
+        $view ->setVar('categorieOk' , false);
         $view -> setVar('tableauCategorie' , $this->categorieBD);
         $this->reAfficherElementPage1($view);
         return $view;
@@ -63,6 +66,10 @@ class CreateFestivalController {
        } else {
            $view = new View("views/creationFestival/createFestival");
            $view -> setVar('tableauCategorie' , $this->categorieBD);
+           $view -> setVar('nomOk' , $nomOk);
+           $view -> setVar('dateOk' , $dateOk);
+           $view -> setVar('descriptionOk' , $descriptionOk);
+           $view -> setVar('categorieOk' , $categorieOk);
            $this -> reAfficherElementPage1($view);
        }
        return $view;
@@ -307,6 +314,19 @@ class CreateFestivalController {
         $_SESSION['organisateur'] = $organisateur;
         return true;
     }
+
+    public function viderChampPage1()
+    {
+        $view = new View("views/creationFestival/createFestival");
+        $view -> setVar('tableauCategorie' , $this->categorieBD);
+        $view ->setVar('nomFestival' , '');
+        $view ->setVar('descriptionFestival' , '');
+        $view ->setVar('ddd' , '');
+        $view ->setVar('ddf' , '');
+        $_SESSION['categorie'] = '';
+        return $view;
+    }
+
 
 }
 

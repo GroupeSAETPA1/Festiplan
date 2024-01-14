@@ -53,7 +53,7 @@ class createFestivalService
 
     public function sceneExiste($scene): bool
     {
-        $requeteSceneExiste = $this -> pdoCreationFestival -> prepare( "SELECT * FROM SCENE WHERE nom = :nom");
+        $requeteSceneExiste = $this -> pdoCreationFestival -> prepare( "SELECT * FROM SCENE WHERE nomScene = :nom");
         $requeteSceneExiste->bindParam(':nom' , $scene);
         $requeteSceneExiste->execute();
         return $requeteSceneExiste->rowCount() > 0 ;
