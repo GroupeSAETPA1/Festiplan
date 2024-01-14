@@ -59,7 +59,7 @@ async function construireCalendrier() {
                 duration: { days: await getFestivalDuration()}
             }
         },
-        contentHeight: 800, // TODO définir une bonne hauteur et trouver comment fixer une largeur
+        contentHeight: 800,
         slotMinTime: festival.heure_debut_spectacles < festival.heure_fin_spectacles ? festival.heure_debut_spectacles : "00:00",
         slotMaxTime: festival.heure_fin_spectacles > festival.heure_debut_spectacles ? festival.heure_fin_spectacles : "23:59", 
         titleFormat: {
@@ -175,7 +175,7 @@ async function planifieSpectacle(dateFinDernierSpectacle, dureeEntreSpectacles, 
     let plusieursSpectacleMemeScene = false
 
     finDernierSpectacle = dateFinDernierSpectacle;
-    // On parcours la liste des spectacles a l'envers pour voir s'il y a un spectacle qui est sur la meme scene auparavant FIXME
+    // On parcours la liste des spectacles a l'envers pour voir s'il y a un spectacle qui est sur la meme scene auparavant
     for (let j = i + 1 ; j < spectacles.length ; j++) {
         if (spectacles[j].id_scene === spectacles[i].id_scene) { // S'il y aura un spectacle sur la meme scene après
             spectacleApres = spectacles[j];

@@ -42,7 +42,6 @@ async function addOrga() {
 
 async function addScene() {
     input = SCENE.val();
-    //console.log(sceneList);
     const isDuplicate = sceneList.some(scene => scene.name === input);
     if (input && input != 'vide' && !isDuplicate) {
         SCENE.css({border: "1px solid black"});
@@ -134,6 +133,7 @@ function checkChoixValide(scene) {
         const xmlhttp = new XMLHttpRequest();
 
         xmlhttp.onload = function () {
+            console.log(this.responseText);
             resolve(this.responseText);
         };
 

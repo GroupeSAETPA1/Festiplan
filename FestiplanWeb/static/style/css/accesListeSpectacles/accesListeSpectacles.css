@@ -152,13 +152,16 @@ a {
   background-color: #F0F7F4;
 }
 .container-card-spectacles .card-spectacles .img-spectacle {
-  min-height: 20vh;
   display: flex;
+  justify-content: center;
   align-items: center;
+  width: 20%;
+  height: 18vh;
   background-color: #cccccc;
 }
 .container-card-spectacles .card-spectacles .img-spectacle img {
   margin: 1vh;
+  max-height: 100%;
 }
 .container-card-spectacles .card-spectacles p, .container-card-spectacles .card-spectacles div {
   margin: 0 1vh;
