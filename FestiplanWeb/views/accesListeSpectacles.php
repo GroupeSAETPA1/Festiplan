@@ -10,7 +10,7 @@ function afficher_spectacle(string $id_spectacle, string $nom_spectacle, string 
 {
     echo '<div class="card-spectacles rounded">';
     echo '    <div class="img-spectacle rounded">';
-    echo '        <img src="' . $illustration . '" alt="L\'image du spectacle ' . $nom_spectacle . '">';
+    echo '        <img src="/Festiplan/FestiplanWeb/datas/img/' . $illustration . '" alt="L\'image du spectacle ' . $nom_spectacle . '">';
     echo '    </div>';
     echo '    <div class="nom-spectacle">';
     echo '        <span>' . $nom_spectacle . '</span>';

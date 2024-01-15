@@ -62,7 +62,6 @@ class AccesListeSpectaclesController
 
     public function retirerSpectacle(): View
     {
-        echo "retirerSpectacle";
         $id_festival_actif = $this->verifierConnecte();
 
         $id_spectacle = HttpHelper::getParam("id_spectacle") ?? null;

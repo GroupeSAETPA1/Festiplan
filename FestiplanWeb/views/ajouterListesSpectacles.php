@@ -21,7 +21,7 @@ function afficherSpectacle($spectacle, $liste_scene, int $id_festival): void
 
     echo '<div class="card-spectacle-dispo rounded">';
     echo '    <div class="img-spectacle">';
-    echo '        <img src="' . $illustration . '"';
+    echo '        <img src="/Festiplan/FestiplanWeb/datas/img/' . $illustration . '"';
     echo '             alt="Image du spectacle ' . $nom_spectacle . '"';
     echo '             class="rounded">';
     echo '    </div>';

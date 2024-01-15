@@ -130,14 +130,18 @@ $taille_div: 90%;
         background-color: $white;
 
         .img-spectacle {
-            min-height: 20vh;
+
             display: flex;
+            justify-content: center;
             align-items: center;
+            width: 20%;
+            height: 18vh;
 
             background-color: $gris;
 
             img {
                 margin: 1vh;
+                max-height: 100%;
             }
         }
 

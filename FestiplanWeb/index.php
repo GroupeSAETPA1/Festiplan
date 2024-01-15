@@ -10,6 +10,7 @@ use yasmf\Router;
 
 require $_SERVER[ 'DOCUMENT_ROOT' ] . PREFIX_TO_RELATIVE_PATH . '/dbconfig.php';
 
+
 $dbConfig = new DBConfig();
 $dbConfig = $dbConfig->getRoot();
 
@@ -21,12 +22,12 @@ $data_source = new DataSource(
     $dbConfig['db_pass'], 
     $dbConfig['db_charset']
 );
-$router = new Router(new DefaultComponentFactory());
-try {
+    $router = new Router(new DefaultComponentFactory());
 
+try {
     $router->route(PREFIX_TO_RELATIVE_PATH,$data_source);
 } catch (PDOException $e) {
-    throw $e;
-    header('Location: /Festiplan/FestiplanWeb/?controller=Error');
+//    throw $e;
+    header('Location: /Festiplan/FestiplanWeb/views/Error504.php');
     exit();
 }

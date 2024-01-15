@@ -41,7 +41,7 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
     <?php include_once $_SERVER['DOCUMENT_ROOT']."/Festiplan/FestiplanWeb/static/components/header.php" ?>
         <div class="retour">
             <a href=/Festiplan/FestiplanWeb/?controller=CreateFestival&action=page1>
-                <button class="Retour">
+                <button class="btn-retour">
                     <i class="fa-solid fa-arrow-left"></i> Retour
                 </button>
             </a>

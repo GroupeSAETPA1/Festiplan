@@ -1,3 +1,11 @@
+<?php
+
+// vérification de la connexion
+if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
+    header('Location: /Festiplan/FestiplanWeb/?controller=Home');
+    exit();
+}
+?>
 <!doctype html>
 <html lang="fr">
     <head>
@@ -55,7 +63,6 @@
                                     <select name="categorie">
                                         <?php
                                         foreach ($tableauCategorie as $ligne) {
-                                            //var_dump($tableauCategorie);
                                             echo '<option';
                                             if ($_SESSION['categorie_editer'] == $ligne['id_categorie']) {
                                                 echo 'selected';
