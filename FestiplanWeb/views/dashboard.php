@@ -140,7 +140,7 @@ function minutesToHHMM(int $minutes): string
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/footer.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/header.css">
 
-        <!-- Fontawesome --><!-- TODO Custom Kit -->
+        <!-- Fontawesome -->
         <script src="https://kit.fontawesome.com/d9b7264c5a.js" crossorigin="anonymous"></script>
 
         <!-- Scripts -->

@@ -43,7 +43,7 @@ class PlanificationController
         return $view;
     }
 
-    public function getDataFestival() { // TODO bloquer si ya erreur pdo, a moins que ca se fasse avant
+    public function getDataFestival():View { // TODO bloquer si ya erreur pdo, a moins que ca se fasse avant
         // On récupère l'id du festival sélectionné
         $id_festival =  HttpHelper::getParam("idFes") ?? null;
 
@@ -55,7 +55,7 @@ class PlanificationController
         return $view;
     }
 
-    public function getDataSpectacle() {
+    public function getDataSpectacle():View {
         // On récupère l'id du festival sélectionné
         $id_festival =  HttpHelper::getParam("idFes") ?? null;
 

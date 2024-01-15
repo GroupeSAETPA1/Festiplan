@@ -15,7 +15,8 @@ const  longueur_nom_festival = 150 ;
 const longueur_max_description = 1000 ;
 class EditFestivalController
 {
-    private EditFestivalService $EditFestivalService;
+    private EditFestivalService $editFestivalService;
+    private array $categorieBD;
 
     public function __construct(EditFestivalService $editFestivalService)
     {
