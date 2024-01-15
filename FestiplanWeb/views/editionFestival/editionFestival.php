@@ -1,3 +1,11 @@
+<?php
+
+// vérification de la connexion
+if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
+    header('Location: /Festiplan/FestiplanWeb/?controller=Home');
+    exit();
+}
+?>
 <!doctype html>
 <html lang="fr">
     <head>
@@ -12,7 +20,6 @@
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svg.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/footer.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/header.css">
-        <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createSpectacle/createSpectacle.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/formsInput/image.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/formsInput/input.css">
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/editionFestival/responsive.css">
@@ -55,7 +62,6 @@
                                     <select name="categorie">
                                         <?php
                                         foreach ($tableauCategorie as $ligne) {
-                                            //var_dump($tableauCategorie);
                                             echo '<option';
                                             if ($_SESSION['categorie_editer'] == $ligne['id_categorie']) {
                                                 echo 'selected';
@@ -124,7 +130,8 @@
                             </div>
                             <div class ="valid-annul-placement">
                                 <div class="annulChoix">
-                                    <i class="fa-regular fa-circle-xmark"></i>Annuler vos modification <!-- TODO fontawesome -->
+                                    <a href="/Festiplan/FestiplanWeb/?controller=EditFestival&action=formulaireDefaut">
+                                    <i class="fa-regular fa-circle-xmark"></i>Annuler vos modification </a><!-- TODO fontawesome -->
                                 </div>
                                 <div class="button-flex-end">
                                     <button type="submit" class="editer">Editer<i class="fa-solid fa-arrow-right"></i></button>

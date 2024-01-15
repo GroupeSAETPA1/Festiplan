@@ -1,0 +1,40 @@
+@import '../main';
+
+/* Masquer le bouton de fichier par défaut */
+input[type="file"] {
+  display: none;
+}
+
+/* Style personnalisé pour le faux bouton */
+.custom-file-input {
+  display: inline-block;
+  padding: 20px 40px;
+  font-size: 14px;
+  font-weight: bold;
+  color: $dark-grey;
+  background-color: $light-blue;
+  border: 1px solid $light-blue ;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+
+}
+
+/* Styler le label parent si nécessaire */
+.custom-file-input-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Styler le texte à côté du bouton si nécessaire */
+.custom-file-input-text {
+  display: inline-block;
+  margin-right: 10px; /* Ajuste la marge en fonction de tes besoins */
+}
+
+/* Styliser le bouton lorsqu'il est survolé */
+.custom-file-input:hover {
+  background-color: $light-blue;
+  border-color: $light-blue;
+}

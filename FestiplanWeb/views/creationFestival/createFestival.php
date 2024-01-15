@@ -17,7 +17,6 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
     <!-- Lien vers mon CSS -->
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/createFestiplan.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/page3CreationFestival.css">
-    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/footer.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/header.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/button.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/formsInput/image.css">
@@ -25,6 +24,7 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svgInFolder.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svgInFolder.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/responsive.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/footer.css">
 
 
     <link rel="stylesheet"
@@ -47,7 +47,7 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
 
     <div class="retour">
         <a href="/Festiplan/FestiplanWeb/?controller=Dashboard">
-        <button class="Retour">
+        <button class="btn-retour">
             <i class="fa-solid fa-arrow-left"></i> Retour
         </button>
         </a>
@@ -60,22 +60,54 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
                     <!-- Contient un premier bloc avec le nom, les dates de début et de fin -->
                     <div class="NDD">
                         <div>
-                            <h3><i class="fa-solid fa-circle-exclamation"></i>Nom :</h3>
+                            <h3>
+                                <?php
+                                    if ($nomOk) {
+                                        echo '<i class="fa-solid fa-circle-check"></i>' ;
+                                    } else {
+                                        echo '<i class="fa-solid fa-circle-exclamation"></i>';
+                                    }
+                                ?>
+                                Nom :</h3>
                             <input class="text" type="text" name="nom" placeholder="Tapez le nom de votre festival" value = "<?php echo $nomFestival ?: "" ?>" />
                         </div>
                         <div>
-                            <h3><i class="fa-solid fa-circle-exclamation"></i>Date de début :</h3>
+                            <h3>
+                                <?php
+                                if ($dateOk) {
+                                    echo '<i class="fa-solid fa-circle-check"></i>' ;
+                                } else {
+                                    echo '<i class="fa-solid fa-circle-exclamation"></i>';
+                                }
+                                ?>
+                                </i>Date de début :</h3>
                             <input class="text" type="date" name="ddd" value = "<?php echo $ddd ?: "" ?>" />
                         </div>
                         <div>
-                            <h3><i class="fa-solid fa-circle-exclamation"></i>Date de fin :</h3>
+                            <h3>
+                                <?php
+                                if ($dateOk) {
+                                    echo '<i class="fa-solid fa-circle-check"></i>' ;
+                                } else {
+                                    echo '<i class="fa-solid fa-circle-exclamation"></i>';
+                                }
+                                ?>
+                                </i>Date de fin :</h3>
                             <input class="text" type="date" name="ddf" value = "<?php echo $ddf ?: "" ?>" />
                         </div>
                     </div>
                     <div class="Description">
                         <!-- Contient un second bloc avec la description et qui se situe au cote a cote avec le premier bloc -->
                         <div>
-                            <label for="description"><i class="fa-solid fa-circle-exclamation"></i>Description :</label>
+                            <label for="description">
+                                <?php
+                                if ($descriptionOk) {
+                                    echo '<i class="fa-solid fa-circle-check"></i>' ;
+                                } else {
+                                    echo '<i class="fa-solid fa-circle-exclamation"></i>';
+                                }
+                                ?>
+                                </i>Description :</label>
                             <textarea id="description" name="description" > <?php echo $descriptionFestival ?: "" ?></textarea>
                         </div>
                     </div>
@@ -94,12 +126,18 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
                     </div>
                 </div>
                 <div>
-                    <h3> <i class="fa-solid fa-circle-exclamation"></i>Catégorie :</h3>
+                    <h3>
+                        <?php
+                        if ($categorieOk) {
+                            echo '<i class="fa-solid fa-circle-check"></i>' ;
+                        } else {
+                            echo '<i class="fa-solid fa-circle-exclamation"></i>';
+                        }
+                        ?>Catégorie :</h3>
 
                     <select name="categorie">
                         <option value="vide"></option>
                         <?php
-
                         foreach ($tableauCategorie as $ligne) {
                             echo '<option' ;
                             if (isset($_SESSION['categorie']) && $ligne['id_categorie'] == $_SESSION['categorie']    ) {
@@ -114,7 +152,8 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
         </div>
         <div class="valid-annul-placement">
             <div class="annulChoix">
-                <i class="fa-regular fa-circle-xmark"></i>Annuler vos choix <!-- TODO fontawesome -->
+                <a href="/Festiplan/FestiplanWeb/?controller=CreateFestival&action=viderChampPage1">
+                <i class="fa-regular fa-circle-xmark"></i>Vider le formulaire </a><!-- TODO fontawesome -->
             </div>
             <div class="button-flex-end">
                 <button type="submit" class="valider">Page Suivante<i class="fa-solid fa-arrow-right"></i></button>

@@ -77,7 +77,7 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
                     </div>
                     <div class="supprimer-wrapper">
                         <form method="post" action="/Festiplan/FestiplanWeb/">
-                            <input hidden name="action" value="suprimmer">
+                            <input hidden name="action" value="supprimer">
                             <input hidden name="controller" value="SupressionFestival">
                             <button type="submit" class="supprimer lastButton rounded"
                                     title="Supprimer définitivement le festival">
