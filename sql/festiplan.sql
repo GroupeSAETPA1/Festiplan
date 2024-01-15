@@ -89,14 +89,6 @@ CREATE  TABLE IF NOT EXISTS `spectacle`
     FOREIGN KEY (responsable_spectacle) REFERENCES utilisateurs (id_utilisateur)  ON UPDATE cascade ON DELETE cascade
 );
 
--- Structure de la table `liste_scene`
--- La table liste_scene est une table qui permet de stocker les scenes dans un festival.
-CREATE TABLE `liste_scene`
-(
-    `id_festival` int(6) NOT NULL,
-    `id_scene`    int(6) NOT NULL,
-    PRIMARY KEY (id_festival, id_scene)
-);
 
 -- Structure de la table `spectacle_festival_scene`
 -- La table spectacle_festival_scene est une table qui permet de stocker les spectacles qui sont dans un festival et dans une scene.
