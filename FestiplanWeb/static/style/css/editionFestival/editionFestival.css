@@ -84,4 +84,8 @@ input[type=time] {
   flex-direction: row;
 }
 
+a {
+  text-decoration: none;
+}
+
 /*# sourceMappingURL=editionFestival.css.map */

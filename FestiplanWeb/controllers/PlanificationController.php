@@ -36,26 +36,26 @@ class PlanificationController
             exit();
         }
 
-        $view = new View("views/planification");
+        $view = new View("views/Planification");
         $view->setVar('festival', $festival);
         $view->setVar('nom', $_SESSION['nom'] ?? 'Nom Inconnu');
         $view->setVar('prenom', $_SESSION['prenom'] ?? 'Uknown User'); 
         return $view;
     }
 
-    public function getDataFestival() { // TODO bloquer si ya erreur pdo, a moins que ca se fasse avant
+    public function getDataFestival():View { // TODO bloquer si ya erreur pdo, a moins que ca se fasse avant
         // On récupère l'id du festival sélectionné
         $id_festival =  HttpHelper::getParam("idFes") ?? null;
 
         $dataFestival = $this->planificationService->getFestival($id_festival);
 
-        $view = new View("views/planificationDataFestival");
+        $view = new View("views/PlanificationDataFestival");
         $view->setVar('dataFestival', $dataFestival);
 
         return $view;
     }
 
-    public function getDataSpectacle() {
+    public function getDataSpectacle():View {
         // On récupère l'id du festival sélectionné
         $id_festival =  HttpHelper::getParam("idFes") ?? null;
 
