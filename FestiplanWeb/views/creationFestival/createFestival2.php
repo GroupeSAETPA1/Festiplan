@@ -24,6 +24,16 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
 
         <link rel="stylesheet" href="/Festiplan/FestiplanWeb/framework/fontawesome-free-6.2.1-web/css/all.css">
         <link rel="icon" href="/Festiplan/FestiplanWeb/datas/img/logo.ico" />
+        
+        
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+              integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+              crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="/Festiplan/FestiplanWeb/static/scripts/responsive/footerResponsive.js" defer></script>
+        
+        <script src="/Festiplan/node_modules/gsap/dist/gsap.min.js"></script>
+        <script src="/Festiplan/node_modules/jquery/dist/jquery.min.js"></script>
 
     </head>
     <body>

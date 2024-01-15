@@ -24,6 +24,7 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svgInFolder.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/svgInFolder.css">
     <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/createFestiplan/responsive.css">
+    <link rel="stylesheet" href="/Festiplan/FestiplanWeb/static/style/css/components/footer.css">
 
 
     <link rel="stylesheet"
@@ -151,8 +152,8 @@ if (!isset($_SESSION['connecte']) || !$_SESSION['connecte']) {
         </div>
         <div class="valid-annul-placement">
             <div class="annulChoix">
-                <a href="/Festiplan/FestiplanWeb/?controller=CreateFestival&action=viderChampPage1"</a>
-                <i class="fa-regular fa-circle-xmark"></i>Vider le formulaire <!-- TODO fontawesome -->
+                <a href="/Festiplan/FestiplanWeb/?controller=CreateFestival&action=viderChampPage1">
+                <i class="fa-regular fa-circle-xmark"></i>Vider le formulaire </a><!-- TODO fontawesome -->
             </div>
             <div class="button-flex-end">
                 <button type="submit" class="valider">Page Suivante<i class="fa-solid fa-arrow-right"></i></button>

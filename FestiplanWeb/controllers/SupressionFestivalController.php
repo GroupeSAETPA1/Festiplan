@@ -41,9 +41,10 @@ class SupressionFestivalController
         return $view;
     }
 
-    public function suprimmer(): void
+    public function supprimer(): void
     {
-        $this->supressionFestivalServices->supression($_SESSION['id_festival_a_supprimer']);
+        echo 'appel fonction';
+        $this->supressionFestivalServices->supprimer($_SESSION['id_festival_a_supprimer']);
 
         header('Location: /Festiplan/FestiplanWeb/?controller=Dashboard');
         exit();

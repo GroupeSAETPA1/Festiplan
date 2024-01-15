@@ -170,6 +170,15 @@ class EditFestivalController
         }
     }
 
+    public function formulaireDefaut() {
+        $festival = $this -> editFestivalService -> recupererInfoFestival($_SESSION['id_a_editer']);
+        $view = new View("views/editionFestival/editionFestival");
+        $this->preparerVue($view, $festival);
+        $tableauCategorie = $this->editFestivalService->recupererCategorie();
+        $view -> setVar('tableauCategorie' , $tableauCategorie);
+        return $view;
+    }
+    
     public function reAfficherEdition($view)
     {
         $view -> setVar('nomActuel' , $_SESSION['nom_editer']);

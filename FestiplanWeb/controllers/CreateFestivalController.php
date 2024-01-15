@@ -98,10 +98,10 @@ class CreateFestivalController {
         $this->connectionOk();
         $tousOk =  $this->organisateurOk()  && $this->sceneOk() ; ;
         if ($tousOk) {
-            $view = new View("/views/creationFestival/CreateFestival2");
+            $view = new View("/views/creationFestival/createFestival2");
 
         } else {
-            $view = new View("/views/creationFestival/CreateFestival3");
+            $view = new View("/views/creationFestival/createFestival3");
             $view -> setVar('tableauScene' , $this->sceneBD);
         }
         return $view;
