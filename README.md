@@ -23,10 +23,14 @@ Pour la répartition des rôles, ceux-ci changent a chaque itérations :
 
 |             | Quentin       | Néo           | Tom           | François      | Lucas         |
 |-------------|---------------|---------------|---------------|---------------|---------------|
-| Itération 0 | product owner | SCRUM master  | développeur   | développeur   | product owner |
-| Itération 1 | développeur   | dédveloppeur  | product owner | développeur   | SCRUM master  |
-| Itération 2 | SCRUM master  | product owner | dédveloppeur  | développeur   | dédveloppeur  |
-| Itération 3 | développeur   | product owner | SCRUM master  | product owner | product owner |
+| Itération 0 | Product Owner | SCRUM master  | Développeur   | Développeur   | Product Owner |
+| Itération 1 | Développeur   | Développeur   | Product Owner | Développeur   | SCRUM master  |
+| Itération 2 | SCRUM master  | Product Owner | Développeur   | Développeur   | Développeur   |
+|~~Itération 3~~ | ~~Développeur~~   | ~~Product Owner~~ | ~~SCRUM master~~  | ~~Product Owner~~ | ~~Product Owner~~ |
+
+### Lien du site :
+
+https://festiplan.go.yo.fr/Festiplan/FestiplanWeb/
 
 ### Board Agile :
 
@@ -34,6 +38,5 @@ https://github.com/orgs/GroupeSAETPA1/projects/6
 
 ### Google Drive :
 
-https://drive.google.com/drive/u/0/folders/1Kv1Eq3ORTvd3_JjfnHAk5MMmCzEwbL17
-
+https://drive.google.com/drive/folders/1shhSIWkt_t6za8a4o1YeJUCi5bfX97UV?usp=sharing
 
